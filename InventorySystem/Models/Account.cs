@@ -11,7 +11,7 @@ namespace InventorySystem.Models
         public int AccountID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public int Tawo { get; set; }
+        public int Alien { get; set; }
         public int student { get; set; }
         public int Teacher { get; set; }
       
