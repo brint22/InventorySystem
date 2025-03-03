@@ -1,0 +1,114 @@
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraWaitForm;
+using InventorySystem.Models;
+using InventorySystem.Views;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace InventorySystem
+{
+    public partial class LoginForm : DevExpress.XtraEditors.XtraForm
+    {
+        public LoginForm()
+        {
+            InitializeComponent();
+        }
+
+        private bool LoginMethod(string username, string password)
+        {
+            string connStr = GlobalClass.connectionString;
+            int a = 1;
+            int b = 2;
+            int xresult = 0;
+
+            xresult = GlobalClass.testmethod(a, b);
+            XtraMessageBox.Show( Convert.ToString(xresult) );
+
+
+            //SqlConnection connection = new SqlConnection(connStr);
+            //connection.Open();
+            //string query = @"SELECT COUNT(*) FROM Account
+            //               WHERE UserName = @UserName
+            //               AND Password = @Password";
+
+            //SqlCommand command = new SqlCommand(query, connection);
+            //command.Parameters.AddWithValue("UserName", username);
+            //command.Parameters.AddWithValue("Password", password);
+            //int result = (int)command.ExecuteScalar();
+            //return result > 0; //returns true if credintials are valid
+            return false;
+        }
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (LoginMethod(teUserName.Text.Trim(), tePassword.Text.Trim()))
+            {
+
+                MainForm mainform = new MainForm();
+                mainform.Show();
+                Visible = false;
+
+            }
+            else
+            {
+                XtraMessageBox.Show("Invalid Input!", "Waring");
+            }
+        }
+
+        private void teUserName_EditValueChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void tePassword_EditValueChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void teUserName_Enter(object sender, EventArgs e)
+        {
+            // If the TextBox contains the placeholder text, clear it when the user clicks into it
+            if (teUserName.Text == "Username")
+            {
+                teUserName.Text = "";
+                teUserName.ForeColor = Color.Black; // Change text color to black
+            }
+        }
+
+        private void tePassword_Enter(object sender, EventArgs e)
+        {
+            // If the TextBox contains the placeholder text, clear it when the user clicks into it
+            if (tePassword.Text == "Password")
+            {
+                tePassword.Text = "";
+                tePassword.ForeColor = Color.Black; // Change text color to black
+            }
+        }
+
+        private void teUserName_Leave(object sender, EventArgs e)
+        {
+            // If the TextBox is empty when losing focus, set the placeholder text
+            if (string.IsNullOrWhiteSpace(teUserName.Text))
+            {
+                teUserName.Text = "Username";
+                teUserName.ForeColor = Color.Black; // Set placeholder color to gray
+            }
+        }
+
+        private void tePassword_Leave(object sender, EventArgs e)
+        {
+            // If the TextBox is empty when losing focus, set the placeholder text
+            if (string.IsNullOrWhiteSpace(tePassword.Text))
+            {
+                tePassword.Text = "Password";
+                tePassword.ForeColor = Color.Black; // Set placeholder color to gray
+            }
+        }
+    }
+}
