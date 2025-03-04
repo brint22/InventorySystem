@@ -11,7 +11,7 @@ namespace InventorySystem.Models
         public int AccountID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public int Animal { get; set; }
+        public int Hayop { get; set; }
         public int student { get; set; }
         public int Teacher { get; set; }
       
