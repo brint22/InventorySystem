@@ -61,7 +61,7 @@
             this.tePassword.Properties.AutoHeight = false;
             this.tePassword.Size = new System.Drawing.Size(299, 32);
             this.tePassword.TabIndex = 1;
-           this.tePassword.Enter += new System.EventHandler(this.tePassword_Enter);
+            this.tePassword.Enter += new System.EventHandler(this.tePassword_Enter);
             this.tePassword.Leave += new System.EventHandler(this.tePassword_Leave);
             // 
             // btnSubmit
@@ -84,7 +84,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 367);
+            this.ClientSize = new System.Drawing.Size(368, 365);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.tePassword);
             this.Controls.Add(this.teUserName);
