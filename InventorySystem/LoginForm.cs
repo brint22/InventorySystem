@@ -54,15 +54,9 @@ namespace InventorySystem
             }
         }
 
-        private void teUserName_EditValueChanged(object sender, EventArgs e)
-        {
-           
-        }
+      
 
-        private void tePassword_EditValueChanged(object sender, EventArgs e)
-        {
-           
-        }
+     
 
         private void teUserName_Enter(object sender, EventArgs e)
         {
