@@ -47,7 +47,7 @@
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1019, 49);
+            this.ribbon.Size = new System.Drawing.Size(1019, 32);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // ribbonPage1
@@ -64,14 +64,14 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 602);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 615);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1019, 37);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1019, 24);
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(425, 121);
+            this.simpleButton1.Location = new System.Drawing.Point(459, 126);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(178, 57);
             this.simpleButton1.TabIndex = 2;
