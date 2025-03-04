@@ -14,7 +14,6 @@ namespace InventorySystem.Models
         public int Iro { get; set; }
         public int student { get; set; }
         public int Teacher { get; set; }
-
         public int gym { get; set; }
     }
 }
