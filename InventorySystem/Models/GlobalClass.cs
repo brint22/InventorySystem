@@ -21,4 +21,5 @@ namespace InventorySystem.Models
         }
     }
     //this is julius
+    //jyll don't kill me, ohahahys
 }
