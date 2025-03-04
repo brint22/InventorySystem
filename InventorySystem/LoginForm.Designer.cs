@@ -32,6 +32,7 @@
             this.teUserName = new DevExpress.XtraEditors.TextEdit();
             this.tePassword = new DevExpress.XtraEditors.TextEdit();
             this.btnSubmit = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).BeginInit();
             this.SuspendLayout();
@@ -78,6 +79,14 @@
             this.btnSubmit.Text = "SUBMIT";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(181, 34);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 3;
+            this.simpleButton1.Text = "simpleButton1";
+            // 
             // LoginForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -85,6 +94,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(368, 365);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.tePassword);
             this.Controls.Add(this.teUserName);
@@ -105,6 +115,7 @@
         private DevExpress.XtraEditors.TextEdit teUserName;
         private DevExpress.XtraEditors.TextEdit tePassword;
         private DevExpress.XtraEditors.SimpleButton btnSubmit;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
 
