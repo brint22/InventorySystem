@@ -24,26 +24,19 @@ namespace InventorySystem
         private bool LoginMethod(string username, string password)
         {
             string connStr = GlobalClass.connectionString;
-            int a = 1;
-            int b = 2;
-            int xresult = 0;
 
-            xresult = GlobalClass.testmethod(a, b);
-            XtraMessageBox.Show( Convert.ToString(xresult) );
+            SqlConnection connection = new SqlConnection(connStr);
+            connection.Open();
+            string query = @"SELECT COUNT(*) FROM Account
+                           WHERE UserName = @UserName
+                           AND Password = @Password";
 
-
-            //SqlConnection connection = new SqlConnection(connStr);
-            //connection.Open();
-            //string query = @"SELECT COUNT(*) FROM Account
-            //               WHERE UserName = @UserName
-            //               AND Password = @Password";
-
-            //SqlCommand command = new SqlCommand(query, connection);
-            //command.Parameters.AddWithValue("UserName", username);
-            //command.Parameters.AddWithValue("Password", password);
-            //int result = (int)command.ExecuteScalar();
-            //return result > 0; //returns true if credintials are valid
-            return false;
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("UserName", username);
+            command.Parameters.AddWithValue("Password", password);
+            int result = (int)command.ExecuteScalar();
+            return result > 0; //returns true if credintials are valid
+           
         }
         private void btnSubmit_Click(object sender, EventArgs e)
         {
