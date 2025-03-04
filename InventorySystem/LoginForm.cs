@@ -55,7 +55,7 @@ namespace InventorySystem
         }
 
       
-
+        //
      
 
         private void teUserName_Enter(object sender, EventArgs e)
