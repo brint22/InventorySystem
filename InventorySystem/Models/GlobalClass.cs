@@ -20,5 +20,5 @@ namespace InventorySystem.Models
             return result;
         }
     }
-
+    //this is julius
 }
