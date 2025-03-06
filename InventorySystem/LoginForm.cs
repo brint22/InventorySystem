@@ -54,10 +54,8 @@ namespace InventorySystem
             }
         }
 
-      
-        // Julies b
+        // Sample1
      
-
         private void teUserName_Enter(object sender, EventArgs e)
         {
             // If the TextBox contains the placeholder text, clear it when the user clicks into it
