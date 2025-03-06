@@ -38,7 +38,7 @@ namespace InventorySystem
             return result > 0; //returns true if credintials are valid
            
         }
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             if (LoginMethod(teUserName.Text.Trim(), tePassword.Text.Trim()))
             {

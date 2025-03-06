@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.teUserName = new DevExpress.XtraEditors.TextEdit();
             this.tePassword = new DevExpress.XtraEditors.TextEdit();
-            this.btnSubmit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).BeginInit();
             this.SuspendLayout();
@@ -64,19 +64,19 @@
             this.tePassword.Enter += new System.EventHandler(this.tePassword_Enter);
             this.tePassword.Leave += new System.EventHandler(this.tePassword_Leave);
             // 
-            // btnSubmit
+            // btnLogin
             // 
-            this.btnSubmit.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Appearance.Options.UseBackColor = true;
-            this.btnSubmit.Appearance.Options.UseFont = true;
-            this.btnSubmit.Location = new System.Drawing.Point(34, 238);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(299, 35);
-            this.btnSubmit.TabIndex = 2;
-            this.btnSubmit.Text = "SUBMIT";
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.btnLogin.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnLogin.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Appearance.Options.UseBackColor = true;
+            this.btnLogin.Appearance.Options.UseFont = true;
+            this.btnLogin.Location = new System.Drawing.Point(34, 238);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(299, 35);
+            this.btnLogin.TabIndex = 2;
+            this.btnLogin.Text = "LOGIN";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // LoginForm
             // 
@@ -85,7 +85,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(368, 365);
-            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tePassword);
             this.Controls.Add(this.teUserName);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("LoginForm.IconOptions.Image")));
@@ -104,7 +104,7 @@
 
         private DevExpress.XtraEditors.TextEdit teUserName;
         private DevExpress.XtraEditors.TextEdit tePassword;
-        private DevExpress.XtraEditors.SimpleButton btnSubmit;
+        private DevExpress.XtraEditors.SimpleButton btnLogin;
     }
 }
 
