@@ -55,7 +55,7 @@ namespace InventorySystem
         }
 
       
-        //
+        // Julies b
      
 
         private void teUserName_Enter(object sender, EventArgs e)
