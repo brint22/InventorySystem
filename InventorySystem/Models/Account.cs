@@ -13,5 +13,6 @@ namespace InventorySystem.Models
         public string Password { get; set; }
 
         //comment 1
+        //Sample
     }
 }
