@@ -127,6 +127,11 @@
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\Inventory System-Data-Flow-Diagram.png" />
+    <Content Include="Files\Inventory System-Database-Diagram.png" />
+    <Content Include="Files\Inventory System-Flowchart.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
