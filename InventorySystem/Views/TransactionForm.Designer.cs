@@ -110,6 +110,7 @@
             this.gridColumn3});
             this.gvProducts.GridControl = this.gcProducts;
             this.gvProducts.Name = "gvProducts";
+            this.gvProducts.OptionsBehavior.Editable = false;
             this.gvProducts.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
