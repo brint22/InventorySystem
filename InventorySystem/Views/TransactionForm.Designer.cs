@@ -33,22 +33,22 @@
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.gcManageTransaction = new DevExpress.XtraEditors.GroupControl();
+            this.btnRemoveProduct = new DevExpress.XtraEditors.SimpleButton();
+            this.btnEnter = new DevExpress.XtraEditors.SimpleButton();
             this.gcProducts = new DevExpress.XtraGrid.GridControl();
             this.gvProducts = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.teInputProductName = new DevExpress.XtraEditors.TextEdit();
-            this.btnEnter = new DevExpress.XtraEditors.SimpleButton();
-            this.windowsUIButtonPanel1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.btnRemoveProduct = new DevExpress.XtraEditors.SimpleButton();
-            this.tePrice = new DevExpress.XtraEditors.TextEdit();
-            this.lblTotalPrice = new DevExpress.XtraEditors.LabelControl();
-            this.lblAmountPaid = new DevExpress.XtraEditors.LabelControl();
-            this.teAmountPaid = new DevExpress.XtraEditors.TextEdit();
             this.lblChange = new DevExpress.XtraEditors.LabelControl();
             this.teChange = new DevExpress.XtraEditors.TextEdit();
+            this.lblAmountPaid = new DevExpress.XtraEditors.LabelControl();
+            this.teAmountPaid = new DevExpress.XtraEditors.TextEdit();
+            this.lblTotalPrice = new DevExpress.XtraEditors.LabelControl();
+            this.tePrice = new DevExpress.XtraEditors.TextEdit();
+            this.windowsUIButtonPanel1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
+            this.cbeEnterProduct = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcManageTransaction)).BeginInit();
             this.gcManageTransaction.SuspendLayout();
@@ -56,10 +56,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teInputProductName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tePrice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teAmountPaid.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teChange.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teAmountPaid.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePrice.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbeEnterProduct.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -86,16 +86,32 @@
             this.gcManageTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.gcManageTransaction.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(6);
-            this.gcManageTransaction.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl1.CaptionImageOptions.SvgImage")));
+            this.gcManageTransaction.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("gcManageTransaction.CaptionImageOptions.SvgImage")));
+            this.gcManageTransaction.Controls.Add(this.cbeEnterProduct);
             this.gcManageTransaction.Controls.Add(this.btnRemoveProduct);
             this.gcManageTransaction.Controls.Add(this.btnEnter);
-            this.gcManageTransaction.Controls.Add(this.teInputProductName);
             this.gcManageTransaction.Controls.Add(this.gcProducts);
             this.gcManageTransaction.Location = new System.Drawing.Point(12, 58);
             this.gcManageTransaction.Name = "gcManageTransaction";
             this.gcManageTransaction.Size = new System.Drawing.Size(598, 519);
             this.gcManageTransaction.TabIndex = 2;
             this.gcManageTransaction.Text = "Manage Transaction";
+            // 
+            // btnRemoveProduct
+            // 
+            this.btnRemoveProduct.Location = new System.Drawing.Point(467, 53);
+            this.btnRemoveProduct.Name = "btnRemoveProduct";
+            this.btnRemoveProduct.Size = new System.Drawing.Size(126, 28);
+            this.btnRemoveProduct.TabIndex = 3;
+            this.btnRemoveProduct.Text = "REMOVE PRODUCT";
+            // 
+            // btnEnter
+            // 
+            this.btnEnter.Location = new System.Drawing.Point(360, 53);
+            this.btnEnter.Name = "btnEnter";
+            this.btnEnter.Size = new System.Drawing.Size(101, 28);
+            this.btnEnter.TabIndex = 2;
+            this.btnEnter.Text = "ENTER";
             // 
             // gcProducts
             // 
@@ -153,7 +169,7 @@
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl1.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(6);
-            this.groupControl1.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl1.CaptionImageOptions.SvgImage1")));
+            this.groupControl1.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl1.CaptionImageOptions.SvgImage")));
             this.groupControl1.Controls.Add(this.lblChange);
             this.groupControl1.Controls.Add(this.teChange);
             this.groupControl1.Controls.Add(this.lblAmountPaid);
@@ -167,61 +183,21 @@
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "Transaction Summary";
             // 
-            // teInputProductName
+            // lblChange
             // 
-            this.teInputProductName.EditValue = "Enter Product Name";
-            this.teInputProductName.Location = new System.Drawing.Point(6, 53);
-            this.teInputProductName.MenuManager = this.ribbon;
-            this.teInputProductName.Name = "teInputProductName";
-            this.teInputProductName.Properties.Appearance.ForeColor = System.Drawing.Color.Silver;
-            this.teInputProductName.Properties.Appearance.Options.UseForeColor = true;
-            this.teInputProductName.Size = new System.Drawing.Size(348, 28);
-            this.teInputProductName.TabIndex = 1;
+            this.lblChange.Location = new System.Drawing.Point(27, 155);
+            this.lblChange.Name = "lblChange";
+            this.lblChange.Size = new System.Drawing.Size(37, 13);
+            this.lblChange.TabIndex = 6;
+            this.lblChange.Text = "Change";
             // 
-            // btnEnter
+            // teChange
             // 
-            this.btnEnter.Location = new System.Drawing.Point(360, 53);
-            this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(101, 28);
-            this.btnEnter.TabIndex = 2;
-            this.btnEnter.Text = "ENTER";
-            // 
-            // windowsUIButtonPanel1
-            // 
-            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
-            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
-            this.windowsUIButtonPanel1.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
-            this.windowsUIButtonPanel1.Location = new System.Drawing.Point(86, 450);
-            this.windowsUIButtonPanel1.Name = "windowsUIButtonPanel1";
-            this.windowsUIButtonPanel1.Size = new System.Drawing.Size(113, 64);
-            this.windowsUIButtonPanel1.TabIndex = 0;
-            this.windowsUIButtonPanel1.Text = "wuiBtnPnlPrintandCancel";
-            // 
-            // btnRemoveProduct
-            // 
-            this.btnRemoveProduct.Location = new System.Drawing.Point(467, 53);
-            this.btnRemoveProduct.Name = "btnRemoveProduct";
-            this.btnRemoveProduct.Size = new System.Drawing.Size(126, 28);
-            this.btnRemoveProduct.TabIndex = 3;
-            this.btnRemoveProduct.Text = "REMOVE PRODUCT";
-            // 
-            // tePrice
-            // 
-            this.tePrice.Location = new System.Drawing.Point(167, 80);
-            this.tePrice.MenuManager = this.ribbon;
-            this.tePrice.Name = "tePrice";
-            this.tePrice.Size = new System.Drawing.Size(100, 28);
-            this.tePrice.TabIndex = 1;
-            // 
-            // lblTotalPrice
-            // 
-            this.lblTotalPrice.Location = new System.Drawing.Point(27, 87);
-            this.lblTotalPrice.Name = "lblTotalPrice";
-            this.lblTotalPrice.Size = new System.Drawing.Size(50, 13);
-            this.lblTotalPrice.TabIndex = 2;
-            this.lblTotalPrice.Text = "Total Price";
+            this.teChange.Location = new System.Drawing.Point(167, 148);
+            this.teChange.MenuManager = this.ribbon;
+            this.teChange.Name = "teChange";
+            this.teChange.Size = new System.Drawing.Size(100, 28);
+            this.teChange.TabIndex = 5;
             // 
             // lblAmountPaid
             // 
@@ -239,21 +215,47 @@
             this.teAmountPaid.Size = new System.Drawing.Size(100, 28);
             this.teAmountPaid.TabIndex = 3;
             // 
-            // lblChange
+            // lblTotalPrice
             // 
-            this.lblChange.Location = new System.Drawing.Point(27, 155);
-            this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(37, 13);
-            this.lblChange.TabIndex = 6;
-            this.lblChange.Text = "Change";
+            this.lblTotalPrice.Location = new System.Drawing.Point(27, 87);
+            this.lblTotalPrice.Name = "lblTotalPrice";
+            this.lblTotalPrice.Size = new System.Drawing.Size(50, 13);
+            this.lblTotalPrice.TabIndex = 2;
+            this.lblTotalPrice.Text = "Total Price";
             // 
-            // teChange
+            // tePrice
             // 
-            this.teChange.Location = new System.Drawing.Point(167, 148);
-            this.teChange.MenuManager = this.ribbon;
-            this.teChange.Name = "teChange";
-            this.teChange.Size = new System.Drawing.Size(100, 28);
-            this.teChange.TabIndex = 5;
+            this.tePrice.Location = new System.Drawing.Point(167, 80);
+            this.tePrice.MenuManager = this.ribbon;
+            this.tePrice.Name = "tePrice";
+            this.tePrice.Size = new System.Drawing.Size(100, 28);
+            this.tePrice.TabIndex = 1;
+            // 
+            // windowsUIButtonPanel1
+            // 
+            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
+            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
+            this.windowsUIButtonPanel1.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Print", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Cancel", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            this.windowsUIButtonPanel1.Location = new System.Drawing.Point(86, 450);
+            this.windowsUIButtonPanel1.Name = "windowsUIButtonPanel1";
+            this.windowsUIButtonPanel1.Size = new System.Drawing.Size(113, 64);
+            this.windowsUIButtonPanel1.TabIndex = 0;
+            this.windowsUIButtonPanel1.Text = "wuiBtnPnlPrintandCancel";
+            // 
+            // cbeEnterProduct
+            // 
+            this.cbeEnterProduct.EditValue = "Enter Product...";
+            this.cbeEnterProduct.Location = new System.Drawing.Point(5, 53);
+            this.cbeEnterProduct.MenuManager = this.ribbon;
+            this.cbeEnterProduct.Name = "cbeEnterProduct";
+            this.cbeEnterProduct.Properties.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.cbeEnterProduct.Properties.Appearance.Options.UseForeColor = true;
+            this.cbeEnterProduct.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbeEnterProduct.Size = new System.Drawing.Size(348, 28);
+            this.cbeEnterProduct.TabIndex = 4;
             // 
             // TransactionForm
             // 
@@ -277,10 +279,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teInputProductName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tePrice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teAmountPaid.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teChange.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teAmountPaid.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePrice.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbeEnterProduct.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,7 +299,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraEditors.SimpleButton btnRemoveProduct;
         private DevExpress.XtraEditors.SimpleButton btnEnter;
-        private DevExpress.XtraEditors.TextEdit teInputProductName;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanel1;
         private DevExpress.XtraEditors.LabelControl lblChange;
@@ -306,5 +307,6 @@
         private DevExpress.XtraEditors.TextEdit teAmountPaid;
         private DevExpress.XtraEditors.LabelControl lblTotalPrice;
         private DevExpress.XtraEditors.TextEdit tePrice;
+        private DevExpress.XtraEditors.ComboBoxEdit cbeEnterProduct;
     }
 }
