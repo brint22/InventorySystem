@@ -86,6 +86,8 @@ namespace InventorySystem
             }
         }
 
+        //test-a
+
         private void tePassword_Leave(object sender, EventArgs e)
         {
             // If the TextBox is empty when losing focus, set the placeholder text
