@@ -32,7 +32,8 @@
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.gcManageTransaction = new DevExpress.XtraEditors.GroupControl();
+            this.grpcManageTransaction = new DevExpress.XtraEditors.GroupControl();
+            this.cbeEnterProduct = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnRemoveProduct = new DevExpress.XtraEditors.SimpleButton();
             this.btnEnter = new DevExpress.XtraEditors.SimpleButton();
             this.gcProducts = new DevExpress.XtraGrid.GridControl();
@@ -40,7 +41,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.grpcTransactionSummary = new DevExpress.XtraEditors.GroupControl();
             this.lblChange = new DevExpress.XtraEditors.LabelControl();
             this.teChange = new DevExpress.XtraEditors.TextEdit();
             this.lblAmountPaid = new DevExpress.XtraEditors.LabelControl();
@@ -48,18 +49,17 @@
             this.lblTotalPrice = new DevExpress.XtraEditors.LabelControl();
             this.tePrice = new DevExpress.XtraEditors.TextEdit();
             this.windowsUIButtonPanel1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.cbeEnterProduct = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcManageTransaction)).BeginInit();
-            this.gcManageTransaction.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grpcManageTransaction)).BeginInit();
+            this.grpcManageTransaction.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbeEnterProduct.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grpcTransactionSummary)).BeginInit();
+            this.grpcTransactionSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teChange.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teAmountPaid.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePrice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbeEnterProduct.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -81,21 +81,34 @@
             this.ribbon.Size = new System.Drawing.Size(916, 83);
             this.ribbon.Toolbar.ShowCustomizeItem = false;
             // 
-            // gcManageTransaction
+            // grpcManageTransaction
             // 
-            this.gcManageTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grpcManageTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.gcManageTransaction.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(6);
-            this.gcManageTransaction.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("gcManageTransaction.CaptionImageOptions.SvgImage")));
-            this.gcManageTransaction.Controls.Add(this.cbeEnterProduct);
-            this.gcManageTransaction.Controls.Add(this.btnRemoveProduct);
-            this.gcManageTransaction.Controls.Add(this.btnEnter);
-            this.gcManageTransaction.Controls.Add(this.gcProducts);
-            this.gcManageTransaction.Location = new System.Drawing.Point(12, 58);
-            this.gcManageTransaction.Name = "gcManageTransaction";
-            this.gcManageTransaction.Size = new System.Drawing.Size(598, 519);
-            this.gcManageTransaction.TabIndex = 2;
-            this.gcManageTransaction.Text = "Manage Transaction";
+            this.grpcManageTransaction.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(6);
+            this.grpcManageTransaction.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("gcManageTransaction.CaptionImageOptions.SvgImage")));
+            this.grpcManageTransaction.Controls.Add(this.cbeEnterProduct);
+            this.grpcManageTransaction.Controls.Add(this.btnRemoveProduct);
+            this.grpcManageTransaction.Controls.Add(this.btnEnter);
+            this.grpcManageTransaction.Controls.Add(this.gcProducts);
+            this.grpcManageTransaction.Location = new System.Drawing.Point(12, 58);
+            this.grpcManageTransaction.Name = "grpcManageTransaction";
+            this.grpcManageTransaction.Size = new System.Drawing.Size(598, 519);
+            this.grpcManageTransaction.TabIndex = 2;
+            this.grpcManageTransaction.Text = "Manage Transaction";
+            // 
+            // cbeEnterProduct
+            // 
+            this.cbeEnterProduct.EditValue = "Enter Product...";
+            this.cbeEnterProduct.Location = new System.Drawing.Point(5, 53);
+            this.cbeEnterProduct.MenuManager = this.ribbon;
+            this.cbeEnterProduct.Name = "cbeEnterProduct";
+            this.cbeEnterProduct.Properties.Appearance.ForeColor = System.Drawing.Color.Silver;
+            this.cbeEnterProduct.Properties.Appearance.Options.UseForeColor = true;
+            this.cbeEnterProduct.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbeEnterProduct.Size = new System.Drawing.Size(348, 28);
+            this.cbeEnterProduct.TabIndex = 4;
             // 
             // btnRemoveProduct
             // 
@@ -104,6 +117,7 @@
             this.btnRemoveProduct.Size = new System.Drawing.Size(126, 28);
             this.btnRemoveProduct.TabIndex = 3;
             this.btnRemoveProduct.Text = "REMOVE PRODUCT";
+            this.btnRemoveProduct.Click += new System.EventHandler(this.btnRemoveProduct_Click);
             // 
             // btnEnter
             // 
@@ -112,6 +126,7 @@
             this.btnEnter.Size = new System.Drawing.Size(101, 28);
             this.btnEnter.TabIndex = 2;
             this.btnEnter.Text = "ENTER";
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // gcProducts
             // 
@@ -144,7 +159,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 373;
+            this.gridColumn1.Width = 351;
             // 
             // gridColumn2
             // 
@@ -153,7 +168,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 394;
+            this.gridColumn2.Width = 146;
             // 
             // gridColumn3
             // 
@@ -162,26 +177,26 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 93;
+            this.gridColumn3.Width = 69;
             // 
-            // groupControl1
+            // grpcTransactionSummary
             // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grpcTransactionSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl1.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(6);
-            this.groupControl1.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl1.CaptionImageOptions.SvgImage")));
-            this.groupControl1.Controls.Add(this.lblChange);
-            this.groupControl1.Controls.Add(this.teChange);
-            this.groupControl1.Controls.Add(this.lblAmountPaid);
-            this.groupControl1.Controls.Add(this.teAmountPaid);
-            this.groupControl1.Controls.Add(this.lblTotalPrice);
-            this.groupControl1.Controls.Add(this.tePrice);
-            this.groupControl1.Controls.Add(this.windowsUIButtonPanel1);
-            this.groupControl1.Location = new System.Drawing.Point(616, 58);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(288, 519);
-            this.groupControl1.TabIndex = 3;
-            this.groupControl1.Text = "Transaction Summary";
+            this.grpcTransactionSummary.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(6);
+            this.grpcTransactionSummary.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl1.CaptionImageOptions.SvgImage")));
+            this.grpcTransactionSummary.Controls.Add(this.lblChange);
+            this.grpcTransactionSummary.Controls.Add(this.teChange);
+            this.grpcTransactionSummary.Controls.Add(this.lblAmountPaid);
+            this.grpcTransactionSummary.Controls.Add(this.teAmountPaid);
+            this.grpcTransactionSummary.Controls.Add(this.lblTotalPrice);
+            this.grpcTransactionSummary.Controls.Add(this.tePrice);
+            this.grpcTransactionSummary.Controls.Add(this.windowsUIButtonPanel1);
+            this.grpcTransactionSummary.Location = new System.Drawing.Point(616, 58);
+            this.grpcTransactionSummary.Name = "grpcTransactionSummary";
+            this.grpcTransactionSummary.Size = new System.Drawing.Size(288, 519);
+            this.grpcTransactionSummary.TabIndex = 3;
+            this.grpcTransactionSummary.Text = "Transaction Summary";
             // 
             // lblChange
             // 
@@ -244,26 +259,13 @@
             this.windowsUIButtonPanel1.TabIndex = 0;
             this.windowsUIButtonPanel1.Text = "wuiBtnPnlPrintandCancel";
             // 
-            // cbeEnterProduct
-            // 
-            this.cbeEnterProduct.EditValue = "Enter Product...";
-            this.cbeEnterProduct.Location = new System.Drawing.Point(5, 53);
-            this.cbeEnterProduct.MenuManager = this.ribbon;
-            this.cbeEnterProduct.Name = "cbeEnterProduct";
-            this.cbeEnterProduct.Properties.Appearance.ForeColor = System.Drawing.Color.Silver;
-            this.cbeEnterProduct.Properties.Appearance.Options.UseForeColor = true;
-            this.cbeEnterProduct.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbeEnterProduct.Size = new System.Drawing.Size(348, 28);
-            this.cbeEnterProduct.TabIndex = 4;
-            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 589);
-            this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.gcManageTransaction);
+            this.Controls.Add(this.grpcTransactionSummary);
+            this.Controls.Add(this.grpcManageTransaction);
             this.Controls.Add(this.ribbon);
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("TransactionForm.IconOptions.SvgImage")));
             this.Name = "TransactionForm";
@@ -272,17 +274,17 @@
             this.Text = "Inventory System | Transaction Form";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcManageTransaction)).EndInit();
-            this.gcManageTransaction.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grpcManageTransaction)).EndInit();
+            this.grpcManageTransaction.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbeEnterProduct.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grpcTransactionSummary)).EndInit();
+            this.grpcTransactionSummary.ResumeLayout(false);
+            this.grpcTransactionSummary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teChange.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teAmountPaid.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePrice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbeEnterProduct.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,7 +293,7 @@
         #endregion
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
-        private DevExpress.XtraEditors.GroupControl gcManageTransaction;
+        private DevExpress.XtraEditors.GroupControl grpcManageTransaction;
         private DevExpress.XtraGrid.GridControl gcProducts;
         private DevExpress.XtraGrid.Views.Grid.GridView gvProducts;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
@@ -299,7 +301,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraEditors.SimpleButton btnRemoveProduct;
         private DevExpress.XtraEditors.SimpleButton btnEnter;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.GroupControl grpcTransactionSummary;
         private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanel1;
         private DevExpress.XtraEditors.LabelControl lblChange;
         private DevExpress.XtraEditors.TextEdit teChange;
