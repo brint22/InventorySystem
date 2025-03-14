@@ -39,8 +39,8 @@
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            this.BrowseBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.peProfile = new DevExpress.XtraEditors.PictureEdit();
+            this.btnBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -50,7 +50,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.SuspendLayout();
@@ -131,30 +131,30 @@
             this.comboBoxEdit1.Size = new System.Drawing.Size(207, 23);
             this.comboBoxEdit1.TabIndex = 5;
             // 
-            // pictureEdit1
+            // peProfile
             // 
-            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(410, 24);
-            this.pictureEdit1.MenuManager = this.ribbon;
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit1.Properties.OptionsMask.MaskType = DevExpress.XtraEditors.Controls.PictureEditMaskType.Circle;
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit1.Size = new System.Drawing.Size(148, 144);
-            this.pictureEdit1.TabIndex = 6;
+            this.peProfile.EditValue = ((object)(resources.GetObject("peProfile.EditValue")));
+            this.peProfile.Location = new System.Drawing.Point(410, 24);
+            this.peProfile.MenuManager = this.ribbon;
+            this.peProfile.Name = "peProfile";
+            this.peProfile.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.peProfile.Properties.Appearance.Options.UseBackColor = true;
+            this.peProfile.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.peProfile.Properties.OptionsMask.MaskType = DevExpress.XtraEditors.Controls.PictureEditMaskType.Circle;
+            this.peProfile.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.peProfile.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.peProfile.Size = new System.Drawing.Size(148, 144);
+            this.peProfile.TabIndex = 6;
             // 
-            // BrowseBtn
+            // btnBrowse
             // 
-            this.BrowseBtn.Appearance.BackColor = System.Drawing.Color.DimGray;
-            this.BrowseBtn.Appearance.Options.UseBackColor = true;
-            this.BrowseBtn.Location = new System.Drawing.Point(447, 174);
-            this.BrowseBtn.Name = "BrowseBtn";
-            this.BrowseBtn.Size = new System.Drawing.Size(75, 23);
-            this.BrowseBtn.TabIndex = 11;
-            this.BrowseBtn.Text = "BROWSE";
+            this.btnBrowse.Appearance.BackColor = System.Drawing.Color.DimGray;
+            this.btnBrowse.Appearance.Options.UseBackColor = true;
+            this.btnBrowse.Location = new System.Drawing.Point(447, 174);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.TabIndex = 11;
+            this.btnBrowse.Text = "BROWSE";
             // 
             // labelControl1
             // 
@@ -200,9 +200,11 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.pictureEdit1);
+            this.groupControl1.Appearance.BackColor = System.Drawing.Color.White;
+            this.groupControl1.Appearance.Options.UseBackColor = true;
+            this.groupControl1.Controls.Add(this.peProfile);
             this.groupControl1.Controls.Add(this.textEdit1);
-            this.groupControl1.Controls.Add(this.BrowseBtn);
+            this.groupControl1.Controls.Add(this.btnBrowse);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.textEdit4);
             this.groupControl1.Controls.Add(this.labelControl3);
@@ -217,6 +219,8 @@
             // 
             // CreateAccount
             // 
+            this.Appearance.BackColor = System.Drawing.Color.White;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 470);
@@ -233,7 +237,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -252,8 +256,8 @@
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit4;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
-        private DevExpress.XtraEditors.SimpleButton BrowseBtn;
+        private DevExpress.XtraEditors.PictureEdit peProfile;
+        private DevExpress.XtraEditors.SimpleButton btnBrowse;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;

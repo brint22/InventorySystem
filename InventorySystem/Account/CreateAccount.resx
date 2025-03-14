@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureEdit1.EditValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="peProfile.EditValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAANZRJREFUeF7t3XeUV+Wd+PH889ujqWqSXRNNNxuTGNdsspvdmE2yNdnNJjGuiCKo
+        wAAADsABataJCQAANZRJREFUeF7t3XeUV+Wd+PH889ujqWqSXRNNNxuTGNdsspvdmE2yNdnNJjGuiCKo
         FAUEpAhigVCCWMYgBjGIBQttKDPAUAaYkRpm6EMXGKQPZehYNpts7u/zfOej+/X6mf4t97n3/T7ndc6e
         bKIz93nu88y33Hs/QERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERE
         RERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERE
@@ -356,7 +356,7 @@
   <data name="CreateAccount.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAHCCAYAAAAZ9Ts6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAALwdJREFUeF7t3XtQXudh53F3Z2fHSeqkuTmbrLPJOptsss5s0k2m7tTdemczO90m
+        wgAADsIBFShKgAAALwdJREFUeF7t3XtQXudh53F3Z2fHSeqkuTmbrLPJOptsss5s0k2m7tTdemczO90m
         adMkboIECGH6hr4hhKCLFWpwJVsXjCRKKcGUIHRDCAndEMKSjJDQBaOrlcjG2FgyFsYYY4wBIYTUTr08
         tTRH9vlJ4vJezjnPNzOff36x4H2f95znd87hec+57Z133gEAAD4nQwAA4C8yBAAA/iJDAADgLzIEAAD+
         IkMAAOAvMgQAAP4iQwAA4C8yBAAA/iJDAADgLzIEAAD+IkMAAOAvMgQAAP4iQwAA4C8yBAAA/iJDAADg
