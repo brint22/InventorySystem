@@ -83,8 +83,9 @@
             // 
             // grpcManageTransaction
             // 
-            this.grpcManageTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpcManageTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpcManageTransaction.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(6);
             this.grpcManageTransaction.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("gcManageTransaction.CaptionImageOptions.SvgImage")));
             this.grpcManageTransaction.Controls.Add(this.cbeEnterProduct);
@@ -99,6 +100,7 @@
             // 
             // cbeEnterProduct
             // 
+            this.cbeEnterProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbeEnterProduct.EditValue = "Enter Product...";
             this.cbeEnterProduct.Location = new System.Drawing.Point(5, 53);
             this.cbeEnterProduct.MenuManager = this.ribbon;
@@ -112,6 +114,7 @@
             // 
             // btnRemoveProduct
             // 
+            this.btnRemoveProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRemoveProduct.Location = new System.Drawing.Point(467, 53);
             this.btnRemoveProduct.Name = "btnRemoveProduct";
             this.btnRemoveProduct.Size = new System.Drawing.Size(126, 28);
@@ -121,6 +124,7 @@
             // 
             // btnEnter
             // 
+            this.btnEnter.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnEnter.Location = new System.Drawing.Point(360, 53);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(101, 28);
@@ -130,6 +134,9 @@
             // 
             // gcProducts
             // 
+            this.gcProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gcProducts.Location = new System.Drawing.Point(0, 87);
             this.gcProducts.MainView = this.gvProducts;
             this.gcProducts.MenuManager = this.ribbon;
@@ -248,6 +255,8 @@
             // 
             // windowsUIButtonPanel1
             // 
+            this.windowsUIButtonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
             windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
             this.windowsUIButtonPanel1.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {

@@ -38,7 +38,7 @@ namespace InventorySystem.Views
 
         private void LoadProductsToComboBox()
         {
-            string query = "SELECT ProductName, + ' | P' + ,Price From Products;";
+            string query = "SELECT ProductName From Products;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
