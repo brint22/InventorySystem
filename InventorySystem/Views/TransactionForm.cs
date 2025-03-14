@@ -17,8 +17,6 @@ namespace InventorySystem.Views
     {
         private string connectionString = @"Data Source=LAB1-PC11;Initial Catalog=InventoryDB;User ID=sa;Password=123456;";
 
-        DataTable dtProduct = new DataTable();
-
         public TransactionForm()
         {
             InitializeComponent();
@@ -28,6 +26,14 @@ namespace InventorySystem.Views
         }
 
 
+
+        //
+        //for data table
+        //
+
+        DataTable dtProduct = new DataTable();
+        
+        //dt for products table
         private DataTable CreateProductTable()
         {
             dtProduct.Columns.Add("ProductName", typeof(string));
@@ -36,6 +42,13 @@ namespace InventorySystem.Views
             return dtProduct;
         }
 
+
+
+        //
+        //for loading data from db to cbe
+        //
+
+        //loading products from db to cbe
         private void LoadProductsToComboBox()
         {
             string query = "SELECT ProductName From Products;";
@@ -62,6 +75,13 @@ namespace InventorySystem.Views
             }
         }
 
+
+
+        //
+        //for btn
+        //
+
+        //for adding input to products table
         private void btnEnter_Click(object sender, EventArgs e)
         {
             string productName = cbeEnterProduct.Text.Trim();
@@ -78,6 +98,7 @@ namespace InventorySystem.Views
             gvProducts.RefreshData();
         }
 
+        //for removing inputs from products table
         private void btnRemoveProduct_Click(object sender, EventArgs e)
         {
             int focusedRowHandle = gvProducts.FocusedRowHandle;
