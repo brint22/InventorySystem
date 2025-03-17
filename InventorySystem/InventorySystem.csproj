@@ -143,6 +143,7 @@
   <ItemGroup>
     <Content Include="Files\Inventory System-Data-Flow-Diagram.png" />
     <Content Include="Files\Inventory System-Database-Diagram.png" />
+    <Content Include="Files\Inventory System-Flowchart-revised-3-17-25.png" />
     <Content Include="Files\Inventory System-Flowchart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
