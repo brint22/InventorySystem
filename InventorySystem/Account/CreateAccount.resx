@@ -121,7 +121,7 @@
   <data name="peProfile.EditValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAANZRJREFUeF7t3XeUV+Wd+PH889ujqWqSXRNNNxuTGNdsspvdmE2yNdnNJjGuiCKo
+        vAAADrwBlbxySQAANZRJREFUeF7t3XeUV+Wd+PH889ujqWqSXRNNNxuTGNdsspvdmE2yNdnNJjGuiCKo
         FAUEpAhigVCCWMYgBjGIBQttKDPAUAaYkRpm6EMXGKQPZehYNpts7u/zfOej+/X6mf4t97n3/T7ndc6e
         bKIz93nu88y33Hs/QERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERE
         RERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERE
@@ -356,7 +356,7 @@
   <data name="CreateAccount.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAHCCAYAAAAZ9Ts6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAALwdJREFUeF7t3XtQXudh53F3Z2fHSeqkuTmbrLPJOptsss5s0k2m7tTdemczO90m
+        vgAADr4B6kKxwAAALwdJREFUeF7t3XtQXudh53F3Z2fHSeqkuTmbrLPJOptsss5s0k2m7tTdemczO90m
         adMkboIECGH6hr4hhKCLFWpwJVsXjCRKKcGUIHRDCAndEMKSjJDQBaOrlcjG2FgyFsYYY4wBIYTUTr08
         tTRH9vlJ4vJezjnPNzOff36x4H2f95znd87hec+57Z133gEAAD4nQwAA4C8yBAAA/iJDAADgLzIEAAD+
         IkMAAOAvMgQAAP4iQwAA4C8yBAAA/iJDAADgLzIEAAD+IkMAAOAvMgQAAP4iQwAA4C8yBAAA/iJDAADg

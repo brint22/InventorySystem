@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\GlobalClass.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
