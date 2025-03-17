@@ -36,20 +36,20 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.teUserName = new DevExpress.XtraEditors.TextEdit();
+            this.tePassword = new DevExpress.XtraEditors.TextEdit();
+            this.cbRole = new DevExpress.XtraEditors.ComboBoxEdit();
             this.peProfile = new DevExpress.XtraEditors.PictureEdit();
             this.btnBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.windowsUIButtonPanel1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
+            this.windowsUIBtnSave = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -98,38 +98,38 @@
             this.ribbon.ShowQatLocationSelector = false;
             this.ribbon.Size = new System.Drawing.Size(604, 49);
             // 
-            // textEdit1
+            // teUserName
             // 
-            this.textEdit1.Location = new System.Drawing.Point(23, 80);
-            this.textEdit1.MenuManager = this.ribbon;
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.AutoHeight = false;
-            this.textEdit1.Size = new System.Drawing.Size(207, 23);
-            this.textEdit1.TabIndex = 1;
+            this.teUserName.Location = new System.Drawing.Point(23, 80);
+            this.teUserName.MenuManager = this.ribbon;
+            this.teUserName.Name = "teUserName";
+            this.teUserName.Properties.AutoHeight = false;
+            this.teUserName.Size = new System.Drawing.Size(207, 23);
+            this.teUserName.TabIndex = 1;
             // 
-            // textEdit4
+            // tePassword
             // 
-            this.textEdit4.Location = new System.Drawing.Point(23, 152);
-            this.textEdit4.MenuManager = this.ribbon;
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Properties.AutoHeight = false;
-            this.textEdit4.Size = new System.Drawing.Size(207, 23);
-            this.textEdit4.TabIndex = 4;
+            this.tePassword.Location = new System.Drawing.Point(23, 152);
+            this.tePassword.MenuManager = this.ribbon;
+            this.tePassword.Name = "tePassword";
+            this.tePassword.Properties.AutoHeight = false;
+            this.tePassword.Size = new System.Drawing.Size(207, 23);
+            this.tePassword.TabIndex = 4;
             // 
-            // comboBoxEdit1
+            // cbRole
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(23, 227);
-            this.comboBoxEdit1.MenuManager = this.ribbon;
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.AutoHeight = false;
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbRole.Location = new System.Drawing.Point(23, 227);
+            this.cbRole.MenuManager = this.ribbon;
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Properties.AutoHeight = false;
+            this.cbRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
+            this.cbRole.Properties.Items.AddRange(new object[] {
             "MANAGER",
             "CASHIER ",
             "LABORER"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(207, 23);
-            this.comboBoxEdit1.TabIndex = 5;
+            this.cbRole.Size = new System.Drawing.Size(207, 23);
+            this.cbRole.TabIndex = 5;
             // 
             // peProfile
             // 
@@ -186,29 +186,30 @@
             this.labelControl3.TabIndex = 14;
             this.labelControl3.Text = "Role";
             // 
-            // windowsUIButtonPanel1
+            // windowsUIBtnSave
             // 
-            this.windowsUIButtonPanel1.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            this.windowsUIBtnSave.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("SAVE", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("CANCEL", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
-            this.windowsUIButtonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.windowsUIButtonPanel1.Location = new System.Drawing.Point(0, 377);
-            this.windowsUIButtonPanel1.Name = "windowsUIButtonPanel1";
-            this.windowsUIButtonPanel1.Size = new System.Drawing.Size(604, 93);
-            this.windowsUIButtonPanel1.TabIndex = 15;
-            this.windowsUIButtonPanel1.Text = "windowsUIButtonPanel1";
+            this.windowsUIBtnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.windowsUIBtnSave.Location = new System.Drawing.Point(0, 377);
+            this.windowsUIBtnSave.Name = "windowsUIBtnSave";
+            this.windowsUIBtnSave.Size = new System.Drawing.Size(604, 93);
+            this.windowsUIBtnSave.TabIndex = 15;
+            this.windowsUIBtnSave.Text = "windowsUIButtonPanel1";
+            this.windowsUIBtnSave.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIBtnSave_ButtonClick);
             // 
             // groupControl1
             // 
             this.groupControl1.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.Controls.Add(this.peProfile);
-            this.groupControl1.Controls.Add(this.textEdit1);
+            this.groupControl1.Controls.Add(this.teUserName);
             this.groupControl1.Controls.Add(this.btnBrowse);
             this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Controls.Add(this.textEdit4);
+            this.groupControl1.Controls.Add(this.tePassword);
             this.groupControl1.Controls.Add(this.labelControl3);
-            this.groupControl1.Controls.Add(this.comboBoxEdit1);
+            this.groupControl1.Controls.Add(this.cbRole);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Location = new System.Drawing.Point(12, 63);
             this.groupControl1.Name = "groupControl1";
@@ -225,7 +226,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 470);
             this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.windowsUIButtonPanel1);
+            this.Controls.Add(this.windowsUIBtnSave);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("CreateAccount.IconOptions.Image")));
             this.MaximizeBox = false;
@@ -234,9 +235,9 @@
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
             this.Text = "Create Account";
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRole.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
@@ -253,15 +254,15 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.TextEdit teUserName;
+        private DevExpress.XtraEditors.TextEdit tePassword;
+        private DevExpress.XtraEditors.ComboBoxEdit cbRole;
         private DevExpress.XtraEditors.PictureEdit peProfile;
         private DevExpress.XtraEditors.SimpleButton btnBrowse;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanel1;
+        private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIBtnSave;
         private DevExpress.XtraEditors.GroupControl groupControl1;
     }
 }
