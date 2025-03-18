@@ -178,9 +178,9 @@
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("SAVE", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("CANCEL", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIBtnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.windowsUIBtnSave.Location = new System.Drawing.Point(0, 377);
+            this.windowsUIBtnSave.Location = new System.Drawing.Point(0, 356);
             this.windowsUIBtnSave.Name = "windowsUIBtnSave";
-            this.windowsUIBtnSave.Size = new System.Drawing.Size(604, 93);
+            this.windowsUIBtnSave.Size = new System.Drawing.Size(604, 114);
             this.windowsUIBtnSave.TabIndex = 15;
             this.windowsUIBtnSave.Text = "windowsUIButtonPanel1";
             this.windowsUIBtnSave.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIBtnSave_ButtonClick);
@@ -200,7 +200,7 @@
             this.groupControl1.Location = new System.Drawing.Point(12, 63);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(580, 308);
+            this.groupControl1.Size = new System.Drawing.Size(580, 287);
             this.groupControl1.TabIndex = 16;
             this.groupControl1.Text = "groupControl1";
             // 
@@ -215,7 +215,6 @@
             this.lueRole.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "RoleID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "RoleName")});
-            this.lueRole.Properties.DisplayMember = "RoleName";
             this.lueRole.Properties.NullText = "";
             this.lueRole.Size = new System.Drawing.Size(207, 23);
             this.lueRole.TabIndex = 15;
@@ -235,7 +234,9 @@
             this.Name = "CreateAccount";
             this.Ribbon = this.ribbon;
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Account";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.CreateAccount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();

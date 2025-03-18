@@ -49,7 +49,7 @@
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.Main,
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1018, 49);
+            this.ribbon.Size = new System.Drawing.Size(1018, 201);
             // 
             // Main
             // 
@@ -91,7 +91,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Ribbon = this.ribbon;
-            this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
+            this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Visible;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory System | Main Form";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
