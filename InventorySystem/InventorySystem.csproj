@@ -139,6 +139,7 @@
     <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Files\Inventory System-Data-Flow-Diagram.png" />
