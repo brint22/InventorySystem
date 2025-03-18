@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Xpo.DB.Helpers;
+using DevExpress.XtraEditors;
 using DevExpress.XtraWaitForm;
 using InventorySystem.Models;
 using InventorySystem.Views;
@@ -23,21 +24,39 @@ namespace InventorySystem
 
         private bool LoginMethod(string username, string password)
         {
-            string connStr = GlobalClass.connectionString;
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                connection.Open();
+                string query = @"SELECT COUNT(*) FROM Account
+                         WHERE UserName = @UserName
+                         AND Password = @Password";
 
-            SqlConnection connection = new SqlConnection(connStr);
-            connection.Open();
-            string query = @"SELECT COUNT(*) FROM Account
-                           WHERE UserName = @UserName
-                           AND Password = @Password";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("UserName", username);
-            command.Parameters.AddWithValue("Password", password);
-            int result = (int)command.ExecuteScalar();
-            return result > 0; //returns true if credintials are valid
-           
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserName", username);
+                    command.Parameters.AddWithValue("@Password", password);
+                    int result = (int)command.ExecuteScalar();
+                    return result > 0; 
+                }
+            }
         }
+
+        //private bool LoginMethod(string username, string password)
+        //{
+        //    string connStr = GlobalClass.connectionString;
+        //    SqlConnection connection = new SqlConnection(connStr);
+        //    connection.Open();
+        //    string query = @"SELECT COUNT(*) FROM Account
+        //                   WHERE UserName = @UserName
+        //                   AND Password = @Password";
+
+        //    SqlCommand command = new SqlCommand(query, connection);
+        //    command.Parameters.AddWithValue("UserName", username);
+        //    command.Parameters.AddWithValue("Password", password);
+        //    int result = (int)command.ExecuteScalar();
+        //    return result > 0;
+        //}
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (LoginMethod(teUserName.Text.Trim(), tePassword.Text.Trim()))
