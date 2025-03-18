@@ -17,5 +17,10 @@ namespace InventorySystem.views
         {
             InitializeComponent();
         }
+
+        private void txtSearch_Properties_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+
+        }
     }
 }
