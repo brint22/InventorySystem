@@ -9,7 +9,7 @@ namespace InventorySystem.Models
     public class GlobalClass
     {
             public static string connectionString =
-            @"Data Source=LAB1-PC09; 
+            @"Data Source=LAB1-PC08; 
             Initial Catalog=WAREHOUSEISDB; 
             User ID = sa; Password = 123456;";
 
