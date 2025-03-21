@@ -25,7 +25,7 @@ namespace InventorySystem.Employees
         }
 
 
-        private void RegisterEmployee(Employee employees)
+        private void RegisterEmployee(Employee employees, string imagePath)
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
@@ -35,17 +35,16 @@ namespace InventorySystem.Employees
                     try
                     {
                         // Validate input objects
-                        if (employees == null)
+                        if (employees == null || string.IsNullOrWhiteSpace(imagePath))
                         {
-                            MessageBox.Show("Employee or related details cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Employee details and image path cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
-                        // Generate EmployeeID ONCE and apply it to all related entities
+                        // Generate EmployeeID
                         string generatedID = GenerateID();
                         employees.EmployeeID = generatedID;
                         employees.RoleID = GetRoleID(); // Fetch Role ID
-
 
                         if (string.IsNullOrWhiteSpace(employees.EmployeeID))
                         {
@@ -53,14 +52,25 @@ namespace InventorySystem.Employees
                             return;
                         }
 
-                        // Insert into Employees table
+                        // Insert into Employee table (storing only image path, not binary data)
                         string employeeQuery = @"
-                    INSERT INTO Employee 
-                    (EmployeeID, FirstName, MiddleName, LastName, NameExtension,DateOfBirth, Address, RoleID, EmployeeImage)
-                    VALUES
-                    (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @DateOfBirth, @Address, @RoleID, @EmployeeImage);";
+                INSERT INTO Employee 
+                (EmployeeID, FirstName, MiddleName, LastName, NameExtension, DateOfBirth, Address, RoleID, EmployeeImage)
+                VALUES
+                (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @DateOfBirth, @Address, @RoleID, @EmployeeImagePath);";
 
-                        int employeeRows = connection.Execute(employeeQuery, employees, transaction);
+                        int employeeRows = connection.Execute(employeeQuery, new
+                        {
+                            employees.EmployeeID,
+                            employees.FirstName,
+                            employees.MiddleName,
+                            employees.LastName,
+                            employees.NameExtension,
+                            employees.DateOfBirth,
+                            employees.Address,
+                            employees.RoleID,
+                            EmployeeImagePath = imagePath // Store path instead of image bytes
+                        }, transaction);
 
                         if (employeeRows == 0)
                         {
@@ -69,8 +79,7 @@ namespace InventorySystem.Employees
                             return;
                         }
 
-
-                        // Commit transaction only if all inserts succeed
+                        // Commit transaction
                         transaction.Commit();
                         MessageBox.Show("Employee registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -82,6 +91,7 @@ namespace InventorySystem.Employees
                 }
             }
         }
+
 
         //private static string GenerateID()
         //{
@@ -161,7 +171,7 @@ namespace InventorySystem.Employees
         {
            
 
-            Employee employees = new Employee
+            Employee employee = new Employee
             {
                 FirstName = teFirstName.Text,
                 MiddleName = teMiddleName.Text,
@@ -174,7 +184,11 @@ namespace InventorySystem.Employees
             };
 
             GetRoleID();
-            RegisterEmployee(employees);
+            // Ensure the imagePath is retrieved from the UI
+            string imagePath = meEmployeeImagePath.Text.Trim(); // Assuming you have a textbox for the image path
+
+            // Call the method with both parameters
+            RegisterEmployee(employee, imagePath);
         }
 
    
@@ -209,13 +223,16 @@ namespace InventorySystem.Employees
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string selectedImagePath = openFileDialog.FileName; // Get the selected file path
+                    string filePath = openFileDialog.FileName;
 
-                    // Display the image in peProfile (DevExpress PictureEdit)
-                    peProfile.Image = Image.FromFile(selectedImagePath);
-
-                    // Store the file path in peProfile.Tag for later use
-                    peProfile.Tag = selectedImagePath;
+                    if (meEmployeeImagePath != null)
+                    {
+                        meEmployeeImagePath.Text = filePath;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: TextBox 'txtImagePath' not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
