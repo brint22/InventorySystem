@@ -169,8 +169,6 @@ namespace InventorySystem.Employees
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-           
-
             Employee employee = new Employee
             {
                 FirstName = teFirstName.Text,

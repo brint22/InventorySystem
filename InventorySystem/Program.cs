@@ -20,8 +20,7 @@ namespace InventorySystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddEmployee());
-            // a
+            Application.Run(new ViewEmployee());
         }
     }
 }
