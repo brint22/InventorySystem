@@ -19,7 +19,6 @@ namespace InventorySystem.Employees
         {
             InitializeComponent();
         }
-
         private void LoadEmployeeData()
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
@@ -28,9 +27,16 @@ namespace InventorySystem.Employees
                 {
                     connection.Open();
                     string query = @"
-            SELECT EmployeeID, FirstName, MiddleName, LastName, NameExtension, 
-                   DateOfBirth, Address, RoleID, EmployeeImage AS EmployeeImagePath 
-            FROM Employee";
+                   SELECT EmployeeID, 
+                   CONCAT(FirstName, ' ', 
+                          COALESCE(MiddleName + ' ', ''), 
+                          LastName, 
+                          COALESCE(' ' + NameExtension, '')) AS EmployeeName,
+                   FORMAT(DateOfBirth, 'MMMM dd, yyyy') AS DateOfBirth, 
+                   Address, 
+                   RoleID, 
+                   EmployeeImage AS EmployeeImagePath 
+                   FROM Employee";
 
                     DataTable dataTable = new DataTable();
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
@@ -47,6 +53,8 @@ namespace InventorySystem.Employees
                 }
             }
         }
+
+
 
         private void ViewEmployee_Load(object sender, EventArgs e)
         {

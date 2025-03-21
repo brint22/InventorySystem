@@ -95,7 +95,7 @@
             // EmployeeRole
             // 
             this.EmployeeRole.Caption = "Employee Role";
-            this.EmployeeRole.FieldName = "EmployeeRole";
+            this.EmployeeRole.FieldName = "Role";
             this.EmployeeRole.MinWidth = 23;
             this.EmployeeRole.Name = "EmployeeRole";
             this.EmployeeRole.Visible = true;
