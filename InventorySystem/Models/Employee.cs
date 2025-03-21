@@ -16,6 +16,7 @@ namespace InventorySystem.Models
         public DateTime DateOfBirth { get; set; }
         public string Address { get; set; }
         public int RoleID { get; set; }
+        public string RoleName { get; set; }
         public int AccountID { get; set; }
     }
 }
