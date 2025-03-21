@@ -14,6 +14,7 @@ using Dapper;
 using DevExpress.XtraPrinting.Native;
 using System.Net;
 using DevExpress.XtraEditors;
+using System.IO;
 
 namespace InventorySystem.Employees
 {
@@ -34,7 +35,6 @@ namespace InventorySystem.Employees
                 {
                     try
                     {
-                        // Validate input objects
                         if (employees == null || string.IsNullOrWhiteSpace(imagePath))
                         {
                             MessageBox.Show("Employee details and image path cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -42,9 +42,8 @@ namespace InventorySystem.Employees
                         }
 
                         // Generate EmployeeID
-                        string generatedID = GenerateID();
-                        employees.EmployeeID = generatedID;
-                        employees.RoleID = GetRoleID(); // Fetch Role ID
+                        employees.EmployeeID = GenerateID();
+                        employees.RoleID = GetRoleID();
 
                         if (string.IsNullOrWhiteSpace(employees.EmployeeID))
                         {
@@ -52,12 +51,24 @@ namespace InventorySystem.Employees
                             return;
                         }
 
-                        // Insert into Employee table (storing only image path, not binary data)
+                        // Copy image to a fixed location
+                        string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                        string imagesDirectory = Path.Combine(appDirectory, "Images", "Employees");
+
+                        if (!Directory.Exists(imagesDirectory))
+                            Directory.CreateDirectory(imagesDirectory);
+
+                        string newImagePath = Path.Combine(imagesDirectory, employees.EmployeeID + Path.GetExtension(imagePath));
+                        File.Copy(imagePath, newImagePath, true); // Copy image
+
+                        string relativeImagePath = Path.Combine("Images", "Employees", employees.EmployeeID + Path.GetExtension(imagePath));
+
+                        // Insert into Employee table (store relative path)
                         string employeeQuery = @"
-                INSERT INTO Employee 
-                (EmployeeID, FirstName, MiddleName, LastName, NameExtension, DateOfBirth, Address, RoleID, EmployeeImage)
-                VALUES
-                (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @DateOfBirth, @Address, @RoleID, @EmployeeImagePath);";
+                        INSERT INTO Employee 
+                        (EmployeeID, FirstName, MiddleName, LastName, NameExtension, DateOfBirth, Address, RoleID, EmployeeImage)
+                        VALUES
+                        (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @DateOfBirth, @Address, @RoleID, @EmployeeImagePath);";
 
                         int employeeRows = connection.Execute(employeeQuery, new
                         {
@@ -69,7 +80,7 @@ namespace InventorySystem.Employees
                             employees.DateOfBirth,
                             employees.Address,
                             employees.RoleID,
-                            EmployeeImagePath = imagePath // Store path instead of image bytes
+                            EmployeeImagePath = relativeImagePath
                         }, transaction);
 
                         if (employeeRows == 0)
@@ -79,7 +90,6 @@ namespace InventorySystem.Employees
                             return;
                         }
 
-                        // Commit transaction
                         transaction.Commit();
                         MessageBox.Show("Employee registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -91,7 +101,6 @@ namespace InventorySystem.Employees
                 }
             }
         }
-
 
         //private static string GenerateID()
         //{
