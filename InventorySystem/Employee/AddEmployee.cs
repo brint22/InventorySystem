@@ -98,18 +98,31 @@ namespace InventorySystem.Employees
         //    return id;
         //}
 
-        private static int lastNumber = 0; // Ideally, fetch from a database
-
-        private static string GenerateID()
+        public string GenerateID()
         {
             int year = DateTime.Now.Year;
-            lastNumber++; // Increment the counter (load/save this properly in a real application)
+            int lastNumber = GetLastNumberFromDB(year);
+            int newNumber = lastNumber + 1;
 
-            return $"{year}-{lastNumber:D4}"; // Ensures 4-digit formatting (e.g., 2025-0001)
+            return $"{year}-{newNumber:D4}"; // Ensures 4-digit formatting (e.g., 2025-0001)
         }
 
+        private int GetLastNumberFromDB(int year)
+        {
+            using (IDbConnection db = new SqlConnection(GlobalClass.connectionString))
+            {
+                string query = @"
+                SELECT TOP 1 CAST(RIGHT(EmployeeID, 4) AS INT) 
+                FROM Employee 
+                WHERE EmployeeID LIKE @YearPattern
+                ORDER BY EmployeeID DESC";
 
-        private void LoadRole()
+                return db.QueryFirstOrDefault<int?>(query, new { YearPattern = $"{year}-%" }) ?? 0;
+            }
+        }
+    
+
+    private void LoadRole()
         {
             string connStr = GlobalClass.connectionString;
 
