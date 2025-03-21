@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InventorySystem.Models
 {
-    public class Employees
+    public class Employee
     {
         public string EmployeeID { get; set; }
         public string FirstName { get; set; }

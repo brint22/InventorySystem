@@ -15,7 +15,7 @@ using DevExpress.XtraPrinting.Native;
 using System.Net;
 using DevExpress.XtraEditors;
 
-namespace InventorySystem.Employee
+namespace InventorySystem.Employees
 {
     public partial class AddEmployee : DevExpress.XtraBars.Ribbon.RibbonForm
     {
@@ -25,7 +25,7 @@ namespace InventorySystem.Employee
         }
 
 
-        private void RegisterEmployee(Employees employees)
+        private void RegisterEmployee(Employee employees)
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
@@ -148,7 +148,7 @@ namespace InventorySystem.Employee
         {
            
 
-            Employees employees = new Employees
+            Employee employees = new Employee
             {
                 FirstName = teFirstName.Text,
                 MiddleName = teMiddleName.Text,
