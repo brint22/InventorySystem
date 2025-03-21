@@ -111,6 +111,7 @@
             this.btnBrowse.Size = new System.Drawing.Size(88, 29);
             this.btnBrowse.TabIndex = 13;
             this.btnBrowse.Text = "BROWSE";
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // lueRole
             // 

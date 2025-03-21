@@ -35,7 +35,7 @@ namespace InventorySystem.Employee
                     try
                     {
                         // Validate input objects
-                        if (employees == null )
+                        if (employees == null)
                         {
                             MessageBox.Show("Employee or related details cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -56,9 +56,9 @@ namespace InventorySystem.Employee
                         // Insert into Employees table
                         string employeeQuery = @"
                     INSERT INTO Employee 
-                    (EmployeeID, FirstName, MiddleName, LastName, NameExtension,DateOfBirth, Address, RoleID)
+                    (EmployeeID, FirstName, MiddleName, LastName, NameExtension,DateOfBirth, Address, RoleID, EmployeeImage)
                     VALUES
-                    (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @DateOfBirth, @Address, @RoleID);";
+                    (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @DateOfBirth, @Address, @RoleID, @EmployeeImage);";
 
                         int employeeRows = connection.Execute(employeeQuery, employees, transaction);
 
@@ -69,7 +69,7 @@ namespace InventorySystem.Employee
                             return;
                         }
 
-                      
+
                         // Commit transaction only if all inserts succeed
                         transaction.Commit();
                         MessageBox.Show("Employee registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -146,6 +146,8 @@ namespace InventorySystem.Employee
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
+           
+
             Employees employees = new Employees
             {
                 FirstName = teFirstName.Text,
@@ -153,13 +155,16 @@ namespace InventorySystem.Employee
                 LastName = teLastName.Text,
                 NameExtension = teNameExtension.Text,
                 DateOfBirth = deDateOfBirth.DateTime,
-                Address  = teAddress.Text,
-                RoleName = lueRole.Text
+                Address = teAddress.Text,
+                RoleName = lueRole.Text,
+                EmployeeImage = peProfile.Text
             };
+
             GetRoleID();
             RegisterEmployee(employees);
         }
 
+   
         private void AddEmployee_Load(object sender, EventArgs e)
         {
             LoadRole();
@@ -179,6 +184,27 @@ namespace InventorySystem.Employee
                 intRoleID = 0;
             }
             return intRoleID;
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Title = "Select an Image";
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+                openFileDialog.Multiselect = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedImagePath = openFileDialog.FileName; // Get the selected file path
+
+                    // Display the image in peProfile (DevExpress PictureEdit)
+                    peProfile.Image = Image.FromFile(selectedImagePath);
+
+                    // Store the file path in peProfile.Tag for later use
+                    peProfile.Tag = selectedImagePath;
+                }
+            }
         }
     }
 }
