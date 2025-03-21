@@ -33,7 +33,6 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.peProfile = new DevExpress.XtraEditors.PictureEdit();
-            this.btnBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.lueRole = new DevExpress.XtraEditors.LookUpEdit();
             this.teUserName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -49,6 +48,7 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.teLocation = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnBrowse = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).BeginInit();
@@ -99,18 +99,6 @@
             this.peProfile.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.peProfile.Size = new System.Drawing.Size(148, 144);
             this.peProfile.TabIndex = 12;
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Appearance.BackColor = System.Drawing.Color.DimGray;
-            this.btnBrowse.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBrowse.Appearance.Options.UseBackColor = true;
-            this.btnBrowse.Appearance.Options.UseFont = true;
-            this.btnBrowse.Location = new System.Drawing.Point(706, 243);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(88, 29);
-            this.btnBrowse.TabIndex = 13;
-            this.btnBrowse.Text = "BROWSE";
             // 
             // lueRole
             // 
@@ -267,8 +255,22 @@
             this.simpleButton1.TabIndex = 32;
             this.simpleButton1.Text = "SUBMIT";
             // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Appearance.BackColor = System.Drawing.Color.DimGray;
+            this.btnBrowse.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.Appearance.Options.UseBackColor = true;
+            this.btnBrowse.Appearance.Options.UseFont = true;
+            this.btnBrowse.Location = new System.Drawing.Point(706, 243);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(88, 29);
+            this.btnBrowse.TabIndex = 13;
+            this.btnBrowse.Text = "BROWSE";
+            // 
             // AddEmployee
             // 
+            this.Appearance.BackColor = System.Drawing.Color.White;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 449);
@@ -318,7 +320,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraEditors.PictureEdit peProfile;
-        private DevExpress.XtraEditors.SimpleButton btnBrowse;
         private DevExpress.XtraEditors.LookUpEdit lueRole;
         private DevExpress.XtraEditors.TextEdit teUserName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -334,5 +335,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.TextEdit teLocation;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnBrowse;
     }
 }
