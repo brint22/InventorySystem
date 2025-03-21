@@ -35,7 +35,7 @@
             this.peProfile = new DevExpress.XtraEditors.PictureEdit();
             this.btnBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.lueRole = new DevExpress.XtraEditors.LookUpEdit();
-            this.teUserName = new DevExpress.XtraEditors.TextEdit();
+            this.teFirstName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.teMiddleName = new DevExpress.XtraEditors.TextEdit();
@@ -47,18 +47,18 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.deDateOfBirth = new DevExpress.XtraEditors.DateEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.teLocation = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.teAddress = new DevExpress.XtraEditors.TextEdit();
+            this.BtnSubmit = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teFirstName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMiddleName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teNameExtension.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teLastName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDateOfBirth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDateOfBirth.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teLocation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teAddress.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -127,14 +127,14 @@
             this.lueRole.Size = new System.Drawing.Size(207, 23);
             this.lueRole.TabIndex = 19;
             // 
-            // teUserName
+            // teFirstName
             // 
-            this.teUserName.Location = new System.Drawing.Point(48, 125);
-            this.teUserName.MenuManager = this.ribbon;
-            this.teUserName.Name = "teUserName";
-            this.teUserName.Properties.AutoHeight = false;
-            this.teUserName.Size = new System.Drawing.Size(207, 23);
-            this.teUserName.TabIndex = 16;
+            this.teFirstName.Location = new System.Drawing.Point(48, 125);
+            this.teFirstName.MenuManager = this.ribbon;
+            this.teFirstName.Name = "teFirstName";
+            this.teFirstName.Properties.AutoHeight = false;
+            this.teFirstName.Size = new System.Drawing.Size(207, 23);
+            this.teFirstName.TabIndex = 16;
             // 
             // labelControl1
             // 
@@ -246,34 +246,35 @@
             this.labelControl7.TabIndex = 30;
             this.labelControl7.Text = "Location";
             // 
-            // teLocation
+            // teAddress
             // 
-            this.teLocation.Location = new System.Drawing.Point(261, 197);
-            this.teLocation.MenuManager = this.ribbon;
-            this.teLocation.Name = "teLocation";
-            this.teLocation.Properties.AutoHeight = false;
-            this.teLocation.Size = new System.Drawing.Size(369, 28);
-            this.teLocation.TabIndex = 31;
+            this.teAddress.Location = new System.Drawing.Point(261, 197);
+            this.teAddress.MenuManager = this.ribbon;
+            this.teAddress.Name = "teAddress";
+            this.teAddress.Properties.AutoHeight = false;
+            this.teAddress.Size = new System.Drawing.Size(369, 28);
+            this.teAddress.TabIndex = 31;
             // 
-            // simpleButton1
+            // BtnSubmit
             // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.LightSlateGray;
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(50, 317);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(205, 31);
-            this.simpleButton1.TabIndex = 32;
-            this.simpleButton1.Text = "SUBMIT";
+            this.BtnSubmit.Appearance.BackColor = System.Drawing.Color.LightSlateGray;
+            this.BtnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSubmit.Appearance.Options.UseBackColor = true;
+            this.BtnSubmit.Appearance.Options.UseFont = true;
+            this.BtnSubmit.Location = new System.Drawing.Point(50, 317);
+            this.BtnSubmit.Name = "BtnSubmit";
+            this.BtnSubmit.Size = new System.Drawing.Size(205, 31);
+            this.BtnSubmit.TabIndex = 32;
+            this.BtnSubmit.Text = "SUBMIT";
+            this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
             // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 449);
-            this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.teLocation);
+            this.Controls.Add(this.BtnSubmit);
+            this.Controls.Add(this.teAddress);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.deDateOfBirth);
             this.Controls.Add(this.labelControl6);
@@ -284,7 +285,7 @@
             this.Controls.Add(this.teMiddleName);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.lueRole);
-            this.Controls.Add(this.teUserName);
+            this.Controls.Add(this.teFirstName);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.peProfile);
@@ -297,16 +298,17 @@
             this.Ribbon = this.ribbon;
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
             this.Text = "Inventory System | Add Employee";
+            this.Load += new System.EventHandler(this.AddEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teFirstName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMiddleName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teNameExtension.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teLastName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDateOfBirth.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDateOfBirth.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teLocation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teAddress.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,7 +322,7 @@
         private DevExpress.XtraEditors.PictureEdit peProfile;
         private DevExpress.XtraEditors.SimpleButton btnBrowse;
         private DevExpress.XtraEditors.LookUpEdit lueRole;
-        private DevExpress.XtraEditors.TextEdit teUserName;
+        private DevExpress.XtraEditors.TextEdit teFirstName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit teMiddleName;
@@ -332,7 +334,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.DateEdit deDateOfBirth;
         private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.TextEdit teLocation;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.TextEdit teAddress;
+        private DevExpress.XtraEditors.SimpleButton BtnSubmit;
     }
 }

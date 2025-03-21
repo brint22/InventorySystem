@@ -2,6 +2,7 @@
 using DevExpress.Skins;
 using DevExpress.UserSkins;
 using InventorySystem.Account;
+using InventorySystem.Employee;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace InventorySystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CreateAccount());
+            Application.Run(new AddEmployee());
             // a
         }
     }
