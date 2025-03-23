@@ -52,7 +52,7 @@
             this.EmployeeImage = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.EmployeeName = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.EmployeeID = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.EmployeeRole = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.RoleName = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.Address = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.DateOfBirth = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -96,16 +96,16 @@
             this.EmployeeID.VisibleIndex = 0;
             this.EmployeeID.Width = 87;
             // 
-            // EmployeeRole
+            // RoleName
             // 
-            this.EmployeeRole.Caption = "Employee Role";
-            this.EmployeeRole.FieldName = "EmployeeRole";
-            this.EmployeeRole.MinWidth = 18;
-            this.EmployeeRole.Name = "EmployeeRole";
-            this.EmployeeRole.OptionsColumn.ShowCaption = true;
-            this.EmployeeRole.Visible = true;
-            this.EmployeeRole.VisibleIndex = 2;
-            this.EmployeeRole.Width = 87;
+            this.RoleName.Caption = "Employee Role";
+            this.RoleName.FieldName = "RoleName";
+            this.RoleName.MinWidth = 18;
+            this.RoleName.Name = "RoleName";
+            this.RoleName.OptionsColumn.ShowCaption = true;
+            this.RoleName.Visible = true;
+            this.RoleName.VisibleIndex = 2;
+            this.RoleName.Width = 87;
             // 
             // Address
             // 
@@ -173,7 +173,7 @@
             this.EmployeeName,
             this.DateOfBirth,
             this.Address,
-            this.EmployeeRole,
+            this.RoleName,
             this.EmployeeImage});
             this.tvEmployee.DetailHeight = 431;
             this.tvEmployee.GridControl = this.gcEmployee;
@@ -231,7 +231,7 @@
             tileViewItemElement3.RowIndex = 3;
             tileViewItemElement3.Text = "EmployeeID";
             tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement4.Column = this.EmployeeRole;
+            tileViewItemElement4.Column = this.RoleName;
             tileViewItemElement4.ColumnIndex = 1;
             tileViewItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
@@ -296,7 +296,7 @@
         private DevExpress.XtraGrid.Columns.TileViewColumn EmployeeName;
         private DevExpress.XtraGrid.Columns.TileViewColumn DateOfBirth;
         private DevExpress.XtraGrid.Columns.TileViewColumn Address;
-        private DevExpress.XtraGrid.Columns.TileViewColumn EmployeeRole;
+        private DevExpress.XtraGrid.Columns.TileViewColumn RoleName;
         private DevExpress.XtraGrid.Columns.TileViewColumn EmployeeImage;
     }
 }
