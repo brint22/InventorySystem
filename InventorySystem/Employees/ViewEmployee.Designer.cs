@@ -39,6 +39,9 @@
             DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition5 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition6 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition7 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan1 = new DevExpress.XtraEditors.TableLayout.TableSpan();
+            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan2 = new DevExpress.XtraEditors.TableLayout.TableSpan();
+            DevExpress.XtraEditors.TableLayout.TableSpan tableSpan3 = new DevExpress.XtraEditors.TableLayout.TableSpan();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
@@ -88,6 +91,7 @@
             this.EmployeeID.FieldName = "EmployeeID";
             this.EmployeeID.MinWidth = 30;
             this.EmployeeID.Name = "EmployeeID";
+            this.EmployeeID.OptionsColumn.ShowCaption = true;
             this.EmployeeID.Visible = true;
             this.EmployeeID.VisibleIndex = 0;
             this.EmployeeID.Width = 112;
@@ -96,8 +100,9 @@
             // 
             this.EmployeeRole.Caption = "Employee Role";
             this.EmployeeRole.FieldName = "EmployeeRole";
-            this.EmployeeRole.MinWidth = 30;
+            this.EmployeeRole.MinWidth = 23;
             this.EmployeeRole.Name = "EmployeeRole";
+            this.EmployeeRole.OptionsColumn.ShowCaption = true;
             this.EmployeeRole.Visible = true;
             this.EmployeeRole.VisibleIndex = 2;
             this.EmployeeRole.Width = 112;
@@ -108,6 +113,7 @@
             this.Address.FieldName = "Address";
             this.Address.MinWidth = 32;
             this.Address.Name = "Address";
+            this.Address.OptionsColumn.ShowCaption = true;
             this.Address.Visible = true;
             this.Address.VisibleIndex = 5;
             this.Address.Width = 121;
@@ -118,6 +124,7 @@
             this.DateOfBirth.FieldName = "DateOfBirth";
             this.DateOfBirth.MinWidth = 32;
             this.DateOfBirth.Name = "DateOfBirth";
+            this.DateOfBirth.OptionsColumn.ShowCaption = true;
             this.DateOfBirth.Visible = true;
             this.DateOfBirth.VisibleIndex = 4;
             this.DateOfBirth.Width = 121;
@@ -174,6 +181,7 @@
             this.tvEmployee.DetailHeight = 512;
             this.tvEmployee.GridControl = this.gcEmployee;
             this.tvEmployee.Name = "tvEmployee";
+            this.tvEmployee.OptionsEditForm.AllowHtmlCaptions = true;
             this.tvEmployee.OptionsTiles.ItemSize = new System.Drawing.Size(342, 336);
             tableColumnDefinition1.Length.Value = 56D;
             tableColumnDefinition2.Length.Value = 115D;
@@ -183,13 +191,13 @@
             this.tvEmployee.TileColumns.Add(tableColumnDefinition2);
             this.tvEmployee.TileColumns.Add(tableColumnDefinition3);
             this.tvEmployee.TileColumns.Add(tableColumnDefinition4);
-            tableRowDefinition1.Length.Value = 128D;
+            tableRowDefinition1.Length.Value = 116D;
             tableRowDefinition2.Length.Value = 0D;
-            tableRowDefinition3.Length.Value = 64D;
-            tableRowDefinition4.Length.Value = 40D;
-            tableRowDefinition5.Length.Value = 40D;
-            tableRowDefinition6.Length.Value = 40D;
-            tableRowDefinition7.Length.Value = 40D;
+            tableRowDefinition3.Length.Value = 57D;
+            tableRowDefinition4.Length.Value = 36D;
+            tableRowDefinition5.Length.Value = 35D;
+            tableRowDefinition6.Length.Value = 36D;
+            tableRowDefinition7.Length.Value = 36D;
             this.tvEmployee.TileRows.Add(tableRowDefinition1);
             this.tvEmployee.TileRows.Add(tableRowDefinition2);
             this.tvEmployee.TileRows.Add(tableRowDefinition3);
@@ -197,6 +205,15 @@
             this.tvEmployee.TileRows.Add(tableRowDefinition5);
             this.tvEmployee.TileRows.Add(tableRowDefinition6);
             this.tvEmployee.TileRows.Add(tableRowDefinition7);
+            tableSpan1.ColumnSpan = 4;
+            tableSpan1.RowIndex = 2;
+            tableSpan2.ColumnSpan = 4;
+            tableSpan2.RowIndex = 5;
+            tableSpan3.ColumnSpan = 4;
+            tableSpan3.RowIndex = 4;
+            this.tvEmployee.TileSpans.Add(tableSpan1);
+            this.tvEmployee.TileSpans.Add(tableSpan2);
+            this.tvEmployee.TileSpans.Add(tableSpan3);
             tileViewItemElement1.Column = this.EmployeeImage;
             tileViewItemElement1.ColumnIndex = 1;
             tileViewItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
