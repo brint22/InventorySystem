@@ -76,7 +76,7 @@
             this.ribbon.OptionsMenuMinWidth = 385;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1008, 61);
+            this.ribbon.Size = new System.Drawing.Size(1322, 61);
             // 
             // ribbonPage1
             // 
@@ -93,7 +93,7 @@
             // peProfile
             // 
             this.peProfile.EditValue = ((object)(resources.GetObject("peProfile.EditValue")));
-            this.peProfile.Location = new System.Drawing.Point(790, 114);
+            this.peProfile.Location = new System.Drawing.Point(1013, 129);
             this.peProfile.Margin = new System.Windows.Forms.Padding(4);
             this.peProfile.MenuManager = this.ribbon;
             this.peProfile.Name = "peProfile";
@@ -112,7 +112,7 @@
             this.btnBrowse.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBrowse.Appearance.Options.UseBackColor = true;
             this.btnBrowse.Appearance.Options.UseFont = true;
-            this.btnBrowse.Location = new System.Drawing.Point(824, 299);
+            this.btnBrowse.Location = new System.Drawing.Point(1047, 314);
             this.btnBrowse.Margin = new System.Windows.Forms.Padding(4);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(103, 36);
@@ -122,7 +122,7 @@
             // 
             // lueRole
             // 
-            this.lueRole.Location = new System.Drawing.Point(56, 330);
+            this.lueRole.Location = new System.Drawing.Point(154, 349);
             this.lueRole.Margin = new System.Windows.Forms.Padding(4);
             this.lueRole.MenuManager = this.ribbon;
             this.lueRole.Name = "lueRole";
@@ -138,7 +138,7 @@
             // 
             // teFirstName
             // 
-            this.teFirstName.Location = new System.Drawing.Point(56, 154);
+            this.teFirstName.Location = new System.Drawing.Point(154, 173);
             this.teFirstName.Margin = new System.Windows.Forms.Padding(4);
             this.teFirstName.MenuManager = this.ribbon;
             this.teFirstName.Name = "teFirstName";
@@ -150,7 +150,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(58, 127);
+            this.labelControl1.Location = new System.Drawing.Point(156, 146);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(76, 19);
@@ -161,7 +161,7 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(58, 303);
+            this.labelControl3.Location = new System.Drawing.Point(156, 322);
             this.labelControl3.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(31, 19);
@@ -170,7 +170,7 @@
             // 
             // teMiddleName
             // 
-            this.teMiddleName.Location = new System.Drawing.Point(304, 155);
+            this.teMiddleName.Location = new System.Drawing.Point(402, 174);
             this.teMiddleName.Margin = new System.Windows.Forms.Padding(4);
             this.teMiddleName.MenuManager = this.ribbon;
             this.teMiddleName.Name = "teMiddleName";
@@ -182,7 +182,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(304, 128);
+            this.labelControl2.Location = new System.Drawing.Point(402, 147);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(92, 19);
@@ -191,7 +191,7 @@
             // 
             // teNameExtension
             // 
-            this.teNameExtension.Location = new System.Drawing.Point(629, 155);
+            this.teNameExtension.Location = new System.Drawing.Point(727, 174);
             this.teNameExtension.Margin = new System.Windows.Forms.Padding(4);
             this.teNameExtension.MenuManager = this.ribbon;
             this.teNameExtension.Name = "teNameExtension";
@@ -203,7 +203,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(629, 128);
+            this.labelControl4.Location = new System.Drawing.Point(727, 147);
             this.labelControl4.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(114, 19);
@@ -212,7 +212,7 @@
             // 
             // teLastName
             // 
-            this.teLastName.Location = new System.Drawing.Point(467, 155);
+            this.teLastName.Location = new System.Drawing.Point(565, 174);
             this.teLastName.Margin = new System.Windows.Forms.Padding(4);
             this.teLastName.MenuManager = this.ribbon;
             this.teLastName.Name = "teLastName";
@@ -224,7 +224,7 @@
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(467, 128);
+            this.labelControl5.Location = new System.Drawing.Point(565, 147);
             this.labelControl5.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(74, 19);
@@ -235,7 +235,7 @@
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(58, 214);
+            this.labelControl6.Location = new System.Drawing.Point(156, 233);
             this.labelControl6.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(89, 19);
@@ -245,7 +245,7 @@
             // deDateOfBirth
             // 
             this.deDateOfBirth.EditValue = null;
-            this.deDateOfBirth.Location = new System.Drawing.Point(58, 242);
+            this.deDateOfBirth.Location = new System.Drawing.Point(156, 261);
             this.deDateOfBirth.Margin = new System.Windows.Forms.Padding(4);
             this.deDateOfBirth.MenuManager = this.ribbon;
             this.deDateOfBirth.Name = "deDateOfBirth";
@@ -260,16 +260,16 @@
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(304, 214);
+            this.labelControl7.Location = new System.Drawing.Point(402, 233);
             this.labelControl7.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(59, 19);
+            this.labelControl7.Size = new System.Drawing.Size(57, 19);
             this.labelControl7.TabIndex = 30;
-            this.labelControl7.Text = "Location";
+            this.labelControl7.Text = "Address";
             // 
             // teAddress
             // 
-            this.teAddress.Location = new System.Drawing.Point(304, 242);
+            this.teAddress.Location = new System.Drawing.Point(402, 261);
             this.teAddress.Margin = new System.Windows.Forms.Padding(4);
             this.teAddress.MenuManager = this.ribbon;
             this.teAddress.Name = "teAddress";
@@ -283,7 +283,7 @@
             this.BtnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSubmit.Appearance.Options.UseBackColor = true;
             this.BtnSubmit.Appearance.Options.UseFont = true;
-            this.BtnSubmit.Location = new System.Drawing.Point(58, 390);
+            this.BtnSubmit.Location = new System.Drawing.Point(156, 409);
             this.BtnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(239, 38);
@@ -293,10 +293,10 @@
             // 
             // meEmployeeImagePath
             // 
-            this.meEmployeeImagePath.Location = new System.Drawing.Point(790, 367);
+            this.meEmployeeImagePath.Location = new System.Drawing.Point(965, 382);
             this.meEmployeeImagePath.MenuManager = this.ribbon;
             this.meEmployeeImagePath.Name = "meEmployeeImagePath";
-            this.meEmployeeImagePath.Size = new System.Drawing.Size(173, 96);
+            this.meEmployeeImagePath.Size = new System.Drawing.Size(270, 96);
             this.meEmployeeImagePath.TabIndex = 34;
             this.meEmployeeImagePath.Visible = false;
             // 
@@ -304,7 +304,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 553);
+            this.ClientSize = new System.Drawing.Size(1322, 553);
             this.Controls.Add(this.meEmployeeImagePath);
             this.Controls.Add(this.BtnSubmit);
             this.Controls.Add(this.teAddress);
@@ -333,6 +333,7 @@
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory System | Add Employee";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AddEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).EndInit();

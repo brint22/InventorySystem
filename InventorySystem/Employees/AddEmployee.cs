@@ -14,6 +14,7 @@ using Dapper;
 using DevExpress.XtraPrinting.Native;
 using System.Net;
 using DevExpress.XtraEditors;
+using System.IO;
 
 namespace InventorySystem.Employees
 {
@@ -25,7 +26,7 @@ namespace InventorySystem.Employees
         }
 
 
-        private void RegisterEmployee(Employee employees, string imagePath)
+        private void RegisterEmployee(Employee employees, byte[] imageBytes)
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
@@ -34,30 +35,39 @@ namespace InventorySystem.Employees
                 {
                     try
                     {
-                        // Validate input objects
-                        if (employees == null || string.IsNullOrWhiteSpace(imagePath))
+                        // Validate input
+                        if (employees == null || imageBytes == null)
                         {
-                            MessageBox.Show("Employee details and image path cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Employee details and image data cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // Insert image into EmployeeImage table
+                        string imageQuery = @"
+                INSERT INTO EmployeeImage (EmployeeImage) 
+                OUTPUT INSERTED.ImageID
+                VALUES (@EmployeeImage)";
+
+                        int imageID = connection.ExecuteScalar<int>(imageQuery, new { EmployeeImage = imageBytes }, transaction);
+
+                        if (imageID <= 0)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Failed to store employee image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
                         // Generate EmployeeID
                         string generatedID = GenerateID();
                         employees.EmployeeID = generatedID;
-                        employees.RoleID = GetRoleID(); // Fetch Role ID
+                        employees.RoleID = GetRoleID();
 
-                        if (string.IsNullOrWhiteSpace(employees.EmployeeID))
-                        {
-                            MessageBox.Show("Failed to generate Employee ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        // Insert into Employee table (storing only image path, not binary data)
+                        // Insert into Employee table with the ImageID reference
                         string employeeQuery = @"
                 INSERT INTO Employee 
-                (EmployeeID, FirstName, MiddleName, LastName, NameExtension, DateOfBirth, Address, RoleID, EmployeeImage)
+                (EmployeeID, FirstName, MiddleName, LastName, NameExtension, DateOfBirth, Address, RoleID, ImageID)
                 VALUES
-                (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @DateOfBirth, @Address, @RoleID, @EmployeeImagePath);";
+                (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @DateOfBirth, @Address, @RoleID, @ImageID);";
 
                         int employeeRows = connection.Execute(employeeQuery, new
                         {
@@ -69,7 +79,7 @@ namespace InventorySystem.Employees
                             employees.DateOfBirth,
                             employees.Address,
                             employees.RoleID,
-                            EmployeeImagePath = imagePath // Store path instead of image bytes
+                            ImageID = imageID // Link the image to the employee
                         }, transaction);
 
                         if (employeeRows == 0)
@@ -91,7 +101,6 @@ namespace InventorySystem.Employees
                 }
             }
         }
-
 
         //private static string GenerateID()
         //{
@@ -169,6 +178,7 @@ namespace InventorySystem.Employees
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
+            // Create an employee object
             Employee employee = new Employee
             {
                 FirstName = teFirstName.Text,
@@ -177,16 +187,23 @@ namespace InventorySystem.Employees
                 NameExtension = teNameExtension.Text,
                 DateOfBirth = deDateOfBirth.DateTime,
                 Address = teAddress.Text,
-                RoleName = lueRole.Text,
-                EmployeeImage = peProfile.Text
+                RoleName = lueRole.Text
             };
 
             GetRoleID();
-            // Ensure the imagePath is retrieved from the UI
-            string imagePath = meEmployeeImagePath.Text.Trim(); // Assuming you have a textbox for the image path
 
-            // Call the method with both parameters
-            RegisterEmployee(employee, imagePath);
+            // Read image from selected path
+            string imagePath = meEmployeeImagePath.Text.Trim();
+            byte[] imageBytes = File.Exists(imagePath) ? File.ReadAllBytes(imagePath) : null;
+
+            if (imageBytes == null)
+            {
+                MessageBox.Show("Invalid image file. Please select a valid image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Register employee and store image
+            RegisterEmployee(employee, imageBytes);
         }
 
    
@@ -229,10 +246,21 @@ namespace InventorySystem.Employees
                     }
                     else
                     {
-                        MessageBox.Show("Error: TextBox 'txtImagePath' not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error: TextBox 'meEmployeeImagePath' not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // ✅ Display the selected image in the PictureEdit control
+                    if (peProfile != null)
+                    {
+                        peProfile.Image = System.Drawing.Image.FromFile(filePath);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: PictureEdit 'peProfile' not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-        }
+            }
     }
 }
