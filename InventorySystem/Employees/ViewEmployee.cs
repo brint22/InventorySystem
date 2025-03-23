@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraLayout.Customization;
 using InventorySystem.Models;
 using System;
 using System.Collections.Generic;
@@ -29,10 +30,17 @@ namespace InventorySystem.Employees
                 {
                     connection.Open();
                     string query = @"
-            SELECT e.EmployeeID, e.FirstName, e.MiddleName, e.LastName, e.NameExtension, 
-                   e.DateOfBirth, e.Address, e.RoleID, ei.EmployeeImage
-            FROM Employee e
-            LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID"; // Join EmployeeImage table
+                    SELECT e.EmployeeID, 
+                           (e.FirstName + ' ' + 
+                            ISNULL(e.MiddleName + ' ', '') + 
+                            e.LastName + ' ' + 
+                            ISNULL(e.NameExtension, '')) AS EmployeeName,
+                           e.DateOfBirth, e.Address, 
+                           UPPER(LEFT(r.RoleName, 1)) + LOWER(SUBSTRING(r.RoleName, 2, LEN(r.RoleName))) AS RoleName, -- Sentence Case
+                           ei.EmployeeImage
+                    FROM Employee e
+                    LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID
+                    LEFT JOIN Role r ON e.RoleID = r.RoleID";
 
                     DataTable dataTable = new DataTable();
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
