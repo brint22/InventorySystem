@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,14 +29,24 @@ namespace InventorySystem.Employees
                 {
                     connection.Open();
                     string query = @"
-            SELECT EmployeeID, FirstName, MiddleName, LastName, NameExtension, 
-                   DateOfBirth, Address, RoleID, EmployeeImage AS EmployeeImagePath 
-            FROM Employee";
+            SELECT e.EmployeeID, e.FirstName, e.MiddleName, e.LastName, e.NameExtension, 
+                   e.DateOfBirth, e.Address, e.RoleID, ei.EmployeeImage
+            FROM Employee e
+            LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID"; // Join EmployeeImage table
 
                     DataTable dataTable = new DataTable();
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
                         adapter.Fill(dataTable);
+                    }
+
+                    // Ensure EmployeeImage stays as byte[]
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        if (row["EmployeeImage"] == DBNull.Value)
+                        {
+                            row["EmployeeImage"] = new byte[0]; // Store empty byte[] instead of NULL
+                        }
                     }
 
                     // Bind to GridControl
@@ -47,6 +58,7 @@ namespace InventorySystem.Employees
                 }
             }
         }
+
 
         private void ViewEmployee_Load(object sender, EventArgs e)
         {

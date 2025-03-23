@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace InventorySystem.Models
 {
-    public class Account
+    public class Image
     {
-        public int AccountID { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public int ImageID { get; set; }
+        public byte[] EmployeeImage { get; set; } 
     }
+
 }

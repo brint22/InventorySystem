@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\GlobalClass.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />

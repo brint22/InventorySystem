@@ -13,7 +13,7 @@ namespace InventorySystem.Models
         //   Initial Catalog=WAREHOUSEISDB; 
         //   Trusted_Connection=True;";
 
-        @"Data Source=NIEZEL\SQLEXPRESS; 
+        @"Data Source=REDJYLL; 
         Initial Catalog=WAREHOUSEISDB; 
         Trusted_Connection=True;";
 
