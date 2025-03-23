@@ -29,5 +29,16 @@ namespace InventorySystem.Views
             // Show the Employee form
             employee.Show();
         }
+
+        private void bbiViewEmployee_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // Create a new instance of Employee form
+            ViewEmployee employee = new ViewEmployee();
+            this.IsMdiContainer = true;
+            employee.MdiParent = this;
+
+            // Show the Employee form
+            employee.Show();
+        }
     }
 }
