@@ -66,73 +66,76 @@
             // 
             this.EmployeeImage.Caption = "Employee Image";
             this.EmployeeImage.FieldName = "EmployeeImage";
-            this.EmployeeImage.MinWidth = 23;
+            this.EmployeeImage.MinWidth = 30;
             this.EmployeeImage.Name = "EmployeeImage";
             this.EmployeeImage.Visible = true;
             this.EmployeeImage.VisibleIndex = 3;
-            this.EmployeeImage.Width = 87;
+            this.EmployeeImage.Width = 112;
             // 
             // EmployeeName
             // 
             this.EmployeeName.Caption = "Employee Name";
             this.EmployeeName.FieldName = "EmployeeName";
-            this.EmployeeName.MinWidth = 23;
+            this.EmployeeName.MinWidth = 30;
             this.EmployeeName.Name = "EmployeeName";
             this.EmployeeName.Visible = true;
             this.EmployeeName.VisibleIndex = 1;
-            this.EmployeeName.Width = 87;
+            this.EmployeeName.Width = 112;
             // 
             // EmployeeID
             // 
             this.EmployeeID.Caption = "Employee ID";
             this.EmployeeID.FieldName = "EmployeeID";
-            this.EmployeeID.MinWidth = 23;
+            this.EmployeeID.MinWidth = 30;
             this.EmployeeID.Name = "EmployeeID";
             this.EmployeeID.Visible = true;
             this.EmployeeID.VisibleIndex = 0;
-            this.EmployeeID.Width = 87;
+            this.EmployeeID.Width = 112;
             // 
             // EmployeeRole
             // 
             this.EmployeeRole.Caption = "Employee Role";
             this.EmployeeRole.FieldName = "EmployeeRole";
-            this.EmployeeRole.MinWidth = 23;
+            this.EmployeeRole.MinWidth = 30;
             this.EmployeeRole.Name = "EmployeeRole";
             this.EmployeeRole.Visible = true;
             this.EmployeeRole.VisibleIndex = 2;
-            this.EmployeeRole.Width = 87;
+            this.EmployeeRole.Width = 112;
             // 
             // Address
             // 
             this.Address.Caption = "Address";
             this.Address.FieldName = "Address";
-            this.Address.MinWidth = 25;
+            this.Address.MinWidth = 32;
             this.Address.Name = "Address";
             this.Address.Visible = true;
             this.Address.VisibleIndex = 5;
-            this.Address.Width = 94;
+            this.Address.Width = 121;
             // 
             // DateOfBirth
             // 
             this.DateOfBirth.Caption = "Date of Birth";
             this.DateOfBirth.FieldName = "DateOfBirth";
-            this.DateOfBirth.MinWidth = 25;
+            this.DateOfBirth.MinWidth = 32;
             this.DateOfBirth.Name = "DateOfBirth";
             this.DateOfBirth.Visible = true;
             this.DateOfBirth.VisibleIndex = 4;
-            this.DateOfBirth.Width = 94;
+            this.DateOfBirth.Width = 121;
             // 
             // ribbon
             // 
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(39, 36, 39, 36);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
+            this.ribbon.OptionsMenuMinWidth = 424;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1008, 61);
+            this.ribbon.Size = new System.Drawing.Size(1296, 73);
             // 
             // ribbonPage1
             // 
@@ -148,13 +151,13 @@
             // 
             // gcEmployee
             // 
-            this.gcEmployee.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gcEmployee.Location = new System.Drawing.Point(104, 108);
+            this.gcEmployee.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gcEmployee.Location = new System.Drawing.Point(134, 128);
             this.gcEmployee.MainView = this.tvEmployee;
-            this.gcEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.gcEmployee.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.gcEmployee.MenuManager = this.ribbon;
             this.gcEmployee.Name = "gcEmployee";
-            this.gcEmployee.Size = new System.Drawing.Size(803, 414);
+            this.gcEmployee.Size = new System.Drawing.Size(1032, 492);
             this.gcEmployee.TabIndex = 2;
             this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tvEmployee});
@@ -168,7 +171,7 @@
             this.Address,
             this.EmployeeRole,
             this.EmployeeImage});
-            this.tvEmployee.DetailHeight = 431;
+            this.tvEmployee.DetailHeight = 512;
             this.tvEmployee.GridControl = this.gcEmployee;
             this.tvEmployee.Name = "tvEmployee";
             this.tvEmployee.OptionsTiles.ItemSize = new System.Drawing.Size(342, 336);
@@ -246,12 +249,13 @@
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 553);
+            this.ClientSize = new System.Drawing.Size(1296, 657);
             this.Controls.Add(this.gcEmployee);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ViewEmployee.IconOptions.Image")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewEmployee";
