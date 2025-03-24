@@ -13,10 +13,11 @@ namespace InventorySystem.Models
         //  Initial Catalog=WAREHOUSEISDB; 
         //  Trusted_Connection=True;";
 
-        @"Data Source=NIEZEL\SQLEXPRESS; 
-        Initial Catalog=WAREHOUSEISDB; 
-        Trusted_Connection=True;";
+        //@"Data Source=NIEZEL\SQLEXPRESS; 
+        //Initial Catalog=WAREHOUSEISDB; 
+        //Trusted_Connection=True;";
 
+        @"Data Source=LAB1-PC09; Initial Catalog = WAREHOUSEISDB; User ID = sa; Password = 123456;";
         //public static int testmethod(int param1, int param2)
         //{
         //    int result = 0;

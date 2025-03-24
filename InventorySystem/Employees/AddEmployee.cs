@@ -44,11 +44,11 @@ namespace InventorySystem.Employees
 
                         // Insert image into EmployeeImage table
                         string imageQuery = @"
-                INSERT INTO EmployeeImage (EmployeeImage) 
+                INSERT INTO EmployeeImage (ImageData) 
                 OUTPUT INSERTED.ImageID
-                VALUES (@EmployeeImage)";
+                VALUES (@ImageData)";
 
-                        int imageID = connection.ExecuteScalar<int>(imageQuery, new { EmployeeImage = imageBytes }, transaction);
+                        int imageID = connection.ExecuteScalar<int>(imageQuery, new { ImageData = imageBytes }, transaction);
 
                         if (imageID <= 0)
                         {

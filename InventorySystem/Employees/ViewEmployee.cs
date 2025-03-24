@@ -37,7 +37,7 @@ namespace InventorySystem.Employees
                             ISNULL(e.NameExtension, '')) AS EmployeeName,
                            e.DateOfBirth, e.Address, 
                            UPPER(LEFT(r.RoleName, 1)) + LOWER(SUBSTRING(r.RoleName, 2, LEN(r.RoleName))) AS RoleName, -- Sentence Case
-                           ei.EmployeeImage
+                           ei.ImageData
                     FROM Employee e
                     LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID
                     LEFT JOIN Role r ON e.RoleID = r.RoleID";
@@ -51,9 +51,9 @@ namespace InventorySystem.Employees
                     // Ensure EmployeeImage stays as byte[]
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        if (row["EmployeeImage"] == DBNull.Value)
+                        if (row["ImageData"] == DBNull.Value)
                         {
-                            row["EmployeeImage"] = new byte[0]; // Store empty byte[] instead of NULL
+                            row["ImageData"] = new byte[0]; // Store empty byte[] instead of NULL
                         }
                     }
 

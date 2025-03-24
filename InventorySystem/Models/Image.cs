@@ -9,7 +9,7 @@ namespace InventorySystem.Models
     public class Image
     {
         public int ImageID { get; set; }
-        public byte[] EmployeeImage { get; set; } 
+        public byte[] ImageData { get; set; } 
     }
 
 }
