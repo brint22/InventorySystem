@@ -22,55 +22,12 @@ namespace InventorySystem.Employees
             InitializeComponent();
         }
 
-        private void LoadEmployeeData()
-        {
-            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    string query = @"
-                    SELECT e.EmployeeID, 
-                           (e.FirstName + ' ' + 
-                            ISNULL(e.MiddleName + ' ', '') + 
-                            e.LastName + ' ' + 
-                            ISNULL(e.NameExtension, '')) AS EmployeeName,
-                           e.DateOfBirth, e.Address, 
-                           UPPER(LEFT(r.RoleName, 1)) + LOWER(SUBSTRING(r.RoleName, 2, LEN(r.RoleName))) AS RoleName, -- Sentence Case
-                           ei.ImageData
-                    FROM Employee e
-                    LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID
-                    LEFT JOIN Role r ON e.RoleID = r.RoleID";
-
-                    DataTable dataTable = new DataTable();
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                    {
-                        adapter.Fill(dataTable);
-                    }
-
-                    // Ensure EmployeeImage stays as byte[]
-                    foreach (DataRow row in dataTable.Rows)
-                    {
-                        if (row["ImageData"] == DBNull.Value)
-                        {
-                            row["ImageData"] = new byte[0]; // Store empty byte[] instead of NULL
-                        }
-                    }
-
-                    // Bind to GridControl
-                    gcEmployee.DataSource = dataTable;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error loading employees: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-
         private void ViewEmployee_Load(object sender, EventArgs e)
         {
-            LoadEmployeeData();
+            GlobalMethod.LoadEmployeeData("All", gcEmployee);
+            GlobalMethod.LoadEmployeeData("Manager", gcManager);
+            GlobalMethod.LoadEmployeeData("Cashier", gcCashier);
+            GlobalMethod.LoadEmployeeData("Laborer", gcLaborer);
         }
     }
 }

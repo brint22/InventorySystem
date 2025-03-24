@@ -36,7 +36,6 @@ namespace InventorySystem.Views
             ViewEmployee employee = new ViewEmployee();
             this.IsMdiContainer = true;
             employee.MdiParent = this;
-
             // Show the Employee form
             employee.Show();
         }
