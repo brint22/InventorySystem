@@ -21,23 +21,37 @@ namespace InventorySystem.Views
 
         private void bbiAddEmployee_ItemClick(object sender, ItemClickEventArgs e)
         {
+            //Close the current Form when click another form
+            CloseAllChildForms();
             // Create a new instance of Employee form
             AddEmployee employee = new AddEmployee();
             this.IsMdiContainer = true;
             employee.MdiParent = this;
 
+            
             // Show the Employee form
             employee.Show();
         }
 
         private void bbiViewEmployee_ItemClick(object sender, ItemClickEventArgs e)
         {
+            //Close the current Form when click another form
+            CloseAllChildForms();
             // Create a new instance of Employee form
             ViewEmployee employee = new ViewEmployee();
             this.IsMdiContainer = true;
             employee.MdiParent = this;
             // Show the Employee form
+       
             employee.Show();
+        }
+
+        private void CloseAllChildForms()
+        {
+            foreach (Form childForm in this.MdiChildren)
+            {
+                childForm.Close();
+            }
         }
     }
 }

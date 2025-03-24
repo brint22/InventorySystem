@@ -169,264 +169,265 @@
             // 
             this.ImageData.Caption = "Employee Image";
             this.ImageData.FieldName = "ImageData";
-            this.ImageData.MinWidth = 23;
+            this.ImageData.MinWidth = 30;
             this.ImageData.Name = "ImageData";
             this.ImageData.Visible = true;
             this.ImageData.VisibleIndex = 3;
-            this.ImageData.Width = 87;
+            this.ImageData.Width = 112;
             // 
             // EmployeeName
             // 
             this.EmployeeName.Caption = "Employee Name";
             this.EmployeeName.FieldName = "EmployeeName";
-            this.EmployeeName.MinWidth = 23;
+            this.EmployeeName.MinWidth = 30;
             this.EmployeeName.Name = "EmployeeName";
             this.EmployeeName.Visible = true;
             this.EmployeeName.VisibleIndex = 1;
-            this.EmployeeName.Width = 87;
+            this.EmployeeName.Width = 112;
             // 
             // EmployeeID
             // 
             this.EmployeeID.Caption = "Employee ID";
             this.EmployeeID.FieldName = "EmployeeID";
-            this.EmployeeID.MinWidth = 23;
+            this.EmployeeID.MinWidth = 30;
             this.EmployeeID.Name = "EmployeeID";
             this.EmployeeID.OptionsColumn.ShowCaption = true;
             this.EmployeeID.Visible = true;
             this.EmployeeID.VisibleIndex = 0;
-            this.EmployeeID.Width = 87;
+            this.EmployeeID.Width = 112;
             // 
             // RoleName
             // 
             this.RoleName.Caption = "Employee Role";
             this.RoleName.FieldName = "RoleName";
-            this.RoleName.MinWidth = 17;
+            this.RoleName.MinWidth = 22;
             this.RoleName.Name = "RoleName";
             this.RoleName.OptionsColumn.ShowCaption = true;
             this.RoleName.Visible = true;
             this.RoleName.VisibleIndex = 2;
-            this.RoleName.Width = 87;
+            this.RoleName.Width = 112;
             // 
             // Address
             // 
             this.Address.Caption = "Address";
             this.Address.FieldName = "Address";
-            this.Address.MinWidth = 24;
+            this.Address.MinWidth = 31;
             this.Address.Name = "Address";
             this.Address.OptionsColumn.ShowCaption = true;
             this.Address.Visible = true;
             this.Address.VisibleIndex = 5;
-            this.Address.Width = 94;
+            this.Address.Width = 121;
             // 
             // DateOfBirth
             // 
             this.DateOfBirth.Caption = "Date of Birth";
             this.DateOfBirth.FieldName = "DateOfBirth";
-            this.DateOfBirth.MinWidth = 24;
+            this.DateOfBirth.MinWidth = 31;
             this.DateOfBirth.Name = "DateOfBirth";
             this.DateOfBirth.OptionsColumn.ShowCaption = true;
             this.DateOfBirth.Visible = true;
             this.DateOfBirth.VisibleIndex = 4;
-            this.DateOfBirth.Width = 94;
+            this.DateOfBirth.Width = 121;
             // 
             // ImageDataM
             // 
             this.ImageDataM.Caption = "Employee Image";
             this.ImageDataM.FieldName = "ImageData";
-            this.ImageDataM.MinWidth = 23;
+            this.ImageDataM.MinWidth = 30;
             this.ImageDataM.Name = "ImageDataM";
             this.ImageDataM.Visible = true;
             this.ImageDataM.VisibleIndex = 3;
-            this.ImageDataM.Width = 87;
+            this.ImageDataM.Width = 112;
             // 
             // EmployeeNameM
             // 
             this.EmployeeNameM.Caption = "Employee Name";
             this.EmployeeNameM.FieldName = "EmployeeName";
-            this.EmployeeNameM.MinWidth = 23;
+            this.EmployeeNameM.MinWidth = 30;
             this.EmployeeNameM.Name = "EmployeeNameM";
             this.EmployeeNameM.Visible = true;
             this.EmployeeNameM.VisibleIndex = 1;
-            this.EmployeeNameM.Width = 87;
+            this.EmployeeNameM.Width = 112;
             // 
             // EmployeeIDM
             // 
             this.EmployeeIDM.Caption = "Employee ID";
             this.EmployeeIDM.FieldName = "EmployeeID";
-            this.EmployeeIDM.MinWidth = 23;
+            this.EmployeeIDM.MinWidth = 30;
             this.EmployeeIDM.Name = "EmployeeIDM";
             this.EmployeeIDM.OptionsColumn.ShowCaption = true;
             this.EmployeeIDM.Visible = true;
             this.EmployeeIDM.VisibleIndex = 0;
-            this.EmployeeIDM.Width = 87;
+            this.EmployeeIDM.Width = 112;
             // 
             // RoleNameM
             // 
             this.RoleNameM.Caption = "Employee Role";
             this.RoleNameM.FieldName = "RoleName";
-            this.RoleNameM.MinWidth = 17;
+            this.RoleNameM.MinWidth = 22;
             this.RoleNameM.Name = "RoleNameM";
             this.RoleNameM.OptionsColumn.ShowCaption = true;
             this.RoleNameM.Visible = true;
             this.RoleNameM.VisibleIndex = 2;
-            this.RoleNameM.Width = 87;
+            this.RoleNameM.Width = 112;
             // 
             // AddressM
             // 
             this.AddressM.Caption = "Address";
             this.AddressM.FieldName = "Address";
-            this.AddressM.MinWidth = 24;
+            this.AddressM.MinWidth = 31;
             this.AddressM.Name = "AddressM";
             this.AddressM.OptionsColumn.ShowCaption = true;
             this.AddressM.Visible = true;
             this.AddressM.VisibleIndex = 5;
-            this.AddressM.Width = 94;
+            this.AddressM.Width = 121;
             // 
             // DateOfBirthM
             // 
             this.DateOfBirthM.Caption = "Date of Birth";
             this.DateOfBirthM.FieldName = "DateOfBirth";
-            this.DateOfBirthM.MinWidth = 24;
+            this.DateOfBirthM.MinWidth = 31;
             this.DateOfBirthM.Name = "DateOfBirthM";
             this.DateOfBirthM.OptionsColumn.ShowCaption = true;
             this.DateOfBirthM.Visible = true;
             this.DateOfBirthM.VisibleIndex = 4;
-            this.DateOfBirthM.Width = 94;
+            this.DateOfBirthM.Width = 121;
             // 
             // tileViewColumn12
             // 
             this.tileViewColumn12.Caption = "Employee Image";
             this.tileViewColumn12.FieldName = "ImageData";
-            this.tileViewColumn12.MinWidth = 23;
+            this.tileViewColumn12.MinWidth = 30;
             this.tileViewColumn12.Name = "tileViewColumn12";
             this.tileViewColumn12.Visible = true;
             this.tileViewColumn12.VisibleIndex = 3;
-            this.tileViewColumn12.Width = 87;
+            this.tileViewColumn12.Width = 112;
             // 
             // tileViewColumn8
             // 
             this.tileViewColumn8.Caption = "Employee Name";
             this.tileViewColumn8.FieldName = "EmployeeName";
-            this.tileViewColumn8.MinWidth = 23;
+            this.tileViewColumn8.MinWidth = 30;
             this.tileViewColumn8.Name = "tileViewColumn8";
             this.tileViewColumn8.Visible = true;
             this.tileViewColumn8.VisibleIndex = 1;
-            this.tileViewColumn8.Width = 87;
+            this.tileViewColumn8.Width = 112;
             // 
             // tileViewColumn7
             // 
             this.tileViewColumn7.Caption = "Employee ID";
             this.tileViewColumn7.FieldName = "EmployeeID";
-            this.tileViewColumn7.MinWidth = 23;
+            this.tileViewColumn7.MinWidth = 30;
             this.tileViewColumn7.Name = "tileViewColumn7";
             this.tileViewColumn7.OptionsColumn.ShowCaption = true;
             this.tileViewColumn7.Visible = true;
             this.tileViewColumn7.VisibleIndex = 0;
-            this.tileViewColumn7.Width = 87;
+            this.tileViewColumn7.Width = 112;
             // 
             // tileViewColumn11
             // 
             this.tileViewColumn11.Caption = "Employee Role";
             this.tileViewColumn11.FieldName = "RoleName";
-            this.tileViewColumn11.MinWidth = 17;
+            this.tileViewColumn11.MinWidth = 22;
             this.tileViewColumn11.Name = "tileViewColumn11";
             this.tileViewColumn11.OptionsColumn.ShowCaption = true;
             this.tileViewColumn11.Visible = true;
             this.tileViewColumn11.VisibleIndex = 2;
-            this.tileViewColumn11.Width = 87;
+            this.tileViewColumn11.Width = 112;
             // 
             // tileViewColumn10
             // 
             this.tileViewColumn10.Caption = "Address";
             this.tileViewColumn10.FieldName = "Address";
-            this.tileViewColumn10.MinWidth = 24;
+            this.tileViewColumn10.MinWidth = 31;
             this.tileViewColumn10.Name = "tileViewColumn10";
             this.tileViewColumn10.OptionsColumn.ShowCaption = true;
             this.tileViewColumn10.Visible = true;
             this.tileViewColumn10.VisibleIndex = 5;
-            this.tileViewColumn10.Width = 94;
+            this.tileViewColumn10.Width = 121;
             // 
             // tileViewColumn9
             // 
             this.tileViewColumn9.Caption = "Date of Birth";
             this.tileViewColumn9.FieldName = "DateOfBirth";
-            this.tileViewColumn9.MinWidth = 24;
+            this.tileViewColumn9.MinWidth = 31;
             this.tileViewColumn9.Name = "tileViewColumn9";
             this.tileViewColumn9.OptionsColumn.ShowCaption = true;
             this.tileViewColumn9.Visible = true;
             this.tileViewColumn9.VisibleIndex = 4;
-            this.tileViewColumn9.Width = 94;
+            this.tileViewColumn9.Width = 121;
             // 
             // tileViewColumn6
             // 
             this.tileViewColumn6.Caption = "Employee Image";
             this.tileViewColumn6.FieldName = "ImageData";
-            this.tileViewColumn6.MinWidth = 23;
+            this.tileViewColumn6.MinWidth = 30;
             this.tileViewColumn6.Name = "tileViewColumn6";
             this.tileViewColumn6.Visible = true;
             this.tileViewColumn6.VisibleIndex = 3;
-            this.tileViewColumn6.Width = 87;
+            this.tileViewColumn6.Width = 112;
             // 
             // tileViewColumn2
             // 
             this.tileViewColumn2.Caption = "Employee Name";
             this.tileViewColumn2.FieldName = "EmployeeName";
-            this.tileViewColumn2.MinWidth = 23;
+            this.tileViewColumn2.MinWidth = 30;
             this.tileViewColumn2.Name = "tileViewColumn2";
             this.tileViewColumn2.Visible = true;
             this.tileViewColumn2.VisibleIndex = 1;
-            this.tileViewColumn2.Width = 87;
+            this.tileViewColumn2.Width = 112;
             // 
             // tileViewColumn1
             // 
             this.tileViewColumn1.Caption = "Employee ID";
             this.tileViewColumn1.FieldName = "EmployeeID";
-            this.tileViewColumn1.MinWidth = 23;
+            this.tileViewColumn1.MinWidth = 30;
             this.tileViewColumn1.Name = "tileViewColumn1";
             this.tileViewColumn1.OptionsColumn.ShowCaption = true;
             this.tileViewColumn1.Visible = true;
             this.tileViewColumn1.VisibleIndex = 0;
-            this.tileViewColumn1.Width = 87;
+            this.tileViewColumn1.Width = 112;
             // 
             // tileViewColumn5
             // 
             this.tileViewColumn5.Caption = "Employee Role";
             this.tileViewColumn5.FieldName = "RoleName";
-            this.tileViewColumn5.MinWidth = 17;
+            this.tileViewColumn5.MinWidth = 22;
             this.tileViewColumn5.Name = "tileViewColumn5";
             this.tileViewColumn5.OptionsColumn.ShowCaption = true;
             this.tileViewColumn5.Visible = true;
             this.tileViewColumn5.VisibleIndex = 2;
-            this.tileViewColumn5.Width = 87;
+            this.tileViewColumn5.Width = 112;
             // 
             // tileViewColumn4
             // 
             this.tileViewColumn4.Caption = "Address";
             this.tileViewColumn4.FieldName = "Address";
-            this.tileViewColumn4.MinWidth = 24;
+            this.tileViewColumn4.MinWidth = 31;
             this.tileViewColumn4.Name = "tileViewColumn4";
             this.tileViewColumn4.OptionsColumn.ShowCaption = true;
             this.tileViewColumn4.Visible = true;
             this.tileViewColumn4.VisibleIndex = 5;
-            this.tileViewColumn4.Width = 94;
+            this.tileViewColumn4.Width = 121;
             // 
             // tileViewColumn3
             // 
             this.tileViewColumn3.Caption = "Date of Birth";
             this.tileViewColumn3.FieldName = "DateOfBirth";
-            this.tileViewColumn3.MinWidth = 24;
+            this.tileViewColumn3.MinWidth = 31;
             this.tileViewColumn3.Name = "tileViewColumn3";
             this.tileViewColumn3.OptionsColumn.ShowCaption = true;
             this.tileViewColumn3.Visible = true;
             this.tileViewColumn3.VisibleIndex = 4;
-            this.tileViewColumn3.Width = 94;
+            this.tileViewColumn3.Width = 121;
             // 
             // tab
             // 
-            this.tab.Location = new System.Drawing.Point(50, 78);
+            this.tab.Location = new System.Drawing.Point(64, 93);
+            this.tab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tab.Name = "tab";
             this.tab.SelectedTabPage = this.All;
-            this.tab.Size = new System.Drawing.Size(1775, 580);
+            this.tab.Size = new System.Drawing.Size(2282, 689);
             this.tab.TabIndex = 4;
             this.tab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.All,
@@ -441,18 +442,19 @@
             this.All.Appearance.HeaderActive.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.All.Appearance.HeaderActive.Options.UseFont = true;
             this.All.Controls.Add(this.gcEmployee);
+            this.All.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.All.Name = "All";
-            this.All.Size = new System.Drawing.Size(1773, 542);
+            this.All.Size = new System.Drawing.Size(2280, 645);
             this.All.Text = "All";
             // 
             // gcEmployee
             // 
-            this.gcEmployee.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gcEmployee.Location = new System.Drawing.Point(33, 28);
+            this.gcEmployee.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gcEmployee.Location = new System.Drawing.Point(42, 33);
             this.gcEmployee.MainView = this.tvEmployee;
-            this.gcEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.gcEmployee.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.gcEmployee.Name = "gcEmployee";
-            this.gcEmployee.Size = new System.Drawing.Size(1707, 488);
+            this.gcEmployee.Size = new System.Drawing.Size(2195, 580);
             this.gcEmployee.TabIndex = 2;
             this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tvEmployee});
@@ -468,7 +470,7 @@
             this.ImageData,
             this.tileViewColumn19,
             this.tileViewColumn20});
-            this.tvEmployee.DetailHeight = 431;
+            this.tvEmployee.DetailHeight = 512;
             this.tvEmployee.GridControl = this.gcEmployee;
             this.tvEmployee.Name = "tvEmployee";
             this.tvEmployee.OptionsEditForm.AllowHtmlCaptions = true;
@@ -562,19 +564,19 @@
             // 
             // tileViewColumn19
             // 
-            this.tileViewColumn19.MinWidth = 25;
+            this.tileViewColumn19.MinWidth = 32;
             this.tileViewColumn19.Name = "tileViewColumn19";
             this.tileViewColumn19.Visible = true;
             this.tileViewColumn19.VisibleIndex = 6;
-            this.tileViewColumn19.Width = 94;
+            this.tileViewColumn19.Width = 121;
             // 
             // tileViewColumn20
             // 
-            this.tileViewColumn20.MinWidth = 25;
+            this.tileViewColumn20.MinWidth = 32;
             this.tileViewColumn20.Name = "tileViewColumn20";
             this.tileViewColumn20.Visible = true;
             this.tileViewColumn20.VisibleIndex = 7;
-            this.tileViewColumn20.Width = 94;
+            this.tileViewColumn20.Width = 121;
             // 
             // Manager
             // 
@@ -583,18 +585,19 @@
             this.Manager.Appearance.HeaderActive.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold);
             this.Manager.Appearance.HeaderActive.Options.UseFont = true;
             this.Manager.Controls.Add(this.gcManager);
+            this.Manager.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Manager.Name = "Manager";
-            this.Manager.Size = new System.Drawing.Size(1773, 542);
+            this.Manager.Size = new System.Drawing.Size(2280, 645);
             this.Manager.Text = "Manager";
             // 
             // gcManager
             // 
-            this.gcManager.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gcManager.Location = new System.Drawing.Point(33, 28);
+            this.gcManager.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gcManager.Location = new System.Drawing.Point(42, 33);
             this.gcManager.MainView = this.tileView1;
-            this.gcManager.Margin = new System.Windows.Forms.Padding(4);
+            this.gcManager.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.gcManager.Name = "gcManager";
-            this.gcManager.Size = new System.Drawing.Size(1707, 482);
+            this.gcManager.Size = new System.Drawing.Size(2195, 572);
             this.gcManager.TabIndex = 5;
             this.gcManager.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1});
@@ -608,7 +611,7 @@
             this.AddressM,
             this.RoleNameM,
             this.ImageDataM});
-            this.tileView1.DetailHeight = 431;
+            this.tileView1.DetailHeight = 512;
             this.tileView1.GridControl = this.gcManager;
             this.tileView1.Name = "tileView1";
             this.tileView1.OptionsEditForm.AllowHtmlCaptions = true;
@@ -707,18 +710,19 @@
             this.Cashier.Appearance.HeaderActive.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold);
             this.Cashier.Appearance.HeaderActive.Options.UseFont = true;
             this.Cashier.Controls.Add(this.gcCashier);
+            this.Cashier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Cashier.Name = "Cashier";
-            this.Cashier.Size = new System.Drawing.Size(1773, 705);
+            this.Cashier.Size = new System.Drawing.Size(2280, 645);
             this.Cashier.Text = "Cashier";
             // 
             // gcCashier
             // 
-            this.gcCashier.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gcCashier.Location = new System.Drawing.Point(33, 28);
+            this.gcCashier.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gcCashier.Location = new System.Drawing.Point(42, 33);
             this.gcCashier.MainView = this.tileView2;
-            this.gcCashier.Margin = new System.Windows.Forms.Padding(4);
+            this.gcCashier.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.gcCashier.Name = "gcCashier";
-            this.gcCashier.Size = new System.Drawing.Size(1707, 568);
+            this.gcCashier.Size = new System.Drawing.Size(2195, 674);
             this.gcCashier.TabIndex = 7;
             this.gcCashier.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView2});
@@ -732,7 +736,7 @@
             this.tileViewColumn10,
             this.tileViewColumn11,
             this.tileViewColumn12});
-            this.tileView2.DetailHeight = 431;
+            this.tileView2.DetailHeight = 512;
             this.tileView2.GridControl = this.gcCashier;
             this.tileView2.Name = "tileView2";
             this.tileView2.OptionsEditForm.AllowHtmlCaptions = true;
@@ -831,18 +835,19 @@
             this.Laborer.Appearance.HeaderActive.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold);
             this.Laborer.Appearance.HeaderActive.Options.UseFont = true;
             this.Laborer.Controls.Add(this.gcLaborer);
+            this.Laborer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Laborer.Name = "Laborer";
-            this.Laborer.Size = new System.Drawing.Size(1773, 705);
+            this.Laborer.Size = new System.Drawing.Size(2280, 645);
             this.Laborer.Text = "Laborer";
             // 
             // gcLaborer
             // 
-            this.gcLaborer.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gcLaborer.Location = new System.Drawing.Point(33, 28);
+            this.gcLaborer.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gcLaborer.Location = new System.Drawing.Point(42, 33);
             this.gcLaborer.MainView = this.tileView4;
-            this.gcLaborer.Margin = new System.Windows.Forms.Padding(4);
+            this.gcLaborer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.gcLaborer.Name = "gcLaborer";
-            this.gcLaborer.Size = new System.Drawing.Size(1707, 568);
+            this.gcLaborer.Size = new System.Drawing.Size(2195, 674);
             this.gcLaborer.TabIndex = 9;
             this.gcLaborer.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView4});
@@ -856,7 +861,7 @@
             this.tileViewColumn4,
             this.tileViewColumn5,
             this.tileViewColumn6});
-            this.tileView4.DetailHeight = 431;
+            this.tileView4.DetailHeight = 512;
             this.tileView4.GridControl = this.gcLaborer;
             this.tileView4.Name = "tileView4";
             this.tileView4.OptionsEditForm.AllowHtmlCaptions = true;
@@ -952,9 +957,10 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(50, 33);
+            this.labelControl1.Location = new System.Drawing.Point(64, 39);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(190, 28);
+            this.labelControl1.Size = new System.Drawing.Size(228, 33);
             this.labelControl1.TabIndex = 5;
             this.labelControl1.Text = "EMPLOYEE DATA";
             // 
@@ -962,13 +968,14 @@
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1940, 817);
+            this.ClientSize = new System.Drawing.Size(2494, 970);
+            this.ControlBox = false;
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.tab);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ViewEmployee.IconOptions.Image")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewEmployee";
