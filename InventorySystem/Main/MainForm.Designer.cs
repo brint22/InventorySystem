@@ -31,39 +31,61 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiAddEmployee = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiViewEmployee = new DevExpress.XtraBars.BarButtonItem();
             this.Main = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiViewEmployee = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
             // 
-            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(45, 44, 45, 44);
+            this.ribbon.AllowMinimizeRibbon = false;
+            this.ribbon.AutoUpdateMergedRibbons = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbon.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbon.DrawGroupsBorderMode = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
             this.bbiAddEmployee,
             this.bbiViewEmployee});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Margin = new System.Windows.Forms.Padding(4);
             this.ribbon.MaxItemId = 3;
             this.ribbon.Name = "ribbon";
-            this.ribbon.OptionsMenuMinWidth = 495;
+            this.ribbon.OptionsExpandCollapseMenu.ShowRibbonGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbon.OptionsExpandCollapseMenu.ShowRibbonLayoutGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbon.OptionsMenuMinWidth = 385;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.Main,
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1527, 292);
+            this.ribbon.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbon.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbon.ShowPageHeadersInFormCaption = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbon.ShowToolbarCustomizeItem = false;
+            this.ribbon.Size = new System.Drawing.Size(1188, 217);
+            this.ribbon.Toolbar.ShowCustomizeItem = false;
             // 
             // bbiAddEmployee
             // 
             this.bbiAddEmployee.Caption = "Add Employee";
             this.bbiAddEmployee.Id = 1;
+            this.bbiAddEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiAddEmployee.ImageOptions.SvgImage")));
             this.bbiAddEmployee.Name = "bbiAddEmployee";
+            this.bbiAddEmployee.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiAddEmployee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddEmployee_ItemClick);
+            // 
+            // bbiViewEmployee
+            // 
+            this.bbiViewEmployee.Caption = "View Employee";
+            this.bbiViewEmployee.Id = 2;
+            this.bbiViewEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiViewEmployee.ImageOptions.SvgImage")));
+            this.bbiViewEmployee.Name = "bbiViewEmployee";
+            this.bbiViewEmployee.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiViewEmployee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewEmployee_ItemClick);
             // 
             // Main
             // 
@@ -79,6 +101,11 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiAddEmployee);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiViewEmployee);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -91,27 +118,13 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbiViewEmployee);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            // 
-            // bbiViewEmployee
-            // 
-            this.bbiViewEmployee.Caption = "View Employee";
-            this.bbiViewEmployee.Id = 2;
-            this.bbiViewEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiViewEmployee.ImageOptions.SvgImage")));
-            this.bbiViewEmployee.Name = "bbiViewEmployee";
-            this.bbiViewEmployee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewEmployee_ItemClick);
-            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1527, 934);
+            this.ClientSize = new System.Drawing.Size(1188, 787);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("MainForm.IconOptions.Image")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Ribbon = this.ribbon;

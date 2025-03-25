@@ -44,9 +44,9 @@ namespace InventorySystem.Employees
 
                         // Insert image into EmployeeImage table
                         string imageQuery = @"
-                INSERT INTO EmployeeImage (ImageData) 
-                OUTPUT INSERTED.ImageID
-                VALUES (@ImageData)";
+                        INSERT INTO EmployeeImage (ImageData) 
+                        OUTPUT INSERTED.ImageID
+                        VALUES (@ImageData)";
 
                         int imageID = connection.ExecuteScalar<int>(imageQuery, new { ImageData = imageBytes }, transaction);
 
@@ -64,14 +64,43 @@ namespace InventorySystem.Employees
 
                         // Insert into Employee table with the ImageID reference
                         string employeeQuery = @"
-                INSERT INTO Employee 
-                (EmployeeID, FirstName, MiddleName, LastName, NameExtension, Gender, CivilStatus,
-                DateOfBirth, PhoneNumber, DateHired, Address, RoleID, ImageID)
+                            INSERT INTO Employee 
+                            (EmployeeID, 
+                            FirstName, 
+                            MiddleName, 
+                            LastName, 
+                            NameExtension, 
+                            Gender, 
+                            CivilStatus,
+                            DateOfBirth, 
+                            Age, 
+                            PhoneNumber, 
+                            DateHired, 
+                            Address, 
+                            RoleID, 
+                            ImageID)
 
-                VALUES
-                (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @Gender, @CivilStatus, 
-                 @DateOfBirth, @PhoneNumber, @DateHired, @Address, @RoleID, @ImageID);";
-
+                            VALUES
+                            (@EmployeeID, 
+                            @FirstName, 
+                            @MiddleName, 
+                            @LastName, 
+                            @NameExtension, 
+                            @Gender, 
+                            @CivilStatus, 
+                            @DateOfBirth, 
+                            DATEDIFF(YEAR, @DateOfBirth, CAST(GETDATE() AS DATE)) - 
+                            CASE 
+                                 WHEN MONTH(@DateOfBirth) > MONTH(CAST(GETDATE() AS DATE)) 
+                                   OR (MONTH(@DateOfBirth) = MONTH(CAST(GETDATE() AS DATE)) 
+                                   AND DAY(@DateOfBirth) > DAY(CAST(GETDATE() AS DATE))) 
+                                 THEN 1 ELSE 0 
+                            END,
+                            @PhoneNumber,
+                            @DateHired, 
+                            @Address, 
+                            @RoleID, 
+                            @ImageID);";
                         int employeeRows = connection.Execute(employeeQuery, new
                         {
                             employees.EmployeeID,
