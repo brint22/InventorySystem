@@ -65,9 +65,12 @@ namespace InventorySystem.Employees
                         // Insert into Employee table with the ImageID reference
                         string employeeQuery = @"
                 INSERT INTO Employee 
-                (EmployeeID, FirstName, MiddleName, LastName, NameExtension, DateOfBirth, Address, RoleID, ImageID)
+                (EmployeeID, FirstName, MiddleName, LastName, NameExtension, Gender, CivilStatus,
+                DateOfBirth, PhoneNumber, DateHired, Address, RoleID, ImageID)
+
                 VALUES
-                (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @DateOfBirth, @Address, @RoleID, @ImageID);";
+                (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @Gender, @CivilStatus, 
+                 @DateOfBirth, @PhoneNumber, @DateHired, @Address, @RoleID, @ImageID);";
 
                         int employeeRows = connection.Execute(employeeQuery, new
                         {
@@ -76,7 +79,11 @@ namespace InventorySystem.Employees
                             employees.MiddleName,
                             employees.LastName,
                             employees.NameExtension,
+                            employees.Gender,
+                            employees.CivilStatus,
                             employees.DateOfBirth,
+                            employees.PhoneNumber,
+                            employees.DateHired,
                             employees.Address,
                             employees.RoleID,
                             ImageID = imageID // Link the image to the employee
@@ -185,9 +192,14 @@ namespace InventorySystem.Employees
                 MiddleName = teMiddleName.Text,
                 LastName = teLastName.Text,
                 NameExtension = teNameExtension.Text,
+                Gender = GetGender().ToString(),
+                CivilStatus = cbCivilStatus.Text,
                 DateOfBirth = deDateOfBirth.DateTime,
-                Address = teAddress.Text,
-                RoleName = lueRole.Text
+                PhoneNumber = tePhoneNumber.Text,
+                DateHired = deDateHired.DateTime,
+                RoleName = lueRole.Text,
+                Address = mmAddress.Text
+                
             };
 
             GetRoleID();
@@ -206,7 +218,23 @@ namespace InventorySystem.Employees
             RegisterEmployee(employee, imageBytes);
         }
 
-   
+
+        //Method ign getting the Gender
+        private string GetGender()
+        {
+            string gender = "";
+            if (rdGender.SelectedIndex == 0)
+            {
+                gender = "Male";
+
+            }
+            else
+            {
+                gender = "Female";
+            }
+            return gender;
+        }
+
         private void AddEmployee_Load(object sender, EventArgs e)
         {
             LoadRole();
@@ -262,5 +290,7 @@ namespace InventorySystem.Employees
                 }
             }
             }
+
+      
     }
 }
