@@ -401,6 +401,12 @@
             this.cbCivilStatus.Properties.AutoHeight = false;
             this.cbCivilStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbCivilStatus.Properties.Items.AddRange(new object[] {
+            "Single",
+            "Married",
+            "Widowed",
+            "Separated",
+            ""});
             this.cbCivilStatus.Size = new System.Drawing.Size(307, 40);
             this.cbCivilStatus.TabIndex = 44;
             // 
