@@ -26,7 +26,7 @@ namespace InventorySystem.Models
                     ISNULL(e.MiddleName + ' ', '') + 
                     e.LastName + ' ' + 
                     ISNULL(e.NameExtension, '')) AS EmployeeName,
-                   e.DateOfBirth, e.Address, 
+                   FORMAT(e.DateOfBirth, 'MMMM dd yyyy') AS DateOfBirth, e.Address, 
                    UPPER(LEFT(r.RoleName, 1)) + LOWER(SUBSTRING(r.RoleName, 2, LEN(r.RoleName))) AS RoleName, -- Sentence Case
                    ei.ImageData
             FROM Employee e
