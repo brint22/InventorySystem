@@ -89,7 +89,7 @@
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(4);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsMenuMinWidth = 385;
@@ -112,7 +112,7 @@
             // 
             this.peProfile.EditValue = ((object)(resources.GetObject("peProfile.EditValue")));
             this.peProfile.Location = new System.Drawing.Point(1060, 64);
-            this.peProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.peProfile.Margin = new System.Windows.Forms.Padding(4);
             this.peProfile.MenuManager = this.ribbon;
             this.peProfile.Name = "peProfile";
             this.peProfile.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -131,7 +131,7 @@
             this.btnBrowse.Appearance.Options.UseBackColor = true;
             this.btnBrowse.Appearance.Options.UseFont = true;
             this.btnBrowse.Location = new System.Drawing.Point(1095, 240);
-            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(103, 36);
             this.btnBrowse.TabIndex = 13;
@@ -141,7 +141,7 @@
             // lueRole
             // 
             this.lueRole.Location = new System.Drawing.Point(645, 368);
-            this.lueRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lueRole.Margin = new System.Windows.Forms.Padding(4);
             this.lueRole.MenuManager = this.ribbon;
             this.lueRole.Name = "lueRole";
             this.lueRole.Properties.AutoHeight = false;
@@ -157,7 +157,7 @@
             // teFirstName
             // 
             this.teFirstName.Location = new System.Drawing.Point(29, 90);
-            this.teFirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teFirstName.Margin = new System.Windows.Forms.Padding(4);
             this.teFirstName.MenuManager = this.ribbon;
             this.teFirstName.Name = "teFirstName";
             this.teFirstName.Properties.AutoHeight = false;
@@ -169,7 +169,7 @@
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(29, 61);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(76, 19);
             this.labelControl1.TabIndex = 17;
@@ -180,7 +180,7 @@
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(645, 341);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(31, 19);
             this.labelControl3.TabIndex = 18;
@@ -189,7 +189,7 @@
             // teMiddleName
             // 
             this.teMiddleName.Location = new System.Drawing.Point(339, 92);
-            this.teMiddleName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teMiddleName.Margin = new System.Windows.Forms.Padding(4);
             this.teMiddleName.MenuManager = this.ribbon;
             this.teMiddleName.Name = "teMiddleName";
             this.teMiddleName.Properties.AutoHeight = false;
@@ -201,7 +201,7 @@
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(339, 61);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(92, 19);
             this.labelControl2.TabIndex = 22;
@@ -210,7 +210,7 @@
             // teNameExtension
             // 
             this.teNameExtension.Location = new System.Drawing.Point(793, 92);
-            this.teNameExtension.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teNameExtension.Margin = new System.Windows.Forms.Padding(4);
             this.teNameExtension.MenuManager = this.ribbon;
             this.teNameExtension.Name = "teNameExtension";
             this.teNameExtension.Properties.AutoHeight = false;
@@ -222,7 +222,7 @@
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Location = new System.Drawing.Point(796, 63);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(114, 19);
             this.labelControl4.TabIndex = 24;
@@ -231,7 +231,7 @@
             // teLastName
             // 
             this.teLastName.Location = new System.Drawing.Point(563, 92);
-            this.teLastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teLastName.Margin = new System.Windows.Forms.Padding(4);
             this.teLastName.MenuManager = this.ribbon;
             this.teLastName.Name = "teLastName";
             this.teLastName.Properties.AutoHeight = false;
@@ -243,7 +243,7 @@
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Location = new System.Drawing.Point(563, 63);
-            this.labelControl5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(74, 19);
             this.labelControl5.TabIndex = 26;
@@ -254,7 +254,7 @@
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
             this.labelControl6.Location = new System.Drawing.Point(645, 267);
-            this.labelControl6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(89, 19);
             this.labelControl6.TabIndex = 28;
@@ -264,7 +264,7 @@
             // 
             this.deDateOfBirth.EditValue = null;
             this.deDateOfBirth.Location = new System.Drawing.Point(645, 291);
-            this.deDateOfBirth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deDateOfBirth.Margin = new System.Windows.Forms.Padding(4);
             this.deDateOfBirth.MenuManager = this.ribbon;
             this.deDateOfBirth.Name = "deDateOfBirth";
             this.deDateOfBirth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -279,7 +279,7 @@
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Location = new System.Drawing.Point(74, 422);
-            this.labelControl7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl7.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(57, 19);
             this.labelControl7.TabIndex = 30;
@@ -291,8 +291,8 @@
             this.BtnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSubmit.Appearance.Options.UseBackColor = true;
             this.BtnSubmit.Appearance.Options.UseFont = true;
-            this.BtnSubmit.Location = new System.Drawing.Point(62, 701);
-            this.BtnSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnSubmit.Location = new System.Drawing.Point(62, 664);
+            this.BtnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(239, 38);
             this.BtnSubmit.TabIndex = 32;
@@ -329,7 +329,7 @@
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl8.Appearance.Options.UseFont = true;
             this.labelControl8.Location = new System.Drawing.Point(76, 258);
-            this.labelControl8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl8.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(51, 19);
             this.labelControl8.TabIndex = 37;
@@ -365,7 +365,7 @@
             // 
             this.deDateHired.EditValue = null;
             this.deDateHired.Location = new System.Drawing.Point(353, 368);
-            this.deDateHired.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deDateHired.Margin = new System.Windows.Forms.Padding(4);
             this.deDateHired.MenuManager = this.ribbon;
             this.deDateHired.Name = "deDateHired";
             this.deDateHired.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -380,7 +380,7 @@
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl9.Appearance.Options.UseFont = true;
             this.labelControl9.Location = new System.Drawing.Point(356, 341);
-            this.labelControl9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl9.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(75, 19);
             this.labelControl9.TabIndex = 42;
@@ -391,7 +391,7 @@
             this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl10.Appearance.Options.UseFont = true;
             this.labelControl10.Location = new System.Drawing.Point(356, 267);
-            this.labelControl10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl10.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(78, 19);
             this.labelControl10.TabIndex = 43;
@@ -418,7 +418,7 @@
             // tePhoneNumber
             // 
             this.tePhoneNumber.Location = new System.Drawing.Point(76, 368);
-            this.tePhoneNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tePhoneNumber.Margin = new System.Windows.Forms.Padding(4);
             this.tePhoneNumber.MenuManager = this.ribbon;
             this.tePhoneNumber.Name = "tePhoneNumber";
             this.tePhoneNumber.Properties.AutoHeight = false;
@@ -430,7 +430,7 @@
             this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl11.Appearance.Options.UseFont = true;
             this.labelControl11.Location = new System.Drawing.Point(76, 341);
-            this.labelControl11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl11.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(106, 19);
             this.labelControl11.TabIndex = 46;
@@ -456,9 +456,9 @@
             this.groupControl2.Controls.Add(this.deDateHired);
             this.groupControl2.Controls.Add(this.labelControl8);
             this.groupControl2.Controls.Add(this.rdGender);
-            this.groupControl2.Location = new System.Drawing.Point(62, 111);
+            this.groupControl2.Location = new System.Drawing.Point(62, 103);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1309, 580);
+            this.groupControl2.Size = new System.Drawing.Size(1309, 542);
             this.groupControl2.TabIndex = 48;
             this.groupControl2.Text = "Employee Data";
             // 
@@ -466,13 +466,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1427, 765);
+            this.ClientSize = new System.Drawing.Size(1427, 727);
             this.ControlBox = false;
             this.Controls.Add(this.BtnSubmit);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("AddEmployee.IconOptions.Image")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddEmployee";
