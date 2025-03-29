@@ -144,12 +144,14 @@
             this.lueRole.Margin = new System.Windows.Forms.Padding(4);
             this.lueRole.MenuManager = this.ribbon;
             this.lueRole.Name = "lueRole";
+            this.lueRole.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.lueRole.Properties.Appearance.Options.UseFont = true;
             this.lueRole.Properties.AutoHeight = false;
             this.lueRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueRole.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "RoleID", 23, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "RoleName", 23, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "Role ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "")});
             this.lueRole.Properties.NullText = "";
             this.lueRole.Size = new System.Drawing.Size(239, 34);
             this.lueRole.TabIndex = 19;
@@ -160,6 +162,8 @@
             this.teFirstName.Margin = new System.Windows.Forms.Padding(4);
             this.teFirstName.MenuManager = this.ribbon;
             this.teFirstName.Name = "teFirstName";
+            this.teFirstName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.teFirstName.Properties.Appearance.Options.UseFont = true;
             this.teFirstName.Properties.AutoHeight = false;
             this.teFirstName.Size = new System.Drawing.Size(290, 35);
             this.teFirstName.TabIndex = 16;
@@ -192,6 +196,8 @@
             this.teMiddleName.Margin = new System.Windows.Forms.Padding(4);
             this.teMiddleName.MenuManager = this.ribbon;
             this.teMiddleName.Name = "teMiddleName";
+            this.teMiddleName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.teMiddleName.Properties.Appearance.Options.UseFont = true;
             this.teMiddleName.Properties.AutoHeight = false;
             this.teMiddleName.Size = new System.Drawing.Size(204, 35);
             this.teMiddleName.TabIndex = 21;
@@ -213,6 +219,8 @@
             this.teNameExtension.Margin = new System.Windows.Forms.Padding(4);
             this.teNameExtension.MenuManager = this.ribbon;
             this.teNameExtension.Name = "teNameExtension";
+            this.teNameExtension.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.teNameExtension.Properties.Appearance.Options.UseFont = true;
             this.teNameExtension.Properties.AutoHeight = false;
             this.teNameExtension.Size = new System.Drawing.Size(117, 35);
             this.teNameExtension.TabIndex = 23;
@@ -234,6 +242,8 @@
             this.teLastName.Margin = new System.Windows.Forms.Padding(4);
             this.teLastName.MenuManager = this.ribbon;
             this.teLastName.Name = "teLastName";
+            this.teLastName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.teLastName.Properties.Appearance.Options.UseFont = true;
             this.teLastName.Properties.AutoHeight = false;
             this.teLastName.Size = new System.Drawing.Size(204, 35);
             this.teLastName.TabIndex = 25;
@@ -267,11 +277,13 @@
             this.deDateOfBirth.Margin = new System.Windows.Forms.Padding(4);
             this.deDateOfBirth.MenuManager = this.ribbon;
             this.deDateOfBirth.Name = "deDateOfBirth";
+            this.deDateOfBirth.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.deDateOfBirth.Properties.Appearance.Options.UseFont = true;
             this.deDateOfBirth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deDateOfBirth.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deDateOfBirth.Size = new System.Drawing.Size(239, 34);
+            this.deDateOfBirth.Size = new System.Drawing.Size(239, 38);
             this.deDateOfBirth.TabIndex = 29;
             // 
             // labelControl7
@@ -304,6 +316,8 @@
             this.meEmployeeImagePath.Location = new System.Drawing.Point(1016, 324);
             this.meEmployeeImagePath.MenuManager = this.ribbon;
             this.meEmployeeImagePath.Name = "meEmployeeImagePath";
+            this.meEmployeeImagePath.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.meEmployeeImagePath.Properties.Appearance.Options.UseFont = true;
             this.meEmployeeImagePath.Size = new System.Drawing.Size(270, 96);
             this.meEmployeeImagePath.TabIndex = 34;
             this.meEmployeeImagePath.Visible = false;
@@ -358,6 +372,8 @@
             this.mmAddress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.mmAddress.MenuManager = this.ribbon;
             this.mmAddress.Name = "mmAddress";
+            this.mmAddress.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.mmAddress.Properties.Appearance.Options.UseFont = true;
             this.mmAddress.Size = new System.Drawing.Size(836, 70);
             this.mmAddress.TabIndex = 40;
             // 
@@ -368,11 +384,13 @@
             this.deDateHired.Margin = new System.Windows.Forms.Padding(4);
             this.deDateHired.MenuManager = this.ribbon;
             this.deDateHired.Name = "deDateHired";
+            this.deDateHired.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.deDateHired.Properties.Appearance.Options.UseFont = true;
             this.deDateHired.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deDateHired.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deDateHired.Size = new System.Drawing.Size(239, 34);
+            this.deDateHired.Size = new System.Drawing.Size(239, 38);
             this.deDateHired.TabIndex = 41;
             // 
             // labelControl9
@@ -403,6 +421,8 @@
             this.cbCivilStatus.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbCivilStatus.MenuManager = this.ribbon;
             this.cbCivilStatus.Name = "cbCivilStatus";
+            this.cbCivilStatus.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.cbCivilStatus.Properties.Appearance.Options.UseFont = true;
             this.cbCivilStatus.Properties.AutoHeight = false;
             this.cbCivilStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -421,6 +441,8 @@
             this.tePhoneNumber.Margin = new System.Windows.Forms.Padding(4);
             this.tePhoneNumber.MenuManager = this.ribbon;
             this.tePhoneNumber.Name = "tePhoneNumber";
+            this.tePhoneNumber.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.tePhoneNumber.Properties.Appearance.Options.UseFont = true;
             this.tePhoneNumber.Properties.AutoHeight = false;
             this.tePhoneNumber.Size = new System.Drawing.Size(241, 35);
             this.tePhoneNumber.TabIndex = 45;

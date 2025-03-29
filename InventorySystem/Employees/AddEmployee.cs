@@ -15,6 +15,8 @@ using DevExpress.XtraPrinting.Native;
 using System.Net;
 using DevExpress.XtraEditors;
 using System.IO;
+using DevExpress.Pdf.Native.BouncyCastle.Utilities.Net;
+using DevExpress.XtraLayout.Customization;
 
 namespace InventorySystem.Employees
 {
@@ -175,16 +177,15 @@ namespace InventorySystem.Employees
                 return db.QueryFirstOrDefault<int?>(query, new { YearPattern = $"{year}-%" }) ?? 0;
             }
         }
-    
 
-    private void LoadRole()
+        private void LoadRole()
         {
             string connStr = GlobalClass.connectionString;
 
-
             string query = @"
-                    SELECT [RoleID], [RoleName] 
-                    FROM [Role];";
+            SELECT [RoleID], 
+                   CONCAT(UPPER(LEFT([RoleName], 1)), LOWER(SUBSTRING([RoleName], 2, LEN([RoleName]) - 1))) AS RoleName
+            FROM [Role];";
 
             using (SqlConnection connection = new SqlConnection(connStr))
             {
@@ -245,7 +246,24 @@ namespace InventorySystem.Employees
 
             // Register employee and store image
             RegisterEmployee(employee, imageBytes);
+            ClearInputs();
         }
+
+        private void ClearInputs()
+        {
+            teFirstName.Text = string.Empty;
+            teMiddleName.Text = string.Empty;
+            teLastName.Text = string.Empty;
+            teNameExtension.Text = string.Empty;
+            rdGender.Text = string.Empty;
+            cbCivilStatus.Text = string.Empty;
+            deDateOfBirth.Text = string.Empty;
+            tePhoneNumber.Text = string.Empty;
+            deDateHired.Text = string.Empty;
+            lueRole.Text = string.Empty;
+            mmAddress.Text = string.Empty;
+        }
+
 
 
         //Method ign getting the Gender
