@@ -29,5 +29,10 @@ namespace InventorySystem.Employees
             GlobalMethod.LoadEmployeeData("Cashier", gcCashier);
             GlobalMethod.LoadEmployeeData("Laborer", gcLaborer);
         }
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            new UpdateEmployee().Show(); 
+        }
     }
 }
