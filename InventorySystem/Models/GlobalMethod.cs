@@ -28,6 +28,7 @@ namespace InventorySystem.Models
                    ISNULL(e.NameExtension, '')) AS EmployeeName,
                    FORMAT(e.DateOfBirth, 'MMMM dd, yyyy') AS DateOfBirth,
                    e.Address, 
+                   r.RoleID,
                    UPPER(LEFT(r.RoleName, 1)) + LOWER(SUBSTRING(r.RoleName, 2, LEN(r.RoleName))) AS RoleName,
                    ei.ImageData,
                    CAST(

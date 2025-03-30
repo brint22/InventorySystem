@@ -41,8 +41,8 @@ namespace InventorySystem.Employees
         {
             string employeeID = Convert.ToString(tvEmployee.GetFocusedRowCellValue("EmployeeID"));
 
-            // Fetch missing employee details from the database
-            (string firstName, string middleName, string lastName, string nameExtension) = GetEmployeeDetails(employeeID);
+            // Fetch missing employee details including ImageData
+            (string firstName, string middleName, string lastName, string nameExtension, byte[] imageData) = GetEmployeeDetails(employeeID);
 
             UpdateEmployee form = new UpdateEmployee(employeeID, this);
 
@@ -51,19 +51,13 @@ namespace InventorySystem.Employees
             form.teMiddleName.Text = middleName;
             form.teLastName.Text = lastName;
             form.teNameExtension.Text = nameExtension;
-            string gender = Convert.ToString(tvEmployee.GetFocusedRowCellValue("Gender"));
 
-            if (gender == "Male")
-            {
-                form.rdGender.SelectedIndex = 0;
-            }
-            else if (gender == "Female")
-            {
-                form.rdGender.SelectedIndex = 1;
-            }
+            string gender = Convert.ToString(tvEmployee.GetFocusedRowCellValue("Gender"));
+            form.rdGender.SelectedIndex = (gender == "Male") ? 0 : (gender == "Female") ? 1 : -1;
+
             form.cbCivilStatus.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("CivilStatus"));
             form.tePhoneNumber.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("PhoneNumber"));
-            form.lueRole.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("RoleName"));
+            form.lueRole.EditValue = tvEmployee.GetFocusedRowCellValue("RoleID");
             form.mmAddress.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("Address"));
 
             if (tvEmployee.GetFocusedRowCellValue("DateOfBirth") != DBNull.Value)
@@ -76,15 +70,22 @@ namespace InventorySystem.Employees
                 form.deDateHired.DateTime = Convert.ToDateTime(tvEmployee.GetFocusedRowCellValue("DateHired"));
             }
 
-            // Load image if available
-            form.meEmployeeImagePath.Text = GetImagePathFromTileView("EmployeeImagePath");
+            // Load and display image
+            if (imageData != null && imageData.Length > 0)
+            {
+                using (MemoryStream ms = new MemoryStream(imageData))
+                {
+                    form.peProfile.Image = System.Drawing.Image.FromStream(ms);
+                }
+            }
 
             DialogResult result = form.ShowDialog();
         }
 
-        private (string, string, string, string) GetEmployeeDetails(string employeeID)
+        private (string firstName, string middleName, string lastName, string nameExtension, byte[] imageData) GetEmployeeDetails(string employeeID)
         {
             string firstName = "", middleName = "", lastName = "", nameExtension = "";
+            byte[] imageData = null;
 
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
@@ -92,9 +93,10 @@ namespace InventorySystem.Employees
                 {
                     connection.Open();
                     string query = @"
-                SELECT FirstName, MiddleName, LastName, NameExtension 
-                FROM Employee 
-                WHERE EmployeeID = @EmployeeID";
+            SELECT e.FirstName, e.MiddleName, e.LastName, e.NameExtension, ei.ImageData
+            FROM Employee e
+            LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID
+            WHERE e.EmployeeID = @EmployeeID";
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
@@ -108,6 +110,11 @@ namespace InventorySystem.Employees
                                 middleName = reader["MiddleName"] != DBNull.Value ? reader["MiddleName"].ToString() : "";
                                 lastName = reader["LastName"].ToString();
                                 nameExtension = reader["NameExtension"] != DBNull.Value ? reader["NameExtension"].ToString() : "";
+
+                                if (reader["ImageData"] != DBNull.Value)
+                                {
+                                    imageData = (byte[])reader["ImageData"];
+                                }
                             }
                         }
                     }
@@ -118,8 +125,9 @@ namespace InventorySystem.Employees
                 }
             }
 
-            return (firstName, middleName, lastName, nameExtension);
+            return (firstName, middleName, lastName, nameExtension, imageData);
         }
+
 
 
         private string GetImagePathFromTileView(string columnName)

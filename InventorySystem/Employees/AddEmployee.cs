@@ -282,11 +282,6 @@ namespace InventorySystem.Employees
             return gender;
         }
 
-        private void AddEmployee_Load(object sender, EventArgs e)
-        {
-            LoadRole();
-        }
-
         private int GetRoleID()
         {
             int intRoleID = 0;
@@ -301,6 +296,11 @@ namespace InventorySystem.Employees
                 intRoleID = 0;
             }
             return intRoleID;
+        }
+
+        private void AddEmployee_Load(object sender, EventArgs e)
+        {
+            LoadRole();
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -336,7 +336,7 @@ namespace InventorySystem.Employees
                     }
                 }
             }
-            }
+        }
 
       
     }
