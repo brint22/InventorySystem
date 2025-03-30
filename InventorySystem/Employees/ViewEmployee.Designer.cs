@@ -814,7 +814,7 @@
             this.tab.Location = new System.Drawing.Point(51, 67);
             this.tab.Name = "tab";
             this.tab.SelectedTabPage = this.All;
-            this.tab.Size = new System.Drawing.Size(1775, 673);
+            this.tab.Size = new System.Drawing.Size(1830, 701);
             this.tab.TabIndex = 4;
             this.tab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.All,
@@ -832,17 +832,17 @@
             this.All.Appearance.PageClient.Options.UseBackColor = true;
             this.All.Controls.Add(this.gcEmployee);
             this.All.Name = "All";
-            this.All.Size = new System.Drawing.Size(1773, 635);
+            this.All.Size = new System.Drawing.Size(1828, 663);
             this.All.Text = "All";
             // 
             // gcEmployee
             // 
-            this.gcEmployee.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gcEmployee.Location = new System.Drawing.Point(33, 28);
+            this.gcEmployee.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
+            this.gcEmployee.Location = new System.Drawing.Point(34, 4);
             this.gcEmployee.MainView = this.tvEmployee;
-            this.gcEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.gcEmployee.Name = "gcEmployee";
-            this.gcEmployee.Size = new System.Drawing.Size(1707, 576);
+            this.gcEmployee.Size = new System.Drawing.Size(1761, 640);
             this.gcEmployee.TabIndex = 2;
             this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tvEmployee});
@@ -869,7 +869,7 @@
             this.tvEmployee.OptionsTiles.IndentBetweenGroups = 100;
             this.tvEmployee.OptionsTiles.IndentBetweenItems = 16;
             this.tvEmployee.OptionsTiles.ItemPadding = new System.Windows.Forms.Padding(30);
-            this.tvEmployee.OptionsTiles.ItemSize = new System.Drawing.Size(600, 600);
+            this.tvEmployee.OptionsTiles.ItemSize = new System.Drawing.Size(500, 600);
             this.tvEmployee.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.tvEmployee.OptionsTiles.Padding = new System.Windows.Forms.Padding(30);
             this.tvEmployee.OptionsTiles.RowCount = 0;
@@ -1068,15 +1068,15 @@
             this.Manager.Appearance.HeaderActive.Options.UseFont = true;
             this.Manager.Controls.Add(this.gcManager);
             this.Manager.Name = "Manager";
-            this.Manager.Size = new System.Drawing.Size(1773, 683);
+            this.Manager.Size = new System.Drawing.Size(1828, 708);
             this.Manager.Text = "Manager";
             // 
             // gcManager
             // 
-            this.gcManager.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcManager.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gcManager.Location = new System.Drawing.Point(33, 28);
             this.gcManager.MainView = this.tileView1;
-            this.gcManager.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcManager.Margin = new System.Windows.Forms.Padding(4);
             this.gcManager.Name = "gcManager";
             this.gcManager.Size = new System.Drawing.Size(1707, 642);
             this.gcManager.TabIndex = 3;
@@ -1304,15 +1304,15 @@
             this.Cashier.Appearance.HeaderActive.Options.UseFont = true;
             this.Cashier.Controls.Add(this.gcCashier);
             this.Cashier.Name = "Cashier";
-            this.Cashier.Size = new System.Drawing.Size(1773, 683);
+            this.Cashier.Size = new System.Drawing.Size(1828, 708);
             this.Cashier.Text = "Cashier";
             // 
             // gcCashier
             // 
-            this.gcCashier.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcCashier.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gcCashier.Location = new System.Drawing.Point(33, 28);
             this.gcCashier.MainView = this.tileView2;
-            this.gcCashier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcCashier.Margin = new System.Windows.Forms.Padding(4);
             this.gcCashier.Name = "gcCashier";
             this.gcCashier.Size = new System.Drawing.Size(1707, 642);
             this.gcCashier.TabIndex = 4;
@@ -1540,15 +1540,15 @@
             this.Laborer.Appearance.HeaderActive.Options.UseFont = true;
             this.Laborer.Controls.Add(this.gcLaborer);
             this.Laborer.Name = "Laborer";
-            this.Laborer.Size = new System.Drawing.Size(1773, 683);
+            this.Laborer.Size = new System.Drawing.Size(1828, 708);
             this.Laborer.Text = "Laborer";
             // 
             // gcLaborer
             // 
-            this.gcLaborer.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcLaborer.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gcLaborer.Location = new System.Drawing.Point(33, 20);
             this.gcLaborer.MainView = this.tileView3;
-            this.gcLaborer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcLaborer.Margin = new System.Windows.Forms.Padding(4);
             this.gcLaborer.Name = "gcLaborer";
             this.gcLaborer.Size = new System.Drawing.Size(1707, 642);
             this.gcLaborer.TabIndex = 5;
@@ -1782,7 +1782,7 @@
             // 
             this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(1602, 44);
+            this.BtnUpdate.Location = new System.Drawing.Point(1662, 43);
             this.BtnUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(103, 40);
@@ -1794,7 +1794,7 @@
             // 
             this.BtnDelete.Appearance.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.Appearance.Options.UseFont = true;
-            this.BtnDelete.Location = new System.Drawing.Point(1720, 44);
+            this.BtnDelete.Location = new System.Drawing.Point(1778, 43);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(103, 40);
@@ -1807,14 +1807,14 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1857, 875);
+            this.ClientSize = new System.Drawing.Size(1940, 778);
             this.ControlBox = false;
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.tab);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ViewEmployee.IconOptions.Image")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewEmployee";
