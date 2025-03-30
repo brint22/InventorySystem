@@ -49,7 +49,16 @@ namespace InventorySystem.Employees
             form.teMiddleName.Text = middleName;
             form.teLastName.Text = lastName;
             form.teNameExtension.Text = nameExtension;
-            form.rdGender.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("Gender"));
+            string gender = Convert.ToString(tvEmployee.GetFocusedRowCellValue("Gender"));
+
+            if (gender == "Male")
+            {
+                form.rdGender.SelectedIndex = 0;
+            }
+            else if (gender == "Female")
+            {
+                form.rdGender.SelectedIndex = 1;
+            }
             form.cbCivilStatus.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("CivilStatus"));
             form.tePhoneNumber.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("PhoneNumber"));
             form.lueRole.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("RoleName"));
