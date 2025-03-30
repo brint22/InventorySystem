@@ -38,13 +38,17 @@ namespace InventorySystem.Employees
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
             string employeeID = Convert.ToString(tvEmployee.GetFocusedRowCellValue("EmployeeID"));
+
+            // Fetch missing employee details from the database
+            (string firstName, string middleName, string lastName, string nameExtension) = GetEmployeeDetails(employeeID);
+
             UpdateEmployee form = new UpdateEmployee(employeeID, this);
 
-            form.teEmployeeID.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("EmployeeID"));
-            form.teFirstName.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("FirstName"));
-            form.teMiddleName.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("MiddleName"));
-            form.teLastName.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("LastName"));
-            form.teNameExtension.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("NameExtension"));
+            form.teEmployeeID.Text = employeeID;
+            form.teFirstName.Text = firstName;
+            form.teMiddleName.Text = middleName;
+            form.teLastName.Text = lastName;
+            form.teNameExtension.Text = nameExtension;
             form.cbCivilStatus.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("CivilStatus"));
             form.tePhoneNumber.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("PhoneNumber"));
             form.lueRole.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("RoleName"));
@@ -65,6 +69,46 @@ namespace InventorySystem.Employees
 
             DialogResult result = form.ShowDialog();
         }
+
+        private (string, string, string, string) GetEmployeeDetails(string employeeID)
+        {
+            string firstName = "", middleName = "", lastName = "", nameExtension = "";
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = @"
+                SELECT FirstName, MiddleName, LastName, NameExtension 
+                FROM Employee 
+                WHERE EmployeeID = @EmployeeID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@EmployeeID", employeeID);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                firstName = reader["FirstName"].ToString();
+                                middleName = reader["MiddleName"] != DBNull.Value ? reader["MiddleName"].ToString() : "";
+                                lastName = reader["LastName"].ToString();
+                                nameExtension = reader["NameExtension"] != DBNull.Value ? reader["NameExtension"].ToString() : "";
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error fetching employee details: " + ex.Message);
+                }
+            }
+
+            return (firstName, middleName, lastName, nameExtension);
+        }
+
 
         private string GetImagePathFromTileView(string columnName)
         {
