@@ -20,6 +20,8 @@ namespace InventorySystem.Employees
     public partial class ViewEmployee : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public static ViewEmployee instance;
+       
+
         public ViewEmployee()
         {
             instance = this;
@@ -129,7 +131,78 @@ namespace InventorySystem.Employees
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
+            int focusedRowHandle = tvEmployee.FocusedRowHandle;
 
+            if (focusedRowHandle >= 0)
+            {
+                // Get the EmployeeID of the selected row
+                string employeeID = Convert.ToString(tvEmployee.GetFocusedRowCellValue("EmployeeID"));
+
+                // Confirm deletion
+                DialogResult confirmDelete = MessageBox.Show(
+                    "Are you sure you want to delete this employee record?",
+                    "Confirm Deletion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (confirmDelete == DialogResult.Yes)
+                {
+                    // Call delete function
+                    DeleteEmployee(employeeID);
+
+                    // Refresh data after deletion
+                    GlobalMethod.LoadEmployeeData("All", gcEmployee);
+
+                    // Adjust focus after deletion
+                    int newFocusedRowHandle = (focusedRowHandle >= tvEmployee.DataRowCount) ?
+                                              tvEmployee.DataRowCount - 1 :
+                                              focusedRowHandle;
+
+                    if (newFocusedRowHandle >= 0)
+                    {
+                        tvEmployee.FocusedRowHandle = newFocusedRowHandle;
+                    }
+
+                  
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee to delete.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DeleteEmployee(string employeeID)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+                {
+                    string query = "DELETE FROM Employee WHERE EmployeeID = @EmployeeID";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@EmployeeID", employeeID);
+
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Employee record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No matching employee found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
+    
 }
