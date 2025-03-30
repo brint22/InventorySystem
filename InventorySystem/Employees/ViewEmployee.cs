@@ -41,10 +41,15 @@ namespace InventorySystem.Employees
             UpdateEmployee form = new UpdateEmployee(employeeID, this);
 
             form.teEmployeeID.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("EmployeeID"));
-            form.teFirstName.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("FirstName"));
-            form.teMiddleName.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("MiddleName"));
-            form.teLastName.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("LastName"));
-            form.teNameExtension.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("NameExtension"));
+            string fullName = Convert.ToString(tvEmployee.GetFocusedRowCellValue("EmployeeName"));
+            if (!string.IsNullOrEmpty(fullName))
+            {
+                string[] nameParts = fullName.Split(' ');
+                form.teFirstName.Text = nameParts.Length > 0 ? nameParts[0] : string.Empty;
+                form.teMiddleName.Text = nameParts.Length > 1 ? nameParts[1] : string.Empty;
+                form.teLastName.Text = nameParts.Length > 2 ? nameParts[2] : string.Empty;
+                form.teNameExtension.Text = nameParts.Length > 3 ? nameParts[3] : string.Empty;
+            }
             form.cbCivilStatus.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("CivilStatus"));
             form.tePhoneNumber.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("PhoneNumber"));
             form.lueRole.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("RoleName"));
