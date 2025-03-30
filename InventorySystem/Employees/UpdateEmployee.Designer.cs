@@ -55,6 +55,7 @@
             this.lueRole = new DevExpress.XtraEditors.LookUpEdit();
             this.teEmployeeID = new DevExpress.XtraEditors.TextEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.meEmployeeImagePath = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.teFirstName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMiddleName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teLastName.Properties)).BeginInit();
@@ -70,43 +71,49 @@
             ((System.ComponentModel.ISupportInitialize)(this.deDateHired.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teEmployeeID.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.meEmployeeImagePath.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // teFirstName
             // 
-            this.teFirstName.Location = new System.Drawing.Point(345, 213);
+            this.teFirstName.Location = new System.Drawing.Point(268, 179);
+            this.teFirstName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.teFirstName.Name = "teFirstName";
             this.teFirstName.Properties.AutoHeight = false;
-            this.teFirstName.Size = new System.Drawing.Size(244, 40);
+            this.teFirstName.Size = new System.Drawing.Size(224, 34);
             this.teFirstName.TabIndex = 1;
             // 
             // teMiddleName
             // 
-            this.teMiddleName.Location = new System.Drawing.Point(661, 213);
+            this.teMiddleName.Location = new System.Drawing.Point(514, 179);
+            this.teMiddleName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.teMiddleName.Name = "teMiddleName";
             this.teMiddleName.Properties.AutoHeight = false;
-            this.teMiddleName.Size = new System.Drawing.Size(244, 40);
+            this.teMiddleName.Size = new System.Drawing.Size(190, 34);
             this.teMiddleName.TabIndex = 2;
             // 
             // teLastName
             // 
-            this.teLastName.Location = new System.Drawing.Point(974, 213);
+            this.teLastName.Location = new System.Drawing.Point(729, 179);
+            this.teLastName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.teLastName.Name = "teLastName";
             this.teLastName.Properties.AutoHeight = false;
-            this.teLastName.Size = new System.Drawing.Size(244, 40);
+            this.teLastName.Size = new System.Drawing.Size(190, 34);
             this.teLastName.TabIndex = 3;
             // 
             // teNameExtension
             // 
-            this.teNameExtension.Location = new System.Drawing.Point(1274, 213);
+            this.teNameExtension.Location = new System.Drawing.Point(942, 178);
+            this.teNameExtension.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.teNameExtension.Name = "teNameExtension";
             this.teNameExtension.Properties.AutoHeight = false;
-            this.teNameExtension.Size = new System.Drawing.Size(112, 40);
+            this.teNameExtension.Size = new System.Drawing.Size(114, 34);
             this.teNameExtension.TabIndex = 8;
             // 
             // cbCivilStatus
             // 
-            this.cbCivilStatus.Location = new System.Drawing.Point(661, 343);
+            this.cbCivilStatus.Location = new System.Drawing.Point(514, 289);
+            this.cbCivilStatus.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbCivilStatus.Name = "cbCivilStatus";
             this.cbCivilStatus.Properties.AutoHeight = false;
             this.cbCivilStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -116,25 +123,25 @@
             "Married",
             "Widowed",
             "Separated"});
-            this.cbCivilStatus.Size = new System.Drawing.Size(244, 40);
+            this.cbCivilStatus.Size = new System.Drawing.Size(190, 34);
             this.cbCivilStatus.TabIndex = 11;
             // 
             // deDateOfBirth
             // 
             this.deDateOfBirth.EditValue = null;
-            this.deDateOfBirth.Location = new System.Drawing.Point(974, 343);
+            this.deDateOfBirth.Location = new System.Drawing.Point(729, 289);
+            this.deDateOfBirth.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.deDateOfBirth.Name = "deDateOfBirth";
             this.deDateOfBirth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deDateOfBirth.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deDateOfBirth.Size = new System.Drawing.Size(244, 40);
+            this.deDateOfBirth.Size = new System.Drawing.Size(190, 34);
             this.deDateOfBirth.TabIndex = 12;
             // 
             // rdGender
             // 
-            this.rdGender.Location = new System.Drawing.Point(345, 344);
-            this.rdGender.Margin = new System.Windows.Forms.Padding(4);
+            this.rdGender.Location = new System.Drawing.Point(268, 290);
             this.rdGender.Name = "rdGender";
             this.rdGender.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.rdGender.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -144,29 +151,31 @@
             this.rdGender.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Male"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Female")});
-            this.rdGender.Size = new System.Drawing.Size(244, 51);
+            this.rdGender.Size = new System.Drawing.Size(190, 43);
             this.rdGender.TabIndex = 37;
             // 
             // tePhoneNumber
             // 
-            this.tePhoneNumber.Location = new System.Drawing.Point(345, 482);
+            this.tePhoneNumber.Location = new System.Drawing.Point(268, 406);
+            this.tePhoneNumber.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tePhoneNumber.Name = "tePhoneNumber";
             this.tePhoneNumber.Properties.AutoHeight = false;
-            this.tePhoneNumber.Size = new System.Drawing.Size(244, 40);
+            this.tePhoneNumber.Size = new System.Drawing.Size(190, 34);
             this.tePhoneNumber.TabIndex = 38;
             // 
             // mmAddress
             // 
-            this.mmAddress.Location = new System.Drawing.Point(345, 608);
+            this.mmAddress.Location = new System.Drawing.Point(268, 500);
+            this.mmAddress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.mmAddress.Name = "mmAddress";
-            this.mmAddress.Size = new System.Drawing.Size(1049, 96);
+            this.mmAddress.Size = new System.Drawing.Size(816, 81);
             this.mmAddress.TabIndex = 39;
             // 
             // peProfile
             // 
             this.peProfile.EditValue = ((object)(resources.GetObject("peProfile.EditValue")));
-            this.peProfile.Location = new System.Drawing.Point(55, 125);
-            this.peProfile.Margin = new System.Windows.Forms.Padding(5);
+            this.peProfile.Location = new System.Drawing.Point(45, 101);
+            this.peProfile.Margin = new System.Windows.Forms.Padding(4);
             this.peProfile.Name = "peProfile";
             this.peProfile.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.peProfile.Properties.Appearance.Options.UseBackColor = true;
@@ -174,7 +183,7 @@
             this.peProfile.Properties.OptionsMask.MaskType = DevExpress.XtraEditors.Controls.PictureEditMaskType.Circle;
             this.peProfile.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.peProfile.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.peProfile.Size = new System.Drawing.Size(225, 210);
+            this.peProfile.Size = new System.Drawing.Size(175, 177);
             this.peProfile.TabIndex = 40;
             // 
             // btnBrowse
@@ -183,10 +192,10 @@
             this.btnBrowse.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBrowse.Appearance.Options.UseBackColor = true;
             this.btnBrowse.Appearance.Options.UseFont = true;
-            this.btnBrowse.Location = new System.Drawing.Point(101, 345);
-            this.btnBrowse.Margin = new System.Windows.Forms.Padding(5);
+            this.btnBrowse.Location = new System.Drawing.Point(81, 287);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(135, 43);
+            this.btnBrowse.Size = new System.Drawing.Size(105, 36);
             this.btnBrowse.TabIndex = 41;
             this.btnBrowse.Text = "BROWSE";
             // 
@@ -194,10 +203,10 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(1274, 184);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl4.Location = new System.Drawing.Point(942, 152);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(144, 24);
+            this.labelControl4.Size = new System.Drawing.Size(114, 19);
             this.labelControl4.TabIndex = 50;
             this.labelControl4.Text = "Name Extension";
             // 
@@ -205,10 +214,10 @@
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(974, 184);
-            this.labelControl5.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl5.Location = new System.Drawing.Point(738, 152);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(95, 24);
+            this.labelControl5.Size = new System.Drawing.Size(74, 19);
             this.labelControl5.TabIndex = 51;
             this.labelControl5.Text = "Last Name";
             // 
@@ -216,10 +225,10 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(345, 181);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl1.Location = new System.Drawing.Point(268, 152);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(96, 24);
+            this.labelControl1.Size = new System.Drawing.Size(76, 19);
             this.labelControl1.TabIndex = 47;
             this.labelControl1.Text = "First Name";
             // 
@@ -227,10 +236,10 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(661, 184);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl2.Location = new System.Drawing.Point(514, 153);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(116, 24);
+            this.labelControl2.Size = new System.Drawing.Size(92, 19);
             this.labelControl2.TabIndex = 49;
             this.labelControl2.Text = "Middle Name";
             // 
@@ -238,10 +247,10 @@
             // 
             this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Location = new System.Drawing.Point(661, 311);
-            this.labelControl10.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl10.Location = new System.Drawing.Point(514, 263);
+            this.labelControl10.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(99, 24);
+            this.labelControl10.Size = new System.Drawing.Size(78, 19);
             this.labelControl10.TabIndex = 56;
             this.labelControl10.Text = "Civil Status";
             // 
@@ -249,10 +258,10 @@
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(345, 576);
-            this.labelControl7.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl7.Location = new System.Drawing.Point(268, 473);
+            this.labelControl7.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(70, 24);
+            this.labelControl7.Size = new System.Drawing.Size(57, 19);
             this.labelControl7.TabIndex = 53;
             this.labelControl7.Text = "Address";
             // 
@@ -260,10 +269,10 @@
             // 
             this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Location = new System.Drawing.Point(345, 450);
-            this.labelControl11.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl11.Location = new System.Drawing.Point(268, 379);
+            this.labelControl11.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(131, 24);
+            this.labelControl11.Size = new System.Drawing.Size(106, 19);
             this.labelControl11.TabIndex = 57;
             this.labelControl11.Text = "Phone Number";
             // 
@@ -271,10 +280,10 @@
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(974, 311);
-            this.labelControl6.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl6.Location = new System.Drawing.Point(729, 263);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(114, 24);
+            this.labelControl6.Size = new System.Drawing.Size(89, 19);
             this.labelControl6.TabIndex = 52;
             this.labelControl6.Text = "Date of Birth";
             // 
@@ -282,10 +291,10 @@
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(661, 450);
-            this.labelControl9.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl9.Location = new System.Drawing.Point(514, 379);
+            this.labelControl9.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(97, 24);
+            this.labelControl9.Size = new System.Drawing.Size(75, 19);
             this.labelControl9.TabIndex = 55;
             this.labelControl9.Text = "Date Hired";
             // 
@@ -293,10 +302,10 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(974, 450);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl3.Location = new System.Drawing.Point(729, 379);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(39, 24);
+            this.labelControl3.Size = new System.Drawing.Size(31, 19);
             this.labelControl3.TabIndex = 48;
             this.labelControl3.Text = "Role";
             // 
@@ -304,29 +313,30 @@
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Location = new System.Drawing.Point(345, 311);
-            this.labelControl8.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl8.Location = new System.Drawing.Point(268, 262);
+            this.labelControl8.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(64, 24);
+            this.labelControl8.Size = new System.Drawing.Size(51, 19);
             this.labelControl8.TabIndex = 54;
             this.labelControl8.Text = "Gender";
             // 
             // deDateHired
             // 
             this.deDateHired.EditValue = null;
-            this.deDateHired.Location = new System.Drawing.Point(661, 482);
+            this.deDateHired.Location = new System.Drawing.Point(514, 406);
+            this.deDateHired.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.deDateHired.Name = "deDateHired";
             this.deDateHired.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deDateHired.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deDateHired.Size = new System.Drawing.Size(244, 40);
+            this.deDateHired.Size = new System.Drawing.Size(190, 34);
             this.deDateHired.TabIndex = 58;
             // 
             // lueRole
             // 
-            this.lueRole.Location = new System.Drawing.Point(974, 482);
-            this.lueRole.Margin = new System.Windows.Forms.Padding(5);
+            this.lueRole.Location = new System.Drawing.Point(729, 403);
+            this.lueRole.Margin = new System.Windows.Forms.Padding(4);
             this.lueRole.Name = "lueRole";
             this.lueRole.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.lueRole.Properties.Appearance.Options.UseFont = true;
@@ -334,36 +344,49 @@
             this.lueRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueRole.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "Role ID", 26, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "", 26, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "Role ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "")});
             this.lueRole.Properties.NullText = "";
-            this.lueRole.Size = new System.Drawing.Size(244, 40);
+            this.lueRole.Size = new System.Drawing.Size(190, 34);
             this.lueRole.TabIndex = 59;
             // 
             // teEmployeeID
             // 
-            this.teEmployeeID.Location = new System.Drawing.Point(345, 109);
+            this.teEmployeeID.Location = new System.Drawing.Point(268, 92);
+            this.teEmployeeID.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.teEmployeeID.Name = "teEmployeeID";
             this.teEmployeeID.Properties.AutoHeight = false;
-            this.teEmployeeID.Size = new System.Drawing.Size(244, 40);
+            this.teEmployeeID.Properties.ReadOnly = true;
+            this.teEmployeeID.Size = new System.Drawing.Size(224, 34);
             this.teEmployeeID.TabIndex = 60;
             // 
             // labelControl12
             // 
             this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl12.Appearance.Options.UseFont = true;
-            this.labelControl12.Location = new System.Drawing.Point(345, 77);
-            this.labelControl12.Margin = new System.Windows.Forms.Padding(5);
+            this.labelControl12.Location = new System.Drawing.Point(268, 65);
+            this.labelControl12.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(114, 24);
+            this.labelControl12.Size = new System.Drawing.Size(91, 19);
             this.labelControl12.TabIndex = 61;
             this.labelControl12.Text = "Employee ID";
             // 
+            // meEmployeeImagePath
+            // 
+            this.meEmployeeImagePath.Location = new System.Drawing.Point(54, 355);
+            this.meEmployeeImagePath.Name = "meEmployeeImagePath";
+            this.meEmployeeImagePath.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.meEmployeeImagePath.Properties.Appearance.Options.UseFont = true;
+            this.meEmployeeImagePath.Size = new System.Drawing.Size(175, 137);
+            this.meEmployeeImagePath.TabIndex = 62;
+            this.meEmployeeImagePath.Visible = false;
+            // 
             // UpdateEmployee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1473, 753);
+            this.ClientSize = new System.Drawing.Size(1119, 634);
+            this.Controls.Add(this.meEmployeeImagePath);
             this.Controls.Add(this.labelControl12);
             this.Controls.Add(this.teEmployeeID);
             this.Controls.Add(this.lueRole);
@@ -390,9 +413,12 @@
             this.Controls.Add(this.teLastName);
             this.Controls.Add(this.teMiddleName);
             this.Controls.Add(this.teFirstName);
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("UpdateEmployee.IconOptions.Image")));
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MaximizeBox = false;
             this.Name = "UpdateEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Update Employee";
+            this.Text = "Inventory System | Update Employee";
             ((System.ComponentModel.ISupportInitialize)(this.teFirstName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMiddleName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teLastName.Properties)).EndInit();
@@ -408,21 +434,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.deDateHired.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teEmployeeID.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.meEmployeeImagePath.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private DevExpress.XtraEditors.TextEdit teFirstName;
-        private DevExpress.XtraEditors.TextEdit teLastName;
-        private DevExpress.XtraEditors.TextEdit teNameExtension;
-        private DevExpress.XtraEditors.ComboBoxEdit cbCivilStatus;
-        private DevExpress.XtraEditors.DateEdit deDateOfBirth;
-        private DevExpress.XtraEditors.RadioGroup rdGender;
-        private DevExpress.XtraEditors.TextEdit tePhoneNumber;
-        private DevExpress.XtraEditors.MemoEdit mmAddress;
-        private DevExpress.XtraEditors.PictureEdit peProfile;
         private DevExpress.XtraEditors.SimpleButton btnBrowse;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl5;
@@ -435,10 +453,20 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.DateEdit deDateHired;
-        private DevExpress.XtraEditors.TextEdit teMiddleName;
-        private DevExpress.XtraEditors.LookUpEdit lueRole;
-        private DevExpress.XtraEditors.TextEdit teEmployeeID;
         private DevExpress.XtraEditors.LabelControl labelControl12;
+        public DevExpress.XtraEditors.TextEdit teFirstName;
+        public DevExpress.XtraEditors.TextEdit teLastName;
+        public DevExpress.XtraEditors.TextEdit teNameExtension;
+        public DevExpress.XtraEditors.ComboBoxEdit cbCivilStatus;
+        public DevExpress.XtraEditors.DateEdit deDateOfBirth;
+        public DevExpress.XtraEditors.RadioGroup rdGender;
+        public DevExpress.XtraEditors.TextEdit tePhoneNumber;
+        public DevExpress.XtraEditors.MemoEdit mmAddress;
+        public DevExpress.XtraEditors.PictureEdit peProfile;
+        public DevExpress.XtraEditors.DateEdit deDateHired;
+        public DevExpress.XtraEditors.TextEdit teMiddleName;
+        public DevExpress.XtraEditors.LookUpEdit lueRole;
+        public DevExpress.XtraEditors.MemoEdit meEmployeeImagePath;
+        public DevExpress.XtraEditors.TextEdit teEmployeeID;
     }
 }

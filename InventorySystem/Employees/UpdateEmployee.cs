@@ -13,9 +13,14 @@ namespace InventorySystem.Employees
 {
     public partial class UpdateEmployee : DevExpress.XtraEditors.XtraForm
     {
-        public UpdateEmployee()
+        public string EmployeeID { get; set; }
+
+        private ViewEmployee viewEmployee;
+        public UpdateEmployee(string employeeID, ViewEmployee viewEmployee)
         {
             InitializeComponent();
+            this.EmployeeID = employeeID;
+            this.viewEmployee = viewEmployee;
         }
     }
 }
