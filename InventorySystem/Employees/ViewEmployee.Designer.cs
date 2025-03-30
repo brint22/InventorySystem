@@ -331,7 +331,7 @@
             // 
             this.DateOfBirth.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
             this.DateOfBirth.AppearanceHeader.Options.UseFont = true;
-            this.DateOfBirth.Caption = "Date of Birth";
+            this.DateOfBirth.Caption = "Birthdate";
             this.DateOfBirth.FieldName = "DateOfBirth";
             this.DateOfBirth.MinWidth = 24;
             this.DateOfBirth.Name = "DateOfBirth";
@@ -370,7 +370,7 @@
             // 
             this.PhoneNumber.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
             this.PhoneNumber.AppearanceHeader.Options.UseFont = true;
-            this.PhoneNumber.Caption = "Phone Number";
+            this.PhoneNumber.Caption = "Contact";
             this.PhoneNumber.FieldName = "PhoneNumber";
             this.PhoneNumber.MinWidth = 25;
             this.PhoneNumber.Name = "PhoneNumber";
@@ -1068,7 +1068,7 @@
             this.Manager.Appearance.HeaderActive.Options.UseFont = true;
             this.Manager.Controls.Add(this.gcManager);
             this.Manager.Name = "Manager";
-            this.Manager.Size = new System.Drawing.Size(1828, 708);
+            this.Manager.Size = new System.Drawing.Size(1828, 663);
             this.Manager.Text = "Manager";
             // 
             // gcManager
@@ -1304,7 +1304,7 @@
             this.Cashier.Appearance.HeaderActive.Options.UseFont = true;
             this.Cashier.Controls.Add(this.gcCashier);
             this.Cashier.Name = "Cashier";
-            this.Cashier.Size = new System.Drawing.Size(1828, 708);
+            this.Cashier.Size = new System.Drawing.Size(1828, 663);
             this.Cashier.Text = "Cashier";
             // 
             // gcCashier
@@ -1540,7 +1540,7 @@
             this.Laborer.Appearance.HeaderActive.Options.UseFont = true;
             this.Laborer.Controls.Add(this.gcLaborer);
             this.Laborer.Name = "Laborer";
-            this.Laborer.Size = new System.Drawing.Size(1828, 708);
+            this.Laborer.Size = new System.Drawing.Size(1828, 663);
             this.Laborer.Text = "Laborer";
             // 
             // gcLaborer
@@ -1807,7 +1807,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1940, 778);
+            this.ClientSize = new System.Drawing.Size(1940, 773);
             this.ControlBox = false;
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnUpdate);
