@@ -49,6 +49,7 @@ namespace InventorySystem.Employees
             form.teMiddleName.Text = middleName;
             form.teLastName.Text = lastName;
             form.teNameExtension.Text = nameExtension;
+            form.rdGender.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("Gender"));
             form.cbCivilStatus.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("CivilStatus"));
             form.tePhoneNumber.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("PhoneNumber"));
             form.lueRole.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("RoleName"));
@@ -117,5 +118,9 @@ namespace InventorySystem.Employees
                    : string.Empty;
         }
 
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
