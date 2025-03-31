@@ -19,8 +19,8 @@ namespace InventorySystem.Models
             {
                 try
                 {
-                    connection.Open();
-                    string query = @"
+                   connection.Open();
+                   string query = @"
                    SELECT e.EmployeeID, 
                    (e.FirstName + ' ' + 
                    ISNULL(e.MiddleName + ' ', '') +
