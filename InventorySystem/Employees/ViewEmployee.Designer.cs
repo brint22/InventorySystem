@@ -1800,7 +1800,7 @@
             // 
             this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(1529, 38);
+            this.BtnUpdate.Location = new System.Drawing.Point(1538, 39);
             this.BtnUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(103, 39);

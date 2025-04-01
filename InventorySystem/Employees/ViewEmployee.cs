@@ -41,7 +41,7 @@ namespace InventorySystem.Employees
         {
             string employeeID = Convert.ToString(tvEmployee.GetFocusedRowCellValue("EmployeeID"));
 
-            // Fetch missing employee details including ImageData
+            // Fetch employee details, including ImageData
             (string firstName, string middleName, string lastName, string nameExtension, byte[] imageData) = GetEmployeeDetails(employeeID);
 
             UpdateEmployee form = new UpdateEmployee(employeeID, this);
@@ -70,15 +70,35 @@ namespace InventorySystem.Employees
                 form.deDateHired.DateTime = Convert.ToDateTime(tvEmployee.GetFocusedRowCellValue("DateHired"));
             }
 
-            // Load and display image
+            // Load the image into the form if imageData exists
             if (imageData != null && imageData.Length > 0)
             {
-                using (MemoryStream ms = new MemoryStream(imageData))
+                try
                 {
-                    form.peProfile.Image = System.Drawing.Image.FromStream(ms);
+                    // Set the image path directly in the text box (assuming imageData contains the path)
+                    string imagePath = Convert.ToBase64String(imageData);  // Assuming imageData contains the path as a Base64 string
+
+                    // Set the image path in the text box
+                    form.meEmployeeImagePath.Text = imagePath;
+
+                    // Optionally display the image itself
+                    using (MemoryStream ms = new MemoryStream(imageData))
+                    {
+                        form.peProfile.Image = System.Drawing.Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading image: {ex.Message}", "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            else
+            {
+                // If no imageData, clear the image path text box
+                form.meEmployeeImagePath.Text = string.Empty;
+            }
 
+            // Show the form and wait for user action
             DialogResult result = form.ShowDialog();
         }
 
@@ -93,10 +113,10 @@ namespace InventorySystem.Employees
                 {
                     connection.Open();
                     string query = @"
-            SELECT e.FirstName, e.MiddleName, e.LastName, e.NameExtension, ei.ImageData
-            FROM Employee e
-            LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID
-            WHERE e.EmployeeID = @EmployeeID";
+    SELECT e.FirstName, e.MiddleName, e.LastName, e.NameExtension, ei.ImageData
+    FROM Employee e
+    LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID
+    WHERE e.EmployeeID = @EmployeeID";
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
@@ -111,6 +131,7 @@ namespace InventorySystem.Employees
                                 lastName = reader["LastName"].ToString();
                                 nameExtension = reader["NameExtension"] != DBNull.Value ? reader["NameExtension"].ToString() : "";
 
+                                // Check for ImageData
                                 if (reader["ImageData"] != DBNull.Value)
                                 {
                                     imageData = (byte[])reader["ImageData"];
@@ -127,7 +148,6 @@ namespace InventorySystem.Employees
 
             return (firstName, middleName, lastName, nameExtension, imageData);
         }
-
 
 
         private string GetImagePathFromTileView(string columnName)
