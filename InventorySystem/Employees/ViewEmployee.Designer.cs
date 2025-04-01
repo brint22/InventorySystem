@@ -816,7 +816,7 @@
             this.tab.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.tab.Name = "tab";
             this.tab.SelectedTabPage = this.All;
-            this.tab.Size = new System.Drawing.Size(1696, 857);
+            this.tab.Size = new System.Drawing.Size(1696, 853);
             this.tab.TabIndex = 4;
             this.tab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.All,
@@ -835,7 +835,7 @@
             this.All.Controls.Add(this.gcEmployee);
             this.All.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.All.Name = "All";
-            this.All.Size = new System.Drawing.Size(1694, 819);
+            this.All.Size = new System.Drawing.Size(1694, 815);
             this.All.Text = "All";
             // 
             // gcEmployee
@@ -845,7 +845,7 @@
             this.gcEmployee.MainView = this.tvEmployee;
             this.gcEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gcEmployee.Name = "gcEmployee";
-            this.gcEmployee.Size = new System.Drawing.Size(1626, 767);
+            this.gcEmployee.Size = new System.Drawing.Size(1626, 771);
             this.gcEmployee.TabIndex = 2;
             this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tvEmployee});
@@ -1800,7 +1800,7 @@
             // 
             this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(1662, 43);
+            this.BtnUpdate.Location = new System.Drawing.Point(1529, 38);
             this.BtnUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(103, 39);
@@ -1812,7 +1812,7 @@
             // 
             this.BtnDelete.Appearance.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.Appearance.Options.UseFont = true;
-            this.BtnDelete.Location = new System.Drawing.Point(1778, 43);
+            this.BtnDelete.Location = new System.Drawing.Point(1645, 38);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(103, 39);
@@ -1826,7 +1826,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1815, 969);
+            this.ClientSize = new System.Drawing.Size(1815, 1026);
             this.ControlBox = false;
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnUpdate);
