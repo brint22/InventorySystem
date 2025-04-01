@@ -381,7 +381,6 @@
             this.meEmployeeImagePath.Properties.Appearance.Options.UseFont = true;
             this.meEmployeeImagePath.Size = new System.Drawing.Size(175, 137);
             this.meEmployeeImagePath.TabIndex = 62;
-            this.meEmployeeImagePath.Visible = false;
             // 
             // BtnSubmit
             // 

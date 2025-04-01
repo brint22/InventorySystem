@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
 using System.IO;
+using System.Drawing;
 
 namespace InventorySystem.Employees
 {
@@ -68,6 +69,12 @@ namespace InventorySystem.Employees
 
         private void UpdateEmployeeInformation(Employee employees, byte[] imageBytes)
         {
+            if (employees == null || string.IsNullOrWhiteSpace(employees.EmployeeID))
+            {
+                MessageBox.Show("Employee details cannot be null or EmployeeID is invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
                 connection.Open();
@@ -75,16 +82,11 @@ namespace InventorySystem.Employees
                 {
                     try
                     {
-                        // Validate input
-                        if (employees == null)
-                        {
-                            MessageBox.Show("Employee details cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        string employeeID = employees.EmployeeID.Trim(); // Trim to remove extra spaces
 
                         // Check if employee exists
                         string checkQuery = "SELECT COUNT(*) FROM Employee WHERE EmployeeID = @EmployeeID";
-                        int employeeExists = connection.ExecuteScalar<int>(checkQuery, new { employees.EmployeeID }, transaction);
+                        int employeeExists = connection.ExecuteScalar<int>(checkQuery, new { EmployeeID = employeeID }, transaction);
 
                         if (employeeExists == 0)
                         {
@@ -92,56 +94,57 @@ namespace InventorySystem.Employees
                             return;
                         }
 
-                        int imageID = 0; // Default ImageID
+                        int imageID = connection.ExecuteScalar<int>("SELECT ImageID FROM Employee WHERE EmployeeID = @EmployeeID",
+                            new { EmployeeID = employeeID }, transaction);
 
-                        // If a new image is provided, update EmployeeImage table
+                        // If a new image is provided, update or insert it
                         if (imageBytes != null)
                         {
-                            string imageQuery = @"
-                    IF EXISTS (SELECT 1 FROM Employee WHERE EmployeeID = @EmployeeID AND ImageID IS NOT NULL)
-                    BEGIN
-                        UPDATE EmployeeImage
-                        SET ImageData = @ImageData
-                        WHERE ImageID = (SELECT ImageID FROM Employee WHERE EmployeeID = @EmployeeID)
-                    END
-                    ELSE
-                    BEGIN
-                        INSERT INTO EmployeeImage (ImageData) 
-                        OUTPUT INSERTED.ImageID
-                        VALUES (@ImageData)
-                    END";
+                            if (imageID > 0)
+                            {
+                                // If an image already exists, update it
+                                string updateImageQuery = "UPDATE EmployeeImage SET ImageData = @ImageData WHERE ImageID = @ImageID";
+                                connection.Execute(updateImageQuery, new { ImageData = imageBytes, ImageID = imageID }, transaction);
+                            }
+                            else
+                            {
+                                // If no existing image, insert a new one and get the new ImageID
+                                string insertImageQuery = "INSERT INTO EmployeeImage (ImageData) OUTPUT INSERTED.ImageID VALUES (@ImageData)";
+                                imageID = connection.ExecuteScalar<int>(insertImageQuery, new { ImageData = imageBytes }, transaction);
 
-                            imageID = connection.ExecuteScalar<int>(imageQuery, new { ImageData = imageBytes, employees.EmployeeID }, transaction);
+                                // Assign the new ImageID to the employee
+                                string updateEmployeeImageIDQuery = "UPDATE Employee SET ImageID = @ImageID WHERE EmployeeID = @EmployeeID";
+                                connection.Execute(updateEmployeeImageIDQuery, new { ImageID = imageID, EmployeeID = employeeID }, transaction);
+                            }
                         }
 
                         // Update Employee details
                         string updateQuery = @"
-                UPDATE Employee 
-                SET 
-                    FirstName = @FirstName, 
-                    MiddleName = @MiddleName, 
-                    LastName = @LastName, 
-                    NameExtension = @NameExtension, 
-                    Gender = @Gender, 
-                    CivilStatus = @CivilStatus,
-                    DateOfBirth = @DateOfBirth, 
-                    Age = DATEDIFF(YEAR, @DateOfBirth, CAST(GETDATE() AS DATE)) - 
-                        CASE 
-                            WHEN MONTH(@DateOfBirth) > MONTH(CAST(GETDATE() AS DATE)) 
-                                OR (MONTH(@DateOfBirth) = MONTH(CAST(GETDATE() AS DATE)) 
-                                AND DAY(@DateOfBirth) > DAY(CAST(GETDATE() AS DATE))) 
-                            THEN 1 ELSE 0 
-                        END,
-                    PhoneNumber = @PhoneNumber, 
-                    DateHired = @DateHired, 
-                    Address = @Address, 
-                    RoleID = @RoleID
-                    " + (imageBytes != null ? ", ImageID = @ImageID" : "") + @"
-                WHERE EmployeeID = @EmployeeID";
+                    UPDATE Employee 
+                    SET 
+                        FirstName = @FirstName, 
+                        MiddleName = @MiddleName, 
+                        LastName = @LastName, 
+                        NameExtension = @NameExtension, 
+                        Gender = @Gender, 
+                        CivilStatus = @CivilStatus,
+                        DateOfBirth = @DateOfBirth, 
+                        Age = DATEDIFF(YEAR, @DateOfBirth, CAST(GETDATE() AS DATE)) - 
+                            CASE 
+                                WHEN MONTH(@DateOfBirth) > MONTH(CAST(GETDATE() AS DATE)) 
+                                    OR (MONTH(@DateOfBirth) = MONTH(CAST(GETDATE() AS DATE)) 
+                                    AND DAY(@DateOfBirth) > DAY(CAST(GETDATE() AS DATE))) 
+                                THEN 1 ELSE 0 
+                            END,
+                        PhoneNumber = @PhoneNumber, 
+                        DateHired = @DateHired, 
+                        Address = @Address, 
+                        RoleID = @RoleID
+                    WHERE EmployeeID = @EmployeeID";
 
                         int rowsUpdated = connection.Execute(updateQuery, new
                         {
-                            employees.EmployeeID,
+                            EmployeeID = employeeID,
                             employees.FirstName,
                             employees.MiddleName,
                             employees.LastName,
@@ -152,8 +155,7 @@ namespace InventorySystem.Employees
                             employees.PhoneNumber,
                             employees.DateHired,
                             employees.Address,
-                            employees.RoleID,
-                            ImageID = imageID > 0 ? imageID : (object)DBNull.Value // Assign ImageID only if updated
+                            employees.RoleID
                         }, transaction);
 
                         if (rowsUpdated == 0)
@@ -176,12 +178,13 @@ namespace InventorySystem.Employees
             }
         }
 
+
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
             // Create an employee object (similar to the Insert code)
             Employee employee = new Employee
             {
-                EmployeeID = EmployeeID, // Assuming you have the current employee ID to identify the record
+                EmployeeID = teEmployeeID.Text,
                 FirstName = teFirstName.Text,
                 MiddleName = teMiddleName.Text,
                 LastName = teLastName.Text,
@@ -200,9 +203,20 @@ namespace InventorySystem.Employees
 
             // Read image from selected path (same as insert)
             string imagePath = meEmployeeImagePath.Text.Trim();
-            byte[] imageBytes = File.Exists(imagePath) ? File.ReadAllBytes(imagePath) : null;
+            if (!File.Exists(imagePath))
+            {
+                MessageBox.Show("The selected image file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            if (imageBytes == null)
+            byte[] imageBytes = null;
+            try
+            {
+                imageBytes = File.ReadAllBytes(imagePath);
+                // Validate if the image can be loaded
+                using (System.Drawing.Image image = System.Drawing.Image.FromFile(imagePath)) { }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Invalid image file. Please select a valid image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
