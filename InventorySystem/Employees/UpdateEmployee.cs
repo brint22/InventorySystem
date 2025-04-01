@@ -178,9 +178,10 @@ namespace InventorySystem.Employees
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            // Create an employee object
+            // Create an employee object (similar to the Insert code)
             Employee employee = new Employee
             {
+                EmployeeID = EmployeeID, // Assuming you have the current employee ID to identify the record
                 FirstName = teFirstName.Text,
                 MiddleName = teMiddleName.Text,
                 LastName = teLastName.Text,
@@ -192,12 +193,12 @@ namespace InventorySystem.Employees
                 DateHired = deDateHired.DateTime,
                 RoleName = lueRole.Text,
                 Address = mmAddress.Text
-
             };
 
+            // Get Role ID (you may need to check if this method already returns the correct value)
             GetRoleID();
 
-            // Read image from selected path
+            // Read image from selected path (same as insert)
             string imagePath = meEmployeeImagePath.Text.Trim();
             byte[] imageBytes = File.Exists(imagePath) ? File.ReadAllBytes(imagePath) : null;
 
@@ -207,8 +208,10 @@ namespace InventorySystem.Employees
                 return;
             }
 
-            // Register employee and store image
+            // Update employee information (similar to Insert but calling an Update method instead)
             UpdateEmployeeInformation(employee, imageBytes);
+
+            // Clear the input fields after the update
             ClearInputs();
         }
 
