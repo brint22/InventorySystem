@@ -62,7 +62,6 @@ namespace InventorySystem.Employees
                         // Generate EmployeeID
                         string generatedID = GenerateID();
                         employees.EmployeeID = generatedID;
-                        employees.RoleID = GetRoleID();
 
                         // Insert into Employee table with the ImageID reference
                         string employeeQuery = @"
@@ -227,7 +226,7 @@ namespace InventorySystem.Employees
                 DateOfBirth = deDateOfBirth.DateTime,
                 PhoneNumber = tePhoneNumber.Text,
                 DateHired = deDateHired.DateTime,
-                RoleName = lueRole.Text,
+                RoleID = GetRoleID(),
                 Address = mmAddress.Text
                 
             };

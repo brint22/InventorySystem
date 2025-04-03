@@ -194,10 +194,9 @@ namespace InventorySystem.Employees
                 DateOfBirth = deDateOfBirth.DateTime,
                 PhoneNumber = tePhoneNumber.Text,
                 DateHired = deDateHired.DateTime,
-                RoleName = lueRole.Text,
+                RoleID = GetRoleID(),
                 Address = mmAddress.Text
             };
-
             // Get Role ID (you may need to check if this method already returns the correct value)
             GetRoleID();
 
