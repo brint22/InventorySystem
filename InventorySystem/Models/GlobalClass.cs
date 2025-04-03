@@ -22,7 +22,7 @@ namespace InventorySystem.Models
         //User ID = sa; Password = 123456;";
 
         //@"Data Source=LAB1-PC09; 
-        //Initial Catalog = WAREHOUSEISDB; 
+        //Initial Catalog = WAREHOUSEISDB; //
         //User ID = sa; Password = 123456;";
     }
 }

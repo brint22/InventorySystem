@@ -35,6 +35,7 @@ namespace InventorySystem.Employees
             GlobalMethod.LoadEmployeeData("Manager", gcManager);
             GlobalMethod.LoadEmployeeData("Cashier", gcCashier);
             GlobalMethod.LoadEmployeeData("Laborer", gcLaborer);
+            gcEmployee.RefreshDataSource();
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
