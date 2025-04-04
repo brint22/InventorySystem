@@ -178,10 +178,12 @@ namespace InventorySystem.Employees
             }
         }
 
+        // At the top of your form class (outside the method)
+        public event EventHandler EmployeeUpdated;
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            // Create an employee object (similar to the Insert code)
+            // Create an employee object
             Employee employee = new Employee
             {
                 EmployeeID = teEmployeeID.Text,
@@ -197,10 +199,8 @@ namespace InventorySystem.Employees
                 RoleID = GetRoleID(),
                 Address = mmAddress.Text
             };
-            // Get Role ID (you may need to check if this method already returns the correct value)
-            GetRoleID();
 
-            // Read image from selected path (same as insert)
+            // Read image from selected path
             string imagePath = meEmployeeImagePath.Text.Trim();
             if (!File.Exists(imagePath))
             {
@@ -212,7 +212,6 @@ namespace InventorySystem.Employees
             try
             {
                 imageBytes = File.ReadAllBytes(imagePath);
-                // Validate if the image can be loaded
                 using (System.Drawing.Image image = System.Drawing.Image.FromFile(imagePath)) { }
             }
             catch (Exception ex)
@@ -221,12 +220,17 @@ namespace InventorySystem.Employees
                 return;
             }
 
-            // Update employee information (similar to Insert but calling an Update method instead)
+            // Update employee info
             UpdateEmployeeInformation(employee, imageBytes);
 
-            // Clear the input fields after the update
+            // ✅ Notify the main form to refresh the grid
+            EmployeeUpdated?.Invoke(this, EventArgs.Empty);
+
+            // Clear inputs
             ClearInputs();
         }
+
+
 
         private string GetGender()
         {

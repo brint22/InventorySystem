@@ -45,30 +45,37 @@ namespace InventorySystem.Employees
             // Fetch employee details, including ImageData
             (string firstName, string middleName, string lastName, string nameExtension, byte[] imageData) = GetEmployeeDetails(employeeID);
 
-            UpdateEmployee form = new UpdateEmployee(employeeID, this);
+            var updateForm = new UpdateEmployee(employeeID, this); // instantiate your update form
 
-            form.teEmployeeID.Text = employeeID;
-            form.teFirstName.Text = firstName;
-            form.teMiddleName.Text = middleName;
-            form.teLastName.Text = lastName;
-            form.teNameExtension.Text = nameExtension;
+            // Hook the event to refresh gcEmployee
+            updateForm.EmployeeUpdated += (s, args) =>
+            {
+                GlobalMethod.LoadEmployeeData("All", gcEmployee);
+            };
+
+            // Populate form fields
+            updateForm.teEmployeeID.Text = employeeID;
+            updateForm.teFirstName.Text = firstName;
+            updateForm.teMiddleName.Text = middleName;
+            updateForm.teLastName.Text = lastName;
+            updateForm.teNameExtension.Text = nameExtension;
 
             string gender = Convert.ToString(tvEmployee.GetFocusedRowCellValue("Gender"));
-            form.rdGender.SelectedIndex = (gender == "Male") ? 0 : (gender == "Female") ? 1 : -1;
+            updateForm.rdGender.SelectedIndex = (gender == "Male") ? 0 : (gender == "Female") ? 1 : -1;
 
-            form.cbCivilStatus.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("CivilStatus"));
-            form.tePhoneNumber.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("PhoneNumber"));
-            form.lueRole.EditValue = tvEmployee.GetFocusedRowCellValue("RoleID");
-            form.mmAddress.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("Address"));
+            updateForm.cbCivilStatus.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("CivilStatus"));
+            updateForm.tePhoneNumber.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("PhoneNumber"));
+            updateForm.lueRole.EditValue = tvEmployee.GetFocusedRowCellValue("RoleID");
+            updateForm.mmAddress.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("Address"));
 
             if (tvEmployee.GetFocusedRowCellValue("DateOfBirth") != DBNull.Value)
             {
-                form.deDateOfBirth.DateTime = Convert.ToDateTime(tvEmployee.GetFocusedRowCellValue("DateOfBirth"));
+                updateForm.deDateOfBirth.DateTime = Convert.ToDateTime(tvEmployee.GetFocusedRowCellValue("DateOfBirth"));
             }
 
             if (tvEmployee.GetFocusedRowCellValue("DateHired") != DBNull.Value)
             {
-                form.deDateHired.DateTime = Convert.ToDateTime(tvEmployee.GetFocusedRowCellValue("DateHired"));
+                updateForm.deDateHired.DateTime = Convert.ToDateTime(tvEmployee.GetFocusedRowCellValue("DateHired"));
             }
 
             // Load the image into the form if imageData exists
@@ -76,16 +83,11 @@ namespace InventorySystem.Employees
             {
                 try
                 {
-                    // Set the image path directly in the text box (assuming imageData contains the path)
-                    string imagePath = Convert.ToBase64String(imageData);  // Assuming imageData contains the path as a Base64 string
-
-                    // Set the image path in the text box
-                    form.meEmployeeImagePath.Text = imagePath;
-
-                    // Optionally display the image itself
+                    // Store raw image data as Base64 or directly into a PictureEdit
+                    updateForm.meEmployeeImagePath.Text = ""; // optional if you don’t store path
                     using (MemoryStream ms = new MemoryStream(imageData))
                     {
-                        form.peProfile.Image = System.Drawing.Image.FromStream(ms);
+                        updateForm.peProfile.Image = System.Drawing.Image.FromStream(ms);
                     }
                 }
                 catch (Exception ex)
@@ -95,13 +97,14 @@ namespace InventorySystem.Employees
             }
             else
             {
-                // If no imageData, clear the image path text box
-                form.meEmployeeImagePath.Text = string.Empty;
+                updateForm.meEmployeeImagePath.Text = string.Empty;
             }
 
-            // Show the form and wait for user action
-            DialogResult result = form.ShowDialog();
+            // Show the update form
+            DialogResult result = updateForm.ShowDialog();
         }
+
+     
 
         private (string firstName, string middleName, string lastName, string nameExtension, byte[] imageData) GetEmployeeDetails(string employeeID)
         {
