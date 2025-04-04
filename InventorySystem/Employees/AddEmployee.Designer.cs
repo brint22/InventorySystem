@@ -285,7 +285,7 @@
             this.BtnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSubmit.Appearance.Options.UseBackColor = true;
             this.BtnSubmit.Appearance.Options.UseFont = true;
-            this.BtnSubmit.Location = new System.Drawing.Point(53, 540);
+            this.BtnSubmit.Location = new System.Drawing.Point(32, 485);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(205, 31);
             this.BtnSubmit.TabIndex = 32;
@@ -356,7 +356,7 @@
             this.mmAddress.Name = "mmAddress";
             this.mmAddress.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.mmAddress.Properties.Appearance.Options.UseFont = true;
-            this.mmAddress.Size = new System.Drawing.Size(717, 57);
+            this.mmAddress.Size = new System.Drawing.Size(717, 31);
             this.mmAddress.TabIndex = 40;
             // 
             // deDateHired
@@ -455,12 +455,13 @@
             this.groupControl2.Controls.Add(this.deDateHired);
             this.groupControl2.Controls.Add(this.labelControl8);
             this.groupControl2.Controls.Add(this.rdGender);
-            this.groupControl2.Location = new System.Drawing.Point(53, 84);
+            this.groupControl2.Location = new System.Drawing.Point(32, 51);
             this.groupControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1122, 440);
+            this.groupControl2.Size = new System.Drawing.Size(1122, 418);
             this.groupControl2.TabIndex = 48;
             this.groupControl2.Text = "Employee Data";
+            this.groupControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl2_Paint);
             // 
             // AddEmployee
             // 
@@ -471,6 +472,7 @@
             this.Controls.Add(this.BtnSubmit);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.ribbon);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("AddEmployee.IconOptions.Image")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
