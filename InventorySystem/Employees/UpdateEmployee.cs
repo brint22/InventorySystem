@@ -226,8 +226,8 @@ namespace InventorySystem.Employees
             // ✅ Notify the main form to refresh the grid
             EmployeeUpdated?.Invoke(this, EventArgs.Empty);
 
-            // Clear inputs
-            ClearInputs();
+            //Clear inputs
+            //ClearInputs();
         }
 
 
@@ -263,20 +263,20 @@ namespace InventorySystem.Employees
             return intRoleID;
         }
 
-        private void ClearInputs()
-        {
-            teFirstName.Text = string.Empty;
-            teMiddleName.Text = string.Empty;
-            teLastName.Text = string.Empty;
-            teNameExtension.Text = string.Empty;
-            rdGender.Text = string.Empty;
-            cbCivilStatus.Text = string.Empty;
-            deDateOfBirth.Text = string.Empty;
-            tePhoneNumber.Text = string.Empty;
-            deDateHired.Text = string.Empty;
-            lueRole.Text = string.Empty;
-            mmAddress.Text = string.Empty;
-        }
+        //private void ClearInputs()
+        //{
+        //    teFirstName.Text = string.Empty;
+        //    teMiddleName.Text = string.Empty;
+        //    teLastName.Text = string.Empty;
+        //    teNameExtension.Text = string.Empty;
+        //    rdGender.Text = string.Empty;
+        //    cbCivilStatus.Text = string.Empty;
+        //    deDateOfBirth.Text = string.Empty;
+        //    tePhoneNumber.Text = string.Empty;
+        //    deDateHired.Text = string.Empty;
+        //    lueRole.Text = string.Empty;
+        //    mmAddress.Text = string.Empty;
+        //}
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
@@ -311,6 +311,11 @@ namespace InventorySystem.Employees
                     }
                 }
             }
+        }
+
+        private void BtnCancal_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
