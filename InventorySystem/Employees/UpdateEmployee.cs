@@ -67,7 +67,7 @@ namespace InventorySystem.Employees
             LoadRole();
         }
 
-        private void UpdateEmployeeInformation(Employee employees, byte[] imageBytes)
+        private void UpdateEmployeeInformation(Employee employees, byte[] imageBytes, string employeeImagePath)
         {
             if (employees == null || string.IsNullOrWhiteSpace(employees.EmployeeID))
             {
@@ -97,9 +97,12 @@ namespace InventorySystem.Employees
                         int imageID = connection.ExecuteScalar<int>("SELECT ImageID FROM Employee WHERE EmployeeID = @EmployeeID",
                             new { EmployeeID = employeeID }, transaction);
 
-                        // If a new image is provided, update or insert it
-                        if (imageBytes != null)
+                        // Only update image if image path is not empty and the file exists
+                        if (!string.IsNullOrEmpty(employeeImagePath) && File.Exists(employeeImagePath))
                         {
+                            // Read the image file as a byte array
+                            imageBytes = File.ReadAllBytes(employeeImagePath);
+
                             if (imageID > 0)
                             {
                                 // If an image already exists, update it
@@ -117,8 +120,9 @@ namespace InventorySystem.Employees
                                 connection.Execute(updateEmployeeImageIDQuery, new { ImageID = imageID, EmployeeID = employeeID }, transaction);
                             }
                         }
+                        // If no image is selected (employeeImagePath is empty), skip the image update
 
-                        // Update Employee details
+                        // Update Employee details (always update even if image is not updated)
                         string updateQuery = @"
                     UPDATE Employee 
                     SET 
@@ -178,12 +182,12 @@ namespace InventorySystem.Employees
             }
         }
 
+
         // At the top of your form class (outside the method)
         public event EventHandler EmployeeUpdated;
 
         private void BtnSubmit_Click(object sender, EventArgs e)
-        {
-            // Create an employee object
+        { // Create an employee object
             Employee employee = new Employee
             {
                 EmployeeID = teEmployeeID.Text,
@@ -200,34 +204,39 @@ namespace InventorySystem.Employees
                 Address = mmAddress.Text
             };
 
-            // Read image from selected path
+            // Get the image path from the input field
             string imagePath = meEmployeeImagePath.Text.Trim();
-            if (!File.Exists(imagePath))
-            {
-                MessageBox.Show("The selected image file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
+            // Initialize imageBytes to null
             byte[] imageBytes = null;
-            try
+
+            // If the image path is not empty and the file exists, read the image bytes
+            if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
             {
-                imageBytes = File.ReadAllBytes(imagePath);
-                using (System.Drawing.Image image = System.Drawing.Image.FromFile(imagePath)) { }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Invalid image file. Please select a valid image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                try
+                {
+                    // Read the image file as byte array
+                    imageBytes = File.ReadAllBytes(imagePath);
+
+                    // Optionally, you can open the image to ensure it's valid (this is not mandatory)
+                    using (System.Drawing.Image image = System.Drawing.Image.FromFile(imagePath))
+                    {
+                        // You can do additional validation here if necessary
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Handle any exceptions that may occur while reading the image file
+                    MessageBox.Show($"Failed to read image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Prevent further code execution if image reading fails
+                }
             }
 
-            // Update employee info
-            UpdateEmployeeInformation(employee, imageBytes);
+            // Update employee info (image update is conditional)
+            UpdateEmployeeInformation(employee, imageBytes, imagePath);
 
             // ✅ Notify the main form to refresh the grid
             EmployeeUpdated?.Invoke(this, EventArgs.Empty);
-
-            //Clear inputs
-            //ClearInputs();
         }
 
 

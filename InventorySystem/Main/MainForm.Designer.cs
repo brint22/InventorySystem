@@ -37,6 +37,13 @@
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.addProduct = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.viewProduct = new DevExpress.XtraBars.BarButtonItem();
+            this.addAccounts = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.addAccount = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.viewAccount = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,9 +58,13 @@
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
             this.bbiAddEmployee,
-            this.bbiViewEmployee});
+            this.bbiViewEmployee,
+            this.addProduct,
+            this.viewProduct,
+            this.addAccount,
+            this.viewAccount});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 3;
+            this.ribbon.MaxItemId = 7;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonGroup = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonLayoutGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -91,7 +102,9 @@
             // 
             this.Main.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.addAccounts,
+            this.ribbonPageGroup5});
             this.Main.Name = "Main";
             this.Main.Text = "Employees";
             // 
@@ -109,14 +122,58 @@
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup3});
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup4});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Products";
             // 
             // ribbonPageGroup3
             // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.addProduct);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
+            // 
+            // addProduct
+            // 
+            this.addProduct.Caption = "Add Product";
+            this.addProduct.Id = 3;
+            this.addProduct.Name = "addProduct";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.viewProduct);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "ribbonPageGroup4";
+            // 
+            // viewProduct
+            // 
+            this.viewProduct.Caption = "View Product";
+            this.viewProduct.Id = 4;
+            this.viewProduct.Name = "viewProduct";
+            // 
+            // addAccounts
+            // 
+            this.addAccounts.ItemLinks.Add(this.addAccount);
+            this.addAccounts.Name = "addAccounts";
+            this.addAccounts.Text = "ribbonPageGroup5";
+            // 
+            // addAccount
+            // 
+            this.addAccount.Caption = "Add Account";
+            this.addAccount.Id = 5;
+            this.addAccount.Name = "addAccount";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.viewAccount);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "ribbonPageGroup5";
+            // 
+            // viewAccount
+            // 
+            this.viewAccount.Caption = "View Account";
+            this.viewAccount.Id = 6;
+            this.viewAccount.Name = "viewAccount";
             // 
             // MainForm
             // 
@@ -148,5 +205,12 @@
         private DevExpress.XtraBars.BarButtonItem bbiAddEmployee;
         private DevExpress.XtraBars.BarButtonItem bbiViewEmployee;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarButtonItem addProduct;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.BarButtonItem viewProduct;
+        private DevExpress.XtraBars.BarButtonItem addAccount;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup addAccounts;
+        private DevExpress.XtraBars.BarButtonItem viewAccount;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
     }
 }
