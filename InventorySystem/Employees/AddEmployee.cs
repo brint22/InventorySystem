@@ -341,5 +341,101 @@ namespace InventorySystem.Employees
         {
 
         }
+
+
+
+        //Data table of Address
+        DataTable dtAddress = new DataTable();
+        private DataTable CreateAddressTable()
+        {
+            dtAddress.Columns.Add("Barangay", typeof(string));
+            dtAddress.Columns.Add("Municipality", typeof(string));
+            dtAddress.Columns.Add("Province", typeof(string));
+            dtAddress.Columns.Add("ZipCode", typeof(string));
+            dtAddress.Columns.Add("Country", typeof(string));
+
+            return dtAddress;
+        }
+
+
+        //Methid for Temporary Adding Address in gcAddress
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            string barangay = teBarangay.Text.Trim();
+            string municipality = teMunicipality.Text.Trim();
+            string province = teProvince.Text.Trim();
+            string zipCode = teZipCode.Text.Trim();
+            string country = teCountry.Text.Trim();
+            // Validation to check if any field is empty
+            if (string.IsNullOrEmpty(barangay) ||
+                string.IsNullOrEmpty(municipality) ||
+                string.IsNullOrEmpty(province) ||
+                string.IsNullOrEmpty(zipCode) ||
+                string.IsNullOrEmpty(country))
+            {
+                MessageBox.Show("Please fill out all fields before adding.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Ensure that the columns are defined in dtAddress (if not already done)
+            if (dtAddress.Columns.Count == 0)
+            {
+                dtAddress.Columns.Add("Barangay", typeof(string));
+                dtAddress.Columns.Add("Municipality", typeof(string));
+                dtAddress.Columns.Add("Province", typeof(string));
+                dtAddress.Columns.Add("ZipCode", typeof(string));
+                dtAddress.Columns.Add("Country", typeof(string));
+            }
+
+
+            DataRow newRow = dtAddress.NewRow();
+            newRow["Barangay"] = barangay;
+            newRow["Municipality"] = municipality;
+            newRow["Province"] = province;
+            newRow["ZipCode"] = zipCode;
+            newRow["Country"] = country;
+            dtAddress.Rows.Add(newRow);
+
+            gcAddress.DataSource = dtAddress;
+            gvAddress.RefreshData();
+
+            // Method to Refresh the textbox after clicking the Add button
+            ClearInputsAddress();
+
+        }
+
+        //Methid for Temporary Removing Address in gcAddress
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gvAddress.FocusedRowHandle;
+
+            if (focusedRowHandle >= 0)
+            {
+                DataRow rowDelete = gvAddress.GetDataRow(focusedRowHandle);
+                if (rowDelete != null)
+                {
+                    dtAddress.Rows.Remove(rowDelete);
+
+                    gcAddress.DataSource = dtAddress;
+                    gvAddress.RefreshData();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Please select a row to remove.");
+                }
+            }
+        }
+
+
+        //Clearing the inputs in Address
+        private void ClearInputsAddress()
+        {
+            teBarangay.Text = string.Empty;
+            teMunicipality.Text = string.Empty;
+            teProvince.Text = string.Empty;
+            teZipCode.Text = string.Empty;
+            teCountry.Text = string.Empty;
+           
+        }
     }
 }
