@@ -300,6 +300,7 @@ namespace InventorySystem.Employees
         private void AddEmployee_Load(object sender, EventArgs e)
         {
             LoadRole();
+            gcAddress.DataSource = CreateAddressTable();
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -377,16 +378,6 @@ namespace InventorySystem.Employees
                 return;
             }
 
-            // Ensure that the columns are defined in dtAddress (if not already done)
-            if (dtAddress.Columns.Count == 0)
-            {
-                dtAddress.Columns.Add("Barangay", typeof(string));
-                dtAddress.Columns.Add("Municipality", typeof(string));
-                dtAddress.Columns.Add("Province", typeof(string));
-                dtAddress.Columns.Add("ZipCode", typeof(string));
-                dtAddress.Columns.Add("Country", typeof(string));
-            }
-
 
             DataRow newRow = dtAddress.NewRow();
             newRow["Barangay"] = barangay;
@@ -401,7 +392,6 @@ namespace InventorySystem.Employees
 
             // Method to Refresh the textbox after clicking the Add button
             ClearInputsAddress();
-
         }
 
         //Methid for Temporary Removing Address in gcAddress
