@@ -158,7 +158,6 @@ namespace InventorySystem.Employees
                             employees.DateOfBirth,
                             employees.PhoneNumber,
                             employees.DateHired,
-                            employees.Address,
                             employees.RoleID
                         }, transaction);
 
@@ -200,8 +199,7 @@ namespace InventorySystem.Employees
                 DateOfBirth = deDateOfBirth.DateTime,
                 PhoneNumber = tePhoneNumber.Text,
                 DateHired = deDateHired.DateTime,
-                RoleID = GetRoleID(),
-                Address = mmAddress.Text
+                RoleID = GetRoleID()
             };
 
             // Get the image path from the input field

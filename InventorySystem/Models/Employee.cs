@@ -18,7 +18,7 @@ namespace InventorySystem.Models
         public DateTime DateOfBirth { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime DateHired { get; set; }
-        public string Address { get; set; }
+        public string AddressID { get; set; }
         public int RoleID { get; set; }
         public string RoleName { get; set; }
         public int AccountID { get; set; }

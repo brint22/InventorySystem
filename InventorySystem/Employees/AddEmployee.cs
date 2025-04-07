@@ -28,7 +28,7 @@ namespace InventorySystem.Employees
         }
 
 
-        private void RegisterEmployee(Employee employees, byte[] imageBytes)
+        private void RegisterEmployee(Employee employees, byte[] imageBytes, Address address)
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
@@ -38,17 +38,17 @@ namespace InventorySystem.Employees
                     try
                     {
                         // Validate input
-                        if (employees == null || imageBytes == null)
+                        if (employees == null || imageBytes == null || address == null)
                         {
-                            MessageBox.Show("Employee details and image data cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Employee details, image data, and address cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
                         // Insert image into EmployeeImage table
                         string imageQuery = @"
-                        INSERT INTO EmployeeImage (ImageData) 
-                        OUTPUT INSERTED.ImageID
-                        VALUES (@ImageData)";
+            INSERT INTO EmployeeImage (ImageData) 
+            OUTPUT INSERTED.ImageID
+            VALUES (@ImageData)";
 
                         int imageID = connection.ExecuteScalar<int>(imageQuery, new { ImageData = imageBytes }, transaction);
 
@@ -59,49 +59,71 @@ namespace InventorySystem.Employees
                             return;
                         }
 
+                        // Insert address into Address table and get AddressID
+                        string addressQuery = @"
+            INSERT INTO Address (BarangayName, MunicipalityName, ProvinceName, ZipCodeNumber, CountryName)
+            OUTPUT INSERTED.AddressID
+            VALUES (@BarangayName, @MunicipalityName, @ProvinceName, @ZipCodeNumber, @CountryName)";
+
+                        int addressID = connection.ExecuteScalar<int>(addressQuery, new
+                        {
+                            BarangayName = address.BarangayName,
+                            MunicipalityName = address.MunicipalityName,
+                            ProvinceName = address.ProvinceName,
+                            ZipCodeNumber = address.ZipCodeNumber,
+                            CountryName = address.CountryName
+                        }, transaction);
+
+                        if (addressID <= 0)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Failed to store address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         // Generate EmployeeID
                         string generatedID = GenerateID();
                         employees.EmployeeID = generatedID;
 
-                        // Insert into Employee table with the ImageID reference
+                        // Insert into Employee table with the ImageID and AddressID reference
                         string employeeQuery = @"
-                            INSERT INTO Employee 
-                            (EmployeeID, 
-                            FirstName, 
-                            MiddleName, 
-                            LastName, 
-                            NameExtension, 
-                            Gender, 
-                            CivilStatus,
-                            DateOfBirth, 
-                            Age, 
-                            PhoneNumber, 
-                            DateHired, 
-                            Address, 
-                            RoleID, 
-                            ImageID)
+            INSERT INTO Employee 
+            (EmployeeID, 
+            FirstName, 
+            MiddleName, 
+            LastName, 
+            NameExtension, 
+            Gender, 
+            CivilStatus,
+            DateOfBirth, 
+            Age, 
+            PhoneNumber, 
+            DateHired, 
+            AddressID, 
+            RoleID, 
+            ImageID)
+            VALUES
+            (@EmployeeID, 
+            @FirstName, 
+            @MiddleName, 
+            @LastName, 
+            @NameExtension, 
+            @Gender, 
+            @CivilStatus, 
+            @DateOfBirth, 
+            DATEDIFF(YEAR, @DateOfBirth, CAST(GETDATE() AS DATE)) - 
+            CASE 
+                 WHEN MONTH(@DateOfBirth) > MONTH(CAST(GETDATE() AS DATE)) 
+                   OR (MONTH(@DateOfBirth) = MONTH(CAST(GETDATE() AS DATE)) 
+                   AND DAY(@DateOfBirth) > DAY(CAST(GETDATE() AS DATE))) 
+                 THEN 1 ELSE 0 
+            END,
+            @PhoneNumber,
+            @DateHired, 
+            @AddressID, 
+            @RoleID, 
+            @ImageID);";
 
-                            VALUES
-                            (@EmployeeID, 
-                            @FirstName, 
-                            @MiddleName, 
-                            @LastName, 
-                            @NameExtension, 
-                            @Gender, 
-                            @CivilStatus, 
-                            @DateOfBirth, 
-                            DATEDIFF(YEAR, @DateOfBirth, CAST(GETDATE() AS DATE)) - 
-                            CASE 
-                                 WHEN MONTH(@DateOfBirth) > MONTH(CAST(GETDATE() AS DATE)) 
-                                   OR (MONTH(@DateOfBirth) = MONTH(CAST(GETDATE() AS DATE)) 
-                                   AND DAY(@DateOfBirth) > DAY(CAST(GETDATE() AS DATE))) 
-                                 THEN 1 ELSE 0 
-                            END,
-                            @PhoneNumber,
-                            @DateHired, 
-                            @Address, 
-                            @RoleID, 
-                            @ImageID);";
                         int employeeRows = connection.Execute(employeeQuery, new
                         {
                             employees.EmployeeID,
@@ -114,9 +136,9 @@ namespace InventorySystem.Employees
                             employees.DateOfBirth,
                             employees.PhoneNumber,
                             employees.DateHired,
-                            employees.Address,
+                            AddressID = addressID,  // Link the address to the employee
                             employees.RoleID,
-                            ImageID = imageID // Link the image to the employee
+                            ImageID = imageID       // Link the image to the employee
                         }, transaction);
 
                         if (employeeRows == 0)
@@ -137,7 +159,9 @@ namespace InventorySystem.Employees
                     }
                 }
             }
-        }
+
+        
+    }
 
         //private static string GenerateID()
         //{
@@ -227,11 +251,11 @@ namespace InventorySystem.Employees
                 PhoneNumber = tePhoneNumber.Text,
                 DateHired = deDateHired.DateTime,
                 RoleID = GetRoleID(),
-                Address = mmAddress.Text
                 
             };
 
             GetRoleID();
+
 
             // Read image from selected path
             string imagePath = meEmployeeImagePath.Text.Trim();
@@ -243,8 +267,23 @@ namespace InventorySystem.Employees
                 return;
             }
 
+            if (!int.TryParse(teZipCode.Text, out int zipCodeNumber))
+            {
+                MessageBox.Show("Please enter a valid phone number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Address address = new Address
+            {
+                BarangayName = teBarangay.Text,
+                MunicipalityName = teMunicipality.Text,
+                ProvinceName = teProvince.Text,        
+                ZipCodeNumber = zipCodeNumber,
+                CountryName = teCountry.Text,
+            };
+
             // Register employee and store image
-            RegisterEmployee(employee, imageBytes);
+            RegisterEmployee(employee, imageBytes, address);
             ClearInputs();
         }
 
