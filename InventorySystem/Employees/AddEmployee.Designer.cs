@@ -53,30 +53,16 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.cbCivilStatus = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.btnBrowse = new DevExpress.XtraEditors.SimpleButton();
-            this.mmAddress = new DevExpress.XtraEditors.MemoEdit();
             this.peProfile = new DevExpress.XtraEditors.PictureEdit();
             this.meEmployeeImagePath = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.xtcEmployeeData = new DevExpress.XtraTab.XtraTabControl();
             this.xtbEmployeeInfo = new DevExpress.XtraTab.XtraTabPage();
             this.xtpAddress = new DevExpress.XtraTab.XtraTabPage();
-            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.teBarangay = new DevExpress.XtraEditors.TextEdit();
-            this.teMunicipality = new DevExpress.XtraEditors.TextEdit();
-            this.teProvince = new DevExpress.XtraEditors.TextEdit();
-            this.teCountry = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.teZipCode = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.BtnAdd = new DevExpress.XtraEditors.SimpleButton();
-            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.BtnRemove = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.gcAddress = new DevExpress.XtraGrid.GridControl();
             this.gvAddress = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Barangay = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -84,6 +70,18 @@
             this.Province = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ZipCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Country = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.BtnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.teZipCode = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.teCountry = new DevExpress.XtraEditors.TextEdit();
+            this.teProvince = new DevExpress.XtraEditors.TextEdit();
+            this.teMunicipality = new DevExpress.XtraEditors.TextEdit();
+            this.teBarangay = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdGender.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDateHired.Properties)).BeginInit();
@@ -99,7 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.teFirstName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMiddleName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbCivilStatus.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mmAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.meEmployeeImagePath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -108,33 +105,32 @@
             this.xtcEmployeeData.SuspendLayout();
             this.xtbEmployeeInfo.SuspendLayout();
             this.xtpAddress.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
-            this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teBarangay.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teMunicipality.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teProvince.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teCountry.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teZipCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcAddress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAddress)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teZipCode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCountry.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teProvince.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teMunicipality.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBarangay.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
             // 
-            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(45, 44, 45, 44);
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
-            this.ribbon.OptionsMenuMinWidth = 495;
+            this.ribbon.OptionsMenuMinWidth = 385;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1779, 73);
+            this.ribbon.Size = new System.Drawing.Size(1384, 61);
             // 
             // ribbonPage1
             // 
@@ -153,18 +149,16 @@
             this.BtnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSubmit.Appearance.Options.UseBackColor = true;
             this.BtnSubmit.Appearance.Options.UseFont = true;
-            this.BtnSubmit.Location = new System.Drawing.Point(53, 778);
-            this.BtnSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnSubmit.Location = new System.Drawing.Point(30, 574);
             this.BtnSubmit.Name = "BtnSubmit";
-            this.BtnSubmit.Size = new System.Drawing.Size(309, 45);
+            this.BtnSubmit.Size = new System.Drawing.Size(240, 38);
             this.BtnSubmit.TabIndex = 32;
             this.BtnSubmit.Text = "SUBMIT";
             this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
             // 
             // rdGender
             // 
-            this.rdGender.Location = new System.Drawing.Point(62, 311);
-            this.rdGender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdGender.Location = new System.Drawing.Point(45, 280);
             this.rdGender.MenuManager = this.ribbon;
             this.rdGender.Name = "rdGender";
             this.rdGender.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -175,25 +169,23 @@
             this.rdGender.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Male"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Female")});
-            this.rdGender.Size = new System.Drawing.Size(240, 51);
+            this.rdGender.Size = new System.Drawing.Size(187, 43);
             this.rdGender.TabIndex = 36;
             // 
             // labelControl8
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Location = new System.Drawing.Point(62, 280);
-            this.labelControl8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl8.Location = new System.Drawing.Point(45, 254);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(64, 24);
+            this.labelControl8.Size = new System.Drawing.Size(51, 19);
             this.labelControl8.TabIndex = 37;
             this.labelControl8.Text = "Gender";
             // 
             // deDateHired
             // 
             this.deDateHired.EditValue = null;
-            this.deDateHired.Location = new System.Drawing.Point(418, 410);
-            this.deDateHired.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deDateHired.Location = new System.Drawing.Point(322, 363);
             this.deDateHired.MenuManager = this.ribbon;
             this.deDateHired.Name = "deDateHired";
             this.deDateHired.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
@@ -202,13 +194,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deDateHired.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deDateHired.Size = new System.Drawing.Size(309, 44);
+            this.deDateHired.Size = new System.Drawing.Size(240, 38);
             this.deDateHired.TabIndex = 41;
             // 
             // lueRole
             // 
-            this.lueRole.Location = new System.Drawing.Point(795, 410);
-            this.lueRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lueRole.Location = new System.Drawing.Point(615, 363);
             this.lueRole.MenuManager = this.ribbon;
             this.lueRole.Name = "lueRole";
             this.lueRole.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
@@ -217,51 +208,47 @@
             this.lueRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueRole.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "Role ID", 24, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "", 24, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "Role ID", 19, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "", 19, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.lueRole.Properties.NullText = "";
-            this.lueRole.Size = new System.Drawing.Size(309, 42);
+            this.lueRole.Size = new System.Drawing.Size(240, 35);
             this.lueRole.TabIndex = 19;
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(795, 378);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl3.Location = new System.Drawing.Point(615, 336);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(39, 24);
+            this.labelControl3.Size = new System.Drawing.Size(31, 19);
             this.labelControl3.TabIndex = 18;
             this.labelControl3.Text = "Role";
             // 
             // tePhoneNumber
             // 
-            this.tePhoneNumber.Location = new System.Drawing.Point(62, 410);
-            this.tePhoneNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tePhoneNumber.Location = new System.Drawing.Point(45, 363);
             this.tePhoneNumber.MenuManager = this.ribbon;
             this.tePhoneNumber.Name = "tePhoneNumber";
             this.tePhoneNumber.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.tePhoneNumber.Properties.Appearance.Options.UseFont = true;
             this.tePhoneNumber.Properties.AutoHeight = false;
-            this.tePhoneNumber.Size = new System.Drawing.Size(310, 42);
+            this.tePhoneNumber.Size = new System.Drawing.Size(241, 35);
             this.tePhoneNumber.TabIndex = 45;
             // 
             // labelControl9
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(422, 378);
-            this.labelControl9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl9.Location = new System.Drawing.Point(325, 336);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(97, 24);
+            this.labelControl9.Size = new System.Drawing.Size(75, 19);
             this.labelControl9.TabIndex = 42;
             this.labelControl9.Text = "Date Hired";
             // 
             // deDateOfBirth
             // 
             this.deDateOfBirth.EditValue = null;
-            this.deDateOfBirth.Location = new System.Drawing.Point(795, 318);
-            this.deDateOfBirth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deDateOfBirth.Location = new System.Drawing.Point(615, 286);
             this.deDateOfBirth.MenuManager = this.ribbon;
             this.deDateOfBirth.Name = "deDateOfBirth";
             this.deDateOfBirth.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
@@ -270,17 +257,16 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deDateOfBirth.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deDateOfBirth.Size = new System.Drawing.Size(309, 44);
+            this.deDateOfBirth.Size = new System.Drawing.Size(240, 38);
             this.deDateOfBirth.TabIndex = 29;
             // 
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(795, 290);
-            this.labelControl6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl6.Location = new System.Drawing.Point(615, 262);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(114, 24);
+            this.labelControl6.Size = new System.Drawing.Size(89, 19);
             this.labelControl6.TabIndex = 28;
             this.labelControl6.Text = "Date of Birth";
             // 
@@ -294,102 +280,94 @@
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.teMiddleName);
             this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Location = new System.Drawing.Point(58, 76);
-            this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupControl1.Location = new System.Drawing.Point(42, 82);
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1202, 189);
+            this.groupControl1.Size = new System.Drawing.Size(935, 159);
             this.groupControl1.TabIndex = 39;
             this.groupControl1.Text = "Employee Name";
             // 
             // teNameExtension
             // 
-            this.teNameExtension.Location = new System.Drawing.Point(1020, 110);
-            this.teNameExtension.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teNameExtension.Location = new System.Drawing.Point(793, 93);
             this.teNameExtension.MenuManager = this.ribbon;
             this.teNameExtension.Name = "teNameExtension";
             this.teNameExtension.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.teNameExtension.Properties.Appearance.Options.UseFont = true;
             this.teNameExtension.Properties.AutoHeight = false;
-            this.teNameExtension.Size = new System.Drawing.Size(150, 42);
+            this.teNameExtension.Size = new System.Drawing.Size(117, 35);
             this.teNameExtension.TabIndex = 23;
             // 
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(1023, 75);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl4.Location = new System.Drawing.Point(796, 63);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(144, 24);
+            this.labelControl4.Size = new System.Drawing.Size(114, 19);
             this.labelControl4.TabIndex = 24;
             this.labelControl4.Text = "Name Extension";
             // 
             // teLastName
             // 
-            this.teLastName.Location = new System.Drawing.Point(724, 110);
-            this.teLastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teLastName.Location = new System.Drawing.Point(563, 93);
             this.teLastName.MenuManager = this.ribbon;
             this.teLastName.Name = "teLastName";
             this.teLastName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.teLastName.Properties.Appearance.Options.UseFont = true;
             this.teLastName.Properties.AutoHeight = false;
-            this.teLastName.Size = new System.Drawing.Size(262, 42);
+            this.teLastName.Size = new System.Drawing.Size(204, 35);
             this.teLastName.TabIndex = 25;
             // 
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(724, 75);
-            this.labelControl5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl5.Location = new System.Drawing.Point(563, 63);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(95, 24);
+            this.labelControl5.Size = new System.Drawing.Size(74, 19);
             this.labelControl5.TabIndex = 26;
             this.labelControl5.Text = "Last Name";
             // 
             // teFirstName
             // 
-            this.teFirstName.Location = new System.Drawing.Point(39, 107);
-            this.teFirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teFirstName.Location = new System.Drawing.Point(30, 90);
             this.teFirstName.MenuManager = this.ribbon;
             this.teFirstName.Name = "teFirstName";
             this.teFirstName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.teFirstName.Properties.Appearance.Options.UseFont = true;
             this.teFirstName.Properties.AutoHeight = false;
-            this.teFirstName.Size = new System.Drawing.Size(374, 42);
+            this.teFirstName.Size = new System.Drawing.Size(291, 35);
             this.teFirstName.TabIndex = 16;
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(39, 72);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl1.Location = new System.Drawing.Point(30, 61);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(96, 24);
+            this.labelControl1.Size = new System.Drawing.Size(76, 19);
             this.labelControl1.TabIndex = 17;
             this.labelControl1.Text = "First Name";
             // 
             // teMiddleName
             // 
-            this.teMiddleName.Location = new System.Drawing.Point(436, 110);
-            this.teMiddleName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teMiddleName.Location = new System.Drawing.Point(339, 93);
             this.teMiddleName.MenuManager = this.ribbon;
             this.teMiddleName.Name = "teMiddleName";
             this.teMiddleName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.teMiddleName.Properties.Appearance.Options.UseFont = true;
             this.teMiddleName.Properties.AutoHeight = false;
-            this.teMiddleName.Size = new System.Drawing.Size(262, 42);
+            this.teMiddleName.Size = new System.Drawing.Size(204, 35);
             this.teMiddleName.TabIndex = 21;
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(436, 72);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl2.Location = new System.Drawing.Point(339, 61);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(116, 24);
+            this.labelControl2.Size = new System.Drawing.Size(92, 19);
             this.labelControl2.TabIndex = 22;
             this.labelControl2.Text = "Middle Name";
             // 
@@ -397,17 +375,16 @@
             // 
             this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Location = new System.Drawing.Point(62, 378);
-            this.labelControl11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl11.Location = new System.Drawing.Point(45, 336);
             this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(131, 24);
+            this.labelControl11.Size = new System.Drawing.Size(106, 19);
             this.labelControl11.TabIndex = 46;
             this.labelControl11.Text = "Phone Number";
             // 
             // cbCivilStatus
             // 
-            this.cbCivilStatus.Location = new System.Drawing.Point(418, 321);
-            this.cbCivilStatus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbCivilStatus.Location = new System.Drawing.Point(322, 288);
+            this.cbCivilStatus.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbCivilStatus.MenuManager = this.ribbon;
             this.cbCivilStatus.Name = "cbCivilStatus";
             this.cbCivilStatus.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
@@ -421,28 +398,16 @@
             "Widowed",
             "Separated",
             ""});
-            this.cbCivilStatus.Size = new System.Drawing.Size(309, 42);
+            this.cbCivilStatus.Size = new System.Drawing.Size(240, 35);
             this.cbCivilStatus.TabIndex = 44;
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(58, 474);
-            this.labelControl7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(70, 24);
-            this.labelControl7.TabIndex = 30;
-            this.labelControl7.Text = "Address";
             // 
             // labelControl10
             // 
             this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Location = new System.Drawing.Point(422, 290);
-            this.labelControl10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl10.Location = new System.Drawing.Point(325, 262);
             this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(99, 24);
+            this.labelControl10.Size = new System.Drawing.Size(78, 19);
             this.labelControl10.TabIndex = 43;
             this.labelControl10.Text = "Civil Status";
             // 
@@ -452,30 +417,17 @@
             this.btnBrowse.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBrowse.Appearance.Options.UseBackColor = true;
             this.btnBrowse.Appearance.Options.UseFont = true;
-            this.btnBrowse.Location = new System.Drawing.Point(1408, 285);
-            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBrowse.Location = new System.Drawing.Point(1095, 240);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(132, 42);
+            this.btnBrowse.Size = new System.Drawing.Size(103, 35);
             this.btnBrowse.TabIndex = 13;
             this.btnBrowse.Text = "BROWSE";
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
-            // mmAddress
-            // 
-            this.mmAddress.Location = new System.Drawing.Point(58, 514);
-            this.mmAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.mmAddress.MenuManager = this.ribbon;
-            this.mmAddress.Name = "mmAddress";
-            this.mmAddress.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.mmAddress.Properties.Appearance.Options.UseFont = true;
-            this.mmAddress.Size = new System.Drawing.Size(1076, 45);
-            this.mmAddress.TabIndex = 40;
-            // 
             // peProfile
             // 
             this.peProfile.EditValue = ((object)(resources.GetObject("peProfile.EditValue")));
-            this.peProfile.Location = new System.Drawing.Point(1364, 76);
-            this.peProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.peProfile.Location = new System.Drawing.Point(1061, 64);
             this.peProfile.MenuManager = this.ribbon;
             this.peProfile.Name = "peProfile";
             this.peProfile.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -484,18 +436,17 @@
             this.peProfile.Properties.OptionsMask.MaskType = DevExpress.XtraEditors.Controls.PictureEditMaskType.Circle;
             this.peProfile.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.peProfile.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.peProfile.Size = new System.Drawing.Size(222, 210);
+            this.peProfile.Size = new System.Drawing.Size(173, 177);
             this.peProfile.TabIndex = 12;
             // 
             // meEmployeeImagePath
             // 
-            this.meEmployeeImagePath.Location = new System.Drawing.Point(1306, 384);
-            this.meEmployeeImagePath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.meEmployeeImagePath.Location = new System.Drawing.Point(1016, 323);
             this.meEmployeeImagePath.MenuManager = this.ribbon;
             this.meEmployeeImagePath.Name = "meEmployeeImagePath";
             this.meEmployeeImagePath.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.meEmployeeImagePath.Properties.Appearance.Options.UseFont = true;
-            this.meEmployeeImagePath.Size = new System.Drawing.Size(346, 114);
+            this.meEmployeeImagePath.Size = new System.Drawing.Size(269, 96);
             this.meEmployeeImagePath.TabIndex = 34;
             this.meEmployeeImagePath.Visible = false;
             // 
@@ -503,10 +454,8 @@
             // 
             this.groupControl2.Controls.Add(this.meEmployeeImagePath);
             this.groupControl2.Controls.Add(this.peProfile);
-            this.groupControl2.Controls.Add(this.mmAddress);
             this.groupControl2.Controls.Add(this.btnBrowse);
             this.groupControl2.Controls.Add(this.labelControl10);
-            this.groupControl2.Controls.Add(this.labelControl7);
             this.groupControl2.Controls.Add(this.cbCivilStatus);
             this.groupControl2.Controls.Add(this.labelControl11);
             this.groupControl2.Controls.Add(this.groupControl1);
@@ -521,20 +470,19 @@
             this.groupControl2.Controls.Add(this.rdGender);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
-            this.groupControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1726, 639);
+            this.groupControl2.Size = new System.Drawing.Size(1342, 470);
             this.groupControl2.TabIndex = 48;
             this.groupControl2.Text = "Employee Data";
             this.groupControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl2_Paint);
             // 
             // xtcEmployeeData
             // 
-            this.xtcEmployeeData.Location = new System.Drawing.Point(37, 69);
-            this.xtcEmployeeData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.xtcEmployeeData.Location = new System.Drawing.Point(29, 58);
+            this.xtcEmployeeData.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.xtcEmployeeData.Name = "xtcEmployeeData";
             this.xtcEmployeeData.SelectedTabPage = this.xtbEmployeeInfo;
-            this.xtcEmployeeData.Size = new System.Drawing.Size(1728, 683);
+            this.xtcEmployeeData.Size = new System.Drawing.Size(1344, 499);
             this.xtcEmployeeData.TabIndex = 50;
             this.xtcEmployeeData.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtbEmployeeInfo,
@@ -543,9 +491,9 @@
             // xtbEmployeeInfo
             // 
             this.xtbEmployeeInfo.Controls.Add(this.groupControl2);
-            this.xtbEmployeeInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.xtbEmployeeInfo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.xtbEmployeeInfo.Name = "xtbEmployeeInfo";
-            this.xtbEmployeeInfo.Size = new System.Drawing.Size(1726, 639);
+            this.xtbEmployeeInfo.Size = new System.Drawing.Size(1342, 470);
             this.xtbEmployeeInfo.Text = "Employee Info";
             // 
             // xtpAddress
@@ -554,11 +502,124 @@
             this.xtpAddress.Controls.Add(this.groupControl4);
             this.xtpAddress.Controls.Add(this.BtnAdd);
             this.xtpAddress.Controls.Add(this.groupControl3);
-            this.xtpAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.xtpAddress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.xtpAddress.Name = "xtpAddress";
-            this.xtpAddress.Padding = new System.Windows.Forms.Padding(20);
-            this.xtpAddress.Size = new System.Drawing.Size(1726, 639);
+            this.xtpAddress.Padding = new System.Windows.Forms.Padding(16, 17, 16, 17);
+            this.xtpAddress.Size = new System.Drawing.Size(1342, 461);
             this.xtpAddress.Text = "Address";
+            // 
+            // BtnRemove
+            // 
+            this.BtnRemove.Location = new System.Drawing.Point(1211, 391);
+            this.BtnRemove.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.BtnRemove.Name = "BtnRemove";
+            this.BtnRemove.Size = new System.Drawing.Size(115, 37);
+            this.BtnRemove.TabIndex = 3;
+            this.BtnRemove.Text = "REMOVE";
+            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Controls.Add(this.gcAddress);
+            this.groupControl4.Location = new System.Drawing.Point(18, 268);
+            this.groupControl4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.ShowCaption = false;
+            this.groupControl4.Size = new System.Drawing.Size(1311, 117);
+            this.groupControl4.TabIndex = 2;
+            // 
+            // gcAddress
+            // 
+            this.gcAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcAddress.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.gcAddress.Location = new System.Drawing.Point(2, 2);
+            this.gcAddress.MainView = this.gvAddress;
+            this.gcAddress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.gcAddress.MenuManager = this.ribbon;
+            this.gcAddress.Name = "gcAddress";
+            this.gcAddress.Size = new System.Drawing.Size(1307, 113);
+            this.gcAddress.TabIndex = 0;
+            this.gcAddress.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvAddress});
+            // 
+            // gvAddress
+            // 
+            this.gvAddress.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Barangay,
+            this.Municipality,
+            this.Province,
+            this.ZipCode,
+            this.Country});
+            this.gvAddress.DetailHeight = 295;
+            this.gvAddress.GridControl = this.gcAddress;
+            this.gvAddress.Name = "gvAddress";
+            this.gvAddress.OptionsEditForm.PopupEditFormWidth = 622;
+            this.gvAddress.OptionsView.ShowGroupPanel = false;
+            // 
+            // Barangay
+            // 
+            this.Barangay.Caption = "Barangay";
+            this.Barangay.FieldName = "Barangay";
+            this.Barangay.MinWidth = 23;
+            this.Barangay.Name = "Barangay";
+            this.Barangay.OptionsColumn.AllowEdit = false;
+            this.Barangay.Visible = true;
+            this.Barangay.VisibleIndex = 0;
+            this.Barangay.Width = 87;
+            // 
+            // Municipality
+            // 
+            this.Municipality.Caption = "Municipality/City";
+            this.Municipality.FieldName = "Municipality";
+            this.Municipality.MinWidth = 23;
+            this.Municipality.Name = "Municipality";
+            this.Municipality.OptionsColumn.AllowEdit = false;
+            this.Municipality.Visible = true;
+            this.Municipality.VisibleIndex = 1;
+            this.Municipality.Width = 87;
+            // 
+            // Province
+            // 
+            this.Province.Caption = "Province";
+            this.Province.FieldName = "Province";
+            this.Province.MinWidth = 23;
+            this.Province.Name = "Province";
+            this.Province.OptionsColumn.AllowEdit = false;
+            this.Province.Visible = true;
+            this.Province.VisibleIndex = 2;
+            this.Province.Width = 87;
+            // 
+            // ZipCode
+            // 
+            this.ZipCode.Caption = "ZipCode";
+            this.ZipCode.FieldName = "ZipCode";
+            this.ZipCode.MinWidth = 23;
+            this.ZipCode.Name = "ZipCode";
+            this.ZipCode.OptionsColumn.AllowEdit = false;
+            this.ZipCode.Visible = true;
+            this.ZipCode.VisibleIndex = 3;
+            this.ZipCode.Width = 87;
+            // 
+            // Country
+            // 
+            this.Country.Caption = "Country";
+            this.Country.FieldName = "Country";
+            this.Country.MinWidth = 23;
+            this.Country.Name = "Country";
+            this.Country.OptionsColumn.AllowEdit = false;
+            this.Country.Visible = true;
+            this.Country.VisibleIndex = 4;
+            this.Country.Width = 87;
+            // 
+            // BtnAdd
+            // 
+            this.BtnAdd.Location = new System.Drawing.Point(1211, 225);
+            this.BtnAdd.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.BtnAdd.Name = "BtnAdd";
+            this.BtnAdd.Size = new System.Drawing.Size(116, 37);
+            this.BtnAdd.TabIndex = 1;
+            this.BtnAdd.Text = "PREVIEW";
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // groupControl3
             // 
@@ -573,215 +634,119 @@
             this.groupControl3.Controls.Add(this.teMunicipality);
             this.groupControl3.Controls.Add(this.teBarangay);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl3.Location = new System.Drawing.Point(20, 20);
+            this.groupControl3.Location = new System.Drawing.Point(16, 17);
+            this.groupControl3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.ShowCaption = false;
-            this.groupControl3.Size = new System.Drawing.Size(1686, 224);
+            this.groupControl3.Size = new System.Drawing.Size(1310, 189);
             this.groupControl3.TabIndex = 0;
-            // 
-            // teBarangay
-            // 
-            this.teBarangay.Location = new System.Drawing.Point(60, 54);
-            this.teBarangay.MenuManager = this.ribbon;
-            this.teBarangay.Name = "teBarangay";
-            this.teBarangay.Properties.AutoHeight = false;
-            this.teBarangay.Size = new System.Drawing.Size(466, 42);
-            this.teBarangay.TabIndex = 3;
-            // 
-            // teMunicipality
-            // 
-            this.teMunicipality.Location = new System.Drawing.Point(606, 54);
-            this.teMunicipality.MenuManager = this.ribbon;
-            this.teMunicipality.Name = "teMunicipality";
-            this.teMunicipality.Properties.AutoHeight = false;
-            this.teMunicipality.Size = new System.Drawing.Size(466, 42);
-            this.teMunicipality.TabIndex = 4;
-            // 
-            // teProvince
-            // 
-            this.teProvince.Location = new System.Drawing.Point(1153, 54);
-            this.teProvince.MenuManager = this.ribbon;
-            this.teProvince.Name = "teProvince";
-            this.teProvince.Properties.AutoHeight = false;
-            this.teProvince.Size = new System.Drawing.Size(466, 42);
-            this.teProvince.TabIndex = 5;
-            // 
-            // teCountry
-            // 
-            this.teCountry.Location = new System.Drawing.Point(606, 153);
-            this.teCountry.MenuManager = this.ribbon;
-            this.teCountry.Name = "teCountry";
-            this.teCountry.Properties.AutoHeight = false;
-            this.teCountry.Size = new System.Drawing.Size(466, 42);
-            this.teCountry.TabIndex = 6;
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Location = new System.Drawing.Point(60, 29);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(65, 19);
-            this.labelControl12.TabIndex = 7;
-            this.labelControl12.Text = "Barangay";
-            // 
-            // labelControl13
-            // 
-            this.labelControl13.Location = new System.Drawing.Point(1153, 29);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(60, 19);
-            this.labelControl13.TabIndex = 8;
-            this.labelControl13.Text = "Province";
-            // 
-            // labelControl14
-            // 
-            this.labelControl14.Location = new System.Drawing.Point(606, 128);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(56, 19);
-            this.labelControl14.TabIndex = 9;
-            this.labelControl14.Text = "Country";
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Location = new System.Drawing.Point(606, 29);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(116, 19);
-            this.labelControl15.TabIndex = 10;
-            this.labelControl15.Text = "Municipality/City";
-            // 
-            // teZipCode
-            // 
-            this.teZipCode.Location = new System.Drawing.Point(60, 153);
-            this.teZipCode.MenuManager = this.ribbon;
-            this.teZipCode.Name = "teZipCode";
-            this.teZipCode.Properties.AutoHeight = false;
-            this.teZipCode.Size = new System.Drawing.Size(466, 42);
-            this.teZipCode.TabIndex = 11;
             // 
             // labelControl16
             // 
-            this.labelControl16.Location = new System.Drawing.Point(60, 128);
+            this.labelControl16.Location = new System.Drawing.Point(47, 108);
+            this.labelControl16.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(58, 19);
+            this.labelControl16.Size = new System.Drawing.Size(46, 16);
             this.labelControl16.TabIndex = 12;
             this.labelControl16.Text = "ZipCode";
             // 
-            // BtnAdd
+            // teZipCode
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(1594, 267);
-            this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(112, 44);
-            this.BtnAdd.TabIndex = 1;
-            this.BtnAdd.Text = "ADD";
-            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            this.teZipCode.Location = new System.Drawing.Point(47, 129);
+            this.teZipCode.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.teZipCode.MenuManager = this.ribbon;
+            this.teZipCode.Name = "teZipCode";
+            this.teZipCode.Properties.AutoHeight = false;
+            this.teZipCode.Size = new System.Drawing.Size(362, 35);
+            this.teZipCode.TabIndex = 11;
             // 
-            // groupControl4
+            // labelControl15
             // 
-            this.groupControl4.Controls.Add(this.gcAddress);
-            this.groupControl4.Location = new System.Drawing.Point(20, 333);
-            this.groupControl4.Name = "groupControl4";
-            this.groupControl4.ShowCaption = false;
-            this.groupControl4.Size = new System.Drawing.Size(1686, 224);
-            this.groupControl4.TabIndex = 2;
+            this.labelControl15.Location = new System.Drawing.Point(471, 24);
+            this.labelControl15.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(92, 16);
+            this.labelControl15.TabIndex = 10;
+            this.labelControl15.Text = "Municipality/City";
             // 
-            // BtnRemove
+            // labelControl14
             // 
-            this.BtnRemove.Location = new System.Drawing.Point(1594, 579);
-            this.BtnRemove.Name = "BtnRemove";
-            this.BtnRemove.Size = new System.Drawing.Size(112, 44);
-            this.BtnRemove.TabIndex = 3;
-            this.BtnRemove.Text = "REMOVE";
-            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
+            this.labelControl14.Location = new System.Drawing.Point(471, 108);
+            this.labelControl14.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(44, 16);
+            this.labelControl14.TabIndex = 9;
+            this.labelControl14.Text = "Country";
             // 
-            // gcAddress
+            // labelControl13
             // 
-            this.gcAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcAddress.Location = new System.Drawing.Point(2, 2);
-            this.gcAddress.MainView = this.gvAddress;
-            this.gcAddress.MenuManager = this.ribbon;
-            this.gcAddress.Name = "gcAddress";
-            this.gcAddress.Size = new System.Drawing.Size(1682, 220);
-            this.gcAddress.TabIndex = 0;
-            this.gcAddress.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvAddress});
+            this.labelControl13.Location = new System.Drawing.Point(897, 24);
+            this.labelControl13.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(48, 16);
+            this.labelControl13.TabIndex = 8;
+            this.labelControl13.Text = "Province";
             // 
-            // gvAddress
+            // labelControl12
             // 
-            this.gvAddress.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Barangay,
-            this.Municipality,
-            this.Province,
-            this.ZipCode,
-            this.Country});
-            this.gvAddress.GridControl = this.gcAddress;
-            this.gvAddress.Name = "gvAddress";
-            this.gvAddress.OptionsView.ShowGroupPanel = false;
+            this.labelControl12.Location = new System.Drawing.Point(47, 24);
+            this.labelControl12.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(53, 16);
+            this.labelControl12.TabIndex = 7;
+            this.labelControl12.Text = "Barangay";
             // 
-            // Barangay
+            // teCountry
             // 
-            this.Barangay.Caption = "Barangay";
-            this.Barangay.FieldName = "Barangay";
-            this.Barangay.MinWidth = 30;
-            this.Barangay.Name = "Barangay";
-            this.Barangay.OptionsColumn.AllowEdit = false;
-            this.Barangay.Visible = true;
-            this.Barangay.VisibleIndex = 0;
-            this.Barangay.Width = 112;
+            this.teCountry.Location = new System.Drawing.Point(471, 129);
+            this.teCountry.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.teCountry.MenuManager = this.ribbon;
+            this.teCountry.Name = "teCountry";
+            this.teCountry.Properties.AutoHeight = false;
+            this.teCountry.Size = new System.Drawing.Size(362, 35);
+            this.teCountry.TabIndex = 6;
             // 
-            // Municipality
+            // teProvince
             // 
-            this.Municipality.Caption = "Municipality/City";
-            this.Municipality.FieldName = "Municipality";
-            this.Municipality.MinWidth = 30;
-            this.Municipality.Name = "Municipality";
-            this.Municipality.OptionsColumn.AllowEdit = false;
-            this.Municipality.Visible = true;
-            this.Municipality.VisibleIndex = 1;
-            this.Municipality.Width = 112;
+            this.teProvince.Location = new System.Drawing.Point(897, 45);
+            this.teProvince.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.teProvince.MenuManager = this.ribbon;
+            this.teProvince.Name = "teProvince";
+            this.teProvince.Properties.AutoHeight = false;
+            this.teProvince.Size = new System.Drawing.Size(362, 35);
+            this.teProvince.TabIndex = 5;
             // 
-            // Province
+            // teMunicipality
             // 
-            this.Province.Caption = "Province";
-            this.Province.FieldName = "Province";
-            this.Province.MinWidth = 30;
-            this.Province.Name = "Province";
-            this.Province.OptionsColumn.AllowEdit = false;
-            this.Province.Visible = true;
-            this.Province.VisibleIndex = 2;
-            this.Province.Width = 112;
+            this.teMunicipality.Location = new System.Drawing.Point(471, 45);
+            this.teMunicipality.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.teMunicipality.MenuManager = this.ribbon;
+            this.teMunicipality.Name = "teMunicipality";
+            this.teMunicipality.Properties.AutoHeight = false;
+            this.teMunicipality.Size = new System.Drawing.Size(362, 35);
+            this.teMunicipality.TabIndex = 4;
             // 
-            // ZipCode
+            // teBarangay
             // 
-            this.ZipCode.Caption = "ZipCode";
-            this.ZipCode.FieldName = "ZipCode";
-            this.ZipCode.MinWidth = 30;
-            this.ZipCode.Name = "ZipCode";
-            this.ZipCode.OptionsColumn.AllowEdit = false;
-            this.ZipCode.Visible = true;
-            this.ZipCode.VisibleIndex = 3;
-            this.ZipCode.Width = 112;
-            // 
-            // Country
-            // 
-            this.Country.Caption = "Country";
-            this.Country.FieldName = "Country";
-            this.Country.MinWidth = 30;
-            this.Country.Name = "Country";
-            this.Country.OptionsColumn.AllowEdit = false;
-            this.Country.Visible = true;
-            this.Country.VisibleIndex = 4;
-            this.Country.Width = 112;
+            this.teBarangay.Location = new System.Drawing.Point(47, 45);
+            this.teBarangay.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.teBarangay.MenuManager = this.ribbon;
+            this.teBarangay.Name = "teBarangay";
+            this.teBarangay.Properties.AutoHeight = false;
+            this.teBarangay.Size = new System.Drawing.Size(362, 35);
+            this.teBarangay.TabIndex = 3;
             // 
             // AddEmployee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1779, 864);
+            this.ClientSize = new System.Drawing.Size(1384, 640);
             this.ControlBox = false;
             this.Controls.Add(this.xtcEmployeeData);
             this.Controls.Add(this.BtnSubmit);
             this.Controls.Add(this.ribbon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("AddEmployee.IconOptions.Image")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddEmployee";
@@ -806,7 +771,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.teFirstName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMiddleName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbCivilStatus.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mmAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.meEmployeeImagePath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -816,18 +780,18 @@
             this.xtcEmployeeData.ResumeLayout(false);
             this.xtbEmployeeInfo.ResumeLayout(false);
             this.xtpAddress.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
-            this.groupControl3.ResumeLayout(false);
-            this.groupControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teBarangay.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teMunicipality.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teProvince.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teCountry.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teZipCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcAddress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAddress)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teZipCode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCountry.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teProvince.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teMunicipality.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBarangay.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -859,10 +823,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.ComboBoxEdit cbCivilStatus;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.SimpleButton btnBrowse;
-        private DevExpress.XtraEditors.MemoEdit mmAddress;
         private DevExpress.XtraEditors.PictureEdit peProfile;
         private DevExpress.XtraEditors.MemoEdit meEmployeeImagePath;
         private DevExpress.XtraEditors.GroupControl groupControl2;

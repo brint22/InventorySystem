@@ -37,34 +37,31 @@ namespace InventorySystem.Employees
                 {
                     try
                     {
-                        // Validate input
                         if (employees == null || imageBytes == null || address == null)
                         {
-                            MessageBox.Show("Employee details, image data, and address cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Employee details, image, or address cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
-                        // Insert image into EmployeeImage table
+                        // Insert image
                         string imageQuery = @"
-            INSERT INTO EmployeeImage (ImageData) 
-            OUTPUT INSERTED.ImageID
-            VALUES (@ImageData)";
-
+                    INSERT INTO EmployeeImage (ImageData) 
+                    OUTPUT INSERTED.ImageID 
+                    VALUES (@ImageData)";
                         int imageID = connection.ExecuteScalar<int>(imageQuery, new { ImageData = imageBytes }, transaction);
 
                         if (imageID <= 0)
                         {
                             transaction.Rollback();
-                            MessageBox.Show("Failed to store employee image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Failed to save employee image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
-                        // Insert address into Address table and get AddressID
+                        // Insert address
                         string addressQuery = @"
-            INSERT INTO Address (BarangayName, MunicipalityName, ProvinceName, ZipCodeNumber, CountryName)
-            OUTPUT INSERTED.AddressID
-            VALUES (@BarangayName, @MunicipalityName, @ProvinceName, @ZipCodeNumber, @CountryName)";
-
+                    INSERT INTO Address (BarangayName, MunicipalityName, ProvinceName, ZipCodeNumber, CountryName)
+                    OUTPUT INSERTED.AddressID
+                    VALUES (@BarangayName, @MunicipalityName, @ProvinceName, @ZipCodeNumber, @CountryName)";
                         int addressID = connection.ExecuteScalar<int>(addressQuery, new
                         {
                             BarangayName = address.BarangayName,
@@ -77,7 +74,7 @@ namespace InventorySystem.Employees
                         if (addressID <= 0)
                         {
                             transaction.Rollback();
-                            MessageBox.Show("Failed to store address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Failed to save address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
@@ -85,45 +82,20 @@ namespace InventorySystem.Employees
                         string generatedID = GenerateID();
                         employees.EmployeeID = generatedID;
 
-                        // Insert into Employee table with the ImageID and AddressID reference
+                        // Insert employee
                         string employeeQuery = @"
-            INSERT INTO Employee 
-            (EmployeeID, 
-            FirstName, 
-            MiddleName, 
-            LastName, 
-            NameExtension, 
-            Gender, 
-            CivilStatus,
-            DateOfBirth, 
-            Age, 
-            PhoneNumber, 
-            DateHired, 
-            AddressID, 
-            RoleID, 
-            ImageID)
-            VALUES
-            (@EmployeeID, 
-            @FirstName, 
-            @MiddleName, 
-            @LastName, 
-            @NameExtension, 
-            @Gender, 
-            @CivilStatus, 
-            @DateOfBirth, 
-            DATEDIFF(YEAR, @DateOfBirth, CAST(GETDATE() AS DATE)) - 
-            CASE 
-                 WHEN MONTH(@DateOfBirth) > MONTH(CAST(GETDATE() AS DATE)) 
-                   OR (MONTH(@DateOfBirth) = MONTH(CAST(GETDATE() AS DATE)) 
-                   AND DAY(@DateOfBirth) > DAY(CAST(GETDATE() AS DATE))) 
-                 THEN 1 ELSE 0 
-            END,
-            @PhoneNumber,
-            @DateHired, 
-            @AddressID, 
-            @RoleID, 
-            @ImageID);";
-
+                    INSERT INTO Employee 
+                    (EmployeeID, FirstName, MiddleName, LastName, NameExtension, Gender, CivilStatus, DateOfBirth, Age,
+                     PhoneNumber, DateHired, AddressID, RoleID, ImageID)
+                    VALUES 
+                    (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @Gender, @CivilStatus, @DateOfBirth,
+                     DATEDIFF(YEAR, @DateOfBirth, CAST(GETDATE() AS DATE)) - 
+                        CASE 
+                            WHEN MONTH(@DateOfBirth) > MONTH(GETDATE()) 
+                                OR (MONTH(@DateOfBirth) = MONTH(GETDATE()) AND DAY(@DateOfBirth) > DAY(GETDATE()))
+                            THEN 1 ELSE 0 
+                        END,
+                     @PhoneNumber, @DateHired, @AddressID, @RoleID, @ImageID)";
                         int employeeRows = connection.Execute(employeeQuery, new
                         {
                             employees.EmployeeID,
@@ -136,9 +108,9 @@ namespace InventorySystem.Employees
                             employees.DateOfBirth,
                             employees.PhoneNumber,
                             employees.DateHired,
-                            AddressID = addressID,  // Link the address to the employee
+                            AddressID = addressID,
                             employees.RoleID,
-                            ImageID = imageID       // Link the image to the employee
+                            ImageID = imageID
                         }, transaction);
 
                         if (employeeRows == 0)
@@ -148,7 +120,6 @@ namespace InventorySystem.Employees
                             return;
                         }
 
-                        // Commit transaction
                         transaction.Commit();
                         MessageBox.Show("Employee registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -159,9 +130,8 @@ namespace InventorySystem.Employees
                     }
                 }
             }
+        }
 
-        
-    }
 
         //private static string GenerateID()
         //{
@@ -238,7 +208,13 @@ namespace InventorySystem.Employees
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            // Create an employee object
+            if (!int.TryParse(teZipCode.Text, out int zipCodeNumber))
+            {
+                MessageBox.Show("Please enter a valid zip code.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Build Employee object
             Employee employee = new Employee
             {
                 FirstName = teFirstName.Text,
@@ -250,14 +226,10 @@ namespace InventorySystem.Employees
                 DateOfBirth = deDateOfBirth.DateTime,
                 PhoneNumber = tePhoneNumber.Text,
                 DateHired = deDateHired.DateTime,
-                RoleID = GetRoleID(),
-                
+                RoleID = GetRoleID()
             };
 
-            GetRoleID();
-
-
-            // Read image from selected path
+            // Read image bytes from image path
             string imagePath = meEmployeeImagePath.Text.Trim();
             byte[] imageBytes = File.Exists(imagePath) ? File.ReadAllBytes(imagePath) : null;
 
@@ -267,23 +239,20 @@ namespace InventorySystem.Employees
                 return;
             }
 
-            if (!int.TryParse(teZipCode.Text, out int zipCodeNumber))
-            {
-                MessageBox.Show("Please enter a valid phone number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
+            // Build Address object
             Address address = new Address
             {
                 BarangayName = teBarangay.Text,
                 MunicipalityName = teMunicipality.Text,
-                ProvinceName = teProvince.Text,        
+                ProvinceName = teProvince.Text,
                 ZipCodeNumber = zipCodeNumber,
                 CountryName = teCountry.Text,
             };
 
-            // Register employee and store image
+            // Call the correct registration method
             RegisterEmployee(employee, imageBytes, address);
+
+            // Clear form inputs after registration
             ClearInputs();
         }
 
@@ -299,7 +268,6 @@ namespace InventorySystem.Employees
             tePhoneNumber.Text = string.Empty;
             deDateHired.Text = string.Empty;
             lueRole.Text = string.Empty;
-            mmAddress.Text = string.Empty;
         }
 
 
