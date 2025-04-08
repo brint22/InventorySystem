@@ -81,7 +81,7 @@
             this.teCountry = new DevExpress.XtraEditors.TextEdit();
             this.teProvince = new DevExpress.XtraEditors.TextEdit();
             this.teMunicipality = new DevExpress.XtraEditors.TextEdit();
-            this.teBarangay = new DevExpress.XtraEditors.TextEdit();
+            this.teBarangayName = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdGender.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDateHired.Properties)).BeginInit();
@@ -115,7 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.teCountry.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProvince.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMunicipality.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teBarangay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBarangayName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -471,7 +471,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1342, 470);
+            this.groupControl2.Size = new System.Drawing.Size(1342, 461);
             this.groupControl2.TabIndex = 48;
             this.groupControl2.Text = "Employee Data";
             this.groupControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl2_Paint);
@@ -493,7 +493,7 @@
             this.xtbEmployeeInfo.Controls.Add(this.groupControl2);
             this.xtbEmployeeInfo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.xtbEmployeeInfo.Name = "xtbEmployeeInfo";
-            this.xtbEmployeeInfo.Size = new System.Drawing.Size(1342, 470);
+            this.xtbEmployeeInfo.Size = new System.Drawing.Size(1342, 461);
             this.xtbEmployeeInfo.Text = "Employee Info";
             // 
             // xtpAddress
@@ -613,7 +613,7 @@
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(1211, 225);
+            this.BtnAdd.Location = new System.Drawing.Point(1211, 212);
             this.BtnAdd.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(116, 37);
@@ -632,7 +632,7 @@
             this.groupControl3.Controls.Add(this.teCountry);
             this.groupControl3.Controls.Add(this.teProvince);
             this.groupControl3.Controls.Add(this.teMunicipality);
-            this.groupControl3.Controls.Add(this.teBarangay);
+            this.groupControl3.Controls.Add(this.teBarangayName);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl3.Location = new System.Drawing.Point(16, 17);
             this.groupControl3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -726,15 +726,15 @@
             this.teMunicipality.Size = new System.Drawing.Size(362, 35);
             this.teMunicipality.TabIndex = 4;
             // 
-            // teBarangay
+            // teBarangayName
             // 
-            this.teBarangay.Location = new System.Drawing.Point(47, 45);
-            this.teBarangay.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.teBarangay.MenuManager = this.ribbon;
-            this.teBarangay.Name = "teBarangay";
-            this.teBarangay.Properties.AutoHeight = false;
-            this.teBarangay.Size = new System.Drawing.Size(362, 35);
-            this.teBarangay.TabIndex = 3;
+            this.teBarangayName.Location = new System.Drawing.Point(47, 45);
+            this.teBarangayName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.teBarangayName.MenuManager = this.ribbon;
+            this.teBarangayName.Name = "teBarangayName";
+            this.teBarangayName.Properties.AutoHeight = false;
+            this.teBarangayName.Size = new System.Drawing.Size(362, 35);
+            this.teBarangayName.TabIndex = 3;
             // 
             // AddEmployee
             // 
@@ -791,7 +791,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.teCountry.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProvince.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMunicipality.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teBarangay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBarangayName.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -836,7 +836,7 @@
         private DevExpress.XtraEditors.TextEdit teCountry;
         private DevExpress.XtraEditors.TextEdit teProvince;
         private DevExpress.XtraEditors.TextEdit teMunicipality;
-        private DevExpress.XtraEditors.TextEdit teBarangay;
+        private DevExpress.XtraEditors.TextEdit teBarangayName;
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.LabelControl labelControl13;

@@ -242,7 +242,7 @@ namespace InventorySystem.Employees
             // Build Address object
             Address address = new Address
             {
-                BarangayName = teBarangay.Text,
+                BarangayName = teBarangayName.Text,
                 MunicipalityName = teMunicipality.Text,
                 ProvinceName = teProvince.Text,
                 ZipCodeNumber = zipCodeNumber,
@@ -369,7 +369,7 @@ namespace InventorySystem.Employees
         //Methid for Temporary Adding Address in gcAddress
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            string barangay = teBarangay.Text.Trim();
+            string barangay = teBarangayName.Text.Trim();
             string municipality = teMunicipality.Text.Trim();
             string province = teProvince.Text.Trim();
             string zipCode = teZipCode.Text.Trim();
@@ -427,7 +427,7 @@ namespace InventorySystem.Employees
         //Clearing the inputs in Address
         private void ClearInputsAddress()
         {
-            teBarangay.Text = string.Empty;
+            teBarangayName.Text = string.Empty;
             teMunicipality.Text = string.Empty;
             teProvince.Text = string.Empty;
             teZipCode.Text = string.Empty;

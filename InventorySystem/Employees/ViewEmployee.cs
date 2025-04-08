@@ -45,6 +45,9 @@ namespace InventorySystem.Employees
             // Fetch employee details, including ImageData
             (string firstName, string middleName, string lastName, string nameExtension, byte[] imageData) = GetEmployeeDetails(employeeID);
 
+            // Fetch address details
+            Address employeeAddress = GetEmployeeAddress(employeeID);
+
             var updateForm = new UpdateEmployee(employeeID, this); // instantiate your update form
 
             // Hook the event to refresh gcEmployee
@@ -53,7 +56,7 @@ namespace InventorySystem.Employees
                 GlobalMethod.LoadEmployeeData("All", gcEmployee);
             };
 
-            // Populate form fields
+            // Populate form fields with employee details
             updateForm.teEmployeeID.Text = employeeID;
             updateForm.teFirstName.Text = firstName;
             updateForm.teMiddleName.Text = middleName;
@@ -82,8 +85,6 @@ namespace InventorySystem.Employees
             {
                 try
                 {
-                    // Store raw image data as Base64 or directly into a PictureEdit
-                    updateForm.meEmployeeImagePath.Text = ""; // optional if you don’t store path
                     using (MemoryStream ms = new MemoryStream(imageData))
                     {
                         updateForm.peProfile.Image = System.Drawing.Image.FromStream(ms);
@@ -98,6 +99,13 @@ namespace InventorySystem.Employees
             {
                 updateForm.meEmployeeImagePath.Text = string.Empty;
             }
+
+            // Populate the address fields
+            updateForm.teBarangayName.Text = employeeAddress.BarangayName;
+            updateForm.teMunicipalityName.Text = employeeAddress.MunicipalityName;
+            updateForm.teProvinceName.Text = employeeAddress.ProvinceName;
+            updateForm.teZipCodeNumber.Text = employeeAddress.ZipCodeNumber.ToString();
+            updateForm.teCountryName.Text = employeeAddress.CountryName;
 
             // Show the update form
             DialogResult result = updateForm.ShowDialog();
@@ -151,6 +159,48 @@ namespace InventorySystem.Employees
 
             return (firstName, middleName, lastName, nameExtension, imageData);
         }
+
+        private Address GetEmployeeAddress(string employeeID)
+        {
+            Address address = new Address();
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = @"
+            SELECT a.BarangayName, a.MunicipalityName, a.ProvinceName, a.ZipCodeNumber, a.CountryName
+            FROM Employee e
+            LEFT JOIN Address a ON e.AddressID = a.AddressID
+            WHERE e.EmployeeID = @EmployeeID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@EmployeeID", employeeID);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                address.BarangayName = reader["BarangayName"] != DBNull.Value ? reader["BarangayName"].ToString() : "";
+                                address.MunicipalityName = reader["MunicipalityName"] != DBNull.Value ? reader["MunicipalityName"].ToString() : "";
+                                address.ProvinceName = reader["ProvinceName"] != DBNull.Value ? reader["ProvinceName"].ToString() : "";
+                                address.ZipCodeNumber = reader["ZipCodeNumber"] != DBNull.Value ? Convert.ToInt32(reader["ZipCodeNumber"]) : 0;
+                                address.CountryName = reader["CountryName"] != DBNull.Value ? reader["CountryName"].ToString() : "";
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error fetching address details: " + ex.Message);
+                }
+            }
+
+            return address;
+        }
+
 
 
         private string GetImagePathFromTileView(string columnName)
