@@ -66,7 +66,6 @@ namespace InventorySystem.Employees
             updateForm.cbCivilStatus.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("CivilStatus"));
             updateForm.tePhoneNumber.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("PhoneNumber"));
             updateForm.lueRole.EditValue = tvEmployee.GetFocusedRowCellValue("RoleID");
-            updateForm.mmAddress.Text = Convert.ToString(tvEmployee.GetFocusedRowCellValue("Address"));
 
             if (tvEmployee.GetFocusedRowCellValue("DateOfBirth") != DBNull.Value)
             {
