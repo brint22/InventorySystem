@@ -70,7 +70,7 @@ namespace InventorySystem.Employees
 
         }
 
-        private void UpdateEmployeeInformation(Employee employees, byte[] imageBytes, string employeeImagePath)
+        private void UpdateEmployeeInformation(Employee employees, byte[] imageBytes, string employeeImagePath, Address address)
         {
             if (employees == null || string.IsNullOrWhiteSpace(employees.EmployeeID))
             {
@@ -123,9 +123,28 @@ namespace InventorySystem.Employees
                                 connection.Execute(updateEmployeeImageIDQuery, new { ImageID = imageID, EmployeeID = employeeID }, transaction);
                             }
                         }
-                        // If no image is selected (employeeImagePath is empty), skip the image update
 
-                        // Update Employee details (always update even if image is not updated)
+                        // Update address
+                        if (address != null)
+                        {
+                            string addressQuery = @"
+                        UPDATE Address
+                        SET BarangayName = @BarangayName, MunicipalityName = @MunicipalityName, ProvinceName = @ProvinceName, 
+                            ZipCodeNumber = @ZipCodeNumber, CountryName = @CountryName
+                        WHERE AddressID = (SELECT AddressID FROM Employee WHERE EmployeeID = @EmployeeID)";
+
+                            connection.Execute(addressQuery, new
+                            {
+                                BarangayName = address.BarangayName,
+                                MunicipalityName = address.MunicipalityName,
+                                ProvinceName = address.ProvinceName,
+                                ZipCodeNumber = address.ZipCodeNumber,
+                                CountryName = address.CountryName,
+                                EmployeeID = employeeID
+                            }, transaction);
+                        }
+
+                        // Update Employee details (always update even if image or address are not updated)
                         string updateQuery = @"
                     UPDATE Employee 
                     SET 
@@ -145,7 +164,6 @@ namespace InventorySystem.Employees
                             END,
                         PhoneNumber = @PhoneNumber, 
                         DateHired = @DateHired, 
-                        Address = @Address, 
                         RoleID = @RoleID
                     WHERE EmployeeID = @EmployeeID";
 
@@ -189,7 +207,7 @@ namespace InventorySystem.Employees
         public event EventHandler EmployeeUpdated;
 
         private void BtnSubmit_Click(object sender, EventArgs e)
-        { // Create an employee object
+        {  // Create an employee object
             Employee employee = new Employee
             {
                 EmployeeID = teEmployeeID.Text,
@@ -233,13 +251,23 @@ namespace InventorySystem.Employees
                 }
             }
 
+            // Create an Address object
+            Address address = new Address
+            {
+                BarangayName = teBarangayName.Text,
+                MunicipalityName = teMunicipalityName.Text,
+                ProvinceName = teProvinceName.Text,
+                ZipCodeNumber = int.TryParse(teZipCodeNumber.Text, out int zipCodeNumber) ? zipCodeNumber : 0,
+                CountryName = teCountryName.Text
+            };
+
             // Update employee info (image update is conditional)
-            UpdateEmployeeInformation(employee, imageBytes, imagePath);
+            UpdateEmployeeInformation(employee, imageBytes, imagePath, address);
 
             // ✅ Notify the main form to refresh the grid
             EmployeeUpdated?.Invoke(this, EventArgs.Empty);
         }
-
+    
 
 
         private string GetGender()
