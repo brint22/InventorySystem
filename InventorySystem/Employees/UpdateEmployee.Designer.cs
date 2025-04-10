@@ -62,7 +62,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnRemove = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.gcAddress = new DevExpress.XtraGrid.GridControl();
             this.gvAddress = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -75,14 +75,14 @@
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.teCountryName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.teProvinceName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.teMunicipalityName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
+            this.teZipCodeNumber = new DevExpress.XtraEditors.TextEdit();
+            this.teBarangayName = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.teFirstName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMiddleName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teLastName.Properties)).BeginInit();
@@ -114,11 +114,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvAddress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCountryName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teProvinceName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teMunicipalityName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teZipCodeNumber.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBarangayName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // teFirstName
@@ -221,7 +221,7 @@
             this.tePhoneNumber.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F);
             this.tePhoneNumber.Properties.Appearance.Options.UseFont = true;
             this.tePhoneNumber.Properties.AutoHeight = false;
-            this.tePhoneNumber.Size = new System.Drawing.Size(190, 34);
+            this.tePhoneNumber.Size = new System.Drawing.Size(224, 38);
             this.tePhoneNumber.TabIndex = 38;
             // 
             // peProfile
@@ -380,7 +380,7 @@
             // 
             // lueRole
             // 
-            this.lueRole.Location = new System.Drawing.Point(793, 423);
+            this.lueRole.Location = new System.Drawing.Point(793, 426);
             this.lueRole.Margin = new System.Windows.Forms.Padding(4);
             this.lueRole.Name = "lueRole";
             this.lueRole.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F);
@@ -392,7 +392,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "Role ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "")});
             this.lueRole.Properties.NullText = "";
-            this.lueRole.Size = new System.Drawing.Size(190, 34);
+            this.lueRole.Size = new System.Drawing.Size(190, 38);
             this.lueRole.TabIndex = 59;
             // 
             // teEmployeeID
@@ -535,7 +535,7 @@
             // 
             // groupControl4
             // 
-            this.groupControl4.Controls.Add(this.simpleButton1);
+            this.groupControl4.Controls.Add(this.BtnRemove);
             this.groupControl4.Controls.Add(this.groupControl5);
             this.groupControl4.Controls.Add(this.BtnAdd);
             this.groupControl4.Controls.Add(this.groupControl3);
@@ -545,16 +545,17 @@
             this.groupControl4.Size = new System.Drawing.Size(1288, 531);
             this.groupControl4.TabIndex = 17;
             // 
-            // simpleButton1
+            // BtnRemove
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(1135, 461);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(116, 37);
-            this.simpleButton1.TabIndex = 19;
-            this.simpleButton1.Text = "REMOVE";
+            this.BtnRemove.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRemove.Appearance.Options.UseFont = true;
+            this.BtnRemove.Location = new System.Drawing.Point(1135, 461);
+            this.BtnRemove.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.BtnRemove.Name = "BtnRemove";
+            this.BtnRemove.Size = new System.Drawing.Size(116, 37);
+            this.BtnRemove.TabIndex = 19;
+            this.BtnRemove.Text = "REMOVE";
+            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // groupControl5
             // 
@@ -645,7 +646,7 @@
             this.ZipCode.AppearanceCell.Options.UseFont = true;
             this.ZipCode.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
             this.ZipCode.AppearanceHeader.Options.UseFont = true;
-            this.ZipCode.Caption = "ZipCode";
+            this.ZipCode.Caption = "Zip Code";
             this.ZipCode.FieldName = "ZipCode";
             this.ZipCode.MinWidth = 23;
             this.ZipCode.Name = "ZipCode";
@@ -679,19 +680,20 @@
             this.BtnAdd.Size = new System.Drawing.Size(116, 37);
             this.BtnAdd.TabIndex = 17;
             this.BtnAdd.Text = "PREVIEW";
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.labelControl7);
             this.groupControl3.Controls.Add(this.labelControl16);
-            this.groupControl3.Controls.Add(this.textEdit1);
+            this.groupControl3.Controls.Add(this.teCountryName);
             this.groupControl3.Controls.Add(this.labelControl14);
-            this.groupControl3.Controls.Add(this.textEdit2);
+            this.groupControl3.Controls.Add(this.teProvinceName);
             this.groupControl3.Controls.Add(this.labelControl15);
-            this.groupControl3.Controls.Add(this.textEdit3);
+            this.groupControl3.Controls.Add(this.teMunicipalityName);
             this.groupControl3.Controls.Add(this.labelControl13);
-            this.groupControl3.Controls.Add(this.textEdit4);
-            this.groupControl3.Controls.Add(this.textEdit5);
+            this.groupControl3.Controls.Add(this.teZipCodeNumber);
+            this.groupControl3.Controls.Add(this.teBarangayName);
             this.groupControl3.Location = new System.Drawing.Point(45, 62);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.ShowCaption = false;
@@ -721,12 +723,14 @@
             this.labelControl16.TabIndex = 15;
             this.labelControl16.Text = "ZipCode";
             // 
-            // textEdit1
+            // teCountryName
             // 
-            this.textEdit1.Location = new System.Drawing.Point(440, 131);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(336, 34);
-            this.textEdit1.TabIndex = 0;
+            this.teCountryName.Location = new System.Drawing.Point(440, 131);
+            this.teCountryName.Name = "teCountryName";
+            this.teCountryName.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.teCountryName.Properties.Appearance.Options.UseFont = true;
+            this.teCountryName.Size = new System.Drawing.Size(336, 38);
+            this.teCountryName.TabIndex = 0;
             // 
             // labelControl14
             // 
@@ -739,12 +743,14 @@
             this.labelControl14.TabIndex = 14;
             this.labelControl14.Text = "Country";
             // 
-            // textEdit2
+            // teProvinceName
             // 
-            this.textEdit2.Location = new System.Drawing.Point(843, 45);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(336, 34);
-            this.textEdit2.TabIndex = 1;
+            this.teProvinceName.Location = new System.Drawing.Point(843, 45);
+            this.teProvinceName.Name = "teProvinceName";
+            this.teProvinceName.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.teProvinceName.Properties.Appearance.Options.UseFont = true;
+            this.teProvinceName.Size = new System.Drawing.Size(336, 38);
+            this.teProvinceName.TabIndex = 1;
             // 
             // labelControl15
             // 
@@ -757,12 +763,14 @@
             this.labelControl15.TabIndex = 13;
             this.labelControl15.Text = "Municipality/City";
             // 
-            // textEdit3
+            // teMunicipalityName
             // 
-            this.textEdit3.Location = new System.Drawing.Point(440, 45);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(336, 34);
-            this.textEdit3.TabIndex = 2;
+            this.teMunicipalityName.Location = new System.Drawing.Point(440, 45);
+            this.teMunicipalityName.Name = "teMunicipalityName";
+            this.teMunicipalityName.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.teMunicipalityName.Properties.Appearance.Options.UseFont = true;
+            this.teMunicipalityName.Size = new System.Drawing.Size(336, 38);
+            this.teMunicipalityName.TabIndex = 2;
             // 
             // labelControl13
             // 
@@ -775,19 +783,23 @@
             this.labelControl13.TabIndex = 12;
             this.labelControl13.Text = "Province";
             // 
-            // textEdit4
+            // teZipCodeNumber
             // 
-            this.textEdit4.Location = new System.Drawing.Point(32, 131);
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Size = new System.Drawing.Size(336, 34);
-            this.textEdit4.TabIndex = 3;
+            this.teZipCodeNumber.Location = new System.Drawing.Point(32, 131);
+            this.teZipCodeNumber.Name = "teZipCodeNumber";
+            this.teZipCodeNumber.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.teZipCodeNumber.Properties.Appearance.Options.UseFont = true;
+            this.teZipCodeNumber.Size = new System.Drawing.Size(336, 38);
+            this.teZipCodeNumber.TabIndex = 3;
             // 
-            // textEdit5
+            // teBarangayName
             // 
-            this.textEdit5.Location = new System.Drawing.Point(32, 44);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Size = new System.Drawing.Size(336, 34);
-            this.textEdit5.TabIndex = 4;
+            this.teBarangayName.Location = new System.Drawing.Point(32, 44);
+            this.teBarangayName.Name = "teBarangayName";
+            this.teBarangayName.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teBarangayName.Properties.Appearance.Options.UseFont = true;
+            this.teBarangayName.Size = new System.Drawing.Size(336, 38);
+            this.teBarangayName.TabIndex = 4;
             // 
             // UpdateEmployee
             // 
@@ -839,11 +851,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCountryName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teProvinceName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teMunicipalityName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teZipCodeNumber.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBarangayName.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -881,11 +893,6 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.LabelControl labelControl7;
@@ -902,6 +909,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn Province;
         private DevExpress.XtraGrid.Columns.GridColumn ZipCode;
         private DevExpress.XtraGrid.Columns.GridColumn Country;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton BtnRemove;
+        public DevExpress.XtraEditors.TextEdit teBarangayName;
+        public DevExpress.XtraEditors.TextEdit teMunicipalityName;
+        public DevExpress.XtraEditors.TextEdit teProvinceName;
+        public DevExpress.XtraEditors.TextEdit teZipCodeNumber;
+        public DevExpress.XtraEditors.TextEdit teCountryName;
     }
 }

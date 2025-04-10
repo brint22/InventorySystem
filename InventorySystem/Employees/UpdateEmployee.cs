@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Dapper;
 using System.IO;
 using System.Drawing;
+using DevExpress.XtraReports.UI;
 
 namespace InventorySystem.Employees
 {
@@ -65,6 +66,8 @@ namespace InventorySystem.Employees
         private void UpdateEmployee_Load(object sender, EventArgs e)
         {
             LoadRole();
+            gcAddress.DataSource = CreateAddressTable();
+
         }
 
         private void UpdateEmployeeInformation(Employee employees, byte[] imageBytes, string employeeImagePath)
@@ -323,6 +326,72 @@ namespace InventorySystem.Employees
         private void BtnCancal_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        //Data table of Address
+        DataTable dtAddress = new DataTable();
+        private DataTable CreateAddressTable()
+        {
+            dtAddress.Columns.Add("Barangay", typeof(string));
+            dtAddress.Columns.Add("Municipality", typeof(string));
+            dtAddress.Columns.Add("Province", typeof(string));
+            dtAddress.Columns.Add("ZipCode", typeof(string));
+            dtAddress.Columns.Add("Country", typeof(string));
+
+            return dtAddress;
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            string barangay = teBarangayName.Text.Trim();
+            string municipality = teMunicipalityName.Text.Trim();
+            string province = teProvinceName.Text.Trim();
+            string zipCode = teZipCodeNumber.Text.Trim();
+            string country = teCountryName.Text.Trim();
+            // Validation to check if any field is empty
+            if (string.IsNullOrEmpty(barangay) ||
+                string.IsNullOrEmpty(municipality) ||
+                string.IsNullOrEmpty(province) ||
+                string.IsNullOrEmpty(zipCode) ||
+                string.IsNullOrEmpty(country))
+            {
+                MessageBox.Show("Please fill out all fields before adding.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            DataRow newRow = dtAddress.NewRow();
+            newRow["Barangay"] = barangay;
+            newRow["Municipality"] = municipality;
+            newRow["Province"] = province;
+            newRow["ZipCode"] = zipCode;
+            newRow["Country"] = country;
+            dtAddress.Rows.Add(newRow);
+
+            gcAddress.DataSource = dtAddress;
+            gvAddress.RefreshData();
+
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gvAddress.FocusedRowHandle;
+
+            if (focusedRowHandle >= 0)
+            {
+                DataRow rowDelete = gvAddress.GetDataRow(focusedRowHandle);
+                if (rowDelete != null)
+                {
+                    dtAddress.Rows.Remove(rowDelete);
+
+                    gcAddress.DataSource = dtAddress;
+                    gvAddress.RefreshData();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Please select a row to remove.");
+                }
+            }
         }
     }
 }
