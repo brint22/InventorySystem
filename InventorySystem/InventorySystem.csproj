@@ -114,6 +114,12 @@
     <Compile Include="Employees\AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employees\GridViewEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees\GridViewEmployee.Designer.cs">
+      <DependentUpon>GridViewEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employees\UpdateEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Employees\AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees\GridViewEmployee.resx">
+      <DependentUpon>GridViewEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employees\UpdateEmployee.resx">
       <DependentUpon>UpdateEmployee.cs</DependentUpon>

@@ -32,8 +32,15 @@ namespace InventorySystem.Views
             // Show the Employee form
             employee.Show();
         }
+        private void CloseAllChildForms()
+        {
+            foreach (Form childForm in this.MdiChildren)
+            {
+                childForm.Close();
+            }
+        }
 
-        private void bbiViewEmployee_ItemClick(object sender, ItemClickEventArgs e)
+        private void bbiTileView_ItemClick(object sender, ItemClickEventArgs e)
         {
             //Close the current Form when click another form
             CloseAllChildForms();
@@ -42,16 +49,21 @@ namespace InventorySystem.Views
             this.IsMdiContainer = true;
             employee.MdiParent = this;
             // Show the Employee form
-       
+
             employee.Show();
         }
 
-        private void CloseAllChildForms()
+        private void bbiListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            foreach (Form childForm in this.MdiChildren)
-            {
-                childForm.Close();
-            }
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            GridViewEmployee employee = new GridViewEmployee();
+            this.IsMdiContainer = true;
+            employee.MdiParent = this;
+            // Show the Employee form
+
+            employee.Show();
         }
     }
 }
