@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using InventorySystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,16 @@ namespace InventorySystem.Employees
         public GridViewEmployee()
         {
             InitializeComponent();
+        }
+
+        private void GridViewEmployee_Load(object sender, EventArgs e)
+        {
+            GlobalMethod.LoadEmployeeData("All", gcEmployeeView);
+        }
+
+        private void teSearch_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+           gvEmployeeView.ApplyFindFilter(e.NewValue as string);
         }
     }
 }
