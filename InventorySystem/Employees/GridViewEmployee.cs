@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace InventorySystem.Employees
 {
-    
+    //
     public partial class GridViewEmployee : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public GridViewEmployee()
