@@ -820,7 +820,7 @@
             this.tab.Name = "tab";
             this.tab.Padding = new System.Windows.Forms.Padding(39, 42, 39, 42);
             this.tab.SelectedTabPage = this.All;
-            this.tab.Size = new System.Drawing.Size(1167, 428);
+            this.tab.Size = new System.Drawing.Size(1167, 466);
             this.tab.TabIndex = 4;
             this.tab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.All,
@@ -839,7 +839,7 @@
             this.All.Controls.Add(this.gcEmployee);
             this.All.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.All.Name = "All";
-            this.All.Size = new System.Drawing.Size(1165, 390);
+            this.All.Size = new System.Drawing.Size(1165, 428);
             this.All.Text = "All";
             // 
             // gcEmployee
@@ -850,7 +850,7 @@
             this.gcEmployee.Location = new System.Drawing.Point(19, 16);
             this.gcEmployee.MainView = this.tvEmployee;
             this.gcEmployee.Name = "gcEmployee";
-            this.gcEmployee.Size = new System.Drawing.Size(1122, 340);
+            this.gcEmployee.Size = new System.Drawing.Size(1122, 378);
             this.gcEmployee.TabIndex = 2;
             this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tvEmployee});

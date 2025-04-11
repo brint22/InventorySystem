@@ -254,6 +254,7 @@ namespace InventorySystem.Employees
 
             // Clear form inputs after registration
             ClearInputs();
+            ClearInputsAddress();
         }
 
         private void ClearInputs()
@@ -396,9 +397,6 @@ namespace InventorySystem.Employees
 
             gcAddress.DataSource = dtAddress;
             gvAddress.RefreshData();
-
-            // Method to Refresh the textbox after clicking the Add button
-            ClearInputsAddress();
         }
 
         //Methid for Temporary Removing Address in gcAddress
@@ -422,7 +420,6 @@ namespace InventorySystem.Employees
                 }
             }
         }
-
 
         //Clearing the inputs in Address
         private void ClearInputsAddress()
