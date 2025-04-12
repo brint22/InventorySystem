@@ -208,9 +208,102 @@ namespace InventorySystem.Employees
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
+            // Field validations for Employee
+            if (string.IsNullOrWhiteSpace(teFirstName.Text))
+            {
+                MessageBox.Show("First Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teMiddleName.Text))
+            {
+                MessageBox.Show("Middle Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teLastName.Text))
+            {
+                MessageBox.Show("Last Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (GetGender() == null)
+            {
+                MessageBox.Show("Gender is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(cbCivilStatus.Text))
+            {
+                MessageBox.Show("Civil Status is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (deDateOfBirth.DateTime == DateTime.MinValue)
+            {
+                MessageBox.Show("Date of Birth is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tePhoneNumber.Text))
+            {
+                MessageBox.Show("Phone Number is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (deDateHired.DateTime == DateTime.MinValue)
+            {
+                MessageBox.Show("Date Hired is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (GetRoleID() == 0)
+            {
+                MessageBox.Show("Role ID is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (!int.TryParse(teZipCode.Text, out int zipCodeNumber))
             {
                 MessageBox.Show("Please enter a valid zip code.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Field validations for Address
+            if (string.IsNullOrWhiteSpace(teBarangayName.Text))
+            {
+                MessageBox.Show("Barangay Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teMunicipality.Text))
+            {
+                MessageBox.Show("Municipality Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teProvince.Text))
+            {
+                MessageBox.Show("Province Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teCountry.Text))
+            {
+                MessageBox.Show("Country Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Confirm submission
+            DialogResult confirmResult = MessageBox.Show(
+                "Are you sure you want to add this employee?",
+                "Confirmation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirmResult != DialogResult.Yes)
+            {
                 return;
             }
 
@@ -269,6 +362,7 @@ namespace InventorySystem.Employees
             tePhoneNumber.Text = string.Empty;
             deDateHired.Text = string.Empty;
             lueRole.Text = string.Empty;
+            
         }
 
 
@@ -397,6 +491,8 @@ namespace InventorySystem.Employees
 
             gcAddress.DataSource = dtAddress;
             gvAddress.RefreshData();
+
+           
         }
 
         //Methid for Temporary Removing Address in gcAddress

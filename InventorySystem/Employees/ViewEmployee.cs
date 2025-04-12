@@ -284,6 +284,11 @@ namespace InventorySystem.Employees
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void teSearch_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            tvEmployee.ApplyFindFilter(e.NewValue as string);
+        }
     }
     
 }
