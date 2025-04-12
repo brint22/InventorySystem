@@ -207,14 +207,99 @@ namespace InventorySystem.Employees
         public event EventHandler EmployeeUpdated;
 
         private void BtnSubmit_Click(object sender, EventArgs e)
-        {  // Create an employee object
+        {    // Validate required fields (except NameExtension)
+            if (string.IsNullOrWhiteSpace(teEmployeeID.Text))
+            {
+                MessageBox.Show("Employee ID is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teFirstName.Text))
+            {
+                MessageBox.Show("First Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teMiddleName.Text))
+            {
+                MessageBox.Show("Middle Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teLastName.Text))
+            {
+                MessageBox.Show("Last Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(cbCivilStatus.Text))
+            {
+                MessageBox.Show("Civil Status is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (deDateOfBirth.EditValue == null)
+            {
+                MessageBox.Show("Date of Birth is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tePhoneNumber.Text))
+            {
+                MessageBox.Show("Phone Number is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (deDateHired.EditValue == null)
+            {
+                MessageBox.Show("Date Hired is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (GetRoleID() == 0)
+            {
+                MessageBox.Show("Please select a valid Role.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teBarangayName.Text))
+            {
+                MessageBox.Show("Barangay Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teMunicipalityName.Text))
+            {
+                MessageBox.Show("Municipality Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teProvinceName.Text))
+            {
+                MessageBox.Show("Province Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teZipCodeNumber.Text) || !int.TryParse(teZipCodeNumber.Text, out _))
+            {
+                MessageBox.Show("A valid Zip Code Number is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teCountryName.Text))
+            {
+                MessageBox.Show("Country Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Create an employee object
             Employee employee = new Employee
             {
                 EmployeeID = teEmployeeID.Text,
                 FirstName = teFirstName.Text,
                 MiddleName = teMiddleName.Text,
                 LastName = teLastName.Text,
-                NameExtension = teNameExtension.Text,
+                NameExtension = teNameExtension.Text, // Not required
                 Gender = GetGender().ToString(),
                 CivilStatus = cbCivilStatus.Text,
                 DateOfBirth = deDateOfBirth.DateTime,
@@ -237,17 +322,16 @@ namespace InventorySystem.Employees
                     // Read the image file as byte array
                     imageBytes = File.ReadAllBytes(imagePath);
 
-                    // Optionally, you can open the image to ensure it's valid (this is not mandatory)
+                    // Optionally, open the image to ensure it's valid
                     using (System.Drawing.Image image = System.Drawing.Image.FromFile(imagePath))
                     {
-                        // You can do additional validation here if necessary
+                        // Additional validation can go here
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Handle any exceptions that may occur while reading the image file
                     MessageBox.Show($"Failed to read image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Prevent further code execution if image reading fails
+                    return; // Stop if image loading fails
                 }
             }
 
@@ -260,6 +344,13 @@ namespace InventorySystem.Employees
                 ZipCodeNumber = int.TryParse(teZipCodeNumber.Text, out int zipCodeNumber) ? zipCodeNumber : 0,
                 CountryName = teCountryName.Text
             };
+
+            // Ask for confirmation before updating
+            DialogResult result = MessageBox.Show("Are you sure you want to update this data?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result != DialogResult.Yes)
+            {
+                return; // User canceled
+            }
 
             // Update employee info (image update is conditional)
             UpdateEmployeeInformation(employee, imageBytes, imagePath, address);
