@@ -47,7 +47,7 @@
             this.teSearch = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.EmployeeRole = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.BtnSubmit = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnGenerateReport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeView)).BeginInit();
@@ -84,7 +84,7 @@
             this.gcEmployeeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcEmployeeView.Location = new System.Drawing.Point(25, 144);
+            this.gcEmployeeView.Location = new System.Drawing.Point(25, 157);
             this.gcEmployeeView.MainView = this.gvEmployeeView;
             this.gcEmployeeView.MenuManager = this.ribbon;
             this.gcEmployeeView.Name = "gcEmployeeView";
@@ -112,6 +112,10 @@
             // 
             // EmployeeID
             // 
+            this.EmployeeID.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.EmployeeID.AppearanceCell.Options.UseFont = true;
+            this.EmployeeID.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.EmployeeID.AppearanceHeader.Options.UseFont = true;
             this.EmployeeID.Caption = "Employee ID";
             this.EmployeeID.FieldName = "EmployeeID";
             this.EmployeeID.MinWidth = 25;
@@ -122,6 +126,10 @@
             // 
             // EmployeeName
             // 
+            this.EmployeeName.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.EmployeeName.AppearanceCell.Options.UseFont = true;
+            this.EmployeeName.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.EmployeeName.AppearanceHeader.Options.UseFont = true;
             this.EmployeeName.Caption = "Employee Name";
             this.EmployeeName.FieldName = "EmployeeName";
             this.EmployeeName.MinWidth = 25;
@@ -132,6 +140,10 @@
             // 
             // Gender
             // 
+            this.Gender.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.Gender.AppearanceCell.Options.UseFont = true;
+            this.Gender.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.Gender.AppearanceHeader.Options.UseFont = true;
             this.Gender.Caption = "Gender";
             this.Gender.FieldName = "Gender";
             this.Gender.MinWidth = 25;
@@ -142,6 +154,10 @@
             // 
             // CivilStatus
             // 
+            this.CivilStatus.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.CivilStatus.AppearanceCell.Options.UseFont = true;
+            this.CivilStatus.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.CivilStatus.AppearanceHeader.Options.UseFont = true;
             this.CivilStatus.Caption = "Civil Status";
             this.CivilStatus.FieldName = "CivilStatus";
             this.CivilStatus.MinWidth = 23;
@@ -152,6 +168,10 @@
             // 
             // DateOfBirth
             // 
+            this.DateOfBirth.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.DateOfBirth.AppearanceCell.Options.UseFont = true;
+            this.DateOfBirth.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.DateOfBirth.AppearanceHeader.Options.UseFont = true;
             this.DateOfBirth.Caption = "Date of Birth";
             this.DateOfBirth.FieldName = "DateOfBirth";
             this.DateOfBirth.MinWidth = 23;
@@ -162,6 +182,10 @@
             // 
             // Age
             // 
+            this.Age.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.Age.AppearanceCell.Options.UseFont = true;
+            this.Age.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.Age.AppearanceHeader.Options.UseFont = true;
             this.Age.Caption = "Age";
             this.Age.FieldName = "Age";
             this.Age.MinWidth = 23;
@@ -172,6 +196,10 @@
             // 
             // PhoneNumber
             // 
+            this.PhoneNumber.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.PhoneNumber.AppearanceCell.Options.UseFont = true;
+            this.PhoneNumber.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.PhoneNumber.AppearanceHeader.Options.UseFont = true;
             this.PhoneNumber.Caption = "Phone Number";
             this.PhoneNumber.FieldName = "PhoneNumber";
             this.PhoneNumber.MinWidth = 23;
@@ -182,6 +210,10 @@
             // 
             // RoleName
             // 
+            this.RoleName.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.RoleName.AppearanceCell.Options.UseFont = true;
+            this.RoleName.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.RoleName.AppearanceHeader.Options.UseFont = true;
             this.RoleName.Caption = "Role";
             this.RoleName.FieldName = "RoleName";
             this.RoleName.MinWidth = 25;
@@ -192,6 +224,10 @@
             // 
             // DateHired
             // 
+            this.DateHired.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.DateHired.AppearanceCell.Options.UseFont = true;
+            this.DateHired.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.DateHired.AppearanceHeader.Options.UseFont = true;
             this.DateHired.Caption = "Date Hired";
             this.DateHired.FieldName = "DateHired";
             this.DateHired.MinWidth = 23;
@@ -202,6 +238,10 @@
             // 
             // Address
             // 
+            this.Address.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.Address.AppearanceCell.Options.UseFont = true;
+            this.Address.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.Address.AppearanceHeader.Options.UseFont = true;
             this.Address.Caption = "Address";
             this.Address.FieldName = "Address";
             this.Address.MinWidth = 25;
@@ -212,7 +252,7 @@
             // 
             // teSearch
             // 
-            this.teSearch.Location = new System.Drawing.Point(149, 81);
+            this.teSearch.Location = new System.Drawing.Point(163, 93);
             this.teSearch.Name = "teSearch";
             this.teSearch.Properties.AutoHeight = false;
             this.teSearch.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -222,20 +262,24 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(25, 93);
+            this.labelControl2.Location = new System.Drawing.Point(25, 104);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(102, 16);
+            this.labelControl2.Size = new System.Drawing.Size(127, 19);
             this.labelControl2.TabIndex = 10;
-            this.labelControl2.Text = "Search Keyword :";
+            this.labelControl2.Text = "Search Keyword:";
             // 
             // EmployeeRole
             // 
-            this.EmployeeRole.EditValue = "Employee Role";
-            this.EmployeeRole.Location = new System.Drawing.Point(494, 81);
+            this.EmployeeRole.EditValue = "Role";
+            this.EmployeeRole.Location = new System.Drawing.Point(508, 93);
             this.EmployeeRole.MenuManager = this.ribbon;
             this.EmployeeRole.Name = "EmployeeRole";
+            this.EmployeeRole.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmployeeRole.Properties.Appearance.Options.UseFont = true;
             this.EmployeeRole.Properties.AutoHeight = false;
             this.EmployeeRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -243,25 +287,27 @@
             this.EmployeeRole.Size = new System.Drawing.Size(217, 41);
             this.EmployeeRole.TabIndex = 14;
             // 
-            // BtnSubmit
+            // BtnGenerateReport
             // 
-            this.BtnSubmit.Appearance.BackColor = System.Drawing.Color.LightSlateGray;
-            this.BtnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSubmit.Appearance.Options.UseBackColor = true;
-            this.BtnSubmit.Appearance.Options.UseFont = true;
-            this.BtnSubmit.Location = new System.Drawing.Point(1035, 81);
-            this.BtnSubmit.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnSubmit.Name = "BtnSubmit";
-            this.BtnSubmit.Size = new System.Drawing.Size(239, 38);
-            this.BtnSubmit.TabIndex = 64;
-            this.BtnSubmit.Text = "GENERATE REPORT";
+            this.BtnGenerateReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnGenerateReport.Appearance.BackColor = System.Drawing.Color.LightSlateGray;
+            this.BtnGenerateReport.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGenerateReport.Appearance.Options.UseBackColor = true;
+            this.BtnGenerateReport.Appearance.Options.UseFont = true;
+            this.BtnGenerateReport.Location = new System.Drawing.Point(1035, 93);
+            this.BtnGenerateReport.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnGenerateReport.Name = "BtnGenerateReport";
+            this.BtnGenerateReport.Size = new System.Drawing.Size(239, 38);
+            this.BtnGenerateReport.TabIndex = 64;
+            this.BtnGenerateReport.Text = "GENERATE REPORT";
+            this.BtnGenerateReport.Click += new System.EventHandler(this.BtnGenerateReport_Click);
             // 
             // GridViewEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1306, 643);
-            this.Controls.Add(this.BtnSubmit);
+            this.Controls.Add(this.BtnGenerateReport);
             this.Controls.Add(this.EmployeeRole);
             this.Controls.Add(this.teSearch);
             this.Controls.Add(this.labelControl2);
@@ -307,6 +353,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Address;
         private DevExpress.XtraGrid.Columns.GridColumn RoleName;
         private DevExpress.XtraEditors.ComboBoxEdit EmployeeRole;
-        private DevExpress.XtraEditors.SimpleButton BtnSubmit;
+        private DevExpress.XtraEditors.SimpleButton BtnGenerateReport;
     }
 }
