@@ -342,7 +342,7 @@ namespace InventorySystem.Employees
     };
 
             // Ask for confirmation before updating
-            DialogResult result = MessageBox.Show("Are you sure you want to update this data?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure you want to update this employee?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result != DialogResult.Yes)
             {
                 return; // User canceled

@@ -61,7 +61,8 @@ namespace InventorySystem.Models
             LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID
             LEFT JOIN Role r ON e.RoleID = r.RoleID
             LEFT JOIN Address a ON e.AddressID = a.AddressID  -- Adjusted the join condition
-            WHERE (@RoleFilter = 'All' OR r.RoleName = @RoleFilter)";
+            WHERE (@RoleFilter = 'All' OR r.RoleName = @RoleFilter)
+            ORDER BY EmployeeID";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

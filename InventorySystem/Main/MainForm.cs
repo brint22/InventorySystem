@@ -57,13 +57,13 @@ namespace InventorySystem.Views
         {
             //Close the current Form when click another form
             CloseAllChildForms();
+            new GridViewEmployee().Show();
             // Create a new instance of Employee form
-            GridViewEmployee employee = new GridViewEmployee();
-            this.IsMdiContainer = true;
-            employee.MdiParent = this;
+            //GridViewEmployee employee = new GridViewEmployee();
+            //this.IsMdiContainer = true;
+            //employee.MdiParent = this;
             // Show the Employee form
-
-            employee.Show();
+            //employee.Show();
         }
     }
 }
