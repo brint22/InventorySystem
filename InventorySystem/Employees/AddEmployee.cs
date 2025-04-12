@@ -491,8 +491,6 @@ namespace InventorySystem.Employees
 
             gcAddress.DataSource = dtAddress;
             gvAddress.RefreshData();
-
-           
         }
 
         //Methid for Temporary Removing Address in gcAddress

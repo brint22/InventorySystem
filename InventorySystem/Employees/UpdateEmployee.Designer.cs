@@ -404,7 +404,7 @@
             this.teEmployeeID.Properties.Appearance.Options.UseFont = true;
             this.teEmployeeID.Properties.AutoHeight = false;
             this.teEmployeeID.Properties.ReadOnly = true;
-            this.teEmployeeID.Size = new System.Drawing.Size(224, 34);
+            this.teEmployeeID.Size = new System.Drawing.Size(148, 34);
             this.teEmployeeID.TabIndex = 60;
             // 
             // labelControl12

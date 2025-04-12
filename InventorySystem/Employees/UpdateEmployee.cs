@@ -207,67 +207,73 @@ namespace InventorySystem.Employees
         public event EventHandler EmployeeUpdated;
 
         private void BtnSubmit_Click(object sender, EventArgs e)
-        {  // Create an employee object
-            Employee employee = new Employee
+        {
+            // Validation: check if required fields are filled
+            if// (string.IsNullOrWhiteSpace(teEmployeeID.Text) ||
+             ( string.IsNullOrWhiteSpace(teFirstName.Text) ||
+              string.IsNullOrWhiteSpace(teLastName.Text) ||
+              string.IsNullOrWhiteSpace(tePhoneNumber.Text) ||
+              string.IsNullOrWhiteSpace(cbCivilStatus.Text) ||
+              string.IsNullOrWhiteSpace(teBarangayName.Text) ||
+              string.IsNullOrWhiteSpace(teMunicipalityName.Text) ||
+              string.IsNullOrWhiteSpace(teProvinceName.Text) ||
+              string.IsNullOrWhiteSpace(teCountryName.Text) ||
+              string.IsNullOrWhiteSpace(teZipCodeNumber.Text))
+         //     string.IsNullOrWhiteSpace(meEmployeeImagePath.Text))
             {
-                EmployeeID = teEmployeeID.Text,
-                FirstName = teFirstName.Text,
-                MiddleName = teMiddleName.Text,
-                LastName = teLastName.Text,
-                NameExtension = teNameExtension.Text,
-                Gender = GetGender().ToString(),
-                CivilStatus = cbCivilStatus.Text,
-                DateOfBirth = deDateOfBirth.DateTime,
-                PhoneNumber = tePhoneNumber.Text,
-                DateHired = deDateHired.DateTime,
-                RoleID = GetRoleID()
-            };
-
-            // Get the image path from the input field
-            string imagePath = meEmployeeImagePath.Text.Trim();
-
-            // Initialize imageBytes to null
-            byte[] imageBytes = null;
-
-            // If the image path is not empty and the file exists, read the image bytes
-            if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
-            {
-                try
-                {
-                    // Read the image file as byte array
-                    imageBytes = File.ReadAllBytes(imagePath);
-
-                    // Optionally, you can open the image to ensure it's valid (this is not mandatory)
-                    using (System.Drawing.Image image = System.Drawing.Image.FromFile(imagePath))
-                    {
-                        // You can do additional validation here if necessary
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Handle any exceptions that may occur while reading the image file
-                    MessageBox.Show($"Failed to read image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Prevent further code execution if image reading fails
-                }
+                MessageBox.Show("Please fill out all required fields before submitting.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            // Create an Address object
-            Address address = new Address
-            {
-                BarangayName = teBarangayName.Text,
-                MunicipalityName = teMunicipalityName.Text,
-                ProvinceName = teProvinceName.Text,
-                ZipCodeNumber = int.TryParse(teZipCodeNumber.Text, out int zipCodeNumber) ? zipCodeNumber : 0,
-                CountryName = teCountryName.Text
-            };
 
-            // Update employee info (image update is conditional)
-            UpdateEmployeeInformation(employee, imageBytes, imagePath, address);
+            // Optional: confirm submission
+            var result = MessageBox.Show("Are you sure you want to submit the changes?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+    if (result != DialogResult.Yes) return;
 
-            // ✅ Notify the main form to refresh the grid
-            EmployeeUpdated?.Invoke(this, EventArgs.Empty);
+    Employee employee = new Employee
+    {
+        EmployeeID = teEmployeeID.Text,
+        FirstName = teFirstName.Text,
+        MiddleName = teMiddleName.Text,
+        LastName = teLastName.Text,
+        NameExtension = teNameExtension.Text,
+        Gender = GetGender().ToString(),
+        CivilStatus = cbCivilStatus.Text,
+        DateOfBirth = deDateOfBirth.DateTime,
+        PhoneNumber = tePhoneNumber.Text,
+        DateHired = deDateHired.DateTime,
+        RoleID = GetRoleID()
+    };
+
+    string imagePath = meEmployeeImagePath.Text.Trim();
+    byte[] imageBytes = null;
+
+    if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+    {
+        try
+        {
+            imageBytes = File.ReadAllBytes(imagePath);
+            using (System.Drawing.Image image = System.Drawing.Image.FromFile(imagePath)) { }
         }
-    
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Failed to read image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+    }
+
+    Address address = new Address
+    {
+        BarangayName = teBarangayName.Text,
+        MunicipalityName = teMunicipalityName.Text,
+        ProvinceName = teProvinceName.Text,
+        ZipCodeNumber = int.TryParse(teZipCodeNumber.Text, out int zipCodeNumber) ? zipCodeNumber : 0,
+        CountryName = teCountryName.Text
+    };
+
+    UpdateEmployeeInformation(employee, imageBytes, imagePath, address);
+    EmployeeUpdated?.Invoke(this, EventArgs.Empty);
+        }
 
 
         private string GetGender()

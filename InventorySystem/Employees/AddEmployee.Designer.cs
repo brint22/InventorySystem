@@ -732,6 +732,8 @@
             this.teBarangayName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.teBarangayName.MenuManager = this.ribbon;
             this.teBarangayName.Name = "teBarangayName";
+            this.teBarangayName.Properties.Appearance.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teBarangayName.Properties.Appearance.Options.UseFont = true;
             this.teBarangayName.Properties.AutoHeight = false;
             this.teBarangayName.Size = new System.Drawing.Size(362, 35);
             this.teBarangayName.TabIndex = 3;
