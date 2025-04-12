@@ -207,60 +207,130 @@ namespace InventorySystem.Employees
         public event EventHandler EmployeeUpdated;
 
         private void BtnSubmit_Click(object sender, EventArgs e)
-        {
-            // Validation: check if required fields are filled
-            if// (string.IsNullOrWhiteSpace(teEmployeeID.Text) ||
-             ( string.IsNullOrWhiteSpace(teFirstName.Text) ||
-              string.IsNullOrWhiteSpace(teLastName.Text) ||
-              string.IsNullOrWhiteSpace(tePhoneNumber.Text) ||
-              string.IsNullOrWhiteSpace(cbCivilStatus.Text) ||
-              string.IsNullOrWhiteSpace(teBarangayName.Text) ||
-              string.IsNullOrWhiteSpace(teMunicipalityName.Text) ||
-              string.IsNullOrWhiteSpace(teProvinceName.Text) ||
-              string.IsNullOrWhiteSpace(teCountryName.Text) ||
-              string.IsNullOrWhiteSpace(teZipCodeNumber.Text))
-         //     string.IsNullOrWhiteSpace(meEmployeeImagePath.Text))
+        {    // Validate required fields (except NameExtension)
+            if (string.IsNullOrWhiteSpace(teEmployeeID.Text))
             {
-                MessageBox.Show("Please fill out all required fields before submitting.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Employee ID is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(teFirstName.Text))
+            {
+                MessageBox.Show("First Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            // Optional: confirm submission
-            var result = MessageBox.Show("Are you sure you want to submit the changes?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-    if (result != DialogResult.Yes) return;
+            if (string.IsNullOrWhiteSpace(teMiddleName.Text))
+            {
+                MessageBox.Show("Middle Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-    Employee employee = new Employee
-    {
-        EmployeeID = teEmployeeID.Text,
-        FirstName = teFirstName.Text,
-        MiddleName = teMiddleName.Text,
-        LastName = teLastName.Text,
-        NameExtension = teNameExtension.Text,
-        Gender = GetGender().ToString(),
-        CivilStatus = cbCivilStatus.Text,
-        DateOfBirth = deDateOfBirth.DateTime,
-        PhoneNumber = tePhoneNumber.Text,
-        DateHired = deDateHired.DateTime,
-        RoleID = GetRoleID()
-    };
+            if (string.IsNullOrWhiteSpace(teLastName.Text))
+            {
+                MessageBox.Show("Last Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(cbCivilStatus.Text))
+            {
+                MessageBox.Show("Civil Status is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (deDateOfBirth.EditValue == null)
+            {
+                MessageBox.Show("Date of Birth is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(tePhoneNumber.Text))
+            {
+                MessageBox.Show("Phone Number is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (deDateHired.EditValue == null)
+            {
+                MessageBox.Show("Date Hired is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (GetRoleID() == 0)
+            {
+                MessageBox.Show("Please select a valid Role.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teBarangayName.Text))
+            {
+                MessageBox.Show("Barangay Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teMunicipalityName.Text))
+            {
+                MessageBox.Show("Municipality Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teProvinceName.Text))
+            {
+                MessageBox.Show("Province Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teZipCodeNumber.Text) || !int.TryParse(teZipCodeNumber.Text, out _))
+            {
+                MessageBox.Show("A valid Zip Code Number is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(teCountryName.Text))
+            {
+                MessageBox.Show("Country Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Create an employee object
+            Employee employee = new Employee
+            {
+                EmployeeID = teEmployeeID.Text,
+                FirstName = teFirstName.Text,
+                MiddleName = teMiddleName.Text,
+                LastName = teLastName.Text,
+                NameExtension = teNameExtension.Text, // Not required
+                Gender = GetGender().ToString(),
+                CivilStatus = cbCivilStatus.Text,
+                DateOfBirth = deDateOfBirth.DateTime,
+                PhoneNumber = tePhoneNumber.Text,
+                DateHired = deDateHired.DateTime,
+                RoleID = GetRoleID()
+            };
 
     string imagePath = meEmployeeImagePath.Text.Trim();
     byte[] imageBytes = null;
 
-    if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
-    {
-        try
-        {
-            imageBytes = File.ReadAllBytes(imagePath);
-            using (System.Drawing.Image image = System.Drawing.Image.FromFile(imagePath)) { }
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show($"Failed to read image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
-        }
-    }
+            // If the image path is not empty and the file exists, read the image bytes
+            if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+            {
+                try
+                {
+                    // Read the image file as byte array
+                    imageBytes = File.ReadAllBytes(imagePath);
+
+                    // Optionally, open the image to ensure it's valid
+                    using (System.Drawing.Image image = System.Drawing.Image.FromFile(imagePath))
+                    {
+                        // Additional validation can go here
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to read image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Stop if image loading fails
+                }
+            }
 
     Address address = new Address
     {
@@ -271,8 +341,18 @@ namespace InventorySystem.Employees
         CountryName = teCountryName.Text
     };
 
-    UpdateEmployeeInformation(employee, imageBytes, imagePath, address);
-    EmployeeUpdated?.Invoke(this, EventArgs.Empty);
+            // Ask for confirmation before updating
+            DialogResult result = MessageBox.Show("Are you sure you want to update this data?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result != DialogResult.Yes)
+            {
+                return; // User canceled
+            }
+
+            // Update employee info (image update is conditional)
+            UpdateEmployeeInformation(employee, imageBytes, imagePath, address);
+
+            // ✅ Notify the main form to refresh the grid
+            EmployeeUpdated?.Invoke(this, EventArgs.Empty);
         }
 
 
