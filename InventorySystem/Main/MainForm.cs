@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using InventorySystem.Employees;
+using InventorySystem.Products;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,6 +65,19 @@ namespace InventorySystem.Views
             //employee.MdiParent = this;
             // Show the Employee form
             //employee.Show();
+        }
+
+        private void bbiAddProduct_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            AddProduct product = new AddProduct();
+            this.IsMdiContainer = true;
+            product.MdiParent = this;
+
+            // Show the Employee form
+            product.Show();
         }
     }
 }

@@ -525,5 +525,10 @@ namespace InventorySystem.Employees
             teCountry.Text = string.Empty;
            
         }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

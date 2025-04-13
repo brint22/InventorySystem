@@ -82,6 +82,7 @@
             this.teProvince = new DevExpress.XtraEditors.TextEdit();
             this.teMunicipality = new DevExpress.XtraEditors.TextEdit();
             this.teBarangayName = new DevExpress.XtraEditors.TextEdit();
+            this.BtnCancel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdGender.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDateHired.Properties)).BeginInit();
@@ -738,12 +739,27 @@
             this.teBarangayName.Size = new System.Drawing.Size(362, 35);
             this.teBarangayName.TabIndex = 3;
             // 
+            // BtnCancel
+            // 
+            this.BtnCancel.Appearance.BackColor = System.Drawing.Color.DarkGray;
+            this.BtnCancel.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancel.Appearance.Options.UseBackColor = true;
+            this.BtnCancel.Appearance.Options.UseFont = true;
+            this.BtnCancel.Location = new System.Drawing.Point(287, 574);
+            this.BtnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnCancel.Name = "BtnCancel";
+            this.BtnCancel.Size = new System.Drawing.Size(239, 38);
+            this.BtnCancel.TabIndex = 65;
+            this.BtnCancel.Text = "CANCEL";
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1384, 640);
             this.ControlBox = false;
+            this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.xtcEmployeeData);
             this.Controls.Add(this.BtnSubmit);
             this.Controls.Add(this.ribbon);
@@ -854,5 +870,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Province;
         private DevExpress.XtraGrid.Columns.GridColumn ZipCode;
         private DevExpress.XtraGrid.Columns.GridColumn Country;
+        private DevExpress.XtraEditors.SimpleButton BtnCancel;
     }
 }
