@@ -31,7 +31,7 @@ namespace InventorySystem.Employees
         private void GridViewEmployee_Load(object sender, EventArgs e)
         {
             GlobalMethod.LoadEmployeeData("All", gcEmployeeView);
-            RetrieveAndDisplayStudents();
+            RetrieveAndDisplayEmployee();
             LoadRoleNames();
 
         }
