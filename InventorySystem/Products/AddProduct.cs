@@ -138,7 +138,7 @@ namespace InventorySystem.Products
 
             };
 
-            // You can now pass `product` to your RegisterProduct method or any other logic
+            // You can now pass `product` to your RegisterProduct method or any other logic//
             RegisterProduct(product);
         }
     }
