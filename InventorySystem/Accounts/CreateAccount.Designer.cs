@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateAccount));
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -49,6 +49,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -57,6 +58,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonPage2
@@ -124,6 +127,8 @@
             // 
             // windowsUIBtnSave
             // 
+            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
+            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
             this.windowsUIBtnSave.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("SAVE", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
             new DevExpress.XtraBars.Docking2010.WindowsUIButton("CANCEL", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
@@ -139,7 +144,7 @@
             // 
             this.groupControl1.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl1.Appearance.Options.UseBackColor = true;
-            this.groupControl1.Controls.Add(this.gcEmployeeAccount);
+            this.groupControl1.Controls.Add(this.groupControl2);
             this.groupControl1.Controls.Add(this.lueRole);
             this.groupControl1.Controls.Add(this.teUserName);
             this.groupControl1.Controls.Add(this.labelControl1);
@@ -200,11 +205,11 @@
             // 
             // gcEmployeeAccount
             // 
-            this.gcEmployeeAccount.Location = new System.Drawing.Point(261, 0);
+            this.gcEmployeeAccount.Location = new System.Drawing.Point(0, 41);
             this.gcEmployeeAccount.MainView = this.gvEmployeeAccount;
             this.gcEmployeeAccount.MenuManager = this.ribbon;
             this.gcEmployeeAccount.Name = "gcEmployeeAccount";
-            this.gcEmployeeAccount.Size = new System.Drawing.Size(319, 287);
+            this.gcEmployeeAccount.Size = new System.Drawing.Size(328, 246);
             this.gcEmployeeAccount.TabIndex = 16;
             this.gcEmployeeAccount.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvEmployeeAccount});
@@ -245,6 +250,17 @@
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
             // 
+            // groupControl2
+            // 
+            this.groupControl2.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(5);
+            this.groupControl2.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl2.CaptionImageOptions.SvgImage")));
+            this.groupControl2.Controls.Add(this.gcEmployeeAccount);
+            this.groupControl2.Location = new System.Drawing.Point(252, 0);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(328, 287);
+            this.groupControl2.TabIndex = 17;
+            this.groupControl2.Text = "Employee\'s Accounts";
+            // 
             // CreateAccount
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -273,6 +289,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +316,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
     }
 }
