@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using InventorySystem.Account;
 using InventorySystem.Employees;
 using InventorySystem.Products;
 using System;
@@ -73,6 +74,19 @@ namespace InventorySystem.Views
             CloseAllChildForms();
             // Create a new instance of Employee form
             AddProduct product = new AddProduct();
+            this.IsMdiContainer = true;
+            product.MdiParent = this;
+
+            // Show the Employee form
+            product.Show();
+        }
+
+        private void addAccount_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            CreateAccount product = new CreateAccount();
             this.IsMdiContainer = true;
             product.MdiParent = this;
 
