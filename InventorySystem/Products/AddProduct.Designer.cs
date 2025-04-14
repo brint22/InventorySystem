@@ -210,7 +210,7 @@
             this.BtnSubmit.Size = new System.Drawing.Size(292, 38);
             this.BtnSubmit.TabIndex = 66;
             this.BtnSubmit.Text = "SUBMIT";
-            this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
+            //this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
             // 
             // AddProduct
             // 
