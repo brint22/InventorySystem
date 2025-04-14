@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraBars;
+﻿using Dapper;
+using DevExpress.XtraBars;
+using DevExpress.XtraReports.UI;
 using InventorySystem.Models;
 using System;
 using System.Collections.Generic;
@@ -20,72 +22,125 @@ namespace InventorySystem.Products
             InitializeComponent();
         }
 
-        //public string GenerateProductID(string productName)
-        //{
-        //    string[] words = productName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        //    string initials = string.Concat(words.Take(2).Select(w => char.ToUpper(w[0])));
+        public string GenerateProductID(string productName)
+        {
+            int year = DateTime.Now.Year;
 
-        //    int year = DateTime.Now.Year % 100; // Gets last two digits of the year
-        //    int lastNumber = GetLastProductNumberFromDB(initials); // Implement this to get the last number used
-        //    int newNumber = lastNumber + 1;
+            // Get the last used number from DB for the current year
+            int lastNumber = GetLastNumberFromDB(year);
+            int newNumber = lastNumber + 1;
 
-        //    return $"{initials}{newNumber:D6}{year:D2}";
-        //}
+            // Format the ProductID as "2025-0001"
+            return $"{year}-{newNumber:D4}";
+        }
 
-        //private void RegisterProduct(Product product)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
-        //    {
-        //        connection.Open();
-        //        using (var transaction = connection.BeginTransaction())
-        //        {
-        //            try
-        //            {
-        //                if (product == null || string.IsNullOrWhiteSpace(product.ProductName))
-        //                {
-        //                    MessageBox.Show("Product details are incomplete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                    return;
-        //                }
+        private int GetLastNumberFromDB(int year)
+        {
+            using (IDbConnection db = new SqlConnection(GlobalClass.connectionString))
+            {
+                string query = @"
+        SELECT TOP 1 CAST(RIGHT(ProductID, 4) AS INT) 
+        FROM Product 
+        WHERE ProductID LIKE @YearPattern
+        ORDER BY ProductID DESC";
 
-        //                // Generate ProductID
-        //                string generatedID = GenerateProductID(product.ProductName); // Your custom method
-        //                product.ProductID = generatedID;
+                return db.QueryFirstOrDefault<int?>(query, new { YearPattern = $"{year}-%" }) ?? 0;
+            }
+        }
+        private void RegisterProduct(Product product)
+        {
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        if (product == null || string.IsNullOrWhiteSpace(product.ProductName))
+                        {
+                            MessageBox.Show("Product details are incomplete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
 
-        //                // Insert product
-        //                string productQuery = @"
-        //        INSERT INTO Product 
-        //        (ProductID, ProductName, Price, Quantity, ProductRecieved, ExpirationDate)
-        //        VALUES 
-        //        (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate)";
+                        // Generate ProductID
+                        char firstLetter = char.ToUpper(product.ProductName[0]);
+                        string yearPart = DateTime.Now.Year.ToString("yy");
 
-        //                int rowsAffected = connection.Execute(productQuery, new
-        //                {
-        //                    product.ProductID,
-        //                    product.ProductName,
-        //                    product.Price,
-        //                    product.Quantity,
-        //                    product.ProductRecieved,
-        //                    product.ExpirationDate
-        //                }, transaction);
+                        // Get the latest product number for this prefix
+                        string prefix = firstLetter.ToString() + "%" + yearPart;
+                        string getMaxQuery = @"
+                    SELECT MAX(CAST(SUBSTRING(ProductID, 2, 4) AS INT))
+                    FROM Product
+                    WHERE ProductID LIKE @Prefix";
 
-        //                if (rowsAffected == 0)
-        //                {
-        //                    transaction.Rollback();
-        //                    MessageBox.Show("Product registration failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                    return;
-        //                }
+                        int latestNumber = connection.ExecuteScalar<int?>(getMaxQuery, new { Prefix = prefix }, transaction) ?? 0;
+                        int nextNumber = latestNumber + 1;
 
-        //                transaction.Commit();
-        //                MessageBox.Show("Product registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                transaction.Rollback();
-        //                MessageBox.Show($"Registration failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //        }
-        //    }
-        //}
+                        string numberPart = nextNumber.ToString("D4");
+                        string generatedID = $"{firstLetter}{numberPart}{yearPart}";
+                        product.ProductID = generatedID;
 
+                        // Insert product
+                        string productQuery = @"
+                    INSERT INTO Product 
+                    (ProductID, ProductName, Price, Quantity, ProductRecieved, ExpirationDate)
+                    VALUES 
+                    (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate)";
+
+                        int rowsAffected = connection.Execute(productQuery, new
+                        {
+                            product.ProductID,
+                            product.ProductName,
+                            product.Price,
+                            product.Quantity,
+                            product.ProductRecieved,
+                            product.ExpirationDate
+                        }, transaction);
+
+                        if (rowsAffected == 0)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Product registration failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        transaction.Commit();
+                        MessageBox.Show("Product registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"Registration failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void BtnSubmit_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(tePrice.Text, out int price))
+            {
+                MessageBox.Show("Please enter a valid price.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!int.TryParse(teQuantity.Text, out int quantity))
+            {
+                MessageBox.Show("Please enter a valid quantity.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Product product = new Product()
+            {
+                ProductName = teProductName.Text,
+                Price = price,
+                Quantity = quantity,
+                ProductRecieved = DateTime.Now,
+                ExpirationDate = deExpirationDate.DateTime
+
+            };
+
+            // You can now pass `product` to your RegisterProduct method or any other logic
+            RegisterProduct(product);
+        }
     }
+
 }
