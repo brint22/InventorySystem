@@ -24,29 +24,34 @@ namespace InventorySystem.Products
 
         public string GenerateProductID(string productName)
         {
-            int year = DateTime.Now.Year;
+            string firstLetter = string.IsNullOrEmpty(productName) ? "X" : productName.Substring(0, 1).ToUpper();
+            string year = DateTime.Now.Year.ToString().Substring(2); // Gets "25" from "2025"
 
-            // Get the last used number from DB for the current year
-            int lastNumber = GetLastNumberFromDB(year);
+            int lastNumber = GetLastNumberFromDB(firstLetter, year);
             int newNumber = lastNumber + 1;
 
-            // Format the ProductID as "2025-0001"
-            return $"{year}-{newNumber:D4}";
+            // Format: B000125
+            return string.Format("{0}{1:D4}{2}", firstLetter, newNumber, year);
         }
 
-        private int GetLastNumberFromDB(int year)
+        private int GetLastNumberFromDB(string firstLetter, string year)
         {
             using (IDbConnection db = new SqlConnection(GlobalClass.connectionString))
             {
-                string query = @"
-        SELECT TOP 1 CAST(RIGHT(ProductID, 4) AS INT) 
-        FROM Product 
-        WHERE ProductID LIKE @YearPattern
-        ORDER BY ProductID DESC";
+                string pattern = firstLetter + "%" + year; // e.g., B%25
 
-                return db.QueryFirstOrDefault<int?>(query, new { YearPattern = $"{year}-%" }) ?? 0;
+                string query = @"
+            SELECT TOP 1 CAST(SUBSTRING(ProductID, 2, 4) AS INT)
+            FROM Product
+            WHERE ProductID LIKE @Pattern
+            ORDER BY ProductID DESC";
+
+                return db.QueryFirstOrDefault<int?>(query, new { Pattern = pattern }) ?? 0;
             }
         }
+
+
+
         private void RegisterProduct(Product product)
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
@@ -64,7 +69,7 @@ namespace InventorySystem.Products
 
                         // Generate ProductID
                         char firstLetter = char.ToUpper(product.ProductName[0]);
-                        string yearPart = DateTime.Now.Year.ToString("yy");
+                        string yearPart = DateTime.Now.Year.ToString().Substring(2); // also gives "25"
 
                         // Get the latest product number for this prefix
                         string prefix = firstLetter.ToString() + "%" + yearPart;

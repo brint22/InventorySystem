@@ -12,6 +12,8 @@ namespace InventorySystem.Models
         public string ProductName { get; set; }
         public int Price { get; set; }
         public int Quantity { get; set; }
+        public string Brand { get; set; }
+        public string Supplier { get; set; }
         public DateTime ProductRecieved { get; set; }
         public DateTime ExpirationDate { get; set; }
     }
