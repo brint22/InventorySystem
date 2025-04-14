@@ -40,26 +40,26 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.windowsUIBtnSave = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.lueRole = new DevExpress.XtraEditors.LookUpEdit();
-            this.teUserName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.gcEmployeeAccount = new DevExpress.XtraGrid.GridControl();
             this.gvEmployeeAccount = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.lueRole = new DevExpress.XtraEditors.LookUpEdit();
+            this.teUserName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage2
@@ -158,50 +158,16 @@
             this.groupControl1.TabIndex = 16;
             this.groupControl1.Text = "groupControl1";
             // 
-            // lueRole
+            // groupControl2
             // 
-            this.lueRole.Location = new System.Drawing.Point(23, 229);
-            this.lueRole.MenuManager = this.ribbon;
-            this.lueRole.Name = "lueRole";
-            this.lueRole.Properties.AutoHeight = false;
-            this.lueRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueRole.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "Name8", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "Name9")});
-            this.lueRole.Properties.DisplayMember = "RoleName";
-            this.lueRole.Properties.NullText = "";
-            this.lueRole.Size = new System.Drawing.Size(207, 23);
-            this.lueRole.TabIndex = 15;
-            // 
-            // teUserName
-            // 
-            this.teUserName.Location = new System.Drawing.Point(23, 80);
-            this.teUserName.MenuManager = this.ribbon;
-            this.teUserName.Name = "teUserName";
-            this.teUserName.Properties.AutoHeight = false;
-            this.teUserName.Size = new System.Drawing.Size(207, 23);
-            this.teUserName.TabIndex = 1;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(25, 63);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(63, 16);
-            this.labelControl1.TabIndex = 12;
-            this.labelControl1.Text = "User Name";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(25, 207);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(25, 16);
-            this.labelControl3.TabIndex = 14;
-            this.labelControl3.Text = "Role";
+            this.groupControl2.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(5);
+            this.groupControl2.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl2.CaptionImageOptions.SvgImage")));
+            this.groupControl2.Controls.Add(this.gcEmployeeAccount);
+            this.groupControl2.Location = new System.Drawing.Point(252, 0);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(328, 287);
+            this.groupControl2.TabIndex = 17;
+            this.groupControl2.Text = "Employee\'s Accounts";
             // 
             // gcEmployeeAccount
             // 
@@ -250,16 +216,50 @@
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
             // 
-            // groupControl2
+            // lueRole
             // 
-            this.groupControl2.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(5);
-            this.groupControl2.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl2.CaptionImageOptions.SvgImage")));
-            this.groupControl2.Controls.Add(this.gcEmployeeAccount);
-            this.groupControl2.Location = new System.Drawing.Point(252, 0);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(328, 287);
-            this.groupControl2.TabIndex = 17;
-            this.groupControl2.Text = "Employee\'s Accounts";
+            this.lueRole.Location = new System.Drawing.Point(23, 229);
+            this.lueRole.MenuManager = this.ribbon;
+            this.lueRole.Name = "lueRole";
+            this.lueRole.Properties.AutoHeight = false;
+            this.lueRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueRole.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "Name8", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "Name9")});
+            this.lueRole.Properties.DisplayMember = "RoleName";
+            this.lueRole.Properties.NullText = "";
+            this.lueRole.Size = new System.Drawing.Size(207, 23);
+            this.lueRole.TabIndex = 15;
+            // 
+            // teUserName
+            // 
+            this.teUserName.Location = new System.Drawing.Point(23, 80);
+            this.teUserName.MenuManager = this.ribbon;
+            this.teUserName.Name = "teUserName";
+            this.teUserName.Properties.AutoHeight = false;
+            this.teUserName.Size = new System.Drawing.Size(207, 23);
+            this.teUserName.TabIndex = 1;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(25, 63);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(92, 16);
+            this.labelControl1.TabIndex = 12;
+            this.labelControl1.Text = "Employee Name";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(25, 207);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(25, 16);
+            this.labelControl3.TabIndex = 14;
+            this.labelControl3.Text = "Role";
             // 
             // CreateAccount
             // 
@@ -285,12 +285,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
