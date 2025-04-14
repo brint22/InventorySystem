@@ -40,19 +40,16 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.windowsUIBtnSave = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.teUserName = new DevExpress.XtraEditors.TextEdit();
             this.lueRole = new DevExpress.XtraEditors.LookUpEdit();
-            this.btnBrowse = new DevExpress.XtraEditors.SimpleButton();
-            this.peProfile = new DevExpress.XtraEditors.PictureEdit();
+            this.teUserName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage2
@@ -136,9 +133,7 @@
             this.groupControl1.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.Controls.Add(this.lueRole);
-            this.groupControl1.Controls.Add(this.peProfile);
             this.groupControl1.Controls.Add(this.teUserName);
-            this.groupControl1.Controls.Add(this.btnBrowse);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.tePassword);
             this.groupControl1.Controls.Add(this.labelControl3);
@@ -149,35 +144,6 @@
             this.groupControl1.Size = new System.Drawing.Size(580, 287);
             this.groupControl1.TabIndex = 16;
             this.groupControl1.Text = "groupControl1";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(25, 207);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(25, 16);
-            this.labelControl3.TabIndex = 14;
-            this.labelControl3.Text = "Role";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(25, 63);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(63, 16);
-            this.labelControl1.TabIndex = 12;
-            this.labelControl1.Text = "User Name";
-            // 
-            // teUserName
-            // 
-            this.teUserName.Location = new System.Drawing.Point(23, 80);
-            this.teUserName.MenuManager = this.ribbon;
-            this.teUserName.Name = "teUserName";
-            this.teUserName.Properties.AutoHeight = false;
-            this.teUserName.Size = new System.Drawing.Size(207, 23);
-            this.teUserName.TabIndex = 1;
             // 
             // lueRole
             // 
@@ -195,30 +161,34 @@
             this.lueRole.Size = new System.Drawing.Size(207, 23);
             this.lueRole.TabIndex = 15;
             // 
-            // btnBrowse
+            // teUserName
             // 
-            this.btnBrowse.Appearance.BackColor = System.Drawing.Color.DimGray;
-            this.btnBrowse.Appearance.Options.UseBackColor = true;
-            this.btnBrowse.Location = new System.Drawing.Point(447, 174);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowse.TabIndex = 11;
-            this.btnBrowse.Text = "BROWSE";
+            this.teUserName.Location = new System.Drawing.Point(23, 80);
+            this.teUserName.MenuManager = this.ribbon;
+            this.teUserName.Name = "teUserName";
+            this.teUserName.Properties.AutoHeight = false;
+            this.teUserName.Size = new System.Drawing.Size(207, 23);
+            this.teUserName.TabIndex = 1;
             // 
-            // peProfile
+            // labelControl1
             // 
-            this.peProfile.EditValue = ((object)(resources.GetObject("peProfile.EditValue")));
-            this.peProfile.Location = new System.Drawing.Point(410, 24);
-            this.peProfile.MenuManager = this.ribbon;
-            this.peProfile.Name = "peProfile";
-            this.peProfile.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.peProfile.Properties.Appearance.Options.UseBackColor = true;
-            this.peProfile.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.peProfile.Properties.OptionsMask.MaskType = DevExpress.XtraEditors.Controls.PictureEditMaskType.Circle;
-            this.peProfile.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.peProfile.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.peProfile.Size = new System.Drawing.Size(148, 144);
-            this.peProfile.TabIndex = 6;
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(25, 63);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(63, 16);
+            this.labelControl1.TabIndex = 12;
+            this.labelControl1.Text = "User Name";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(25, 207);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(25, 16);
+            this.labelControl3.TabIndex = 14;
+            this.labelControl3.Text = "Role";
             // 
             // CreateAccount
             // 
@@ -244,9 +214,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peProfile.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,9 +233,7 @@
         private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIBtnSave;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LookUpEdit lueRole;
-        private DevExpress.XtraEditors.PictureEdit peProfile;
         private DevExpress.XtraEditors.TextEdit teUserName;
-        private DevExpress.XtraEditors.SimpleButton btnBrowse;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
     }
