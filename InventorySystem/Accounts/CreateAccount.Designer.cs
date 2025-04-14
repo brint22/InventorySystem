@@ -44,12 +44,19 @@
             this.teUserName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.gcEmployeeAccount = new DevExpress.XtraGrid.GridControl();
+            this.gvEmployeeAccount = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage2
@@ -132,6 +139,7 @@
             // 
             this.groupControl1.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl1.Appearance.Options.UseBackColor = true;
+            this.groupControl1.Controls.Add(this.gcEmployeeAccount);
             this.groupControl1.Controls.Add(this.lueRole);
             this.groupControl1.Controls.Add(this.teUserName);
             this.groupControl1.Controls.Add(this.labelControl1);
@@ -190,6 +198,53 @@
             this.labelControl3.TabIndex = 14;
             this.labelControl3.Text = "Role";
             // 
+            // gcEmployeeAccount
+            // 
+            this.gcEmployeeAccount.Location = new System.Drawing.Point(261, 0);
+            this.gcEmployeeAccount.MainView = this.gvEmployeeAccount;
+            this.gcEmployeeAccount.MenuManager = this.ribbon;
+            this.gcEmployeeAccount.Name = "gcEmployeeAccount";
+            this.gcEmployeeAccount.Size = new System.Drawing.Size(319, 287);
+            this.gcEmployeeAccount.TabIndex = 16;
+            this.gcEmployeeAccount.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvEmployeeAccount});
+            // 
+            // gvEmployeeAccount
+            // 
+            this.gvEmployeeAccount.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvEmployeeAccount.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gvEmployeeAccount.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3});
+            this.gvEmployeeAccount.GridControl = this.gcEmployeeAccount;
+            this.gvEmployeeAccount.Name = "gvEmployeeAccount";
+            this.gvEmployeeAccount.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Employee ID";
+            this.gridColumn1.FieldName = "EmployeeID";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Employee Name";
+            this.gridColumn2.FieldName = "EmployeeName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Password";
+            this.gridColumn3.FieldName = "Password";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
             // CreateAccount
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -216,6 +271,8 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,5 +293,10 @@
         private DevExpress.XtraEditors.TextEdit teUserName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraGrid.GridControl gcEmployeeAccount;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvEmployeeAccount;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }
