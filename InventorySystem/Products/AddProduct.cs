@@ -88,9 +88,9 @@ namespace InventorySystem.Products
                         // Insert product
                         string productQuery = @"
                     INSERT INTO Product 
-                    (ProductID, ProductName, Price, Quantity, ProductRecieved, ExpirationDate)
+                    (ProductID, ProductName, Price, Quantity, ProductRecieved, ExpirationDate, BrandName, Supplier)
                     VALUES 
-                    (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate)";
+                    (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate,@BrandName, @Supplier)";
 
                         int rowsAffected = connection.Execute(productQuery, new
                         {
@@ -99,7 +99,9 @@ namespace InventorySystem.Products
                             product.Price,
                             product.Quantity,
                             product.ProductRecieved,
-                            product.ExpirationDate
+                            product.ExpirationDate,
+                            product.BrandName,
+                            product.Supplier
                         }, transaction);
 
                         if (rowsAffected == 0)
@@ -139,7 +141,10 @@ namespace InventorySystem.Products
                 Price = price,
                 Quantity = quantity,
                 ProductRecieved = DateTime.Now,
-                ExpirationDate = deExpirationDate.DateTime
+                ExpirationDate = deExpirationDate.DateTime,
+                BrandName = teBrandName.Text,
+                Supplier = teSupplier.Text
+
 
             };
 

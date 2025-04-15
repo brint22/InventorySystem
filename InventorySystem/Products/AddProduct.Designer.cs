@@ -44,10 +44,11 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.BtnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.BtnSubmit = new DevExpress.XtraEditors.SimpleButton();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.teBrandName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.teSupplier = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProductName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
@@ -55,21 +56,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.teQuantity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deExpirationDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deExpirationDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBrandName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teSupplier.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbon
             // 
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(26, 24, 26, 24);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
+            this.ribbon.OptionsMenuMinWidth = 283;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1382, 61);
+            this.ribbon.Size = new System.Drawing.Size(778, 49);
             // 
             // ribbonPage1
             // 
@@ -87,26 +93,29 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(216, 132);
+            this.labelControl2.Location = new System.Drawing.Point(29, 47);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(100, 19);
+            this.labelControl2.Size = new System.Drawing.Size(80, 16);
             this.labelControl2.TabIndex = 20;
             this.labelControl2.Text = "Product Name";
             // 
             // teProductName
             // 
-            this.teProductName.Location = new System.Drawing.Point(216, 157);
+            this.teProductName.Location = new System.Drawing.Point(29, 67);
+            this.teProductName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.teProductName.MenuManager = this.ribbon;
             this.teProductName.Name = "teProductName";
             this.teProductName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.teProductName.Properties.Appearance.Options.UseFont = true;
             this.teProductName.Properties.AutoHeight = false;
-            this.teProductName.Size = new System.Drawing.Size(291, 35);
+            this.teProductName.Size = new System.Drawing.Size(197, 28);
             this.teProductName.TabIndex = 21;
             // 
             // lookUpEdit1
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(530, 158);
+            this.lookUpEdit1.Location = new System.Drawing.Point(429, 67);
+            this.lookUpEdit1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lookUpEdit1.MenuManager = this.ribbon;
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,81 +123,88 @@
             this.lookUpEdit1.Properties.AutoHeight = false;
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Size = new System.Drawing.Size(291, 35);
+            this.lookUpEdit1.Size = new System.Drawing.Size(197, 28);
             this.lookUpEdit1.TabIndex = 22;
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(530, 133);
+            this.labelControl1.Location = new System.Drawing.Point(429, 47);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(63, 19);
+            this.labelControl1.Size = new System.Drawing.Size(51, 16);
             this.labelControl1.TabIndex = 23;
             this.labelControl1.Text = "Category";
             // 
             // tePrice
             // 
-            this.tePrice.Location = new System.Drawing.Point(216, 244);
+            this.tePrice.Location = new System.Drawing.Point(29, 130);
+            this.tePrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tePrice.MenuManager = this.ribbon;
             this.tePrice.Name = "tePrice";
             this.tePrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.tePrice.Properties.Appearance.Options.UseFont = true;
             this.tePrice.Properties.AutoHeight = false;
-            this.tePrice.Size = new System.Drawing.Size(291, 35);
+            this.tePrice.Size = new System.Drawing.Size(197, 28);
             this.tePrice.TabIndex = 25;
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(216, 217);
+            this.labelControl3.Location = new System.Drawing.Point(29, 110);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(34, 19);
+            this.labelControl3.Size = new System.Drawing.Size(28, 16);
             this.labelControl3.TabIndex = 24;
             this.labelControl3.Text = "Price";
             // 
             // teQuantity
             // 
-            this.teQuantity.Location = new System.Drawing.Point(216, 333);
+            this.teQuantity.Location = new System.Drawing.Point(29, 202);
+            this.teQuantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.teQuantity.MenuManager = this.ribbon;
             this.teQuantity.Name = "teQuantity";
             this.teQuantity.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.teQuantity.Properties.Appearance.Options.UseFont = true;
             this.teQuantity.Properties.AutoHeight = false;
-            this.teQuantity.Size = new System.Drawing.Size(291, 35);
+            this.teQuantity.Size = new System.Drawing.Size(197, 28);
             this.teQuantity.TabIndex = 26;
             // 
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(216, 308);
+            this.labelControl4.Location = new System.Drawing.Point(29, 179);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(60, 19);
+            this.labelControl4.Size = new System.Drawing.Size(47, 16);
             this.labelControl4.TabIndex = 27;
             this.labelControl4.Text = "Quantity";
             // 
             // deExpirationDate
             // 
             this.deExpirationDate.EditValue = null;
-            this.deExpirationDate.Location = new System.Drawing.Point(216, 433);
+            this.deExpirationDate.Location = new System.Drawing.Point(29, 261);
+            this.deExpirationDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deExpirationDate.MenuManager = this.ribbon;
             this.deExpirationDate.Name = "deExpirationDate";
             this.deExpirationDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deExpirationDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deExpirationDate.Size = new System.Drawing.Size(291, 34);
+            this.deExpirationDate.Size = new System.Drawing.Size(197, 28);
             this.deExpirationDate.TabIndex = 28;
             // 
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(216, 408);
+            this.labelControl5.Location = new System.Drawing.Point(29, 241);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(108, 19);
+            this.labelControl5.Size = new System.Drawing.Size(86, 16);
             this.labelControl5.TabIndex = 29;
             this.labelControl5.Text = "Expiration Date";
             // 
@@ -198,10 +214,9 @@
             this.BtnCancel.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.Appearance.Options.UseBackColor = true;
             this.BtnCancel.Appearance.Options.UseFont = true;
-            this.BtnCancel.Location = new System.Drawing.Point(530, 511);
-            this.BtnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCancel.Location = new System.Drawing.Point(451, 398);
             this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(291, 38);
+            this.BtnCancel.Size = new System.Drawing.Size(249, 31);
             this.BtnCancel.TabIndex = 67;
             this.BtnCancel.Text = "CANCEL";
             // 
@@ -211,79 +226,94 @@
             this.BtnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSubmit.Appearance.Options.UseBackColor = true;
             this.BtnSubmit.Appearance.Options.UseFont = true;
-            this.BtnSubmit.Location = new System.Drawing.Point(215, 511);
+            this.BtnSubmit.Location = new System.Drawing.Point(81, 398);
+            this.BtnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnSubmit.Name = "BtnSubmit";
-            this.BtnSubmit.Size = new System.Drawing.Size(292, 38);
+            this.BtnSubmit.Size = new System.Drawing.Size(250, 31);
             this.BtnSubmit.TabIndex = 66;
             this.BtnSubmit.Text = "SUBMIT";
             this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
             // 
-            // textEdit1
+            // teBrandName
             // 
-            this.textEdit1.Location = new System.Drawing.Point(530, 244);
-            this.textEdit1.MenuManager = this.ribbon;
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Properties.AutoHeight = false;
-            this.textEdit1.Size = new System.Drawing.Size(291, 35);
-            this.textEdit1.TabIndex = 69;
+            this.teBrandName.Location = new System.Drawing.Point(429, 130);
+            this.teBrandName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.teBrandName.MenuManager = this.ribbon;
+            this.teBrandName.Name = "teBrandName";
+            this.teBrandName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.teBrandName.Properties.Appearance.Options.UseFont = true;
+            this.teBrandName.Properties.AutoHeight = false;
+            this.teBrandName.Size = new System.Drawing.Size(197, 28);
+            this.teBrandName.TabIndex = 69;
             // 
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(530, 308);
+            this.labelControl6.Location = new System.Drawing.Point(429, 182);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(58, 19);
+            this.labelControl6.Size = new System.Drawing.Size(47, 16);
             this.labelControl6.TabIndex = 70;
             this.labelControl6.Text = "Supplier";
             // 
-            // textEdit2
+            // teSupplier
             // 
-            this.textEdit2.Location = new System.Drawing.Point(530, 333);
-            this.textEdit2.MenuManager = this.ribbon;
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.textEdit2.Properties.Appearance.Options.UseFont = true;
-            this.textEdit2.Properties.AutoHeight = false;
-            this.textEdit2.Size = new System.Drawing.Size(291, 35);
-            this.textEdit2.TabIndex = 71;
+            this.teSupplier.Location = new System.Drawing.Point(429, 202);
+            this.teSupplier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.teSupplier.MenuManager = this.ribbon;
+            this.teSupplier.Name = "teSupplier";
+            this.teSupplier.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.teSupplier.Properties.Appearance.Options.UseFont = true;
+            this.teSupplier.Properties.AutoHeight = false;
+            this.teSupplier.Size = new System.Drawing.Size(197, 28);
+            this.teSupplier.TabIndex = 71;
             // 
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(530, 217);
+            this.labelControl7.Location = new System.Drawing.Point(429, 110);
+            this.labelControl7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(41, 19);
+            this.labelControl7.Size = new System.Drawing.Size(33, 16);
             this.labelControl7.TabIndex = 72;
             this.labelControl7.Text = "Brand";
             // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.labelControl6);
+            this.groupControl1.Controls.Add(this.teSupplier);
+            this.groupControl1.Controls.Add(this.labelControl7);
+            this.groupControl1.Controls.Add(this.teProductName);
+            this.groupControl1.Controls.Add(this.labelControl2);
+            this.groupControl1.Controls.Add(this.tePrice);
+            this.groupControl1.Controls.Add(this.teBrandName);
+            this.groupControl1.Controls.Add(this.labelControl3);
+            this.groupControl1.Controls.Add(this.teQuantity);
+            this.groupControl1.Controls.Add(this.labelControl4);
+            this.groupControl1.Controls.Add(this.labelControl1);
+            this.groupControl1.Controls.Add(this.deExpirationDate);
+            this.groupControl1.Controls.Add(this.lookUpEdit1);
+            this.groupControl1.Controls.Add(this.labelControl5);
+            this.groupControl1.Location = new System.Drawing.Point(22, 67);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(733, 314);
+            this.groupControl1.TabIndex = 74;
+            this.groupControl1.Text = "groupControl1";
+            // 
             // AddProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1382, 646);
+            this.ClientSize = new System.Drawing.Size(778, 453);
             this.ControlBox = false;
-            this.Controls.Add(this.labelControl7);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.labelControl6);
-            this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnSubmit);
-            this.Controls.Add(this.labelControl5);
-            this.Controls.Add(this.deExpirationDate);
-            this.Controls.Add(this.labelControl4);
-            this.Controls.Add(this.teQuantity);
-            this.Controls.Add(this.tePrice);
-            this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.lookUpEdit1);
-            this.Controls.Add(this.teProductName);
-            this.Controls.Add(this.labelControl2);
+            this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("AddProduct.IconOptions.Image")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddProduct";
@@ -298,8 +328,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.teQuantity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deExpirationDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deExpirationDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBrandName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teSupplier.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,9 +355,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.SimpleButton BtnCancel;
         private DevExpress.XtraEditors.SimpleButton BtnSubmit;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit teBrandName;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.TextEdit teSupplier;
         private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
     }
 }
