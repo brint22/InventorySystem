@@ -2,6 +2,7 @@
 using InventorySystem.Account;
 using InventorySystem.Employees;
 using InventorySystem.Products;
+using InventorySystem.views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -92,6 +93,14 @@ namespace InventorySystem.Views
 
             // Show the Employee form
             product.Show();
+        }
+
+        private void bbiViewProduct_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+           new Laborer().Show();    
         }
     }
 }

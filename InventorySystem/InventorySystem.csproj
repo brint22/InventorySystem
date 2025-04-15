@@ -168,11 +168,11 @@
     <Compile Include="Reports\EmployeesReport.Designer.cs">
       <DependentUpon>EmployeesReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\Laborer.cs">
+    <Compile Include="views\ViewProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\Laborer.Designer.cs">
-      <DependentUpon>Laborer.cs</DependentUpon>
+    <Compile Include="views\ViewProduct.Designer.cs">
+      <DependentUpon>ViewProduct.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Accounts\CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
@@ -215,8 +215,8 @@
     <EmbeddedResource Include="Reports\EmployeesReport.resx">
       <DependentUpon>EmployeesReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\Laborer.resx">
-      <DependentUpon>Laborer.cs</DependentUpon>
+    <EmbeddedResource Include="views\ViewProduct.resx">
+      <DependentUpon>ViewProduct.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Files\WAREHOUSEISDB.Bak" />
