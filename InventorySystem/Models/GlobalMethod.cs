@@ -92,5 +92,42 @@ namespace InventorySystem.Models
             }
         }
 
+        public static void LoadCategoryData(GridControl gcCategory)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = @"
+            SELECT 
+                CategoryID,
+                CategoryName
+            FROM 
+                Category
+            ORDER BY 
+                CategoryID";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
+
+                    gcCategory.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
     }
 }

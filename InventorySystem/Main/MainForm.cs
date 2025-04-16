@@ -1,5 +1,7 @@
 ﻿using DevExpress.XtraBars;
+using InventorySystem.Models;
 using InventorySystem.Account;
+using InventorySystem.Category;
 using InventorySystem.Employees;
 using InventorySystem.Products;
 using InventorySystem.views;
@@ -101,6 +103,32 @@ namespace InventorySystem.Views
             CloseAllChildForms();
             // Create a new instance of Employee form
            new Laborer().Show();    
+        }
+
+        private void bbiAddCategory_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            AddCategory category = new AddCategory();
+            this.IsMdiContainer = true;
+            category.MdiParent = this;
+
+            // Show the Employee form
+            category.Show();
+        }
+
+        private void bbiViewCategory_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            ViewCategory category = new ViewCategory();
+            this.IsMdiContainer = true;
+            category.MdiParent = this;
+
+            // Show the Employee form
+            category.Show();
         }
     }
 }
