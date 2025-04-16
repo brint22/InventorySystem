@@ -109,6 +109,18 @@
     <Compile Include="Accounts\ViewAccount.Designer.cs">
       <DependentUpon>ViewAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Category\AddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\AddCategory.Designer.cs">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Category\ViewCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\ViewCategory.Designer.cs">
+      <DependentUpon>ViewCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employees\AddEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +159,7 @@
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\GlobalClass.cs" />
     <Compile Include="Models\GlobalMethod.cs" />
@@ -179,6 +192,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Accounts\ViewAccount.resx">
       <DependentUpon>ViewAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\AddCategory.resx">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\ViewCategory.resx">
+      <DependentUpon>ViewCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employees\AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>

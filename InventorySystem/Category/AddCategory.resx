@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="AddProduct.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AddCategory.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAbkAAAGwCAYAAAA0WxvgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAALFBJREFUeF7t3XtUndd95nF31qxZudRJ0yTOJONMMs4kk4yzJukkq+6qO/WsyZrV
+        wwAADsMBx2+oZAAALFBJREFUeF7t3XtUndd95nF31qxZudRJ0yTOJONMMs4kk4yzJukkq+6qO/WsyZrV
         aZo2TeImkgAhTE8oIYSgixVqcCVbF4wkSinBlCB0R0johhCWZAndse5WIhtjy5KxMMYYY4wQwkjtqodf
         La3jyyMJeM9lv+/7zVqff36x4Jz97nc/+7zss/ctb731FgAAgSSLAAAEgSwCABAEsggAQBDIIgAAQSCL
         AAAEgSwCABAEsggAQBDIIgAAQSCLAAAEgSwCABAEsggAQBDIIgAAQSCLAAAEgSwCABAEsggAQBDIIgAA
