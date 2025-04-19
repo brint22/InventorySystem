@@ -46,12 +46,15 @@
             this.bbiListView = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAddCategory = new DevExpress.XtraBars.BarButtonItem();
             this.bbiViewCategory = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiViewLocation = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAddLocation = new DevExpress.XtraBars.BarButtonItem();
             this.Main = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +65,7 @@
             this.ribbon.AutoUpdateMergedRibbons = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.DrawGroupsBorderMode = DevExpress.Utils.DefaultBoolean.True;
-            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(45, 44, 45, 44);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
@@ -81,14 +84,16 @@
             this.bbiListView,
             this.bbiTileView,
             this.bbiAddCategory,
-            this.bbiViewCategory});
+            this.bbiViewCategory,
+            this.bbiViewLocation,
+            this.bbiAddLocation});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbon.MaxItemId = 17;
+            this.ribbon.Margin = new System.Windows.Forms.Padding(5);
+            this.ribbon.MaxItemId = 22;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonGroup = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonLayoutGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbon.OptionsMenuMinWidth = 385;
+            this.ribbon.OptionsMenuMinWidth = 495;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.Main,
             this.ribbonPage1});
@@ -97,7 +102,7 @@
             this.ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.ShowPageHeadersInFormCaption = DevExpress.Utils.DefaultBoolean.True;
             this.ribbon.ShowToolbarCustomizeItem = false;
-            this.ribbon.Size = new System.Drawing.Size(1077, 217);
+            this.ribbon.Size = new System.Drawing.Size(1385, 262);
             this.ribbon.Toolbar.ShowCustomizeItem = false;
             // 
             // bbiAddEmployee
@@ -227,6 +232,20 @@
             this.bbiViewCategory.Name = "bbiViewCategory";
             this.bbiViewCategory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCategory_ItemClick);
             // 
+            // bbiViewLocation
+            // 
+            this.bbiViewLocation.Caption = "View Location";
+            this.bbiViewLocation.Id = 19;
+            this.bbiViewLocation.Name = "bbiViewLocation";
+            this.bbiViewLocation.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewLocation_ItemClick);
+            // 
+            // bbiAddLocation
+            // 
+            this.bbiAddLocation.Caption = "Add Location";
+            this.bbiAddLocation.Id = 21;
+            this.bbiAddLocation.Name = "bbiAddLocation";
+            this.bbiAddLocation.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddLocation_ItemClick);
+            // 
             // Main
             // 
             this.Main.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -253,7 +272,8 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup3,
-            this.ribbonPageGroup4});
+            this.ribbonPageGroup4,
+            this.ribbonPageGroup6});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Products";
             // 
@@ -271,6 +291,13 @@
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "ribbonPageGroup4";
             // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.ItemLinks.Add(this.bbiAddLocation);
+            this.ribbonPageGroup6.ItemLinks.Add(this.bbiViewLocation);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            this.ribbonPageGroup6.Text = "ribbonPageGroup6";
+            // 
             // ribbonPageGroup5
             // 
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
@@ -278,12 +305,12 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 662);
+            this.ClientSize = new System.Drawing.Size(1385, 786);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("MainForm.IconOptions.Image")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Ribbon = this.ribbon;
@@ -323,5 +350,8 @@
         private DevExpress.XtraBars.BarButtonItem bbiListView;
         private DevExpress.XtraBars.BarButtonItem bbiAddCategory;
         private DevExpress.XtraBars.BarButtonItem bbiViewCategory;
+        private DevExpress.XtraBars.BarButtonItem bbiViewLocation;
+        private DevExpress.XtraBars.BarButtonItem bbiAddLocation;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
     }
 }

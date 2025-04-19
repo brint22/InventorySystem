@@ -145,6 +145,18 @@
     <Compile Include="Employees\ViewEmployee.Designer.cs">
       <DependentUpon>ViewEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Locations\AddLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Locations\AddLocation.Designer.cs">
+      <DependentUpon>AddLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Locations\ViewLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Locations\ViewLocation.Designer.cs">
+      <DependentUpon>ViewLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +176,7 @@
     <Compile Include="Models\GlobalClass.cs" />
     <Compile Include="Models\GlobalMethod.cs" />
     <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
@@ -211,6 +224,12 @@
     <EmbeddedResource Include="Employees\ViewEmployee.resx">
       <DependentUpon>ViewEmployee.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Locations\AddLocation.resx">
+      <DependentUpon>AddLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Locations\ViewLocation.resx">
+      <DependentUpon>ViewLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

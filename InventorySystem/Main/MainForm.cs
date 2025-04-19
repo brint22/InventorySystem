@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InventorySystem.Locations;
 
 namespace InventorySystem.Views
 {
@@ -129,6 +130,27 @@ namespace InventorySystem.Views
 
             // Show the Employee form
             category.Show();
+        }
+
+        private void bbiAddLocation_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            AddLocation location = new AddLocation();
+            this.IsMdiContainer = true;
+            location.MdiParent = this;
+
+            // Show the Employee form
+            location.Show();
+        }
+
+        private void bbiViewLocation_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Location form
+            new ViewLocation().Show();
         }
     }
 }
