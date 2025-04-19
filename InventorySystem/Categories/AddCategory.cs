@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
 
-namespace InventorySystem.Category
+namespace InventorySystem.Categories
 {
     public partial class AddCategory : DevExpress.XtraBars.Ribbon.RibbonForm
     {
