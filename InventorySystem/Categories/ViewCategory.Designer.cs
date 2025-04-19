@@ -1,4 +1,4 @@
-﻿namespace InventorySystem.Category
+﻿namespace InventorySystem.Categories
 {
     partial class ViewCategory
     {

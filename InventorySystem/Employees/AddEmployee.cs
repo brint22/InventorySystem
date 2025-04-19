@@ -171,6 +171,8 @@ namespace InventorySystem.Employees
             }
         }
 
+
+
         private void LoadRole()
         {
             string connStr = GlobalClass.connectionString;
@@ -362,7 +364,6 @@ namespace InventorySystem.Employees
             tePhoneNumber.Text = string.Empty;
             deDateHired.Text = string.Empty;
             lueRole.Text = string.Empty;
-            
         }
 
 
@@ -440,13 +441,6 @@ namespace InventorySystem.Employees
             }
         }
 
-        private void groupControl2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-
         //Data table of Address
         DataTable dtAddress = new DataTable();
         private DataTable CreateAddressTable()
@@ -456,7 +450,6 @@ namespace InventorySystem.Employees
             dtAddress.Columns.Add("Province", typeof(string));
             dtAddress.Columns.Add("ZipCode", typeof(string));
             dtAddress.Columns.Add("Country", typeof(string));
-
             return dtAddress;
         }
 

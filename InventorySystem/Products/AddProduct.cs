@@ -1,5 +1,7 @@
 ﻿using Dapper;
+using DevExpress.Office.Services;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
 using InventorySystem.Models;
 using System;
@@ -123,6 +125,42 @@ namespace InventorySystem.Products
             }
         }
 
+        private void LoadCategory()
+        {
+            string connStr = GlobalClass.connectionString;
+
+            string query = @"
+    SELECT [CategoryID], 
+           CONCAT(UPPER(LEFT([CategoryName], 1)), LOWER(SUBSTRING([CategoryName], 2, LEN([CategoryName]) - 1))) AS CategoryName
+    FROM [Category];";
+
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    var category = connection.Query<Category>(query).ToList();
+
+                    if (category.Any())
+                    {
+                        lueCategory.Properties.DataSource = category;
+                        lueCategory.Properties.DisplayMember = "CategoryName";
+                        lueCategory.Properties.ValueMember = "CategoryID";
+                    }
+                    else
+                    {
+                        lueCategory.Properties.DataSource = null;
+                        XtraMessageBox.Show("No categories found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(tePrice.Text, out int price))
@@ -150,6 +188,11 @@ namespace InventorySystem.Products
 
             // You can now pass `product` to your RegisterProduct method or any other logic//
             RegisterProduct(product);
+        }
+
+        private void AddProduct_Load(object sender, EventArgs e)
+        {
+            LoadCategory();
         }
     }
 

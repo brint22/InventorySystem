@@ -34,7 +34,7 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.teProductName = new DevExpress.XtraEditors.TextEdit();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lueCategory = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.tePrice = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -51,7 +51,7 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProductName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teQuantity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deExpirationDate.Properties)).BeginInit();
@@ -110,19 +110,23 @@
             this.teProductName.Size = new System.Drawing.Size(230, 34);
             this.teProductName.TabIndex = 21;
             // 
-            // lookUpEdit1
+            // lueCategory
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(500, 82);
-            this.lookUpEdit1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.lookUpEdit1.MenuManager = this.ribbon;
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEdit1.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEdit1.Properties.AutoHeight = false;
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lueCategory.Location = new System.Drawing.Point(500, 82);
+            this.lueCategory.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.lueCategory.MenuManager = this.ribbon;
+            this.lueCategory.Name = "lueCategory";
+            this.lueCategory.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lueCategory.Properties.Appearance.Options.UseFont = true;
+            this.lueCategory.Properties.AutoHeight = false;
+            this.lueCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Size = new System.Drawing.Size(230, 34);
-            this.lookUpEdit1.TabIndex = 22;
+            this.lueCategory.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryID", "", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryName", "")});
+            this.lueCategory.Properties.NullText = "";
+            this.lueCategory.Size = new System.Drawing.Size(230, 34);
+            this.lueCategory.TabIndex = 22;
             // 
             // labelControl1
             // 
@@ -281,6 +285,8 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.Controls.Add(this.labelControl6);
             this.groupControl1.Controls.Add(this.teSupplier);
             this.groupControl1.Controls.Add(this.labelControl7);
@@ -293,14 +299,14 @@
             this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.deExpirationDate);
-            this.groupControl1.Controls.Add(this.lookUpEdit1);
+            this.groupControl1.Controls.Add(this.lueCategory);
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Location = new System.Drawing.Point(26, 82);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(4);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(855, 386);
             this.groupControl1.TabIndex = 74;
-            this.groupControl1.Text = "groupControl1";
+            this.groupControl1.Text = "Product Information";
             // 
             // AddProduct
             // 
@@ -321,9 +327,10 @@
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory System | Add Product";
+            this.Load += new System.EventHandler(this.AddProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProductName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teQuantity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deExpirationDate.Properties.CalendarTimeProperties)).EndInit();
@@ -345,7 +352,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit teProductName;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraEditors.LookUpEdit lueCategory;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit tePrice;
         private DevExpress.XtraEditors.LabelControl labelControl3;

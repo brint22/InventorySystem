@@ -498,7 +498,6 @@
             this.groupControl2.Size = new System.Drawing.Size(1150, 374);
             this.groupControl2.TabIndex = 48;
             this.groupControl2.Text = "Employee Data";
-            this.groupControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl2_Paint);
             // 
             // xtcEmployeeData
             // 

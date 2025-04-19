@@ -1,7 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using InventorySystem.Models;
 using InventorySystem.Account;
-using InventorySystem.Category;
+using InventorySystem.Categories;
 using InventorySystem.Employees;
 using InventorySystem.Products;
 using InventorySystem.views;
