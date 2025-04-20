@@ -125,6 +125,44 @@ namespace InventorySystem.Products
             }
         }
 
+        private void LoadLocation()
+        {
+            string connStr = GlobalClass.connectionString;
+
+            string query = @"
+SELECT 
+    [LocationID], 
+    CONCAT(LocationStart, ' - ', LocationFinish) AS LocationRange
+FROM 
+    [Location];";
+
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    var locations = connection.Query<Location>(query).ToList();
+
+                    if (locations.Any())
+                    {
+                        lueLocation.Properties.DataSource = locations;
+                        lueLocation.Properties.DisplayMember = "LocationRange";
+                        lueLocation.Properties.ValueMember = "LocationID";
+                    }
+                    else
+                    {
+                        lueLocation.Properties.DataSource = null;
+                        XtraMessageBox.Show("No locations found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
         private void LoadCategory()
         {
             string connStr = GlobalClass.connectionString;
@@ -160,7 +198,6 @@ namespace InventorySystem.Products
             }
         }
 
-
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(tePrice.Text, out int price))
@@ -193,6 +230,7 @@ namespace InventorySystem.Products
         private void AddProduct_Load(object sender, EventArgs e)
         {
             LoadCategory();
+            LoadLocation();
         }
     }
 

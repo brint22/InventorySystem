@@ -49,6 +49,8 @@
             this.teSupplier = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.lueLocation = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProductName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCategory.Properties)).BeginInit();
@@ -60,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.teSupplier.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lueLocation.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -112,7 +115,7 @@
             // 
             // lueCategory
             // 
-            this.lueCategory.Location = new System.Drawing.Point(500, 82);
+            this.lueCategory.Location = new System.Drawing.Point(398, 82);
             this.lueCategory.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.lueCategory.MenuManager = this.ribbon;
             this.lueCategory.Name = "lueCategory";
@@ -132,7 +135,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(500, 58);
+            this.labelControl1.Location = new System.Drawing.Point(398, 58);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(63, 19);
@@ -239,7 +242,7 @@
             // 
             // teBrandName
             // 
-            this.teBrandName.Location = new System.Drawing.Point(500, 160);
+            this.teBrandName.Location = new System.Drawing.Point(398, 249);
             this.teBrandName.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.teBrandName.MenuManager = this.ribbon;
             this.teBrandName.Name = "teBrandName";
@@ -253,7 +256,7 @@
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(500, 224);
+            this.labelControl6.Location = new System.Drawing.Point(398, 296);
             this.labelControl6.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(58, 19);
@@ -262,7 +265,7 @@
             // 
             // teSupplier
             // 
-            this.teSupplier.Location = new System.Drawing.Point(500, 249);
+            this.teSupplier.Location = new System.Drawing.Point(398, 321);
             this.teSupplier.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.teSupplier.MenuManager = this.ribbon;
             this.teSupplier.Name = "teSupplier";
@@ -276,7 +279,7 @@
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(500, 135);
+            this.labelControl7.Location = new System.Drawing.Point(398, 224);
             this.labelControl7.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(41, 19);
@@ -287,6 +290,8 @@
             // 
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
+            this.groupControl1.Controls.Add(this.labelControl8);
+            this.groupControl1.Controls.Add(this.lueLocation);
             this.groupControl1.Controls.Add(this.labelControl6);
             this.groupControl1.Controls.Add(this.teSupplier);
             this.groupControl1.Controls.Add(this.labelControl7);
@@ -307,6 +312,35 @@
             this.groupControl1.Size = new System.Drawing.Size(855, 386);
             this.groupControl1.TabIndex = 74;
             this.groupControl1.Text = "Product Information";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl8.Appearance.Options.UseFont = true;
+            this.labelControl8.Location = new System.Drawing.Point(398, 136);
+            this.labelControl8.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(59, 19);
+            this.labelControl8.TabIndex = 74;
+            this.labelControl8.Text = "Location";
+            // 
+            // lueLocation
+            // 
+            this.lueLocation.Location = new System.Drawing.Point(398, 165);
+            this.lueLocation.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.lueLocation.MenuManager = this.ribbon;
+            this.lueLocation.Name = "lueLocation";
+            this.lueLocation.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lueLocation.Properties.Appearance.Options.UseFont = true;
+            this.lueLocation.Properties.AutoHeight = false;
+            this.lueLocation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueLocation.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationRange", "")});
+            this.lueLocation.Properties.NullText = "";
+            this.lueLocation.Size = new System.Drawing.Size(230, 29);
+            this.lueLocation.TabIndex = 73;
             // 
             // AddProduct
             // 
@@ -340,6 +374,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lueLocation.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,5 +402,7 @@
         private DevExpress.XtraEditors.TextEdit teSupplier;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.LookUpEdit lueLocation;
     }
 }

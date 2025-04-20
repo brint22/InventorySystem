@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewLocation));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.BtnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.BtnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -56,16 +56,18 @@
             // 
             // ribbon
             // 
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(23, 25, 23, 25);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
+            this.ribbon.OptionsMenuMinWidth = 257;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1398, 73);
-            this.ribbon.StatusBar = this.ribbonStatusBar;
+            this.ribbon.Size = new System.Drawing.Size(1087, 61);
             // 
             // ribbonPage1
             // 
@@ -79,36 +81,31 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
-            // ribbonStatusBar
-            // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 566);
-            this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1398, 55);
-            // 
             // BtnDelete
             // 
+            this.BtnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnDelete.Appearance.BackColor = System.Drawing.Color.DimGray;
             this.BtnDelete.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.Appearance.Options.UseBackColor = true;
             this.BtnDelete.Appearance.Options.UseFont = true;
-            this.BtnDelete.Location = new System.Drawing.Point(1103, 113);
-            this.BtnDelete.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
+            this.BtnDelete.Location = new System.Drawing.Point(858, 111);
+            this.BtnDelete.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(244, 45);
+            this.BtnDelete.Size = new System.Drawing.Size(190, 38);
             this.BtnDelete.TabIndex = 82;
             this.BtnDelete.Text = "DELETE";
             // 
             // BtnUpdate
             // 
+            this.BtnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnUpdate.Appearance.BackColor = System.Drawing.Color.LightSlateGray;
             this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdate.Appearance.Options.UseBackColor = true;
             this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(861, 113);
-            this.BtnUpdate.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
+            this.BtnUpdate.Location = new System.Drawing.Point(670, 111);
+            this.BtnUpdate.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.BtnUpdate.Name = "BtnUpdate";
-            this.BtnUpdate.Size = new System.Drawing.Size(231, 45);
+            this.BtnUpdate.Size = new System.Drawing.Size(180, 38);
             this.BtnUpdate.TabIndex = 81;
             this.BtnUpdate.Text = "UPDATE";
             // 
@@ -116,33 +113,32 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(52, 86);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.labelControl1.Location = new System.Drawing.Point(40, 88);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(148, 27);
+            this.labelControl1.Size = new System.Drawing.Size(123, 23);
             this.labelControl1.TabIndex = 80;
             this.labelControl1.Text = "Location Start";
             // 
             // teLocationStart
             // 
-            this.teLocationStart.Location = new System.Drawing.Point(52, 114);
-            this.teLocationStart.Margin = new System.Windows.Forms.Padding(4);
+            this.teLocationStart.Location = new System.Drawing.Point(40, 112);
             this.teLocationStart.Name = "teLocationStart";
             this.teLocationStart.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teLocationStart.Properties.Appearance.Options.UseFont = true;
             this.teLocationStart.Properties.AutoHeight = false;
-            this.teLocationStart.Size = new System.Drawing.Size(191, 44);
+            this.teLocationStart.Size = new System.Drawing.Size(149, 37);
             this.teLocationStart.TabIndex = 79;
             // 
             // gcLocation
             // 
-            this.gcLocation.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gcLocation.Location = new System.Drawing.Point(52, 200);
+            this.gcLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gcLocation.Location = new System.Drawing.Point(40, 168);
             this.gcLocation.MainView = this.gvLocation;
-            this.gcLocation.Margin = new System.Windows.Forms.Padding(4);
             this.gcLocation.MenuManager = this.ribbon;
             this.gcLocation.Name = "gcLocation";
-            this.gcLocation.Size = new System.Drawing.Size(1295, 342);
+            this.gcLocation.Size = new System.Drawing.Size(1007, 288);
             this.gcLocation.TabIndex = 78;
             this.gcLocation.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvLocation});
@@ -154,10 +150,8 @@
             this.LocationStart,
             this.LocationFinish,
             this.Availability});
-            this.gvLocation.DetailHeight = 416;
             this.gvLocation.GridControl = this.gcLocation;
             this.gvLocation.Name = "gvLocation";
-            this.gvLocation.OptionsEditForm.PopupEditFormWidth = 1029;
             // 
             // LocationID
             // 
@@ -169,12 +163,12 @@
             this.LocationID.AppearanceHeader.Options.UseFont = true;
             this.LocationID.Caption = "Location ID";
             this.LocationID.FieldName = "LocationID";
-            this.LocationID.MinWidth = 32;
+            this.LocationID.MinWidth = 25;
             this.LocationID.Name = "LocationID";
             this.LocationID.OptionsColumn.AllowEdit = false;
             this.LocationID.Visible = true;
             this.LocationID.VisibleIndex = 0;
-            this.LocationID.Width = 353;
+            this.LocationID.Width = 275;
             // 
             // LocationStart
             // 
@@ -184,12 +178,12 @@
             this.LocationStart.AppearanceHeader.Options.UseFont = true;
             this.LocationStart.Caption = "Location Start";
             this.LocationStart.FieldName = "LocationStart";
-            this.LocationStart.MinWidth = 32;
+            this.LocationStart.MinWidth = 25;
             this.LocationStart.Name = "LocationStart";
             this.LocationStart.OptionsColumn.AllowEdit = false;
             this.LocationStart.Visible = true;
             this.LocationStart.VisibleIndex = 1;
-            this.LocationStart.Width = 708;
+            this.LocationStart.Width = 551;
             // 
             // LocationFinish
             // 
@@ -199,12 +193,12 @@
             this.LocationFinish.AppearanceHeader.Options.UseFont = true;
             this.LocationFinish.Caption = "Location Finish";
             this.LocationFinish.FieldName = "LocationFinish";
-            this.LocationFinish.MinWidth = 30;
+            this.LocationFinish.MinWidth = 23;
             this.LocationFinish.Name = "LocationFinish";
             this.LocationFinish.OptionsColumn.AllowEdit = false;
             this.LocationFinish.Visible = true;
             this.LocationFinish.VisibleIndex = 2;
-            this.LocationFinish.Width = 671;
+            this.LocationFinish.Width = 522;
             // 
             // Availability
             // 
@@ -214,62 +208,58 @@
             this.Availability.AppearanceHeader.Options.UseFont = true;
             this.Availability.Caption = "Availability";
             this.Availability.FieldName = "Availability";
-            this.Availability.MinWidth = 30;
+            this.Availability.MinWidth = 23;
             this.Availability.Name = "Availability";
             this.Availability.OptionsColumn.AllowEdit = false;
             this.Availability.Visible = true;
             this.Availability.VisibleIndex = 3;
-            this.Availability.Width = 378;
+            this.Availability.Width = 294;
             // 
             // teLocationFinish
             // 
-            this.teLocationFinish.Location = new System.Drawing.Point(277, 114);
-            this.teLocationFinish.Margin = new System.Windows.Forms.Padding(4);
+            this.teLocationFinish.Location = new System.Drawing.Point(215, 112);
             this.teLocationFinish.Name = "teLocationFinish";
             this.teLocationFinish.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teLocationFinish.Properties.Appearance.Options.UseFont = true;
             this.teLocationFinish.Properties.AutoHeight = false;
-            this.teLocationFinish.Size = new System.Drawing.Size(191, 44);
+            this.teLocationFinish.Size = new System.Drawing.Size(149, 37);
             this.teLocationFinish.TabIndex = 83;
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(277, 86);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
+            this.labelControl2.Location = new System.Drawing.Point(215, 88);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(162, 27);
+            this.labelControl2.Size = new System.Drawing.Size(130, 23);
             this.labelControl2.TabIndex = 84;
             this.labelControl2.Text = "Location Finish";
             // 
             // teAvailability
             // 
-            this.teAvailability.Location = new System.Drawing.Point(495, 114);
-            this.teAvailability.Margin = new System.Windows.Forms.Padding(4);
+            this.teAvailability.Location = new System.Drawing.Point(385, 112);
             this.teAvailability.Name = "teAvailability";
             this.teAvailability.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teAvailability.Properties.Appearance.Options.UseFont = true;
             this.teAvailability.Properties.AutoHeight = false;
-            this.teAvailability.Size = new System.Drawing.Size(191, 44);
+            this.teAvailability.Size = new System.Drawing.Size(149, 37);
             this.teAvailability.TabIndex = 85;
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(495, 86);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(4);
+            this.labelControl3.Location = new System.Drawing.Point(385, 88);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(112, 27);
+            this.labelControl3.Size = new System.Drawing.Size(91, 23);
             this.labelControl3.TabIndex = 86;
             this.labelControl3.Text = "Availability";
             // 
             // ViewLocation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1398, 621);
+            this.ClientSize = new System.Drawing.Size(1087, 523);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.teAvailability);
             this.Controls.Add(this.labelControl2);
@@ -279,14 +269,16 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.teLocationStart);
             this.Controls.Add(this.gcLocation);
-            this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ViewLocation.IconOptions.Image")));
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MaximizeBox = false;
             this.Name = "ViewLocation";
             this.Ribbon = this.ribbon;
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.StatusBar = this.ribbonStatusBar;
             this.Text = "ViewLocation";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ViewLocation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teLocationStart.Properties)).EndInit();
@@ -304,7 +296,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraEditors.SimpleButton BtnDelete;
         private DevExpress.XtraEditors.SimpleButton BtnUpdate;
         private DevExpress.XtraEditors.LabelControl labelControl1;
