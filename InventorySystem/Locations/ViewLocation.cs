@@ -55,7 +55,7 @@ namespace InventorySystem.Locations
 
             RetrieveLocation();
 
-            // Ensure the GridView is properly attached to the GridControl
+            // Ensure the GridView is properly attached to the GridControl//
             gcLocation.MainView = gvLocation;
 
             // Use FocusedRowChanged instead of RowClick
