@@ -194,10 +194,10 @@
     <Compile Include="Reports\EmployeesReport.Designer.cs">
       <DependentUpon>EmployeesReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\ViewProduct.cs">
+    <Compile Include="Products\ViewProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\ViewProduct.Designer.cs">
+    <Compile Include="Products\ViewProduct.Designer.cs">
       <DependentUpon>ViewProduct.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Accounts\CreateAccount.resx">
@@ -253,7 +253,7 @@
     <EmbeddedResource Include="Reports\EmployeesReport.resx">
       <DependentUpon>EmployeesReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\ViewProduct.resx">
+    <EmbeddedResource Include="Products\ViewProduct.resx">
       <DependentUpon>ViewProduct.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
@@ -275,6 +275,7 @@
     <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Files\Inventory System-Data-Flow-Diagram.png" />

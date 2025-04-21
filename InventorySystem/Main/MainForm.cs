@@ -103,7 +103,7 @@ namespace InventorySystem.Views
             //Close the current Form when click another form
             CloseAllChildForms();
             // Create a new instance of Employee form
-           new Laborer().Show();    
+           new ViewProduct().Show();    
         }
 
         private void bbiAddCategory_ItemClick(object sender, ItemClickEventArgs e)

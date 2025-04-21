@@ -127,6 +127,49 @@ namespace InventorySystem.Models
                 }
             }
         }
-      
+        //public static void LoadPrdocutData(GridControl gcProductList)
+        //{
+        //    DataTable dataTable = new DataTable();
+
+        //    using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+        //    {
+        //        try
+        //        {
+        //            connection.Open();
+
+        //            string sql = @"SELECT
+        //                 p.[ProductID]
+        //                ,p.[ProductName]
+        //                ,p.[Price]
+        //                ,p.[Quantity]
+        //                ,p.[ExpirationDate]
+        //                ,p.[ProductRecieved]
+        //                ,c.CategoryName
+        //                ,p.[BrandName]
+        //                ,p.[Supplier]
+        //                ,L.LocationStart,
+	       //             l.LocationFinish
+        //          FROM [WAREHOUSEISDB].[dbo].[Product] p
+        //          LEFT JOIN Category c
+        //          ON c.CategoryID  = p.CategoryID
+        //          LEFT JOIN Location l
+        //          ON l.LocationID = p.LocationID";
+
+        //            using (SqlCommand command = new SqlCommand(query, connection))
+        //            {
+        //                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+        //                {
+        //                    adapter.Fill(dataTable);
+        //                }
+        //            }
+
+        //            gcProductList.DataSource = dataTable;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //}
     }
 }
