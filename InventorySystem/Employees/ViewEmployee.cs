@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraGrid.Views.Tile;
 using DevExpress.XtraLayout.Customization;
+using InventorySystem.Infrastracture.Repositories;
 using InventorySystem.Models;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,9 @@ namespace InventorySystem.Employees
     public partial class ViewEmployee : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public static ViewEmployee instance;
-       
 
-        public ViewEmployee()
+
+        public ViewEmployee(string connectionString)
         {
             instance = this;
             InitializeComponent();
@@ -31,10 +32,11 @@ namespace InventorySystem.Employees
 
         private void ViewEmployee_Load(object sender, EventArgs e)
         {
-            GlobalMethod.LoadEmployeeData("All", gcEmployee);
-            GlobalMethod.LoadEmployeeData("Manager", gcManager);
-            GlobalMethod.LoadEmployeeData("Cashier", gcCashier);
-            GlobalMethod.LoadEmployeeData("Laborer", gcLaborer);
+            EmployeeRepository repo = new EmployeeRepository(GlobalClass.connectionString);
+            gcEmployee.DataSource = repo.GetEmployeeList("All");
+            gcManager.DataSource = repo.GetEmployeeList("Manager");
+            gcCashier.DataSource = repo.GetEmployeeList("Cashier");
+            gcLaborer.DataSource = repo.GetEmployeeList("Laborer");
             gcEmployee.RefreshDataSource();
         }
 

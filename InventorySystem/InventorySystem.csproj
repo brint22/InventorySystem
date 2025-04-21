@@ -145,6 +145,10 @@
     <Compile Include="Employees\ViewEmployee.Designer.cs">
       <DependentUpon>ViewEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Infrastracture\Repositories\EmployeeRepository.cs" />
+    <Compile Include="Infrastracture\Repositories\ProductRepository.cs" />
+    <Compile Include="Infrastracture\SQL\EmployeeSQL.cs" />
+    <Compile Include="Infrastracture\SQL\ProductSQL.cs" />
     <Compile Include="Locations\AddLocation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,7 +177,7 @@
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Employee.cs" />
-    <Compile Include="Models\GlobalClass.cs" />
+    <Compile Include="Configuration\GlobalClass.cs" />
     <Compile Include="Models\GlobalMethod.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Location.cs" />

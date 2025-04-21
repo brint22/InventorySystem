@@ -108,6 +108,7 @@
             this.BtnUpdate.Size = new System.Drawing.Size(180, 38);
             this.BtnUpdate.TabIndex = 81;
             this.BtnUpdate.Text = "UPDATE";
+            this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // labelControl1
             // 
