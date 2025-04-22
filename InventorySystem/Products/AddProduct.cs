@@ -71,9 +71,8 @@ namespace InventorySystem.Products
 
                         // Generate ProductID
                         char firstLetter = char.ToUpper(product.ProductName[0]);
-                        string yearPart = DateTime.Now.Year.ToString().Substring(2); // also gives "25"
+                        string yearPart = DateTime.Now.Year.ToString().Substring(2);
 
-                        // Get the latest product number for this prefix
                         string prefix = firstLetter.ToString() + "%" + yearPart;
                         string getMaxQuery = @"
                     SELECT MAX(CAST(SUBSTRING(ProductID, 2, 4) AS INT))
@@ -87,14 +86,13 @@ namespace InventorySystem.Products
                         string generatedID = $"{firstLetter}{numberPart}{yearPart}";
                         product.ProductID = generatedID;
                         product.CategoryID = GetCategoryID();
-                        //product.LocationID = GetLocationID();
 
                         // Insert product
                         string productQuery = @"
                     INSERT INTO Product 
                     (ProductID, ProductName, Price, Quantity, ProductRecieved, ExpirationDate, CategoryID, BrandName, Supplier)
                     VALUES 
-                    (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate,@CategoryID, @BrandName, @Supplier)";
+                    (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate, @CategoryID, @BrandName, @Supplier)";
 
                         int rowsAffected = connection.Execute(productQuery, new
                         {
@@ -106,8 +104,7 @@ namespace InventorySystem.Products
                             product.ExpirationDate,
                             product.CategoryID,
                             product.BrandName,
-                            product.Supplier,
-                            product.LocationID
+                            product.Supplier
                         }, transaction);
 
                         if (rowsAffected == 0)
@@ -116,6 +113,28 @@ namespace InventorySystem.Products
                             MessageBox.Show("Product registration failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+
+                        // Get selected LocationID from ComboBox
+                        string locationID = cbLocation.SelectedItem?.ToString();
+
+                        if (string.IsNullOrWhiteSpace(locationID))
+                        {
+                            MessageBox.Show("Please select a valid Location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        // Update the existing location to mark it as Occupied and assign the ProductID
+                        string locationQuery = @"
+                    UPDATE Location
+                    SET ProductID = @ProductID,
+                        Availability = 'Occupied'
+                    WHERE LocationID = @LocationID";
+
+                        connection.Execute(locationQuery, new
+                        {
+                            LocationID = locationID,
+                            ProductID = product.ProductID
+                        }, transaction);
 
                         transaction.Commit();
                         MessageBox.Show("Product registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -128,6 +147,8 @@ namespace InventorySystem.Products
                 }
             }
         }
+
+
 
         private void LoadLocation()
         {

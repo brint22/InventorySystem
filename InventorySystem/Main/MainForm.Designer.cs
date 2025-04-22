@@ -204,6 +204,7 @@
             // 
             this.bbiViewLocation.Caption = "View Location";
             this.bbiViewLocation.Id = 19;
+            this.bbiViewLocation.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiViewLocation.ImageOptions.SvgImage")));
             this.bbiViewLocation.Name = "bbiViewLocation";
             this.bbiViewLocation.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewLocation_ItemClick);
             // 
@@ -211,6 +212,7 @@
             // 
             this.bbiAddLocation.Caption = "Add Location";
             this.bbiAddLocation.Id = 21;
+            this.bbiAddLocation.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiAddLocation.ImageOptions.SvgImage")));
             this.bbiAddLocation.Name = "bbiAddLocation";
             this.bbiAddLocation.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddLocation_ItemClick);
             // 
