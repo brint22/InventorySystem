@@ -23,5 +23,6 @@ namespace InventorySystem.Models
         public string CategoryName { get; set; }
         public string LocationStart { get; set; }
         public string LocationFinish { get; set; }
+        public string Availability { get; set; }
     }
 }

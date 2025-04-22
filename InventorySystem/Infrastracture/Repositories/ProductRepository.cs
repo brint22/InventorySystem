@@ -18,7 +18,7 @@ namespace InventorySystem.Infrastracture.Repositories
             _connectionString = connectionString;
         }
 
-        public void UpdateLocation(int locationId, string start, string finish, int availability)
+        public void UpdateLocation(int locationId, string start, string finish, string availability)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {

@@ -23,53 +23,22 @@ namespace InventorySystem.Locations
             InitializeComponent();
         }
 
-        private void RetrieveLocation()
-        {
-            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
-            {
-                string sql = @"SELECT LocationID, 
-                        LocationStart, 
-                        LocationFinish, 
-                        Availability
-                        FROM Location";
-                var locationList = connection.Query<Location>(sql).ToList();
-
-                // Bind data to the grid
-                gcLocation.DataSource = locationList;
-
-                // Configure columns (after data is bound)
-                gvLocation.PopulateColumns();
-
-                // Show computed AvailabilityText
-                gvLocation.Columns["AvailabilityText"].Visible = true;
-                gvLocation.Columns["AvailabilityText"].Caption = "Availability";
-
-                // Optionally hide raw int Availability column
-                gvLocation.Columns["Availability"].Visible = false;
-            }
-        }
+       
 
         private void ViewLocation_Load(object sender, EventArgs e)
         {
             // Optional: formatting or layout before data
-            GlobalMethod.LoadCategoryData(gcLocation);
+            GlobalMethod.LoadLocationList(gcLocation);
 
-            RetrieveLocation();
-
-            // Ensure the GridView is properly attached to the GridControl//
-            gcLocation.MainView = gvLocation;
-
-            // Use FocusedRowChanged instead of RowClick
-            gvLocation.FocusedRowChanged += (s, ev) =>
+            gvLocation.RowClick += (s, ev) =>
             {
                 if (gvLocation.FocusedRowHandle >= 0)
                 {
                     var locationStart = gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "LocationStart")?.ToString();
-                    var locationFinish = gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "LocationFinish")?.ToString();
-                    var availability = gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "AvailabilityText")?.ToString();
-
                     teLocationStart.Text = locationStart;
+                    var locationFinish = gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "LocationFinish")?.ToString();
                     teLocationFinish.Text = locationFinish;
+                    var availability = gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "Availability")?.ToString();
                     teAvailability.Text = availability;
                 }
             };
@@ -86,7 +55,7 @@ namespace InventorySystem.Locations
 
             string start = teLocationStart.Text.Trim();
             string finish = teLocationFinish.Text.Trim();
-            int availability = int.Parse(teAvailability.Text.Trim());
+            string availability = teAvailability.Text.Trim();
 
             if (string.IsNullOrEmpty(start) || string.IsNullOrEmpty(finish))
             {
@@ -103,7 +72,9 @@ namespace InventorySystem.Locations
                 repository.UpdateLocation(locationId, start, finish, availability);
 
                 MessageBox.Show("Location updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                RetrieveLocation(); // reload the grid
+
+                // ✅ Corrected refresh call
+                GlobalMethod.LoadLocationList(gcLocation);
             }
         }
     }

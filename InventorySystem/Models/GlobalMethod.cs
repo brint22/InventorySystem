@@ -127,49 +127,82 @@ namespace InventorySystem.Models
                 }
             }
         }
-        //public static void LoadPrdocutData(GridControl gcProductList)
-        //{
-        //    DataTable dataTable = new DataTable();
+        public static void LoadProductList(GridControl gcProductList)
+        {
+            DataTable dataTable = new DataTable();
 
-        //    using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
-        //    {
-        //        try
-        //        {
-        //            connection.Open();
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                try
+                {
+                    connection.Open();
 
-        //            string sql = @"SELECT
-        //                 p.[ProductID]
-        //                ,p.[ProductName]
-        //                ,p.[Price]
-        //                ,p.[Quantity]
-        //                ,p.[ExpirationDate]
-        //                ,p.[ProductRecieved]
-        //                ,c.CategoryName
-        //                ,p.[BrandName]
-        //                ,p.[Supplier]
-        //                ,L.LocationStart,
-	       //             l.LocationFinish
-        //          FROM [WAREHOUSEISDB].[dbo].[Product] p
-        //          LEFT JOIN Category c
-        //          ON c.CategoryID  = p.CategoryID
-        //          LEFT JOIN Location l
-        //          ON l.LocationID = p.LocationID";
+                    string query = @"SELECT
+                         p.[ProductID]
+                        ,p.[ProductName]
+                        ,p.[Price]
+                        ,p.[Quantity]
+                        ,p.[ExpirationDate]
+                        ,p.[ProductRecieved]
+                        ,c.CategoryName
+                        ,p.[BrandName]
+                        ,p.[Supplier]
+                        ,L.LocationStart
+	                    ,l.LocationFinish
+                        ,l.Availability 
+                  FROM [WAREHOUSEISDB].[dbo].[Product] p
+                  LEFT JOIN Category c
+                  ON c.CategoryID  = p.CategoryID
+                  LEFT JOIN Location l
+                  ON l.LocationID = p.LocationID";
 
-        //            using (SqlCommand command = new SqlCommand(query, connection))
-        //            {
-        //                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-        //                {
-        //                    adapter.Fill(dataTable);
-        //                }
-        //            }
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
 
-        //            gcProductList.DataSource = dataTable;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Error loading categories: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
-        //}
+                    gcProductList.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading product: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        public static void LoadLocationList(GridControl gcProductList)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = @"SELECT LocationID, 
+                        LocationStart, 
+                        LocationFinish, 
+                        Availability
+                        FROM Location";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
+
+                    gcProductList.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading location: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

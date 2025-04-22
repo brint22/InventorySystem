@@ -11,19 +11,8 @@ namespace InventorySystem.Models
         public int LocationID { get; set; }
         public string LocationStart { get; set; }
         public string LocationFinish { get; set; }
-        public string LocationRange { get; set; }
-        public int Availability { get; set; }
+        public string Availability { get; set; }
 
-        // Computed property for Availability
-        public string AvailabilityText
-        {
-            get
-            {
-                return Availability == 1 ? "Available" :
-                       Availability == 0 ? "Not Available" :
-                       "Unknown";
-            }
-        }
-
+        
     }
 }

@@ -76,7 +76,7 @@ namespace InventorySystem.Locations
             {
                 LocationStart = start,
                 LocationFinish = finish,
-                Availability = 1
+                Availability = "Available"
             };
 
             // Confirm submission
