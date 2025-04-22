@@ -69,6 +69,15 @@ namespace InventorySystem.Products
                             return;
                         }
 
+                        // Check for existing ProductName
+                        string checkQuery = "SELECT COUNT(*) FROM Product WHERE ProductName = @ProductName";
+                        int count = connection.ExecuteScalar<int>(checkQuery, new { product.ProductName }, transaction);
+                        if (count > 0)
+                        {
+                            MessageBox.Show("A product with the same name already exists.", "Duplicate Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
                         // Generate ProductID
                         char firstLetter = char.ToUpper(product.ProductName[0]);
                         string yearPart = DateTime.Now.Year.ToString().Substring(2);
@@ -147,8 +156,6 @@ namespace InventorySystem.Products
                 }
             }
         }
-
-
 
         private void LoadLocation()
         {
@@ -277,8 +284,6 @@ namespace InventorySystem.Products
 
             // Call the registration logic
             RegisterProduct(product);
-
-            MessageBox.Show("Product added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void AddProduct_Load(object sender, EventArgs e)
@@ -302,6 +307,48 @@ namespace InventorySystem.Products
             }
             return intcategoryID;
         }
+
+        private void tePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow digits and control keys (like Backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void teQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Block any non-digit characters
+            }
+        }
+
+
+
+        //private void tePrice_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    // Allow digits, comma, dot, and control characters like backspace
+        //    if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && !char.IsControl(e.KeyChar))
+        //    {
+        //        e.Handled = true;
+        //    }
+
+        //    //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+        //    //{
+        //    //    e.Handled = true;
+        //    //}
+        //}
+
+        //private void teQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    // Allow digits, commas, and control keys (like Backspace)
+        //    if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && !char.IsControl(e.KeyChar))
+        //    {
+        //        e.Handled = true;
+        //    }
+        //}
 
         //private int GetLocationID()
         //{
