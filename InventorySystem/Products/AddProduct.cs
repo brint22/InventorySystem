@@ -71,9 +71,8 @@ namespace InventorySystem.Products
 
                         // Generate ProductID
                         char firstLetter = char.ToUpper(product.ProductName[0]);
-                        string yearPart = DateTime.Now.Year.ToString().Substring(2); // also gives "25"
+                        string yearPart = DateTime.Now.Year.ToString().Substring(2);
 
-                        // Get the latest product number for this prefix
                         string prefix = firstLetter.ToString() + "%" + yearPart;
                         string getMaxQuery = @"
                     SELECT MAX(CAST(SUBSTRING(ProductID, 2, 4) AS INT))
@@ -87,14 +86,13 @@ namespace InventorySystem.Products
                         string generatedID = $"{firstLetter}{numberPart}{yearPart}";
                         product.ProductID = generatedID;
                         product.CategoryID = GetCategoryID();
-                        //product.LocationID = GetLocationID();
 
-                        // Insert product
+                        // Insert product into Product table
                         string productQuery = @"
                     INSERT INTO Product 
                     (ProductID, ProductName, Price, Quantity, ProductRecieved, ExpirationDate, CategoryID, BrandName, Supplier)
                     VALUES 
-                    (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate,@CategoryID, @BrandName, @Supplier)";
+                    (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate, @CategoryID, @BrandName, @Supplier)";
 
                         int rowsAffected = connection.Execute(productQuery, new
                         {
@@ -107,7 +105,6 @@ namespace InventorySystem.Products
                             product.CategoryID,
                             product.BrandName,
                             product.Supplier,
-                            product.LocationID
                         }, transaction);
 
                         if (rowsAffected == 0)
@@ -116,6 +113,19 @@ namespace InventorySystem.Products
                             MessageBox.Show("Product registration failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+
+                        // Update the selected Location with the new ProductID and set Availability to 'Occupied'
+                        string updateLocationQuery = @"
+                    UPDATE Location
+                    SET ProductID = @ProductID,
+                        Availability = 'Occupied'
+                    WHERE LocationID = @LocationID";
+
+                        connection.Execute(updateLocationQuery, new
+                        {
+                            ProductID = product.ProductID,
+                            LocationID = product.LocationID // ✅ Make sure this is set when calling the method
+                        }, transaction);
 
                         transaction.Commit();
                         MessageBox.Show("Product registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
