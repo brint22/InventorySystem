@@ -1,5 +1,7 @@
-﻿using DevExpress.Utils;
+﻿using Dapper;
+using DevExpress.Utils;
 using InventorySystem.Infrastracture.SQL;
+using InventorySystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -18,7 +20,7 @@ namespace InventorySystem.Infrastracture.Repositories
             _connectionString = connectionString;
         }
 
-        public void UpdateLocation(int locationId, string start, string finish, string availability)
+        public void UpdateLocation(string locationId)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -28,15 +30,22 @@ namespace InventorySystem.Infrastracture.Repositories
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Start", start);
-                    command.Parameters.AddWithValue("@Finish", finish);
-                    command.Parameters.AddWithValue("@Availability", availability);
+                    command.Parameters.AddWithValue("@Availability", "available");
                     command.Parameters.AddWithValue("@LocationID", locationId);
 
                     command.ExecuteNonQuery();
                 }
             }
         }
+
+        //public void addlocation(Location location)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+        //    {
+        //        string sql = "INSERT INTO Location (LocationID, ProductID, Availability) VALUES (@LocationID, '', 'Availability')";
+        //        connection.Execute(sql, location);
+        //    }
+        //}
 
     }
 }

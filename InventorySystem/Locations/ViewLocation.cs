@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using InventorySystem.Infrastracture.Repositories;
@@ -47,6 +48,9 @@ namespace InventorySystem.Locations
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
 
+            var repository = new ProductRepository(GlobalClass.connectionString);
+        
+
             if (gvLocation.FocusedRowHandle < 0)
             {
                 MessageBox.Show("Please select a location to update.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -55,7 +59,7 @@ namespace InventorySystem.Locations
 
             string start = teLocationStart.Text.Trim();
             string finish = teLocationFinish.Text.Trim();
-            string availability = teAvailability.Text.Trim();
+            //string availability = teAvailability.Text.Trim();
 
             if (string.IsNullOrEmpty(start) || string.IsNullOrEmpty(finish))
             {
@@ -66,10 +70,7 @@ namespace InventorySystem.Locations
             DialogResult result = MessageBox.Show("Are you sure you want to update this location?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                int locationId = Convert.ToInt32(gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "LocationID"));
-
-                var repository = new ProductRepository(GlobalClass.connectionString);
-                repository.UpdateLocation(locationId, start, finish, availability);
+                //int locationId = Convert.ToInt32(gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "LocationID"));
 
                 MessageBox.Show("Location updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

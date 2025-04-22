@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
 using DevExpress.XtraEditors;
+using DevExpress.Utils;
+using DevExpress.XtraLayout.Utils;
 
 namespace InventorySystem.Locations
 {
@@ -22,62 +24,31 @@ namespace InventorySystem.Locations
             InitializeComponent();
         }
 
-        private void InsertLocation(Location location)
+        private void InsertLocation()
         {
-            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
-            {
-                string sql = "INSERT INTO Location (LocationStart, LocationFinish, Availability) VALUES (@LocationStart, @LocationFinish, @Availability)";
-                connection.Execute(sql, location);
+            Location location = new Location();
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString)) { 
+                for (int i = 1; i < 6; i++)
+                {
+                    for (int j = 1; j < 11; j++)
+                    {
+                        location.LocationID = "B-" + i + "-" + j;
+                        string sql = "INSERT INTO Location (LocationID, ProductID , Availability) VALUES (@LocationID,'', 'Available')";
+                        connection.Execute(sql, location);
+                    }
+                }
             }
         }
 
-        private bool LocationExists(string locationStart, string locationFinish)
-        {
-            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
-            {
-                string sql = "SELECT COUNT(1) FROM Location WHERE LocationStart = @LocationStart AND LocationFinish = @LocationFinish";
-                int count = connection.ExecuteScalar<int>(sql, new { LocationStart = locationStart, LocationFinish = locationFinish });
-                return count > 0;
-            }
-        }
+     
 
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            string start = teLocationStart.Text.Trim();
-            string finish = teLocationFinish.Text.Trim();
+          
 
-            // Validate input
-            if (string.IsNullOrEmpty(start))
-            {
-                MessageBox.Show("Please enter a starting location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            InsertLocation();
 
-            if (string.IsNullOrEmpty(finish))
-            {
-                MessageBox.Show("Please enter a finishing location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (start.Equals(finish, StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Starting and finishing locations cannot be the same.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (LocationExists(start, finish))
-            {
-                MessageBox.Show("This location already exists.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            Location location = new Location()
-            {
-                LocationStart = start,
-                LocationFinish = finish,
-                Availability = "Available"
-            };
 
             // Confirm submission
             DialogResult confirmResult = MessageBox.Show(
@@ -93,7 +64,8 @@ namespace InventorySystem.Locations
             }
 
             // Call the insert method
-            InsertLocation(location);
+
+
             MessageBox.Show("Location successfully added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
