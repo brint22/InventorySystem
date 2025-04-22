@@ -86,13 +86,15 @@ namespace InventorySystem.Products
                         string numberPart = nextNumber.ToString("D4");
                         string generatedID = $"{firstLetter}{numberPart}{yearPart}";
                         product.ProductID = generatedID;
+                        product.CategoryID = GetCategoryID();
+                        product.LocationID = GetLocationID();
 
                         // Insert product
                         string productQuery = @"
                     INSERT INTO Product 
-                    (ProductID, ProductName, Price, Quantity, ProductRecieved, ExpirationDate, BrandName, Supplier)
+                    (ProductID, ProductName, Price, Quantity, ProductRecieved, ExpirationDate, CategoryID, BrandName, Supplier, LocationID)
                     VALUES 
-                    (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate,@BrandName, @Supplier)";
+                    (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate,@CategoryID, @BrandName, @Supplier, @LocationID)";
 
                         int rowsAffected = connection.Execute(productQuery, new
                         {
@@ -102,8 +104,10 @@ namespace InventorySystem.Products
                             product.Quantity,
                             product.ProductRecieved,
                             product.ExpirationDate,
+                            product.CategoryID,
                             product.BrandName,
-                            product.Supplier
+                            product.Supplier,
+                            product.LocationID
                         }, transaction);
 
                         if (rowsAffected == 0)
@@ -130,11 +134,11 @@ namespace InventorySystem.Products
             string connStr = GlobalClass.connectionString;
 
             string query = @"
-SELECT 
-    [LocationID], 
-    CONCAT(LocationStart, ' - ', LocationFinish) AS LocationRange
-FROM 
-    [Location];";
+                            SELECT 
+                                [LocationID], 
+                                CONCAT(LocationStart, ' - ', LocationFinish) AS LocationRange
+                            FROM 
+                                [Location];";
 
             using (SqlConnection connection = new SqlConnection(connStr))
             {
@@ -168,9 +172,9 @@ FROM
             string connStr = GlobalClass.connectionString;
 
             string query = @"
-    SELECT [CategoryID], 
-           CONCAT(UPPER(LEFT([CategoryName], 1)), LOWER(SUBSTRING([CategoryName], 2, LEN([CategoryName]) - 1))) AS CategoryName
-    FROM [Category];";
+                                SELECT [CategoryID], 
+                                       CONCAT(UPPER(LEFT([CategoryName], 1)), LOWER(SUBSTRING([CategoryName], 2, LEN([CategoryName]) - 1))) AS CategoryName
+                                FROM [Category];";
 
             using (SqlConnection connection = new SqlConnection(connStr))
             {
@@ -223,6 +227,8 @@ FROM
 
             };
 
+          
+
             // You can now pass `product` to your RegisterProduct method or any other logic//
             RegisterProduct(product);
         }
@@ -231,6 +237,38 @@ FROM
         {
             LoadCategory();
             LoadLocation();
+        }
+
+        private int GetCategoryID()
+        {
+            int intcategoryID = 0;
+
+            if (lueCategory.EditValue != null)
+            {
+                intcategoryID = (int)lueCategory.EditValue;
+
+            }
+            else
+            {
+                intcategoryID = 0;
+            }
+            return intcategoryID;
+        }
+
+        private int GetLocationID()
+        {
+            int intlocationID = 0;
+
+            if (lueLocation.EditValue != null)
+            {
+                intlocationID = (int)lueLocation.EditValue;
+
+            }
+            else
+            {
+                intlocationID = 0;
+            }
+            return intlocationID;
         }
     }
 

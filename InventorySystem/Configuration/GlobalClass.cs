@@ -8,10 +8,11 @@ namespace InventorySystem.Models
 {
     public class GlobalClass
     {
+
         public static string connectionString =
-        //@"Data Source=REDJYLL; 
-        //Initial Catalog=WAREHOUSEISDB; 
-        //Trusted_Connection=True;";
+       @"Data Source=REDJYLL; 
+        Initial Catalog=WAREHOUSEISDB; 
+        Trusted_Connection=True;";
 
         //@"Data Source=NIEZEL\SQLEXPRESS; 
         //Initial Catalog=WAREHOUSEISDB; 

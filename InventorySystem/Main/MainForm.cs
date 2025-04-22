@@ -18,25 +18,11 @@ using InventorySystem.Locations;
 
 namespace InventorySystem.Views
 {
-    public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class bbi : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public MainForm()
+        public bbi()
         {
             InitializeComponent();
-        }
-
-        private void bbiAddEmployee_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //Close the current Form when click another form
-            CloseAllChildForms();
-            // Create a new instance of Employee form
-            AddEmployee employee = new AddEmployee();
-            this.IsMdiContainer = true;
-            employee.MdiParent = this;
-
-            
-            // Show the Employee form
-            employee.Show();
         }
         private void CloseAllChildForms()
         {
@@ -51,7 +37,7 @@ namespace InventorySystem.Views
             //Close the current Form when click another form
             CloseAllChildForms();
             // Create a new instance of Employee form
-            ViewEmployee employee = new ViewEmployee();
+            ViewEmployee employee = new ViewEmployee(GlobalClass.connectionString);
             this.IsMdiContainer = true;
             employee.MdiParent = this;
             // Show the Employee form
@@ -72,18 +58,6 @@ namespace InventorySystem.Views
             //employee.Show();
         }
 
-        private void bbiAddProduct_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //Close the current Form when click another form
-            CloseAllChildForms();
-            // Create a new instance of Employee form
-            AddProduct product = new AddProduct();
-            this.IsMdiContainer = true;
-            product.MdiParent = this;
-
-            // Show the Employee form
-            product.Show();
-        }
 
         private void addAccount_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -96,14 +70,6 @@ namespace InventorySystem.Views
 
             // Show the Employee form
             product.Show();
-        }
-
-        private void bbiViewProduct_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //Close the current Form when click another form
-            CloseAllChildForms();
-            // Create a new instance of Employee form
-           new Laborer().Show();    
         }
 
         private void bbiAddCategory_ItemClick(object sender, ItemClickEventArgs e)
@@ -151,6 +117,41 @@ namespace InventorySystem.Views
             CloseAllChildForms();
             // Create a new instance of Location form
             new ViewLocation().Show();
+        }
+
+        private void bbiAddEmployee_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            AddEmployee employee = new AddEmployee();
+            this.IsMdiContainer = true;
+            employee.MdiParent = this;
+
+
+            // Show the Employee form
+            employee.Show();
+        }
+
+        private void bbiAddProduct_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            AddProduct product = new AddProduct();
+            this.IsMdiContainer = true;
+            product.MdiParent = this;
+
+            // Show the Employee form
+            product.Show();
+        }
+
+        private void bbiViewProduct_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            new ViewProduct().Show();
         }
     }
 }

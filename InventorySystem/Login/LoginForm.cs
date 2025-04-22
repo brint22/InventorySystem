@@ -62,7 +62,7 @@ namespace InventorySystem
             if (LoginMethod(teUserName.Text.Trim(), tePassword.Text.Trim()))
             {
 
-                MainForm mainform = new MainForm();
+                bbi mainform = new bbi();
                 mainform.Show();
                 Visible = false;
 

@@ -17,5 +17,11 @@ namespace InventorySystem.Models
         public DateTime ExpirationDate { get; set; }
         public string BrandName { get; set; }
         public string Supplier { get; set; }
+        public int CategoryID { get; set; }
+        public int LocationID { get; set; }
+
+        public string CategoryName { get; set; }
+        public string LocationStart { get; set; }
+        public string LocationFinish { get; set; }
     }
 }
