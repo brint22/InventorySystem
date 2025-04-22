@@ -147,14 +147,13 @@ namespace InventorySystem.Models
                         ,c.CategoryName
                         ,p.[BrandName]
                         ,p.[Supplier]
-                        ,L.LocationStart
-	                    ,l.LocationFinish
+                        ,l.LocationID	                    
                         ,l.Availability 
                   FROM [WAREHOUSEISDB].[dbo].[Product] p
                   LEFT JOIN Category c
                   ON c.CategoryID  = p.CategoryID
                   LEFT JOIN Location l
-                  ON l.LocationID = p.LocationID";
+                  ON l.ProductID = p.ProductID";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

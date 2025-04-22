@@ -153,7 +153,13 @@ namespace InventorySystem.Products
         private void LoadLocation()
         {
             string connStr = GlobalClass.connectionString;
-            string query = @"SELECT [LocationID] FROM [WAREHOUSEISDB].[dbo].[Location]";
+            string query = @"
+                            SELECT [LocationID] 
+                            FROM [WAREHOUSEISDB].[dbo].[Location]
+                            WHERE Availability = 'Available'
+                            ORDER BY 
+                                CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], 1) + 1, CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) - CHARINDEX('-', [LocationID]) - 1) AS INT) ASC,
+                                CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) + 1, LEN([LocationID])) AS INT) ASC";
 
             using (SqlConnection connection = new SqlConnection(connStr))
             {
