@@ -104,7 +104,7 @@ namespace InventorySystem.Products
                             product.ExpirationDate,
                             product.CategoryID,
                             product.BrandName,
-                            product.Supplier,
+                            product.Supplier
                         }, transaction);
 
                         if (rowsAffected == 0)
@@ -114,17 +114,26 @@ namespace InventorySystem.Products
                             return;
                         }
 
-                        // Update the selected Location with the new ProductID and set Availability to 'Occupied'
-                        string updateLocationQuery = @"
+                        // Get selected LocationID from ComboBox
+                        string locationID = cbLocation.SelectedItem?.ToString();
+
+                        if (string.IsNullOrWhiteSpace(locationID))
+                        {
+                            MessageBox.Show("Please select a valid Location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        // Update the existing location to mark it as Occupied and assign the ProductID
+                        string locationQuery = @"
                     UPDATE Location
                     SET ProductID = @ProductID,
                         Availability = 'Occupied'
                     WHERE LocationID = @LocationID";
 
-                        connection.Execute(updateLocationQuery, new
+                        connection.Execute(locationQuery, new
                         {
-                            ProductID = product.ProductID,
-                            LocationID = product.LocationID // ✅ Make sure this is set when calling the method
+                            LocationID = locationID,
+                            ProductID = product.ProductID
                         }, transaction);
 
                         transaction.Commit();
@@ -138,6 +147,8 @@ namespace InventorySystem.Products
                 }
             }
         }
+
+
 
         private void LoadLocation()
         {
