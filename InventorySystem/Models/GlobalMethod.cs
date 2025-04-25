@@ -181,9 +181,10 @@ namespace InventorySystem.Models
                 {
                     connection.Open();
 
-                    string query = @"SELECT LocationID, 
-                        LocationStart, 
-                        LocationFinish, 
+                    string query = @"
+                  SELECT
+                        LocationID, 
+                        ProductID,
                         Availability
                         FROM Location";
 
