@@ -17,6 +17,8 @@ using DevExpress.XtraEditors;
 using System.IO;
 using DevExpress.Pdf.Native.BouncyCastle.Utilities.Net;
 using DevExpress.XtraLayout.Customization;
+using InventorySystem.Infrastracture.Repositories;
+using InventorySystem.Infrastracture.SQL;
 
 namespace InventorySystem.Employees
 {
@@ -27,186 +29,13 @@ namespace InventorySystem.Employees
             InitializeComponent();
         }
 
-
-        private void RegisterEmployee(Employee employees, byte[] imageBytes, Address address)
+        private void AddEmployee_Load(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
-            {
-                connection.Open();
-                using (var transaction = connection.BeginTransaction())
-                {
-                    try
-                    {
-                        if (employees == null || imageBytes == null || address == null)
-                        {
-                            MessageBox.Show("Employee details, image, or address cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        // Insert image
-                        string imageQuery = @"
-                    INSERT INTO EmployeeImage (ImageData) 
-                    OUTPUT INSERTED.ImageID 
-                    VALUES (@ImageData)";
-                        int imageID = connection.ExecuteScalar<int>(imageQuery, new { ImageData = imageBytes }, transaction);
-
-                        if (imageID <= 0)
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show("Failed to save employee image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        // Insert address
-                        string addressQuery = @"
-                    INSERT INTO Address (BarangayName, MunicipalityName, ProvinceName, ZipCodeNumber, CountryName)
-                    OUTPUT INSERTED.AddressID
-                    VALUES (@BarangayName, @MunicipalityName, @ProvinceName, @ZipCodeNumber, @CountryName)";
-                        int addressID = connection.ExecuteScalar<int>(addressQuery, new
-                        {
-                            BarangayName = address.BarangayName,
-                            MunicipalityName = address.MunicipalityName,
-                            ProvinceName = address.ProvinceName,
-                            ZipCodeNumber = address.ZipCodeNumber,
-                            CountryName = address.CountryName
-                        }, transaction);
-
-                        if (addressID <= 0)
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show("Failed to save address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        // Generate EmployeeID
-                        string generatedID = GenerateID();
-                        employees.EmployeeID = generatedID;
-
-                        // Insert employee
-                        string employeeQuery = @"
-                    INSERT INTO Employee 
-                    (EmployeeID, FirstName, MiddleName, LastName, NameExtension, Gender, CivilStatus, DateOfBirth, Age,
-                     PhoneNumber, DateHired, AddressID, RoleID, ImageID)
-                    VALUES 
-                    (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @Gender, @CivilStatus, @DateOfBirth,
-                     DATEDIFF(YEAR, @DateOfBirth, CAST(GETDATE() AS DATE)) - 
-                        CASE 
-                            WHEN MONTH(@DateOfBirth) > MONTH(GETDATE()) 
-                                OR (MONTH(@DateOfBirth) = MONTH(GETDATE()) AND DAY(@DateOfBirth) > DAY(GETDATE()))
-                            THEN 1 ELSE 0 
-                        END,
-                     @PhoneNumber, @DateHired, @AddressID, @RoleID, @ImageID)";
-                        int employeeRows = connection.Execute(employeeQuery, new
-                        {
-                            employees.EmployeeID,
-                            employees.FirstName,
-                            employees.MiddleName,
-                            employees.LastName,
-                            employees.NameExtension,
-                            employees.Gender,
-                            employees.CivilStatus,
-                            employees.DateOfBirth,
-                            employees.PhoneNumber,
-                            employees.DateHired,
-                            AddressID = addressID,
-                            employees.RoleID,
-                            ImageID = imageID
-                        }, transaction);
-
-                        if (employeeRows == 0)
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show("Employee registration failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        transaction.Commit();
-                        MessageBox.Show("Employee registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        MessageBox.Show($"Registration failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
+            EmployeeRepository.LoadRole(lueRole);
+            gcAddress.DataSource = CreateAddressTable();
         }
 
 
-        //private static string GenerateID()
-        //{
-        //    Random random = new Random();
-        //    string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        //    string id = string.Empty;
-
-        //    for (int i = 0; i < 4; i++)
-        //    {
-        //        id += letters[random.Next(letters.Length)];
-        //        id += random.Next(0, 8);
-
-        //    }
-        //    return id;
-        //}
-
-        public string GenerateID()
-        {
-            int year = DateTime.Now.Year;
-            int lastNumber = GetLastNumberFromDB(year);
-            int newNumber = lastNumber + 1;
-
-            return $"{year}-{newNumber:D4}"; // Ensures 4-digit formatting (e.g., 2025-0001)
-        }
-
-        private int GetLastNumberFromDB(int year)
-        {
-            using (IDbConnection db = new SqlConnection(GlobalClass.connectionString))
-            {
-                string query = @"
-                SELECT TOP 1 CAST(RIGHT(EmployeeID, 4) AS INT) 
-                FROM Employee 
-                WHERE EmployeeID LIKE @YearPattern
-                ORDER BY EmployeeID DESC";
-
-                return db.QueryFirstOrDefault<int?>(query, new { YearPattern = $"{year}-%" }) ?? 0;
-            }
-        }
-
-
-
-        private void LoadRole()
-        {
-            string connStr = GlobalClass.connectionString;
-
-            string query = @"
-            SELECT [RoleID], 
-                   CONCAT(UPPER(LEFT([RoleName], 1)), LOWER(SUBSTRING([RoleName], 2, LEN([RoleName]) - 1))) AS RoleName
-            FROM [Role];";
-
-            using (SqlConnection connection = new SqlConnection(connStr))
-            {
-                try
-                {
-                    connection.Open();
-                    var role = connection.Query<Role>(query).ToList();
-
-                    if (role.Any())
-                    {
-                        lueRole.Properties.DataSource = role;
-                        lueRole.Properties.DisplayMember = "RoleName";
-                        lueRole.Properties.ValueMember = "RoleID";
-                    }
-                    else
-                    {
-                        lueRole.Properties.DataSource = null;
-                        XtraMessageBox.Show("No departments found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
@@ -229,7 +58,7 @@ namespace InventorySystem.Employees
                 return;
             }
 
-            if (GetGender() == null)
+            if (EmployeeRepository.GetGender(rdGender) == null)
             {
                 MessageBox.Show("Gender is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -259,7 +88,7 @@ namespace InventorySystem.Employees
                 return;
             }
 
-            if (GetRoleID() == 0)
+            if (EmployeeRepository.GetRole(lueRole) == 0)
             {
                 MessageBox.Show("Role ID is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -316,12 +145,12 @@ namespace InventorySystem.Employees
                 MiddleName = teMiddleName.Text,
                 LastName = teLastName.Text,
                 NameExtension = teNameExtension.Text,
-                Gender = GetGender().ToString(),
+                Gender = EmployeeRepository.GetGender(rdGender).ToString(),
                 CivilStatus = cbCivilStatus.Text,
                 DateOfBirth = deDateOfBirth.DateTime,
                 PhoneNumber = tePhoneNumber.Text,
                 DateHired = deDateHired.DateTime,
-                RoleID = GetRoleID()
+                RoleID = EmployeeRepository.GetRole(lueRole)
             };
 
             // Read image bytes from image path
@@ -344,66 +173,22 @@ namespace InventorySystem.Employees
                 CountryName = teCountry.Text,
             };
 
-            // Call the correct registration method
-            RegisterEmployee(employee, imageBytes, address);
 
-            // Clear form inputs after registration
-            ClearInputs();
+            EmployeeRepository repo = new EmployeeRepository(GlobalClass.connectionString);
+
+            // Call the repository method to register the employee using predefined SQL queries
+            repo.RegisterEmployee(
+                employee,
+                imageBytes,
+                address
+            );
+
+            EmployeeRepository.ClearEmployeeInputs(
+              teFirstName, teMiddleName, teLastName,
+              teNameExtension, rdGender, cbCivilStatus,
+              deDateOfBirth, tePhoneNumber, deDateHired, lueRole);
+
             ClearInputsAddress();
-        }
-
-        private void ClearInputs()
-        {
-            teFirstName.Text = string.Empty;
-            teMiddleName.Text = string.Empty;
-            teLastName.Text = string.Empty;
-            teNameExtension.Text = string.Empty;
-            rdGender.Text = string.Empty;
-            cbCivilStatus.Text = string.Empty;
-            deDateOfBirth.Text = string.Empty;
-            tePhoneNumber.Text = string.Empty;
-            deDateHired.Text = string.Empty;
-            lueRole.Text = string.Empty;
-        }
-
-
-
-        //Method ign getting the Gender
-        private string GetGender()
-        {
-            string gender = "";
-            if (rdGender.SelectedIndex == 0)
-            {
-                gender = "Male";
-
-            }
-            else
-            {
-                gender = "Female";
-            }
-            return gender;
-        }
-
-        private int GetRoleID()
-        {
-            int intRoleID = 0;
-
-            if (lueRole.EditValue != null)
-            {
-                intRoleID = (int)lueRole.EditValue;
-
-            }
-            else
-            {
-                intRoleID = 0;
-            }
-            return intRoleID;
-        }
-
-        private void AddEmployee_Load(object sender, EventArgs e)
-        {
-            LoadRole();
-            gcAddress.DataSource = CreateAddressTable();
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

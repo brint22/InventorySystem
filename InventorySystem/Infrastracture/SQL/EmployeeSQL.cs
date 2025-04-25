@@ -51,8 +51,31 @@ namespace InventorySystem.Infrastracture.SQL
     LEFT JOIN Address a ON e.AddressID = a.AddressID
     WHERE (@RoleFilter = 'All' OR r.RoleName = @RoleFilter)
     ORDER BY EmployeeID;";
-        }
 
+        public static string InsertEmployee = @"
+        INSERT INTO Employee 
+        (EmployeeID, FirstName, MiddleName, LastName, NameExtension, Gender, CivilStatus, DateOfBirth, Age,
+         PhoneNumber, DateHired, AddressID, RoleID, ImageID)
+        VALUES 
+        (@EmployeeID, @FirstName, @MiddleName, @LastName, @NameExtension, @Gender, @CivilStatus, @DateOfBirth,
+         DATEDIFF(YEAR, @DateOfBirth, CAST(GETDATE() AS DATE)) - 
+            CASE 
+                WHEN MONTH(@DateOfBirth) > MONTH(GETDATE()) 
+                    OR (MONTH(@DateOfBirth) = MONTH(GETDATE()) AND DAY(@DateOfBirth) > DAY(GETDATE()))
+                THEN 1 ELSE 0 
+            END,
+         @PhoneNumber, @DateHired, @AddressID, @RoleID, @ImageID)";
 
+        public static string InsertEmployeeImage = @"
+        INSERT INTO EmployeeImage (ImageData)
+        OUTPUT INSERTED.ImageID
+        VALUES (@ImageData)";
 
+        public static string InsertAddress = @"
+        INSERT INTO Address (BarangayName, MunicipalityName, ProvinceName, ZipCodeNumber, CountryName)
+        OUTPUT INSERTED.AddressID
+        VALUES (@BarangayName, @MunicipalityName, @ProvinceName, @ZipCodeNumber, @CountryName)";
+
+    
+    }
     }

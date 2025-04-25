@@ -770,7 +770,7 @@
             this.BtnCancel.Appearance.Options.UseBackColor = true;
             this.BtnCancel.Appearance.Options.UseFont = true;
             this.BtnCancel.Location = new System.Drawing.Point(287, 574);
-            this.BtnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(239, 38);
             this.BtnCancel.TabIndex = 65;
@@ -849,7 +849,6 @@
         private DevExpress.XtraEditors.RadioGroup rdGender;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.DateEdit deDateHired;
-        private DevExpress.XtraEditors.LookUpEdit lueRole;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit tePhoneNumber;
         private DevExpress.XtraEditors.LabelControl labelControl9;
@@ -896,5 +895,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn ZipCode;
         private DevExpress.XtraGrid.Columns.GridColumn Country;
         private DevExpress.XtraEditors.SimpleButton BtnCancel;
+        public DevExpress.XtraEditors.LookUpEdit lueRole;
     }
 }

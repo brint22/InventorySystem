@@ -4,6 +4,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraCharts.Designer.Native;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using InventorySystem.Infrastracture.Repositories;
 using InventorySystem.Models;
 using InventorySystem.Reports;
 using System;
@@ -30,7 +31,10 @@ namespace InventorySystem.Employees
 
         private void GridViewEmployee_Load(object sender, EventArgs e)
         {
-            GlobalMethod.LoadEmployeeData("All", gcEmployeeView);
+            EmployeeRepository repo = new EmployeeRepository(GlobalClass.connectionString);
+
+            gcEmployeeView.DataSource = repo.GetEmployeeList("All");
+
             RetrieveAndDisplayEmployee();
             LoadRoleNames();
 
