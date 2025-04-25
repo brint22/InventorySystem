@@ -2,6 +2,7 @@
 using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
 using InventorySystem.Infrastracture.Repositories;
 using InventorySystem.Models;
 using System;
@@ -19,12 +20,14 @@ namespace InventorySystem.Locations
 {
     public partial class ViewLocation : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+
+
         public ViewLocation()
         {
             InitializeComponent();
         }
 
-       
+
 
         private void ViewLocation_Load(object sender, EventArgs e)
         {
@@ -35,10 +38,10 @@ namespace InventorySystem.Locations
             {
                 if (gvLocation.FocusedRowHandle >= 0)
                 {
-                    var locationStart = gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "LocationStart")?.ToString();
-                    teLocationStart.Text = locationStart;
-                    var locationFinish = gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "LocationFinish")?.ToString();
-                    teLocationFinish.Text = locationFinish;
+                    var locationStart = gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "LocationID")?.ToString();
+                    teLocationID.Text = locationStart;
+                    var locationFinish = gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "ProductID")?.ToString();
+                    teProductID.Text = locationFinish;
                     var availability = gvLocation.GetRowCellValue(gvLocation.FocusedRowHandle, "Availability")?.ToString();
                     teAvailability.Text = availability;
                 }
@@ -49,7 +52,7 @@ namespace InventorySystem.Locations
         {
 
             var repository = new ProductRepository(GlobalClass.connectionString);
-        
+
 
             if (gvLocation.FocusedRowHandle < 0)
             {
@@ -57,8 +60,8 @@ namespace InventorySystem.Locations
                 return;
             }
 
-            string start = teLocationStart.Text.Trim();
-            string finish = teLocationFinish.Text.Trim();
+            string start = teLocationID.Text.Trim();
+            string finish = teProductID.Text.Trim();
             //string availability = teAvailability.Text.Trim();
 
             if (string.IsNullOrEmpty(start) || string.IsNullOrEmpty(finish))
@@ -76,6 +79,77 @@ namespace InventorySystem.Locations
 
                 // ✅ Corrected refresh call
                 GlobalMethod.LoadLocationList(gcLocation);
+            }
+        }
+
+        public List<Location> GetFilteredLocation(string availabality)
+        {
+            if (string.IsNullOrWhiteSpace(availabality))
+            {
+                MessageBox.Show("Please select a locationID.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return new List<Location>(); // Return an empty list if classification is invalid
+            }
+
+            try
+            {
+                string connStr = GlobalClass.connectionString;
+                using (SqlConnection connection = new SqlConnection(connStr))
+                {
+                    const string query = @"
+                SELECT 
+                      l.LocationID, 
+                      l.ProductID, 
+                      l.Availability
+                FROM Location l     
+                WHERE l.Availability = @Availability;";
+
+                    return connection.Query<Location>(query, new { Availability = availabality }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving Location: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<Location>(); // Return an empty list on failure
+            }
+        }
+        private void FilterBtn_Click(object sender, EventArgs e)
+        {
+            {
+                try
+                {
+                    string filterText = cbFilterBy.Text.Trim().ToLower();
+                    List<Location> location;
+
+                    switch (filterText)
+                    {
+                        case "all availability":
+                            GlobalMethod.LoadLocationList(gcLocation);
+                            return;
+
+                        case "occupied":
+                            location = GetFilteredLocation("Occupied");
+                            break;
+
+                        case "available":
+                            location = GetFilteredLocation("Available");
+                            break;
+
+                        default:
+                            MessageBox.Show("Invalid filter selection.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                    }
+
+                    if (location.Count == 0)
+                    {
+                        MessageBox.Show("No records found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    gcLocation.DataSource = location;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading locations: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

@@ -171,7 +171,7 @@ namespace InventorySystem.Models
                 }
             }
         }
-        public static void LoadLocationList(GridControl gcProductList)
+        public static void LoadLocationList(GridControl gcLocationList)
         {
             DataTable dataTable = new DataTable();
 
@@ -183,10 +183,10 @@ namespace InventorySystem.Models
 
                     string query = @"
                   SELECT
-                        LocationID, 
-                        ProductID,
-                        Availability
-                        FROM Location";
+                        l.LocationID, 
+                        l.ProductID,
+                        l.Availability
+                        FROM Location l";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -196,7 +196,7 @@ namespace InventorySystem.Models
                         }
                     }
 
-                    gcProductList.DataSource = dataTable;
+                    gcLocationList.DataSource = dataTable;
                 }
                 catch (Exception ex)
                 {
