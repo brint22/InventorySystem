@@ -31,20 +31,23 @@ namespace InventorySystem.Infrastracture.Repositories
                 {
                     try
                     {
-                        for (int i = 1; i < 6; i++)
+                        for (char letter = 'A'; letter <= 'K'; letter++)
                         {
-                            for (int j = 1; j < 11; j++)
+                            for (int i = 1; i <= 5; i++)
                             {
-                                var location = new Location
+                                for (int j = 1; j <= 10; j++)
                                 {
-                                    LocationID = $"B-{i}-{j}"
-                                };
+                                    var location = new Location
+                                    {
+                                        LocationID = $"{letter}-{i}-{j}"
+                                    };
 
-                                connection.Execute(
-                                    ProductSQL.InsertLocation,
-                                    location,
-                                    transaction
-                                );
+                                    connection.Execute(
+                                        ProductSQL.InsertLocation,
+                                        location,
+                                        transaction
+                                    );
+                                }
                             }
                         }
 
@@ -104,6 +107,26 @@ namespace InventorySystem.Infrastracture.Repositories
                     return connection.Query<Location>(ProductSQL.GetLocationsByAvailability, new { Availability = availability }).ToList();
                 }
             }
+
+        public List<Location> GetLocationsByGroup(string groupLetter)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                // If groupLetter is "ALL", fetch all locations
+                string query = string.IsNullOrEmpty(groupLetter) || groupLetter.Equals("ALL", StringComparison.OrdinalIgnoreCase)
+                    ? ProductSQL.GetAllLocations // Query for all locations
+                    : ProductSQL.GetLocationsByGroup; // Query for filtered locations by group
+
+                var locations = connection.Query<Location>(
+                    query,
+                    new { GroupLetter = groupLetter }
+                ).ToList();
+
+                return locations;
+            }
+        }
 
 
     }

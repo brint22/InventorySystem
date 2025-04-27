@@ -43,7 +43,38 @@ namespace InventorySystem.Locations
                     teAvailability.Text = availability;
                 }
             };
+
+            cbLocationGroup.SelectedIndexChanged += (s, ev) =>
+            {
+                FilterByGroup();
+            };
         }
+
+        private void FilterByGroup()
+        {
+            {
+                try
+                {
+                    string selectedGroup = cbLocationGroup.Text.Trim().ToUpper();
+                    ProductRepository repo = new ProductRepository(GlobalClass.connectionString);
+
+                    // If "ALL" is selected, pass an empty string or "ALL" to fetch all locations
+                    List<Location> locations = repo.GetLocationsByGroup(selectedGroup == "ALL" ? null : selectedGroup);
+
+                    if (locations.Count == 0)
+                    {
+                        MessageBox.Show("No records found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    gcLocation.DataSource = locations;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading locations by group: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
