@@ -165,8 +165,10 @@ namespace InventorySystem.Products
                             FROM [WAREHOUSEISDB].[dbo].[Location]
                             WHERE Availability = 'Available'
                             ORDER BY 
-                                CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], 1) + 1, CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) - CHARINDEX('-', [LocationID]) - 1) AS INT) ASC,
-                                CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) + 1, LEN([LocationID])) AS INT) ASC";
+                                LEFT([LocationID], CHARINDEX('-', [LocationID]) - 1), -- First part: letter (A, B, etc.)
+                                CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], 1) + 1, CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) - CHARINDEX('-', [LocationID]) - 1) AS INT) ASC, -- Second part: the first number
+                                CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) + 1, LEN([LocationID])) AS INT) ASC -- Third part: the second number
+                            ";
 
             using (SqlConnection connection = new SqlConnection(connStr))
             {
