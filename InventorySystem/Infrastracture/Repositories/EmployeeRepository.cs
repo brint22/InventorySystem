@@ -21,6 +21,9 @@ namespace InventorySystem.Infrastracture.Repositories
         {
             _connectionString = connectionString;
         }
+
+        // INSERT METHODS
+
         public void RegisterEmployee(Employee employees, byte[] imageBytes, Address address)
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
@@ -111,6 +114,38 @@ namespace InventorySystem.Infrastracture.Repositories
             }
         }
 
+        // LOAD METHODS
+
+        public DataTable GetEmployeeList(string roleFilter)
+        {
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                connection.Open();
+                string query = EmployeeSQL.GetListOfEmployees;
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RoleFilter", roleFilter);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            if (row["ImageData"] == DBNull.Value)
+                            {
+                                row["ImageData"] = new byte[0];
+                            }
+                        }
+
+                        return dataTable;
+                    }
+                }
+            }
+        }
+
         public static void LoadRole(LookUpEdit lookUpEdit)
         {
             string connStr = GlobalClass.connectionString;
@@ -156,8 +191,6 @@ namespace InventorySystem.Infrastracture.Repositories
             return lookupEditor.EditValue != null ? (int)lookupEditor.EditValue : 0;
         }
 
-
-
         public string GenerateID()
         {
             int year = DateTime.Now.Year;
@@ -180,37 +213,7 @@ namespace InventorySystem.Infrastracture.Repositories
                 return db.QueryFirstOrDefault<int?>(query, new { YearPattern = $"{year}-%" }) ?? 0;
             }
         }
-
-        public DataTable GetEmployeeList(string roleFilter)
-        {
-            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
-            {
-                connection.Open();
-                string query = EmployeeSQL.GetListOfEmployees;
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@RoleFilter", roleFilter);
-
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        foreach (DataRow row in dataTable.Rows)
-                        {
-                            if (row["ImageData"] == DBNull.Value)
-                            {
-                                row["ImageData"] = new byte[0];
-                            }
-                        }
-
-                        return dataTable;
-                    }
-                }
-            }
-        }
-
+      
         public static void ClearEmployeeInputs(
         TextEdit firstName, TextEdit middleName, TextEdit lastName,
         TextEdit nameExtension, RadioGroup gender, ComboBoxEdit civilStatus,

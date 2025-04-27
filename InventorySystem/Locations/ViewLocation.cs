@@ -20,19 +20,16 @@ namespace InventorySystem.Locations
 {
     public partial class ViewLocation : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-
-
         public ViewLocation()
         {
             InitializeComponent();
         }
 
-
-
         private void ViewLocation_Load(object sender, EventArgs e)
         {
-            // Optional: formatting or layout before data
-            GlobalMethod.LoadLocationList(gcLocation);
+            ProductRepository repo = new ProductRepository(GlobalClass.connectionString);
+            DataTable locations = repo.GetAllLocations();
+            gcLocation.DataSource = locations;
 
             gvLocation.RowClick += (s, ev) =>
             {
@@ -50,7 +47,6 @@ namespace InventorySystem.Locations
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-
             var repository = new ProductRepository(GlobalClass.connectionString);
 
 
@@ -82,75 +78,44 @@ namespace InventorySystem.Locations
             }
         }
 
-        public List<Location> GetFilteredLocation(string availabality)
+        private void FilterBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(availabality))
-            {
-                MessageBox.Show("Please select a locationID.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return new List<Location>(); // Return an empty list if classification is invalid
-            }
-
             try
             {
-                string connStr = GlobalClass.connectionString;
-                using (SqlConnection connection = new SqlConnection(connStr))
-                {
-                    const string query = @"
-                SELECT 
-                      l.LocationID, 
-                      l.ProductID, 
-                      l.Availability
-                FROM Location l     
-                WHERE l.Availability = @Availability;";
+                string filterText = cbFilterBy.Text.Trim().ToLower();
+                ProductRepository repo = new ProductRepository(GlobalClass.connectionString);
 
-                    return connection.Query<Location>(query, new { Availability = availabality }).ToList();
+                switch (filterText)
+                {
+                    case "all availability":
+                        DataTable allLocations = repo.GetAllLocations();
+                        gcLocation.DataSource = allLocations;
+                        return;
+
+                    case "occupied":
+                    case "available":
+                        List<Location> locations = repo.GetLocationsByAvailability(
+                            filterText == "occupied" ? "Occupied" : "Available"
+                        );
+
+                        if (locations.Count == 0)
+                        {
+                            MessageBox.Show("No records found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                        gcLocation.DataSource = locations;
+                        break;
+
+                    default:
+                        MessageBox.Show("Invalid filter selection.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error retrieving Location: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new List<Location>(); // Return an empty list on failure
+                MessageBox.Show($"Error loading locations: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void FilterBtn_Click(object sender, EventArgs e)
-        {
-            {
-                try
-                {
-                    string filterText = cbFilterBy.Text.Trim().ToLower();
-                    List<Location> location;
 
-                    switch (filterText)
-                    {
-                        case "all availability":
-                            GlobalMethod.LoadLocationList(gcLocation);
-                            return;
-
-                        case "occupied":
-                            location = GetFilteredLocation("Occupied");
-                            break;
-
-                        case "available":
-                            location = GetFilteredLocation("Available");
-                            break;
-
-                        default:
-                            MessageBox.Show("Invalid filter selection.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                    }
-
-                    if (location.Count == 0)
-                    {
-                        MessageBox.Show("No records found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-                    gcLocation.DataSource = location;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error loading locations: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
     }
 }
