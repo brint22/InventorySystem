@@ -1,8 +1,12 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraGrid;
+using InventorySystem.Infrastracture.SQL;
+using InventorySystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +20,37 @@ namespace InventorySystem.Account
         public ViewAccount()
         {
             InitializeComponent();
+
+            LoadAccountList(gcEmployeeAccount);
+        }
+
+        public static void LoadAccountList(GridControl gcEmployeeAccount)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = EmployeeSQL.GetListOfAccounts;
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
+
+                    gcEmployeeAccount.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading product: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

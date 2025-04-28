@@ -84,5 +84,11 @@ namespace InventorySystem.Infrastracture.SQL
         FROM Location l     
         WHERE l.Availability = @Availability;";
 
+
+        public static string GetListOfAccounts = @"
+        SELECT AcountID, 
+               UserName,
+               Password
+        FROM Account;";
     }
 }

@@ -135,7 +135,7 @@
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Account ID";
-            this.gridColumn1.FieldName = "AccountID";
+            this.gridColumn1.FieldName = "AcountID";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
