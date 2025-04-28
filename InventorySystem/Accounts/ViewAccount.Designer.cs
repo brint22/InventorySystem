@@ -33,19 +33,19 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.teSearch = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.gcEmployeeAccount = new DevExpress.XtraGrid.GridControl();
             this.gvEmployeeAccount = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.teSearch = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teSearch.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teSearch.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -88,6 +88,25 @@
             this.groupControl2.TabIndex = 18;
             this.groupControl2.Text = "Employee\'s Accounts";
             // 
+            // teSearch
+            // 
+            this.teSearch.Location = new System.Drawing.Point(102, 56);
+            this.teSearch.Name = "teSearch";
+            this.teSearch.Properties.AutoHeight = false;
+            this.teSearch.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.teSearch.Size = new System.Drawing.Size(436, 21);
+            this.teSearch.TabIndex = 18;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(11, 59);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(85, 13);
+            this.labelControl2.TabIndex = 17;
+            this.labelControl2.Text = "Search Keyword :";
+            // 
             // gcEmployeeAccount
             // 
             this.gcEmployeeAccount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -115,16 +134,16 @@
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "Employee ID";
-            this.gridColumn1.FieldName = "EmployeeID";
+            this.gridColumn1.Caption = "Account ID";
+            this.gridColumn1.FieldName = "AccountID";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "Employee Name";
-            this.gridColumn2.FieldName = "EmployeeName";
+            this.gridColumn2.Caption = "Username";
+            this.gridColumn2.FieldName = "UserName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -136,25 +155,6 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            // 
-            // teSearch
-            // 
-            this.teSearch.Location = new System.Drawing.Point(102, 56);
-            this.teSearch.Name = "teSearch";
-            this.teSearch.Properties.AutoHeight = false;
-            this.teSearch.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.teSearch.Size = new System.Drawing.Size(436, 21);
-            this.teSearch.TabIndex = 18;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Gray;
-            this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(11, 59);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(85, 13);
-            this.labelControl2.TabIndex = 17;
-            this.labelControl2.Text = "Search Keyword :";
             // 
             // ViewAccount
             // 
@@ -175,9 +175,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teSearch.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teSearch.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
