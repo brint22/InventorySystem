@@ -153,5 +153,18 @@ namespace InventorySystem.Views
             // Create a new instance of Employee form
             new ViewProduct().Show();
         }
+
+        private void viewAccount_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            ViewAccount account = new ViewAccount();
+            this.IsMdiContainer = true;
+            account.MdiParent = this;
+            // Show the Employee form
+
+            account.Show();
+        }
     }
 }

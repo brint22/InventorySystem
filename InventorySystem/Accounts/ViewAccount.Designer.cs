@@ -28,32 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition3 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition4 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition5 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewAccount));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
-            this.EmployeeID = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.EmployeeName = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.EmployeeRole = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.EmployeeImage = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.gcEmployeeAccount = new DevExpress.XtraGrid.GridControl();
+            this.gvEmployeeAccount = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.teSearch = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teSearch.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -81,125 +73,111 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
-            // gridControl1
+            // groupControl2
             // 
-            this.gridControl1.Location = new System.Drawing.Point(34, 72);
-            this.gridControl1.MainView = this.tileView1;
-            this.gridControl1.MenuManager = this.ribbon;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(688, 336);
-            this.gridControl1.TabIndex = 1;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.tileView1});
+            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl2.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(5);
+            this.groupControl2.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("groupControl2.CaptionImageOptions.SvgImage")));
+            this.groupControl2.Controls.Add(this.teSearch);
+            this.groupControl2.Controls.Add(this.labelControl2);
+            this.groupControl2.Controls.Add(this.gcEmployeeAccount);
+            this.groupControl2.Location = new System.Drawing.Point(12, 55);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(731, 382);
+            this.groupControl2.TabIndex = 18;
+            this.groupControl2.Text = "Employee\'s Accounts";
             // 
-            // tileView1
+            // gcEmployeeAccount
             // 
-            this.tileView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.EmployeeID,
-            this.EmployeeName,
-            this.EmployeeRole,
-            this.EmployeeImage});
-            this.tileView1.GridControl = this.gridControl1;
-            this.tileView1.Name = "tileView1";
-            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(248, 208);
-            tableColumnDefinition1.Length.Value = 56D;
-            tableColumnDefinition2.Length.Value = 115D;
-            tableColumnDefinition3.Length.Value = 0D;
-            tableColumnDefinition4.Length.Value = 56D;
-            this.tileView1.TileColumns.Add(tableColumnDefinition1);
-            this.tileView1.TileColumns.Add(tableColumnDefinition2);
-            this.tileView1.TileColumns.Add(tableColumnDefinition3);
-            this.tileView1.TileColumns.Add(tableColumnDefinition4);
-            tableRowDefinition1.Length.Value = 128D;
-            tableRowDefinition2.Length.Value = 0D;
-            tableRowDefinition3.Length.Value = 64D;
-            tableRowDefinition4.Length.Value = 40D;
-            tableRowDefinition5.Length.Value = 40D;
-            this.tileView1.TileRows.Add(tableRowDefinition1);
-            this.tileView1.TileRows.Add(tableRowDefinition2);
-            this.tileView1.TileRows.Add(tableRowDefinition3);
-            this.tileView1.TileRows.Add(tableRowDefinition4);
-            this.tileView1.TileRows.Add(tableRowDefinition5);
-            tileViewItemElement1.Column = this.EmployeeImage;
-            tileViewItemElement1.ColumnIndex = 1;
-            tileViewItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement1.Text = "EmployeeImage";
-            tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement2.Column = this.EmployeeName;
-            tileViewItemElement2.ColumnIndex = 1;
-            tileViewItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement2.RowIndex = 2;
-            tileViewItemElement2.Text = "EmployeeName";
-            tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement3.Column = this.EmployeeID;
-            tileViewItemElement3.ColumnIndex = 1;
-            tileViewItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement3.RowIndex = 3;
-            tileViewItemElement3.Text = "EmployeeID";
-            tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement4.Column = this.EmployeeRole;
-            tileViewItemElement4.ColumnIndex = 1;
-            tileViewItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement4.RowIndex = 4;
-            tileViewItemElement4.Text = "EmployeeRole";
-            tileViewItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tileView1.TileTemplate.Add(tileViewItemElement1);
-            this.tileView1.TileTemplate.Add(tileViewItemElement2);
-            this.tileView1.TileTemplate.Add(tileViewItemElement3);
-            this.tileView1.TileTemplate.Add(tileViewItemElement4);
+            this.gcEmployeeAccount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gcEmployeeAccount.Location = new System.Drawing.Point(0, 85);
+            this.gcEmployeeAccount.MainView = this.gvEmployeeAccount;
+            this.gcEmployeeAccount.MenuManager = this.ribbon;
+            this.gcEmployeeAccount.Name = "gcEmployeeAccount";
+            this.gcEmployeeAccount.Size = new System.Drawing.Size(731, 297);
+            this.gcEmployeeAccount.TabIndex = 16;
+            this.gcEmployeeAccount.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvEmployeeAccount});
             // 
-            // EmployeeID
+            // gvEmployeeAccount
             // 
-            this.EmployeeID.Caption = "Employee ID";
-            this.EmployeeID.FieldName = "EmployeeID";
-            this.EmployeeID.Name = "EmployeeID";
-            this.EmployeeID.Visible = true;
-            this.EmployeeID.VisibleIndex = 0;
+            this.gvEmployeeAccount.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvEmployeeAccount.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gvEmployeeAccount.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3});
+            this.gvEmployeeAccount.GridControl = this.gcEmployeeAccount;
+            this.gvEmployeeAccount.Name = "gvEmployeeAccount";
+            this.gvEmployeeAccount.OptionsView.ShowGroupPanel = false;
             // 
-            // EmployeeName
+            // gridColumn1
             // 
-            this.EmployeeName.Caption = "Employee Name";
-            this.EmployeeName.FieldName = "EmployeeName";
-            this.EmployeeName.Name = "EmployeeName";
-            this.EmployeeName.Visible = true;
-            this.EmployeeName.VisibleIndex = 1;
+            this.gridColumn1.Caption = "Employee ID";
+            this.gridColumn1.FieldName = "EmployeeID";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
             // 
-            // EmployeeRole
+            // gridColumn2
             // 
-            this.EmployeeRole.Caption = "Employee Role";
-            this.EmployeeRole.FieldName = "EmployeeRole";
-            this.EmployeeRole.Name = "EmployeeRole";
-            this.EmployeeRole.Visible = true;
-            this.EmployeeRole.VisibleIndex = 2;
+            this.gridColumn2.Caption = "Employee Name";
+            this.gridColumn2.FieldName = "EmployeeName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
             // 
-            // EmployeeImage
+            // gridColumn3
             // 
-            this.EmployeeImage.Caption = "Employee Image";
-            this.EmployeeImage.FieldName = "EmployeeImage";
-            this.EmployeeImage.Name = "EmployeeImage";
-            this.EmployeeImage.Visible = true;
-            this.EmployeeImage.VisibleIndex = 3;
+            this.gridColumn3.Caption = "Password";
+            this.gridColumn3.FieldName = "Password";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // teSearch
+            // 
+            this.teSearch.Location = new System.Drawing.Point(102, 56);
+            this.teSearch.Name = "teSearch";
+            this.teSearch.Properties.AutoHeight = false;
+            this.teSearch.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.teSearch.Size = new System.Drawing.Size(436, 21);
+            this.teSearch.TabIndex = 18;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Gray;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(11, 59);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(85, 13);
+            this.labelControl2.TabIndex = 17;
+            this.labelControl2.Text = "Search Keyword :";
             // 
             // ViewAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(755, 449);
-            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ViewAccount.IconOptions.Image")));
             this.MaximizeBox = false;
             this.Name = "ViewAccount";
             this.Ribbon = this.ribbon;
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory System | View Account";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcEmployeeAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvEmployeeAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teSearch.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,11 +188,13 @@
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Tile.TileView tileView1;
-        private DevExpress.XtraGrid.Columns.TileViewColumn EmployeeID;
-        private DevExpress.XtraGrid.Columns.TileViewColumn EmployeeName;
-        private DevExpress.XtraGrid.Columns.TileViewColumn EmployeeRole;
-        private DevExpress.XtraGrid.Columns.TileViewColumn EmployeeImage;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraGrid.GridControl gcEmployeeAccount;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvEmployeeAccount;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.TextEdit teSearch;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
     }
 }
