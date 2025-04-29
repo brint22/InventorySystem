@@ -42,6 +42,7 @@
             this.ProductID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Availability = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Capacity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.AvailableCapacity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.teProductID = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.teAvailability = new DevExpress.XtraEditors.TextEdit();
@@ -124,7 +125,7 @@
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(42, 106);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(100, 23);
             this.labelControl1.TabIndex = 80;
@@ -133,7 +134,7 @@
             // teLocationID
             // 
             this.teLocationID.Location = new System.Drawing.Point(42, 131);
-            this.teLocationID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teLocationID.Margin = new System.Windows.Forms.Padding(4);
             this.teLocationID.Name = "teLocationID";
             this.teLocationID.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teLocationID.Properties.Appearance.Options.UseFont = true;
@@ -144,10 +145,10 @@
             // gcLocation
             // 
             this.gcLocation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcLocation.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcLocation.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gcLocation.Location = new System.Drawing.Point(2, 65);
             this.gcLocation.MainView = this.gvLocation;
-            this.gcLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcLocation.Margin = new System.Windows.Forms.Padding(4);
             this.gcLocation.MenuManager = this.ribbon;
             this.gcLocation.Name = "gcLocation";
             this.gcLocation.Size = new System.Drawing.Size(1291, 276);
@@ -161,7 +162,8 @@
             this.LocationID,
             this.ProductID,
             this.Availability,
-            this.Capacity});
+            this.Capacity,
+            this.AvailableCapacity});
             this.gvLocation.DetailHeight = 351;
             this.gvLocation.FixedLineWidth = 3;
             this.gvLocation.GridControl = this.gcLocation;
@@ -183,7 +185,7 @@
             this.LocationID.OptionsColumn.AllowEdit = false;
             this.LocationID.Visible = true;
             this.LocationID.VisibleIndex = 0;
-            this.LocationID.Width = 495;
+            this.LocationID.Width = 282;
             // 
             // ProductID
             // 
@@ -198,7 +200,7 @@
             this.ProductID.OptionsColumn.AllowEdit = false;
             this.ProductID.Visible = true;
             this.ProductID.VisibleIndex = 1;
-            this.ProductID.Width = 602;
+            this.ProductID.Width = 343;
             // 
             // Availability
             // 
@@ -213,7 +215,7 @@
             this.Availability.OptionsColumn.AllowEdit = false;
             this.Availability.Visible = true;
             this.Availability.VisibleIndex = 2;
-            this.Availability.Width = 464;
+            this.Availability.Width = 264;
             // 
             // Capacity
             // 
@@ -226,12 +228,26 @@
             this.Capacity.OptionsColumn.AllowEdit = false;
             this.Capacity.Visible = true;
             this.Capacity.VisibleIndex = 3;
-            this.Capacity.Width = 549;
+            this.Capacity.Width = 194;
+            // 
+            // AvailableCapacity
+            // 
+            this.AvailableCapacity.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.AvailableCapacity.AppearanceCell.Options.UseFont = true;
+            this.AvailableCapacity.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AvailableCapacity.AppearanceHeader.Options.UseFont = true;
+            this.AvailableCapacity.Caption = "Available Capacity";
+            this.AvailableCapacity.FieldName = "AvailableCapacity";
+            this.AvailableCapacity.MinWidth = 25;
+            this.AvailableCapacity.Name = "AvailableCapacity";
+            this.AvailableCapacity.Visible = true;
+            this.AvailableCapacity.VisibleIndex = 4;
+            this.AvailableCapacity.Width = 171;
             // 
             // teProductID
             // 
             this.teProductID.Location = new System.Drawing.Point(217, 131);
-            this.teProductID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teProductID.Margin = new System.Windows.Forms.Padding(4);
             this.teProductID.Name = "teProductID";
             this.teProductID.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teProductID.Properties.Appearance.Options.UseFont = true;
@@ -244,7 +260,7 @@
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(217, 106);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(94, 23);
             this.labelControl2.TabIndex = 84;
@@ -253,7 +269,7 @@
             // teAvailability
             // 
             this.teAvailability.Location = new System.Drawing.Point(387, 131);
-            this.teAvailability.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teAvailability.Margin = new System.Windows.Forms.Padding(4);
             this.teAvailability.Name = "teAvailability";
             this.teAvailability.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teAvailability.Properties.Appearance.Options.UseFont = true;
@@ -266,7 +282,7 @@
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(387, 106);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(91, 23);
             this.labelControl3.TabIndex = 86;
@@ -277,7 +293,7 @@
             this.FilterBtn.Appearance.BackColor = System.Drawing.Color.Teal;
             this.FilterBtn.Appearance.Options.UseBackColor = true;
             this.FilterBtn.Location = new System.Drawing.Point(282, 20);
-            this.FilterBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FilterBtn.Margin = new System.Windows.Forms.Padding(4);
             this.FilterBtn.Name = "FilterBtn";
             this.FilterBtn.Size = new System.Drawing.Size(62, 26);
             this.FilterBtn.TabIndex = 89;
@@ -287,7 +303,7 @@
             // cbFilterBy
             // 
             this.cbFilterBy.Location = new System.Drawing.Point(140, 20);
-            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbFilterBy.Margin = new System.Windows.Forms.Padding(4);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Properties.AutoHeight = false;
             this.cbFilterBy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -323,7 +339,7 @@
             // cbLocationGroup
             // 
             this.cbLocationGroup.Location = new System.Drawing.Point(563, 130);
-            this.cbLocationGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbLocationGroup.Margin = new System.Windows.Forms.Padding(4);
             this.cbLocationGroup.MenuManager = this.ribbon;
             this.cbLocationGroup.Name = "cbLocationGroup";
             this.cbLocationGroup.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -353,7 +369,7 @@
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Location = new System.Drawing.Point(563, 106);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(55, 23);
             this.labelControl4.TabIndex = 93;
@@ -425,5 +441,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit cbLocationGroup;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraGrid.Columns.GridColumn Capacity;
+        private DevExpress.XtraGrid.Columns.GridColumn AvailableCapacity;
     }
 }
