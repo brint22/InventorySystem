@@ -21,7 +21,7 @@ namespace InventorySystem.Infrastracture.SQL
             [LocationID],
             ProductID,
             Availability,
-            Capacity,
+            CAST(Capacity AS VARCHAR(10)) + '/100' AS Capacity,
             CASE 
                 WHEN Capacity IS NULL THEN 'N/A'
                 WHEN (100 - Capacity) = 0 THEN 'None'
