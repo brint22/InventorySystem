@@ -52,8 +52,6 @@ namespace InventorySystem.Products
             }
         }
 
-
-
         private void RegisterProduct(Product product)
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
@@ -123,7 +121,7 @@ namespace InventorySystem.Products
                             return;
                         }
 
-                        // Assign locations
+                        // Location assignment logic
                         int maxCapacity = 100;
                         int remainingQty = product.Quantity;
 
@@ -134,15 +132,15 @@ namespace InventorySystem.Products
                             return;
                         }
 
-                        // Get all available locations ordered numerically
                         string getLocationsQuery = @"
                     SELECT LocationID 
                     FROM Location 
-                    WHERE Availability = 'Available' 
+                    WHERE Availability = 'Available'
                     ORDER BY 
-                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT),
+                        LEFT(LocationID, 1),
+                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 3) AS INT),
                         TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 2) AS INT),
-                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 3) AS INT)";
+                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT)";
 
                         var allLocations = connection.Query<string>(getLocationsQuery, null, transaction).ToList();
                         int startIndex = allLocations.IndexOf(selectedLocation);
@@ -154,29 +152,22 @@ namespace InventorySystem.Products
                             return;
                         }
 
-                        // Assign to selected location first
-                        int assignQty = Math.Min(remainingQty, maxCapacity);
-                        string updateSelectedLoc = @"
-                    UPDATE Location
-                    SET ProductID = @ProductID,
-                        Availability = 'Occupied',
-                        Capacity = @Capacity
-                    WHERE LocationID = @LocationID";
+                        bool started = false;
 
-                        connection.Execute(updateSelectedLoc, new
+                        foreach (var locId in allLocations)
                         {
-                            ProductID = product.ProductID,
-                            Capacity = assignQty,
-                            LocationID = selectedLocation
-                        }, transaction);
+                            if (!started)
+                            {
+                                if (locId == selectedLocation)
+                                    started = true;
+                                else
+                                    continue;
+                            }
 
-                        remainingQty -= assignQty;
+                            if (remainingQty <= 0)
+                                break;
 
-                        // Assign to the next locations if remaining quantity exists
-                        for (int i = startIndex + 1; i < allLocations.Count && remainingQty > 0; i++)
-                        {
-                            string locId = allLocations[i];
-                            assignQty = Math.Min(remainingQty, maxCapacity);
+                            int assignQty = Math.Min(remainingQty, maxCapacity);
 
                             string updateLoc = @"
                         UPDATE Location
@@ -214,7 +205,6 @@ namespace InventorySystem.Products
             }
         }
 
-
         private void LoadLocation()
         {
             string connStr = GlobalClass.connectionString;
@@ -250,8 +240,6 @@ namespace InventorySystem.Products
                 }
             }
         }
-
-
 
         private void LoadCategory()
         {
