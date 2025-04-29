@@ -123,27 +123,66 @@ namespace InventorySystem.Products
                             return;
                         }
 
-                        // Get selected LocationID from ComboBox
-                        string locationID = cbLocation.SelectedItem?.ToString();
+                        // Start of updated logic
+                        int maxCapacity = 100;
+                        int remainingQty = product.Quantity;
 
-                        if (string.IsNullOrWhiteSpace(locationID))
+                        string selectedLocation = cbLocation.SelectedItem?.ToString();
+                        if (string.IsNullOrWhiteSpace(selectedLocation))
                         {
                             MessageBox.Show("Please select a valid Location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
 
-                        // Update the existing location to mark it as Occupied and assign the ProductID
-                        string locationQuery = @"
-                    UPDATE Location
-                    SET ProductID = @ProductID,
-                        Availability = 'Occupied'
-                    WHERE LocationID = @LocationID";
+                        // Get all available locations ordered numerically
+                        string getLocationsQuery = @"
+                    SELECT LocationID 
+                    FROM Location 
+                    WHERE Availability = 'Available' 
+                    ORDER BY 
+                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT),
+                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 2) AS INT),
+                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 3) AS INT)";
 
-                        connection.Execute(locationQuery, new
+                        var allLocations = connection.Query<string>(getLocationsQuery, null, transaction).ToList();
+
+                        int startIndex = allLocations.IndexOf(selectedLocation);
+                        if (startIndex == -1)
                         {
-                            LocationID = locationID,
-                            ProductID = product.ProductID
-                        }, transaction);
+                            MessageBox.Show("Selected location is not available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            transaction.Rollback();
+                            return;
+                        }
+
+                        for (int i = startIndex; i < allLocations.Count && remainingQty > 0; i++)
+                        {
+                            string locId = allLocations[i];
+                            int assignQty = Math.Min(remainingQty, maxCapacity);
+
+                            string updateLoc = @"
+                        UPDATE Location
+                        SET ProductID = @ProductID,
+                            Availability = 'Occupied',
+                            Capacity = @Capacity
+                        WHERE LocationID = @LocationID";
+
+                            connection.Execute(updateLoc, new
+                            {
+                                ProductID = product.ProductID,
+                                Capacity = assignQty,
+                                LocationID = locId
+                            }, transaction);
+
+                            remainingQty -= assignQty;
+                        }
+
+                        if (remainingQty > 0)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Not enough available locations to store the full quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        // End of updated logic
 
                         transaction.Commit();
                         MessageBox.Show("Product registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -156,6 +195,7 @@ namespace InventorySystem.Products
                 }
             }
         }
+
 
         private void LoadLocation()
         {

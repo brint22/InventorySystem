@@ -19,7 +19,8 @@ namespace InventorySystem.Infrastracture.SQL
         public static string GetAllLocations = @"
         SELECT [LocationID],
                ProductID,
-               Availability
+               Availability,
+               Capacity
         FROM [WAREHOUSEISDB].[dbo].[Location]
         ORDER BY 
             LEFT(LocationID, CHARINDEX('-', LocationID) - 1), -- first part: the letter (A, B, etc.)
