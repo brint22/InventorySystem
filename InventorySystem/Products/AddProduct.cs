@@ -81,8 +81,8 @@ namespace InventorySystem.Products
                         // Generate ProductID
                         char firstLetter = char.ToUpper(product.ProductName[0]);
                         string yearPart = DateTime.Now.Year.ToString().Substring(2);
-
                         string prefix = firstLetter.ToString() + "%" + yearPart;
+
                         string getMaxQuery = @"
                     SELECT MAX(CAST(SUBSTRING(ProductID, 2, 4) AS INT))
                     FROM Product
@@ -123,7 +123,7 @@ namespace InventorySystem.Products
                             return;
                         }
 
-                        // Start of updated logic
+                        // Assign locations
                         int maxCapacity = 100;
                         int remainingQty = product.Quantity;
 
@@ -145,19 +145,38 @@ namespace InventorySystem.Products
                         TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 3) AS INT)";
 
                         var allLocations = connection.Query<string>(getLocationsQuery, null, transaction).ToList();
-
                         int startIndex = allLocations.IndexOf(selectedLocation);
+
                         if (startIndex == -1)
                         {
-                            MessageBox.Show("Selected location is not available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             transaction.Rollback();
+                            MessageBox.Show("Selected location is not available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
 
-                        for (int i = startIndex; i < allLocations.Count && remainingQty > 0; i++)
+                        // Assign to selected location first
+                        int assignQty = Math.Min(remainingQty, maxCapacity);
+                        string updateSelectedLoc = @"
+                    UPDATE Location
+                    SET ProductID = @ProductID,
+                        Availability = 'Occupied',
+                        Capacity = @Capacity
+                    WHERE LocationID = @LocationID";
+
+                        connection.Execute(updateSelectedLoc, new
+                        {
+                            ProductID = product.ProductID,
+                            Capacity = assignQty,
+                            LocationID = selectedLocation
+                        }, transaction);
+
+                        remainingQty -= assignQty;
+
+                        // Assign to the next locations if remaining quantity exists
+                        for (int i = startIndex + 1; i < allLocations.Count && remainingQty > 0; i++)
                         {
                             string locId = allLocations[i];
-                            int assignQty = Math.Min(remainingQty, maxCapacity);
+                            assignQty = Math.Min(remainingQty, maxCapacity);
 
                             string updateLoc = @"
                         UPDATE Location
@@ -182,7 +201,6 @@ namespace InventorySystem.Products
                             MessageBox.Show("Not enough available locations to store the full quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
-                        // End of updated logic
 
                         transaction.Commit();
                         MessageBox.Show("Product registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
