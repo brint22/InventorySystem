@@ -17,15 +17,21 @@ namespace InventorySystem.Infrastracture.SQL
         WHERE LocationID = @LocationID";
 
         public static string GetAllLocations = @"
-        SELECT [LocationID],
-               ProductID,
-               Availability,
-               Capacity
+        SELECT 
+            [LocationID],
+            ProductID,
+            Availability,
+            Capacity,
+            CASE 
+                WHEN Capacity IS NULL THEN 'N/A'
+                WHEN (100 - Capacity) = 0 THEN 'None'
+                ELSE CAST((100 - Capacity) AS VARCHAR)
+            END AS AvailableCapacity
         FROM [WAREHOUSEISDB].[dbo].[Location]
         ORDER BY 
-            LEFT(LocationID, CHARINDEX('-', LocationID) - 1), -- first part: the letter (A, B, etc.)
-            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT), -- second part: the first number
-            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT) -- third part: the second number
+            LEFT(LocationID, CHARINDEX('-', LocationID) - 1),
+            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT),
+            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT)
         ";
 
         public static string InsertLocation = @"
