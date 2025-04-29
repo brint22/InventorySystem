@@ -52,8 +52,6 @@ namespace InventorySystem.Products
             }
         }
 
-
-
         private void RegisterProduct(Product product)
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
@@ -123,7 +121,7 @@ namespace InventorySystem.Products
                             return;
                         }
 
-                        // Start of updated logic
+                        // Location assignment logic
                         int maxCapacity = 100;
                         int remainingQty = product.Quantity;
 
@@ -134,15 +132,15 @@ namespace InventorySystem.Products
                             return;
                         }
 
-                        // Get all available locations ordered numerically
                         string getLocationsQuery = @"
                     SELECT LocationID 
                     FROM Location 
-                    WHERE Availability = 'Available' 
+                    WHERE Availability = 'Available'
                     ORDER BY 
-                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT),
+                        LEFT(LocationID, 1),
+                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 3) AS INT),
                         TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 2) AS INT),
-                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 3) AS INT)";
+                        TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT)";
 
                         var allLocations = connection.Query<string>(getLocationsQuery, null, transaction).ToList();
 
@@ -154,9 +152,21 @@ namespace InventorySystem.Products
                             return;
                         }
 
-                        for (int i = startIndex; i < allLocations.Count && remainingQty > 0; i++)
+                        bool started = false;
+
+                        foreach (var locId in allLocations)
                         {
-                            string locId = allLocations[i];
+                            if (!started)
+                            {
+                                if (locId == selectedLocation)
+                                    started = true;
+                                else
+                                    continue;
+                            }
+
+                            if (remainingQty <= 0)
+                                break;
+
                             int assignQty = Math.Min(remainingQty, maxCapacity);
 
                             string updateLoc = @"
@@ -182,7 +192,6 @@ namespace InventorySystem.Products
                             MessageBox.Show("Not enough available locations to store the full quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
-                        // End of updated logic
 
                         transaction.Commit();
                         MessageBox.Show("Product registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -195,7 +204,6 @@ namespace InventorySystem.Products
                 }
             }
         }
-
 
         private void LoadLocation()
         {
@@ -232,8 +240,6 @@ namespace InventorySystem.Products
                 }
             }
         }
-
-
 
         private void LoadCategory()
         {
