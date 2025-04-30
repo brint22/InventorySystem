@@ -338,6 +338,7 @@ namespace InventorySystem.Products
         {
             LoadCategory();
             LoadLocation();
+            LoadLocationGroup();
         }
 
         private int GetCategoryID()
@@ -373,7 +374,72 @@ namespace InventorySystem.Products
             }
         }
 
+        private void cbLocationGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedPrefix = cbLocationGroup.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(selectedPrefix))
+            {
+                LoadLcation(selectedPrefix); // This loads all matching LocationIDs into cbLocation
+            }
+        }
 
+        private void LoadLocationGroup()
+        {
+            string query = @"
+                            SELECT DISTINCT LEFT(LocationID, CHARINDEX('-', LocationID) - 1) AS LocationGroup
+                            FROM [WAREHOUSEISDB].[dbo].[Location]
+                            WHERE LocationID LIKE 'A%'
+                               OR LocationID LIKE 'B%'
+                               OR LocationID LIKE 'C%'
+                               OR LocationID LIKE 'D%'
+                            ORDER BY LocationGroup";
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                var locationGroups = connection.Query<string>(query);
+
+                cbLocationGroup.Properties.Items.Clear();
+                foreach (var group in locationGroups)
+                {
+                    cbLocationGroup.Properties.Items.Add(group);
+                }
+            }
+        }
+
+        private void LoadLcation(string locationPrefix)
+        {
+            string query = @"
+                            SELECT [LocationID] 
+                            FROM [WAREHOUSEISDB].[dbo].[Location]
+                            WHERE Availability = 'Available'
+                            AND LEFT([LocationID], CHARINDEX('-', [LocationID]) - 1) = @LocationPrefix
+                            ORDER BY 
+                                LEFT([LocationID], CHARINDEX('-', [LocationID]) - 1),
+                                CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], 1) + 1, 
+                                CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) - CHARINDEX('-', [LocationID]) - 1) AS INT),
+                                CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) + 1, 
+                                LEN([LocationID])) AS INT) ";
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                var locationList = connection.Query<string>(query, new { LocationPrefix = locationPrefix });
+
+                cbLocation.Properties.Items.Clear();
+                foreach (var location in locationList)
+                {
+                    cbLocation.Properties.Items.Add(location);
+                }
+            }
+        }
+
+        private void cbLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedGroup = cbLocationGroup.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(selectedGroup))
+            {
+                LoadLcation(selectedGroup);
+            }
+        }
 
         //private void tePrice_KeyPress(object sender, KeyPressEventArgs e)
         //{
