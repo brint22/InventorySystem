@@ -49,6 +49,8 @@
             this.teSupplier = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.cbLocationGroup = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cbLocation = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.numericChartRangeControlClient1 = new DevExpress.XtraEditors.NumericChartRangeControlClient();
@@ -63,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.teSupplier.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbLocationGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLocation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericChartRangeControlClient1)).BeginInit();
             this.SuspendLayout();
@@ -293,6 +296,8 @@
             // 
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
+            this.groupControl1.Controls.Add(this.labelControl9);
+            this.groupControl1.Controls.Add(this.cbLocationGroup);
             this.groupControl1.Controls.Add(this.cbLocation);
             this.groupControl1.Controls.Add(this.labelControl8);
             this.groupControl1.Controls.Add(this.labelControl6);
@@ -316,22 +321,62 @@
             this.groupControl1.TabIndex = 74;
             this.groupControl1.Text = "Product Information";
             // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Location = new System.Drawing.Point(398, 132);
+            this.labelControl9.Margin = new System.Windows.Forms.Padding(4);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(45, 19);
+            this.labelControl9.TabIndex = 95;
+            this.labelControl9.Text = "Group";
+            // 
+            // cbLocationGroup
+            // 
+            this.cbLocationGroup.Location = new System.Drawing.Point(398, 156);
+            this.cbLocationGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.cbLocationGroup.MenuManager = this.ribbon;
+            this.cbLocationGroup.Name = "cbLocationGroup";
+            this.cbLocationGroup.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLocationGroup.Properties.Appearance.Options.UseFont = true;
+            this.cbLocationGroup.Properties.AutoHeight = false;
+            this.cbLocationGroup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbLocationGroup.Properties.Items.AddRange(new object[] {
+            "ALL",
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K"});
+            this.cbLocationGroup.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbLocationGroup.Size = new System.Drawing.Size(134, 38);
+            this.cbLocationGroup.TabIndex = 94;
+            // 
             // cbLocation
             // 
-            this.cbLocation.Location = new System.Drawing.Point(398, 162);
+            this.cbLocation.Location = new System.Drawing.Point(540, 156);
             this.cbLocation.Margin = new System.Windows.Forms.Padding(4);
             this.cbLocation.MenuManager = this.ribbon;
             this.cbLocation.Name = "cbLocation";
+            this.cbLocation.Properties.AutoHeight = false;
             this.cbLocation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbLocation.Size = new System.Drawing.Size(230, 34);
+            this.cbLocation.Size = new System.Drawing.Size(230, 38);
             this.cbLocation.TabIndex = 75;
             // 
             // labelControl8
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Location = new System.Drawing.Point(398, 135);
+            this.labelControl8.Location = new System.Drawing.Point(540, 133);
             this.labelControl8.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(59, 19);
@@ -370,6 +415,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbLocationGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLocation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericChartRangeControlClient1)).EndInit();
             this.ResumeLayout(false);
@@ -402,5 +448,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.ComboBoxEdit cbLocation;
         private DevExpress.XtraEditors.NumericChartRangeControlClient numericChartRangeControlClient1;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.ComboBoxEdit cbLocationGroup;
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Dapper;
+using DevExpress.Office.Services;
 using DevExpress.Utils;
+using DevExpress.XtraEditors;
 using InventorySystem.Infrastracture.SQL;
 using InventorySystem.Models;
 using System;
@@ -127,6 +129,155 @@ namespace InventorySystem.Infrastracture.Repositories
                 return locations;
             }
         }
+
+    public string GenerateProductID(string productName)
+    {
+        string firstLetter = string.IsNullOrEmpty(productName) ? "X" : productName.Substring(0, 1).ToUpper();
+        string year = DateTime.Now.Year.ToString().Substring(2); // Gets "25" from "2025"
+
+        int lastNumber = GetLastNumberFromDB(firstLetter, year);
+        int newNumber = lastNumber + 1;
+
+        // Format: B000125
+        return string.Format("{0}{1:D4}{2}", firstLetter, newNumber, year);
+    }
+
+    private int GetLastNumberFromDB(string firstLetter, string year)
+    {
+        using (IDbConnection db = new SqlConnection(GlobalClass.connectionString))
+        {
+            string pattern = firstLetter + "%" + year; // e.g., B%25
+
+            string query = @"
+            SELECT TOP 1 CAST(SUBSTRING(ProductID, 2, 4) AS INT)
+            FROM Product
+            WHERE ProductID LIKE @Pattern
+            ORDER BY ProductID DESC";
+
+            return db.QueryFirstOrDefault<int?>(query, new { Pattern = pattern }) ?? 0;
+        }
+    }
+
+        public void RegisterProduct(Product product, string selectedLocation)
+        {
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        if (product == null || string.IsNullOrWhiteSpace(product.ProductName))
+                        {
+                            MessageBox.Show("Product details are incomplete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        int count = connection.ExecuteScalar<int>(ProductSQL.CheckIfProductExists, new { product.ProductName }, transaction);
+                        if (count > 0)
+                        {
+                            MessageBox.Show("A product with the same name already exists.", "Duplicate Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        char firstLetter = char.ToUpper(product.ProductName[0]);
+                        string yearPart = DateTime.Now.Year.ToString().Substring(2);
+                        string prefix = firstLetter.ToString() + "%" + yearPart;
+
+                        int latestNumber = connection.ExecuteScalar<int?>(ProductSQL.GetMaxProductNumber, new { Prefix = prefix }, transaction) ?? 0;
+                        string numberPart = (latestNumber + 1).ToString("D4");
+                        product.ProductID = $"{firstLetter}{numberPart}{yearPart}";
+
+                        int rowsAffected = connection.Execute(ProductSQL.InsertProduct, new
+                        {
+                            product.ProductID,
+                            product.ProductName,
+                            product.Price,
+                            product.Quantity,
+                            product.ProductRecieved,
+                            product.ExpirationDate,
+                            product.CategoryID,
+                            product.BrandName,
+                            product.Supplier
+                        }, transaction);
+
+                        if (rowsAffected == 0)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Product registration failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        int maxCapacity = 100;
+                        int remainingQty = product.Quantity;
+
+                        if (string.IsNullOrWhiteSpace(selectedLocation))
+                        {
+                            MessageBox.Show("Please provide a valid location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        var allLocations = connection.Query<string>(ProductSQL.GetAvailableLocations, null, transaction).ToList();
+                        int startIndex = allLocations.IndexOf(selectedLocation);
+
+                        if (startIndex == -1)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Selected location is not available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        bool started = false;
+                        foreach (var locId in allLocations)
+                        {
+                            if (!started)
+                            {
+                                if (locId == selectedLocation)
+                                    started = true;
+                                else
+                                    continue;
+                            }
+
+                            if (remainingQty <= 0)
+                                break;
+
+                            int assignQty = Math.Min(remainingQty, maxCapacity);
+
+                            connection.Execute(ProductSQL.UpdateLocation, new
+                            {
+                                ProductID = product.ProductID,
+                                Capacity = assignQty,
+                                LocationID = locId
+                            }, transaction);
+
+                            remainingQty -= assignQty;
+                        }
+
+                        if (remainingQty > 0)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Not enough available locations to store the full quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        transaction.Commit();
+                        MessageBox.Show("Product registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"Registration failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+
+        private int GetCategoryID(LookUpEdit lookupEdit)
+        {
+            return lookupEdit.EditValue != null ? (int)lookupEdit.EditValue : 0;
+        }
+
 
 
     }
