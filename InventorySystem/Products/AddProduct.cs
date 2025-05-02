@@ -34,6 +34,7 @@ namespace InventorySystem.Products
         {
             if (string.IsNullOrWhiteSpace(teProductName.Text) ||
        string.IsNullOrWhiteSpace(teBrandName.Text) ||
+
        string.IsNullOrWhiteSpace(teSupplier.Text))
             {
                 MessageBox.Show("Please fill in all required fields (Product Name, Brand Name, and Supplier).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

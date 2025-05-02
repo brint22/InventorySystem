@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
+using InventorySystem.Infrastracture.Repositories;
 
 namespace InventorySystem.Products.Stock
 {
@@ -61,5 +62,24 @@ namespace InventorySystem.Products.Stock
             }
         }
 
+        private void BtnSubmit_Click(object sender, EventArgs e)
+        {
+            string selectedGroup = cbLocationGroup.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(selectedGroup))
+            {
+                // Now passing both the ComboBoxEdit control and the selectedGroup
+                ProductRepository.LoadLocation(cbLocation, selectedGroup);
+            }
+        }
+
+        private void cbLocationGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedGroup = cbLocationGroup.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(selectedGroup))
+            {
+                // Now passing both the ComboBoxEdit control and the selectedGroup
+                ProductRepository.LoadLocation(cbLocation, selectedGroup);
+            }
+        }
     }
 }

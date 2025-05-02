@@ -180,5 +180,18 @@ namespace InventorySystem.Views
             // Show the Employee form
             stock.Show();
         }
+
+        private void ViewStock_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            ViewStock stock = new ViewStock();
+            this.IsMdiContainer = true;
+            stock.MdiParent = this;
+
+            // Show the Employee form
+            stock.Show();
+        }
     }
 }
