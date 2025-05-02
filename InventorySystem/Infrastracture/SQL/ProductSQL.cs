@@ -23,8 +23,8 @@ namespace InventorySystem.Infrastracture.SQL
             Availability,
             CAST(Capacity AS VARCHAR(10)) + '/100' AS Capacity,
             CASE 
-                WHEN Capacity IS NULL THEN 'N/A'
-                WHEN (100 - Capacity) = 0 THEN 'None'
+                --WHEN Capacity IS NULL THEN 'N/A'
+                WHEN (100 - Capacity) = 0 THEN ''
                 ELSE CAST((100 - Capacity) AS VARCHAR)
             END AS AvailableCapacity
         FROM [WAREHOUSEISDB].[dbo].[Location]
@@ -88,6 +88,7 @@ namespace InventorySystem.Infrastracture.SQL
             Availability = 'Occupied',
             Capacity = @Capacity
         WHERE LocationID = @LocationID";
+
 
     }
 

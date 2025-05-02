@@ -109,27 +109,6 @@ namespace InventorySystem.Infrastracture.Repositories
                     return connection.Query<Location>(ProductSQL.GetLocationsByAvailability, new { Availability = availability }).ToList();
                 }
             }
-
-        public List<Location> GetLocationsByGroup(string groupLetter)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-
-                // If groupLetter is "ALL", fetch all locations
-                string query = string.IsNullOrEmpty(groupLetter) || groupLetter.Equals("ALL", StringComparison.OrdinalIgnoreCase)
-                    ? ProductSQL.GetAllLocations // Query for all locations
-                    : ProductSQL.GetLocationsByGroup; // Query for filtered locations by group
-
-                var locations = connection.Query<Location>(
-                    query,
-                    new { GroupLetter = groupLetter }
-                ).ToList();
-
-                return locations;
-            }
-        }
-
     public string GenerateProductID(string productName)
     {
         string firstLetter = string.IsNullOrEmpty(productName) ? "X" : productName.Substring(0, 1).ToUpper();
@@ -272,13 +251,112 @@ namespace InventorySystem.Infrastracture.Repositories
             }
         }
 
-
-        private int GetCategoryID(LookUpEdit lookupEdit)
+        public int GetCategoryID(LookUpEdit lookupEdit)
         {
             return lookupEdit.EditValue != null ? (int)lookupEdit.EditValue : 0;
         }
 
+        public static void LoadCategory(LookUpEdit lueCategory)
+        {
+            string connStr = GlobalClass.connectionString;
 
+            string query = @"
+                        SELECT [CategoryID], 
+                               CONCAT(UPPER(LEFT([CategoryName], 1)), LOWER(SUBSTRING([CategoryName], 2, LEN([CategoryName]) - 1))) AS CategoryName
+                        FROM [Category];";
+
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    var category = connection.Query<Category>(query).ToList();
+
+                    if (category.Any())
+                    {
+                        lueCategory.Properties.DataSource = category;
+                        lueCategory.Properties.DisplayMember = "CategoryName";
+                        lueCategory.Properties.ValueMember = "CategoryID";
+                    }
+                    else
+                    {
+                        lueCategory.Properties.DataSource = null;
+                        XtraMessageBox.Show("No categories found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public static void LoadLocationGroup(ComboBoxEdit comboBoxEdit)
+        {
+            string query = @"
+        SELECT DISTINCT LEFT(LocationID, CHARINDEX('-', LocationID) - 1) AS LocationGroup
+        FROM [WAREHOUSEISDB].[dbo].[Location]
+        WHERE LocationID LIKE '[A-K]%'
+        ORDER BY LocationGroup";
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                var locationGroups = connection.Query<string>(query);
+
+                comboBoxEdit.Properties.Items.Clear();
+                foreach (var group in locationGroups)
+                {
+                    comboBoxEdit.Properties.Items.Add(group);
+                }
+            }
+        }
+
+        public static void LoadLocation(ComboBoxEdit comboBoxEdit, string locationPrefix)
+        {
+            string query = @"
+        SELECT [LocationID] 
+        FROM [WAREHOUSEISDB].[dbo].[Location]
+        WHERE Availability = 'Available'
+        AND LEFT([LocationID], CHARINDEX('-', [LocationID]) - 1) = @LocationPrefix
+        ORDER BY 
+            LEFT([LocationID], CHARINDEX('-', [LocationID]) - 1),
+            CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], 1) + 1, 
+            CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) - CHARINDEX('-', [LocationID]) - 1) AS INT),
+            CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) + 1, 
+            LEN([LocationID])) AS INT)";
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                var locationList = connection.Query<string>(query, new { LocationPrefix = locationPrefix });
+
+                comboBoxEdit.Properties.Items.Clear();
+                foreach (var location in locationList)
+                {
+                    comboBoxEdit.Properties.Items.Add(location);
+                }
+            }
+        }
+
+
+        public List<Location> GetLocationsByGroup(string groupLetter)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                // If groupLetter is "ALL", fetch all locations
+                string query = string.IsNullOrEmpty(groupLetter) || groupLetter.Equals("ALL", StringComparison.OrdinalIgnoreCase)
+                    ? ProductSQL.GetAllLocations // Query for all locations
+                    : ProductSQL.GetLocationsByGroup; // Query for filtered locations by group
+
+                var locations = connection.Query<Location>(
+                    query,
+                    new { GroupLetter = groupLetter }
+                ).ToList();
+
+                return locations;
+            }
+        }
 
     }
 
