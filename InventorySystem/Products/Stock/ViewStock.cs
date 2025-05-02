@@ -9,14 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InventorySystem.Products.Stock
+namespace InventorySystem.Products
 {
     public partial class ViewStock : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public ViewStock()
         {
             InitializeComponent();
-            // ccc
         }
     }
 }

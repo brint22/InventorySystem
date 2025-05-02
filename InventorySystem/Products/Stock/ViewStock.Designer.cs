@@ -1,4 +1,4 @@
-﻿namespace InventorySystem.Products.Stock
+﻿namespace InventorySystem.Products
 {
     partial class ViewStock
     {
@@ -31,36 +31,18 @@
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.gcCategory = new DevExpress.XtraGrid.GridControl();
-            this.gvCategory = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.StockID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ExpirationDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Location = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Supplier = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.txtSearch = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.BtnDelete = new DevExpress.XtraEditors.SimpleButton();
-            this.BtnUpdate = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcCategory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvCategory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).BeginInit();
+            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.SuspendLayout();
             // 
             // ribbon
             // 
-            this.ribbon.ExpandCollapseItem.Id = 0;
-            this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbon.ExpandCollapseItem});
+            this.ribbon.ApplicationIcon = null;
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1053, 61);
+            this.ribbon.SelectedPage = this.ribbonPage1;
+            this.ribbon.Size = new System.Drawing.Size(442, 141);
             // 
             // ribbonPage1
             // 
@@ -74,203 +56,23 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
-            // gcCategory
+            // ribbonStatusBar
             // 
-            this.gcCategory.Location = new System.Drawing.Point(23, 217);
-            this.gcCategory.MainView = this.gvCategory;
-            this.gcCategory.MenuManager = this.ribbon;
-            this.gcCategory.Name = "gcCategory";
-            this.gcCategory.Size = new System.Drawing.Size(1007, 288);
-            this.gcCategory.TabIndex = 3;
-            this.gcCategory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvCategory});
-            // 
-            // gvCategory
-            // 
-            this.gvCategory.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.StockID,
-            this.ProductName,
-            this.Price,
-            this.Quantity,
-            this.ExpirationDate,
-            this.Location,
-            this.Supplier});
-            this.gvCategory.GridControl = this.gcCategory;
-            this.gvCategory.Name = "gvCategory";
-            // 
-            // StockID
-            // 
-            this.StockID.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.StockID.AppearanceCell.Options.UseFont = true;
-            this.StockID.AppearanceCell.Options.UseTextOptions = true;
-            this.StockID.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.StockID.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.StockID.AppearanceHeader.Options.UseFont = true;
-            this.StockID.Caption = "Stock ID";
-            this.StockID.FieldName = "StockID";
-            this.StockID.MinWidth = 25;
-            this.StockID.Name = "StockID";
-            this.StockID.OptionsColumn.AllowEdit = false;
-            this.StockID.Visible = true;
-            this.StockID.VisibleIndex = 0;
-            this.StockID.Width = 147;
-            // 
-            // ProductName
-            // 
-            this.ProductName.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.ProductName.AppearanceCell.Options.UseFont = true;
-            this.ProductName.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.ProductName.AppearanceHeader.Options.UseFont = true;
-            this.ProductName.Caption = "Product Name";
-            this.ProductName.FieldName = "ProductName";
-            this.ProductName.MinWidth = 25;
-            this.ProductName.Name = "ProductName";
-            this.ProductName.OptionsColumn.AllowEdit = false;
-            this.ProductName.Visible = true;
-            this.ProductName.VisibleIndex = 1;
-            this.ProductName.Width = 331;
-            // 
-            // Price
-            // 
-            this.Price.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
-            this.Price.AppearanceCell.Options.UseFont = true;
-            this.Price.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10F);
-            this.Price.AppearanceHeader.Options.UseFont = true;
-            this.Price.Caption = "Price";
-            this.Price.MinWidth = 25;
-            this.Price.Name = "Price";
-            this.Price.Visible = true;
-            this.Price.VisibleIndex = 2;
-            this.Price.Width = 153;
-            // 
-            // Quantity
-            // 
-            this.Quantity.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
-            this.Quantity.AppearanceCell.Options.UseFont = true;
-            this.Quantity.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10F);
-            this.Quantity.AppearanceHeader.Options.UseFont = true;
-            this.Quantity.Caption = "Quantity";
-            this.Quantity.FieldName = "Quantity";
-            this.Quantity.MinWidth = 25;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Visible = true;
-            this.Quantity.VisibleIndex = 4;
-            this.Quantity.Width = 184;
-            // 
-            // ExpirationDate
-            // 
-            this.ExpirationDate.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
-            this.ExpirationDate.AppearanceCell.Options.UseFont = true;
-            this.ExpirationDate.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10F);
-            this.ExpirationDate.AppearanceHeader.Options.UseFont = true;
-            this.ExpirationDate.Caption = "Expiration Date";
-            this.ExpirationDate.FieldName = "ExpirationDate";
-            this.ExpirationDate.MinWidth = 25;
-            this.ExpirationDate.Name = "ExpirationDate";
-            this.ExpirationDate.Visible = true;
-            this.ExpirationDate.VisibleIndex = 3;
-            this.ExpirationDate.Width = 240;
-            // 
-            // Location
-            // 
-            this.Location.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
-            this.Location.AppearanceCell.Options.UseFont = true;
-            this.Location.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10F);
-            this.Location.AppearanceHeader.Options.UseFont = true;
-            this.Location.Caption = "Location";
-            this.Location.FieldName = "Location";
-            this.Location.MinWidth = 25;
-            this.Location.Name = "Location";
-            this.Location.Visible = true;
-            this.Location.VisibleIndex = 5;
-            this.Location.Width = 239;
-            // 
-            // Supplier
-            // 
-            this.Supplier.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
-            this.Supplier.AppearanceCell.Options.UseFont = true;
-            this.Supplier.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10F);
-            this.Supplier.AppearanceHeader.Options.UseFont = true;
-            this.Supplier.Caption = "Supplier";
-            this.Supplier.FieldName = "Supplier";
-            this.Supplier.MinWidth = 25;
-            this.Supplier.Name = "Supplier";
-            this.Supplier.Visible = true;
-            this.Supplier.VisibleIndex = 6;
-            this.Supplier.Width = 264;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(23, 147);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.txtSearch.Size = new System.Drawing.Size(563, 34);
-            this.txtSearch.TabIndex = 6;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 10F);
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(23, 122);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(127, 19);
-            this.labelControl1.TabIndex = 5;
-            this.labelControl1.Text = "Search Keyword ";
-            // 
-            // BtnDelete
-            // 
-            this.BtnDelete.Appearance.BackColor = System.Drawing.Color.DimGray;
-            this.BtnDelete.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.Appearance.Options.UseBackColor = true;
-            this.BtnDelete.Appearance.Options.UseFont = true;
-            this.BtnDelete.Location = new System.Drawing.Point(840, 143);
-            this.BtnDelete.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(190, 38);
-            this.BtnDelete.TabIndex = 79;
-            this.BtnDelete.Text = "DELETE";
-            // 
-            // BtnUpdate
-            // 
-            this.BtnUpdate.Appearance.BackColor = System.Drawing.Color.LightSlateGray;
-            this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnUpdate.Appearance.Options.UseBackColor = true;
-            this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(652, 143);
-            this.BtnUpdate.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.BtnUpdate.Name = "BtnUpdate";
-            this.BtnUpdate.Size = new System.Drawing.Size(180, 38);
-            this.BtnUpdate.TabIndex = 78;
-            this.BtnUpdate.Text = "UPDATE";
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 425);
+            this.ribbonStatusBar.Name = "ribbonStatusBar";
+            this.ribbonStatusBar.Ribbon = this.ribbon;
+            this.ribbonStatusBar.Size = new System.Drawing.Size(442, 24);
             // 
             // ViewStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 598);
-            this.ControlBox = false;
-            this.Controls.Add(this.BtnDelete);
-            this.Controls.Add(this.BtnUpdate);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.gcCategory);
+            this.ClientSize = new System.Drawing.Size(442, 449);
+            this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "ViewStock";
             this.Ribbon = this.ribbon;
-            this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "View Stock";
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcCategory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvCategory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).EndInit();
+            this.StatusBar = this.ribbonStatusBar;
+            this.Text = "ViewStock";
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ResumeLayout(false);
-            this.PerformLayout();
-
         }
 
         #endregion
@@ -278,18 +80,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraGrid.GridControl gcCategory;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvCategory;
-        private DevExpress.XtraGrid.Columns.GridColumn StockID;
-        private DevExpress.XtraGrid.Columns.GridColumn ProductName;
-        private DevExpress.XtraGrid.Columns.GridColumn Price;
-        private DevExpress.XtraGrid.Columns.GridColumn Quantity;
-        private DevExpress.XtraGrid.Columns.GridColumn ExpirationDate;
-        private DevExpress.XtraGrid.Columns.GridColumn Location;
-        private DevExpress.XtraGrid.Columns.GridColumn Supplier;
-        private DevExpress.XtraEditors.TextEdit txtSearch;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.SimpleButton BtnDelete;
-        private DevExpress.XtraEditors.SimpleButton BtnUpdate;
+        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
     }
 }
