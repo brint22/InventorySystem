@@ -113,12 +113,12 @@ namespace InventorySystem.Products
 
         private void cbLocationGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
-                   string selectedGroup = cbLocationGroup.SelectedItem?.ToString();
-            if (!string.IsNullOrEmpty(selectedGroup))
-            {
-                // Now passing both the ComboBoxEdit control and the selectedGroup
-                ProductRepository.LoadLocation(cbLocation, selectedGroup);
-            }
+        //           string selectedGroup = cbLocationGroup.SelectedItem?.ToString();
+        //    if (!string.IsNullOrEmpty(selectedGroup))
+        //    {
+        //        // Now passing both the ComboBoxEdit control and the selectedGroup
+        //        ProductRepository.LoadLocation(lueLocation, selectedGroup);
+        //    }
         }
     }
 

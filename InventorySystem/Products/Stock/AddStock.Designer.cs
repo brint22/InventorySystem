@@ -34,6 +34,7 @@
             this.BtnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.BtnSubmit = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.lueLocation = new DevExpress.XtraEditors.LookUpEdit();
             this.cbProductName = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.cbLocationGroup = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -48,10 +49,10 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.deExpirationDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.lueLocation = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lueLocation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProductName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLocationGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLocation.Properties)).BeginInit();
@@ -60,7 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.teQuantity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deExpirationDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deExpirationDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueLocation.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -99,7 +99,7 @@
             this.BtnCancel.Appearance.Options.UseBackColor = true;
             this.BtnCancel.Appearance.Options.UseFont = true;
             this.BtnCancel.Location = new System.Drawing.Point(669, 598);
-            this.BtnCancel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.BtnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(373, 45);
             this.BtnCancel.TabIndex = 79;
@@ -139,16 +139,32 @@
             this.groupControl1.Controls.Add(this.deExpirationDate);
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Location = new System.Drawing.Point(81, 115);
-            this.groupControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(5);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(1099, 446);
             this.groupControl1.TabIndex = 80;
             this.groupControl1.Text = "Stock Information";
             // 
+            // lueLocation
+            // 
+            this.lueLocation.Location = new System.Drawing.Point(571, 267);
+            this.lueLocation.MenuManager = this.ribbon;
+            this.lueLocation.Name = "lueLocation";
+            this.lueLocation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueLocation.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "Location ID"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Capacity", "Capacity")});
+            this.lueLocation.Properties.NullText = "";
+            this.lueLocation.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.lueLocation.Properties.ValueMember = "LocationID";
+            this.lueLocation.Size = new System.Drawing.Size(172, 40);
+            this.lueLocation.TabIndex = 97;
+            // 
             // cbProductName
             // 
             this.cbProductName.Location = new System.Drawing.Point(44, 100);
-            this.cbProductName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cbProductName.Margin = new System.Windows.Forms.Padding(5);
             this.cbProductName.Name = "cbProductName";
             this.cbProductName.Properties.AutoHeight = false;
             this.cbProductName.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -161,7 +177,7 @@
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl9.Appearance.Options.UseFont = true;
             this.labelControl9.Location = new System.Drawing.Point(571, 72);
-            this.labelControl9.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.labelControl9.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(55, 23);
             this.labelControl9.TabIndex = 95;
@@ -170,7 +186,7 @@
             // cbLocationGroup
             // 
             this.cbLocationGroup.Location = new System.Drawing.Point(571, 100);
-            this.cbLocationGroup.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cbLocationGroup.Margin = new System.Windows.Forms.Padding(5);
             this.cbLocationGroup.Name = "cbLocationGroup";
             this.cbLocationGroup.Properties.Appearance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLocationGroup.Properties.Appearance.Options.UseFont = true;
@@ -197,7 +213,7 @@
             // cbLocation
             // 
             this.cbLocation.Location = new System.Drawing.Point(753, 100);
-            this.cbLocation.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cbLocation.Margin = new System.Windows.Forms.Padding(5);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Properties.AutoHeight = false;
             this.cbLocation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -317,21 +333,6 @@
             this.labelControl5.TabIndex = 29;
             this.labelControl5.Text = "Expiration Date";
             // 
-            // lueLocation
-            // 
-            this.lueLocation.Location = new System.Drawing.Point(571, 267);
-            this.lueLocation.MenuManager = this.ribbon;
-            this.lueLocation.Name = "lueLocation";
-            this.lueLocation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueLocation.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "Location ID"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Capacity", "Capacity")});
-            this.lueLocation.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.lueLocation.Properties.ValueMember = "LocationID";
-            this.lueLocation.Size = new System.Drawing.Size(172, 40);
-            this.lueLocation.TabIndex = 97;
-            // 
             // AddStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -353,6 +354,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lueLocation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbProductName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLocationGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLocation.Properties)).EndInit();
@@ -361,7 +363,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.teQuantity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deExpirationDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deExpirationDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueLocation.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

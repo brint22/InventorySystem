@@ -311,29 +311,25 @@ namespace InventorySystem.Infrastracture.Repositories
             }
         }
 
-        public static void LoadLocation(ComboBoxEdit comboBoxEdit, string locationPrefix)
+        public static void LoadLocation(LookUpEdit lookUpEdit, string locationPrefix)
         {
             string query = @"
-        SELECT [LocationID] 
-        FROM [WAREHOUSEISDB].[dbo].[Location]
-        WHERE Availability = 'Available'
-        AND LEFT([LocationID], CHARINDEX('-', [LocationID]) - 1) = @LocationPrefix
-        ORDER BY 
-            LEFT([LocationID], CHARINDEX('-', [LocationID]) - 1),
-            CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], 1) + 1, 
-            CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) - CHARINDEX('-', [LocationID]) - 1) AS INT),
-            CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) + 1, 
-            LEN([LocationID])) AS INT)";
+                           SELECT [LocationID], 
+                           CAST(ISNULL(Capacity, 0) AS VARCHAR(20)) + '/100' AS Capacity
+                    FROM [Location]
+                    WHERE ISNULL(Capacity, 0) < 100
+                    ORDER BY 
+                            LEFT(LocationID, CHARINDEX('-', LocationID) - 1),
+                            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT),
+                            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT);";
 
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
-                var locationList = connection.Query<string>(query, new { LocationPrefix = locationPrefix });
+                var locationList = connection.Query<Location>(query).ToList();
 
-                comboBoxEdit.Properties.Items.Clear();
-                foreach (var location in locationList)
-                {
-                    comboBoxEdit.Properties.Items.Add(location);
-                }
+                lookUpEdit.Properties.DataSource = locationList;
+                lookUpEdit.Properties.DisplayMember = ""; // Not needed since it's a list of strings
+                lookUpEdit.Properties.ValueMember = "";   // Same as above
             }
         }
 
