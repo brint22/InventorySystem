@@ -260,6 +260,9 @@
     <EmbeddedResource Include="Products\Stock\AddStock.resx">
       <DependentUpon>AddStock.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Products\Stock\ViewStock.resx">
+      <DependentUpon>ViewStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
