@@ -26,6 +26,7 @@ namespace InventorySystem.Products.Stock
         private void AddStock_Load(object sender, EventArgs e)
         {
             LoadAllProduct();
+            LoadLocationAndCapacity();
         }
 
 
@@ -79,6 +80,44 @@ namespace InventorySystem.Products.Stock
             {
                 // Now passing both the ComboBoxEdit control and the selectedGroup
                 ProductRepository.LoadLocation(cbLocation, selectedGroup);
+            }
+        }
+
+        private void LoadLocationAndCapacity()
+        {
+            string query = @"
+                    SELECT [LocationID], 
+                           CAST(ISNULL(Capacity, 0) AS VARCHAR(20)) + '/100' AS Capacity
+                    FROM [Location]
+                    WHERE ISNULL(Capacity, 0) < 100
+                    ORDER BY 
+                            LEFT(LocationID, CHARINDEX('-', LocationID) - 1),
+                            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT),
+                            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT);";
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    var departments = connection.Query<Location>(query).ToList();
+
+                    if (departments.Any())
+                    {
+                        lueLocation.Properties.DataSource = departments;
+                        lueLocation.Properties.DisplayMember = "LocationID";
+                        lueLocation.Properties.ValueMember = "LocationID";
+                    }
+                    else
+                    {
+                        lueLocation.Properties.DataSource = null;
+                        XtraMessageBox.Show("No departments found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

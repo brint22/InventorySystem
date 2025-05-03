@@ -11,7 +11,8 @@ namespace InventorySystem.Models
         public string LocationID { get; set; }
         public string ProductID { get; set; }     
         public string Availability { get; set; }
+        public string Capacity { get; set; }
 
-        
+
     }
 }
