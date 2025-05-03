@@ -358,7 +358,6 @@
             this.cbLocationGroup.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbLocationGroup.Size = new System.Drawing.Size(134, 38);
             this.cbLocationGroup.TabIndex = 94;
-            this.cbLocationGroup.SelectedIndexChanged += new System.EventHandler(this.cbLocationGroup_SelectedIndexChanged);
             // 
             // cbLocation
             // 

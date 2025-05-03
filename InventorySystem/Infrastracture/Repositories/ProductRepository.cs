@@ -2,6 +2,7 @@
 using DevExpress.Office.Services;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using InventorySystem.Infrastracture.SQL;
 using InventorySystem.Models;
 using System;
@@ -311,31 +312,37 @@ namespace InventorySystem.Infrastracture.Repositories
             }
         }
 
-        public static void LoadLocation(ComboBoxEdit comboBoxEdit, string locationPrefix)
+        public static void LoadLocation(LookUpEdit lookUpEdit, string locationPrefix)
         {
             string query = @"
-        SELECT [LocationID] 
-        FROM [WAREHOUSEISDB].[dbo].[Location]
-        WHERE Availability = 'Available'
-        AND LEFT([LocationID], CHARINDEX('-', [LocationID]) - 1) = @LocationPrefix
+        SELECT [LocationID], 
+               CAST(ISNULL(Capacity, 0) AS VARCHAR(20)) + '/100' AS Capacity
+        FROM [Location]
+        WHERE ISNULL(Capacity, 0) < 100
+        AND LEFT(LocationID, CHARINDEX('-', LocationID) - 1) = @LocationPrefix
         ORDER BY 
-            LEFT([LocationID], CHARINDEX('-', [LocationID]) - 1),
-            CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], 1) + 1, 
-            CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) - CHARINDEX('-', [LocationID]) - 1) AS INT),
-            CAST(SUBSTRING([LocationID], CHARINDEX('-', [LocationID], CHARINDEX('-', [LocationID]) + 1) + 1, 
-            LEN([LocationID])) AS INT)";
+            LEFT(LocationID, CHARINDEX('-', LocationID) - 1),
+            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT),
+            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT);";
 
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
-                var locationList = connection.Query<string>(query, new { LocationPrefix = locationPrefix });
+                var locationList = connection.Query<Location>(query, new { LocationPrefix = locationPrefix }).ToList();
 
-                comboBoxEdit.Properties.Items.Clear();
-                foreach (var location in locationList)
-                {
-                    comboBoxEdit.Properties.Items.Add(location);
-                }
+                lookUpEdit.Properties.DataSource = locationList;
+                lookUpEdit.Properties.DisplayMember = "LocationID"; // shown in dropdown
+                lookUpEdit.Properties.ValueMember = "LocationID";   // selected value
+                lookUpEdit.Properties.NullText = "Select Location";
+                lookUpEdit.EditValue = null;
+
+                // Optional: show Capacity in popup
+                lookUpEdit.Properties.Columns.Clear();
+                lookUpEdit.Properties.Columns.Add(new LookUpColumnInfo("LocationID", "Location"));
+                lookUpEdit.Properties.Columns.Add(new LookUpColumnInfo("Capacity", "Capacity"));
             }
         }
+
+
 
 
         public List<Location> GetLocationsByGroup(string groupLetter)
