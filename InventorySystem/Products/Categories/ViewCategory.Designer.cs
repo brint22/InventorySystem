@@ -184,6 +184,7 @@
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ViewCategory.IconOptions.Image")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ViewCategory";
             this.Ribbon = this.ribbon;
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
