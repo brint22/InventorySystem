@@ -75,7 +75,7 @@ namespace InventorySystem.Products.Stock
                             return;
                         }
 
-                        // Update the selected location (NOT insert)
+                        // Update the selected location (NOT insert)//
                         string updateLocationSql = @"
                     UPDATE Location
                     SET ProductID = @ProductID,
