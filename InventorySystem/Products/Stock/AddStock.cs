@@ -75,20 +75,24 @@ namespace InventorySystem.Products.Stock
                             return;
                         }
 
-                        // Update the selected location (NOT insert)//
+                        // Get the new quantity from the ProductStock instance
+                        int newQuantity = productStock.Quantity;  // This is the quantity being added
+
+                        // Update the location with the new quantity
                         string updateLocationSql = @"
-                    UPDATE Location
-                    SET ProductID = @ProductID,
-                        Capacity = @Capacity,
-                        Availability = 'Occupied'
-                    WHERE LocationID = @LocationID;";
+UPDATE Location
+SET ProductID = @ProductID,
+    Capacity = COALESCE(Capacity, 0) + @NewQuantity,  -- Add the newly added stock quantity to Capacity
+    Availability = 'Occupied'
+WHERE LocationID = @LocationID;";
 
                         connection.Execute(updateLocationSql, new
                         {
-                            ProductID = productStock.ProductID,
-                            Capacity = productStock.Quantity, // Set Capacity to the entered Quantity
-                            LocationID = selectedLocation
+                            ProductID = productStock.ProductID,  // The product ID for the stock being added
+                            NewQuantity = newQuantity,           // Use the new quantity to add to the capacity
+                            LocationID = selectedLocation       // The location ID to update
                         }, transaction);
+
 
                         transaction.Commit();
                         MessageBox.Show("Stock and location successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
