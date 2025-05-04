@@ -13,6 +13,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
 using InventorySystem.Infrastracture.Repositories;
+using InventorySystem.Infrastracture.SQL;
+using DevExpress.Pdf.Native.BouncyCastle.Utilities.Collections;
+using DevExpress.Utils.About;
+using DevExpress.Utils;
 
 namespace InventorySystem.Products.Stock
 {
@@ -25,52 +29,159 @@ namespace InventorySystem.Products.Stock
 
         private void AddStock_Load(object sender, EventArgs e)
         {
-            LoadAllProduct();
-            LoadLocationAndCapacity();
+           
+            LoadAllProducts();
+
+
         }
 
-
-        private void LoadAllProduct()
+        public void AddNewStock(ProductStock productStock, string selectedLocation, Product product, Location location)
         {
-            string connStr = GlobalClass.connectionString;
-            string query = @"
-                            SELECT [ProductName]
-                            FROM [WAREHOUSEISDB].[dbo].[Product]";
-
-            using (SqlConnection connection = new SqlConnection(connStr))
+            using (var connection = new SqlConnection(GlobalClass.connectionString))
             {
-                try
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
                 {
-                    connection.Open();
-                    var productNames = connection.Query<string>(query).ToList();
-
-                    cbProductName.Properties.Items.Clear();
-                    cbProductName.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-
-                    if (productNames.Any())
+                    try
                     {
-                        cbProductName.Properties.Items.AddRange(productNames);
+                        // Insert into Stock table
+                        string insertStockSql = @"
+                    INSERT INTO Stock 
+                    (ProductID, Price, Quantity, ExpirationDate, Supplier)
+                    VALUES
+                    (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier);";
+
+                        int rowsAffected = connection.Execute(insertStockSql, new
+                        {
+                            productStock.ProductID,
+                            productStock.Price,
+                            productStock.Quantity,
+                            productStock.ExpirationDate,
+                            productStock.Supplier
+                        }, transaction);
+
+                        if (rowsAffected == 0)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Stock addition failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // Validate selected location
+                        if (string.IsNullOrWhiteSpace(selectedLocation))
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Please provide a valid location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        int maxCapacity = 100; // Set a maximum capacity per location
+                        int remainingQty = productStock.Quantity; // Remaining quantity to be assigned to locations
+
+                        // Get available location IDs
+                        var allLocations = connection.Query<string>(
+                            ProductSQL.GetAvailableLocations, null, transaction).ToList();
+
+                        int startIndex = allLocations.IndexOf(selectedLocation);
+                        if (startIndex == -1)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Selected location is not available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        bool started = false;
+
+                        // Loop through the available locations and assign product quantity
+                        foreach (var locId in allLocations)
+                        {
+                            if (!started)
+                            {
+                                if (locId == selectedLocation)
+                                    started = true;
+                                else
+                                    continue;
+                            }
+
+                            if (remainingQty <= 0)
+                                break;
+
+                            int assignQty = Math.Min(remainingQty, maxCapacity);
+
+                            // Insert into Location table with the assigned Capacity
+                            string insertLocationSql = @"
+                        INSERT INTO Location (LocationID, ProductID, Capacity, Availability)
+                        VALUES (@LocationID, @ProductID, @Capacity, 'Occupied');";
+
+                            connection.Execute(insertLocationSql, new
+                            {
+                                LocationID = locId, // Use available LocationID
+                                ProductID = product.ProductID,
+                                Capacity = assignQty // Assign Capacity based on remaining quantity
+                            }, transaction);
+
+                            remainingQty -= assignQty; // Reduce the remaining quantity
+                        }
+
+                        if (remainingQty > 0)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Not enough available locations to store the full quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        transaction.Commit();
+                        MessageBox.Show("Stock successfully added and locations assigned!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        XtraMessageBox.Show("No products found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        transaction.Rollback();
+                        MessageBox.Show($"Stock failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            string selectedGroup = cbLocationGroup.SelectedItem?.ToString();
-            if (!string.IsNullOrEmpty(selectedGroup))
+           
+            if (!int.TryParse(tePrice.Text, out int price))
             {
-                // Now passing both the ComboBoxEdit control and the selectedGroup
-                ProductRepository.LoadLocation(lueLocation, selectedGroup);
+                MessageBox.Show("Please enter a valid price.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            if (!int.TryParse(teQuantity.Text, out int quantity))
+            {
+                MessageBox.Show("Please enter a valid quantity.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ProductStock productStock = new ProductStock()
+            {
+                ProductID = GetProductID(), // ✅ Use the actual selected ProductID
+                Price = price,
+                Quantity = quantity,
+                ExpirationDate = deExpirationDate.DateTime,
+                Supplier = teSupplier.Text
+            };
+            GetProductID();
+
+            string selectedLocation = lueLocation.EditValue?.ToString();
+            if (string.IsNullOrWhiteSpace(selectedLocation))
+            {
+                MessageBox.Show("Please select a location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Location location = new Location()
+            {
+                ProductID = GetProductID()
+            };
+
+            Product product = new Product();
+
+            // Call the method to add the customer transaction
+            AddNewStock(productStock, selectedLocation, product, location);
         }
 
         private void cbLocationGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,34 +194,29 @@ namespace InventorySystem.Products.Stock
             }
         }
 
-        private void LoadLocationAndCapacity()
+
+        private void LoadAllProducts()
         {
             string query = @"
-                    SELECT [LocationID], 
-                           CAST(ISNULL(Capacity, 0) AS VARCHAR(20)) + '/100' AS Capacity
-                    FROM [Location]
-                    WHERE ISNULL(Capacity, 0) < 100
-                    ORDER BY 
-                            LEFT(LocationID, CHARINDEX('-', LocationID) - 1),
-                            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT),
-                            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT);";
+                    SELECT [ProductID], [ProductName] 
+                    FROM [Product];";
 
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
                 try
                 {
                     connection.Open();
-                    var departments = connection.Query<Location>(query).ToList();
+                    var departments = connection.Query<Product>(query).ToList();
 
                     if (departments.Any())
                     {
-                        lueLocation.Properties.DataSource = departments;
-                        lueLocation.Properties.DisplayMember = "LocationID";
-                        lueLocation.Properties.ValueMember = "LocationID";
+                        lueProductName.Properties.DataSource = departments;
+                        lueProductName.Properties.DisplayMember = "ProductName";
+                        lueProductName.Properties.ValueMember = "ProductID";
                     }
                     else
                     {
-                        lueLocation.Properties.DataSource = null;
+                        lueProductName.Properties.DataSource = null;
                         XtraMessageBox.Show("No departments found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -120,5 +226,20 @@ namespace InventorySystem.Products.Stock
                 }
             }
         }
+
+        private string GetProductID()
+        {
+            string departmentID = string.Empty;
+
+            if (lueProductName.EditValue != null)
+            {
+                departmentID = lueProductName.EditValue.ToString();
+            }
+
+            return departmentID;
+        }
+
+        
     }
+
 }
