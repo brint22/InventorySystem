@@ -172,7 +172,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Capacity", "Capacity"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ProductID", "Product ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.lueLocation.Properties.NullText = "";
-            this.lueLocation.Properties.ValueMember = "LocationID";
+            this.lueLocation.Properties.ValueMember = "ProductID";
             this.lueLocation.Size = new System.Drawing.Size(296, 40);
             this.lueLocation.TabIndex = 97;
             // 

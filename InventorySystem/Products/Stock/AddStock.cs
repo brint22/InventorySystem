@@ -67,7 +67,6 @@ namespace InventorySystem.Products.Stock
                             return;
                         }
 
-                        // Validate selected location
                         if (string.IsNullOrWhiteSpace(selectedLocation))
                         {
                             transaction.Rollback();
@@ -76,13 +75,14 @@ namespace InventorySystem.Products.Stock
                         }
 
                         int maxCapacity = 100;
-                        int remainingQty = product.Quantity;
+                        int remainingQty = productStock.Quantity;
 
-                        // Get available location IDs
+                        // Get available locations (including already occupied ones)
                         var allLocations = connection.Query<string>(
                             ProductSQL.GetAvailableLocations, null, transaction).ToList();
 
                         int startIndex = allLocations.IndexOf(selectedLocation);
+
                         if (startIndex == -1)
                         {
                             transaction.Rollback();
@@ -91,7 +91,6 @@ namespace InventorySystem.Products.Stock
                         }
 
                         bool started = false;
-
                         foreach (var locId in allLocations)
                         {
                             if (!started)
@@ -105,18 +104,29 @@ namespace InventorySystem.Products.Stock
                             if (remainingQty <= 0)
                                 break;
 
-                            int assignQty = Math.Min(remainingQty, maxCapacity);
+                            // Get current capacity from Location table
+                            string getCapacitySql = "SELECT ISNULL(Capacity, 0) FROM Location WHERE LocationID = @LocationID";
+                            int currentCapacity = connection.ExecuteScalar<int>(getCapacitySql, new { LocationID = locId }, transaction);
 
-                            // Insert new row into Location table
-                            string insertLocationSql = @"
-                        INSERT INTO Location (LocationID, ProductID, Capacity, Availability)
-                        VALUES (@LocationID, @ProductID, @Capacity, 'Occupied');";
+                            int availableSpace = maxCapacity - currentCapacity;
+                            if (availableSpace <= 0)
+                                continue;
 
-                            connection.Execute(insertLocationSql, new
+                            int assignQty = Math.Min(remainingQty, availableSpace);
+
+                            // Update (not insert) the location
+                            string updateLocationSql = @"
+                        UPDATE Location
+                        SET ProductID = @ProductID,
+                            Capacity = Capacity + @AddQty,
+                            Availability = 'Occupied'
+                        WHERE LocationID = @LocationID;";
+
+                            connection.Execute(updateLocationSql, new
                             {
-                                LocationID = locId,
-                                ProductID = product.ProductID,
-                                Capacity = assignQty
+                                ProductID = productStock.ProductID,
+                                AddQty = assignQty,
+                                LocationID = locId
                             }, transaction);
 
                             remainingQty -= assignQty;
@@ -130,7 +140,7 @@ namespace InventorySystem.Products.Stock
                         }
 
                         transaction.Commit();
-                        MessageBox.Show("Stock successfully added and locations assigned!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Stock successfully added and locations updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
@@ -181,7 +191,7 @@ namespace InventorySystem.Products.Stock
             }
             Location location = new Location()
             {
-                ProductID = GetProductID()
+                ProductID = GetLocationProductID()
             };
 
             Product product = new Product();
@@ -245,7 +255,17 @@ namespace InventorySystem.Products.Stock
             return departmentID;
         }
 
-        
+        private string GetLocationProductID()
+        {
+            string departmentID = string.Empty;
+
+            if (lueProductName.EditValue != null)
+            {
+                departmentID = lueLocation.EditValue.ToString();
+            }
+
+            return departmentID;
+        }
     }
 
 }
