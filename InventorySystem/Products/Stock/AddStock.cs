@@ -67,6 +67,7 @@ namespace InventorySystem.Products.Stock
                             return;
                         }
 
+                        // Validate selected location
                         if (string.IsNullOrWhiteSpace(selectedLocation))
                         {
                             transaction.Rollback();
@@ -74,73 +75,23 @@ namespace InventorySystem.Products.Stock
                             return;
                         }
 
-                        int maxCapacity = 100;
-                        int remainingQty = productStock.Quantity;
+                        // Update the selected location (NOT insert)
+                        string updateLocationSql = @"
+                    UPDATE Location
+                    SET ProductID = @ProductID,
+                        Capacity = @Capacity,
+                        Availability = 'Occupied'
+                    WHERE LocationID = @LocationID;";
 
-                        // Get available locations (including already occupied ones)
-                        var allLocations = connection.Query<string>(
-                            ProductSQL.GetAvailableLocations, null, transaction).ToList();
-
-                        int startIndex = allLocations.IndexOf(selectedLocation);
-
-                        if (startIndex == -1)
+                        connection.Execute(updateLocationSql, new
                         {
-                            transaction.Rollback();
-                            MessageBox.Show("Selected location is not available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        bool started = false;
-                        foreach (var locId in allLocations)
-                        {
-                            if (!started)
-                            {
-                                if (locId == selectedLocation)
-                                    started = true;
-                                else
-                                    continue;
-                            }
-
-                            if (remainingQty <= 0)
-                                break;
-
-                            // Get current capacity from Location table
-                            string getCapacitySql = "SELECT ISNULL(Capacity, 0) FROM Location WHERE LocationID = @LocationID";
-                            int currentCapacity = connection.ExecuteScalar<int>(getCapacitySql, new { LocationID = locId }, transaction);
-
-                            int availableSpace = maxCapacity - currentCapacity;
-                            if (availableSpace <= 0)
-                                continue;
-
-                            int assignQty = Math.Min(remainingQty, availableSpace);
-
-                            // Update (not insert) the location
-                            string updateLocationSql = @"
-                        UPDATE Location
-                        SET ProductID = @ProductID,
-                            Capacity = Capacity + @AddQty,
-                            Availability = 'Occupied'
-                        WHERE LocationID = @LocationID;";
-
-                            connection.Execute(updateLocationSql, new
-                            {
-                                ProductID = productStock.ProductID,
-                                AddQty = assignQty,
-                                LocationID = locId
-                            }, transaction);
-
-                            remainingQty -= assignQty;
-                        }
-
-                        if (remainingQty > 0)
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show("Not enough available locations to store the full quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
+                            ProductID = productStock.ProductID,
+                            Capacity = productStock.Quantity, // Set Capacity to the entered Quantity
+                            LocationID = selectedLocation
+                        }, transaction);
 
                         transaction.Commit();
-                        MessageBox.Show("Stock successfully added and locations updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Stock and location successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
@@ -150,6 +101,7 @@ namespace InventorySystem.Products.Stock
                 }
             }
         }
+
 
 
 
