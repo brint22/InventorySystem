@@ -75,8 +75,8 @@ namespace InventorySystem.Products.Stock
                             return;
                         }
 
-                        int maxCapacity = 100; // Set a maximum capacity per location
-                        int remainingQty = productStock.Quantity; // Remaining quantity to be assigned to locations
+                        int maxCapacity = 100;
+                        int remainingQty = product.Quantity;
 
                         // Get available location IDs
                         var allLocations = connection.Query<string>(
@@ -92,7 +92,6 @@ namespace InventorySystem.Products.Stock
 
                         bool started = false;
 
-                        // Loop through the available locations and assign product quantity
                         foreach (var locId in allLocations)
                         {
                             if (!started)
@@ -108,19 +107,19 @@ namespace InventorySystem.Products.Stock
 
                             int assignQty = Math.Min(remainingQty, maxCapacity);
 
-                            // Insert into Location table with the assigned Capacity
+                            // Insert new row into Location table
                             string insertLocationSql = @"
                         INSERT INTO Location (LocationID, ProductID, Capacity, Availability)
                         VALUES (@LocationID, @ProductID, @Capacity, 'Occupied');";
 
                             connection.Execute(insertLocationSql, new
                             {
-                                LocationID = locId, // Use available LocationID
+                                LocationID = locId,
                                 ProductID = product.ProductID,
-                                Capacity = assignQty // Assign Capacity based on remaining quantity
+                                Capacity = assignQty
                             }, transaction);
 
-                            remainingQty -= assignQty; // Reduce the remaining quantity
+                            remainingQty -= assignQty;
                         }
 
                         if (remainingQty > 0)
@@ -141,6 +140,13 @@ namespace InventorySystem.Products.Stock
                 }
             }
         }
+
+
+
+
+
+
+
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
