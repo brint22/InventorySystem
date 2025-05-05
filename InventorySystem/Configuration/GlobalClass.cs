@@ -9,10 +9,10 @@ namespace InventorySystem.Models
     public class GlobalClass
     {
 
-        public static string connectionString =
-        @"Data Source=REDJYLL; 
-         Initial Catalog=WAREHOUSEISDB; 
-         Trusted_Connection=True;";
+        //public static string connectionString =
+        //@"Data Source=REDJYLL; 
+         //Initial Catalog=WAREHOUSEISDB; 
+         //Trusted_Connection=True;";
 
         //@"Data Source=NIEZEL\SQLEXPRESS; 
         //Initial Catalog=WAREHOUSEISDB; 
@@ -25,6 +25,11 @@ namespace InventorySystem.Models
         //@"Data Source=LAB1-PC09; 
         //Initial Catalog = WAREHOUSEISDB; 
         //User ID = sa; Password = 123456;";
+
+        public static string connectionString =
+            @"Data Source=LAB1-PC08; 
+            Initial Catalog=WAREHOUSEISDB; 
+            User ID = sa; Password = 123456;";
     }
 }
 
