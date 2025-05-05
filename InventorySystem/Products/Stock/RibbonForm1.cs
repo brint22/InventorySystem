@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InventorySystem.Account
+namespace InventorySystem.Products.Stock
 {
-    public partial class ViewAccount : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class RibbonForm1 : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public ViewAccount()
+        public RibbonForm1()
         {
             InitializeComponent();
         }

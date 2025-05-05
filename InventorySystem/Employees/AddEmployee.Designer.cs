@@ -497,17 +497,17 @@
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1342, 460);
+            this.groupControl2.Size = new System.Drawing.Size(1322, 430);
             this.groupControl2.TabIndex = 48;
             this.groupControl2.Text = "Employee Data";
             // 
             // xtcEmployeeData
             // 
-            this.xtcEmployeeData.Location = new System.Drawing.Point(29, 58);
+            this.xtcEmployeeData.Location = new System.Drawing.Point(29, 88);
             this.xtcEmployeeData.Margin = new System.Windows.Forms.Padding(2);
             this.xtcEmployeeData.Name = "xtcEmployeeData";
             this.xtcEmployeeData.SelectedTabPage = this.xtbEmployeeInfo;
-            this.xtcEmployeeData.Size = new System.Drawing.Size(1344, 498);
+            this.xtcEmployeeData.Size = new System.Drawing.Size(1324, 468);
             this.xtcEmployeeData.TabIndex = 50;
             this.xtcEmployeeData.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtbEmployeeInfo,
@@ -518,7 +518,7 @@
             this.xtbEmployeeInfo.Controls.Add(this.groupControl2);
             this.xtbEmployeeInfo.Margin = new System.Windows.Forms.Padding(2);
             this.xtbEmployeeInfo.Name = "xtbEmployeeInfo";
-            this.xtbEmployeeInfo.Size = new System.Drawing.Size(1342, 460);
+            this.xtbEmployeeInfo.Size = new System.Drawing.Size(1322, 430);
             this.xtbEmployeeInfo.Text = "Employee Info";
             // 
             // xtpAddress

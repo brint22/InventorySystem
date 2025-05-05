@@ -855,7 +855,7 @@
             this.gcEmployee.MainView = this.tvEmployee;
             this.gcEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.gcEmployee.Name = "gcEmployee";
-            this.gcEmployee.Size = new System.Drawing.Size(742, 417);
+            this.gcEmployee.Size = new System.Drawing.Size(997, 417);
             this.gcEmployee.TabIndex = 2;
             this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tvEmployee});

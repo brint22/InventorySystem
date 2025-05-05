@@ -17,14 +17,21 @@ namespace InventorySystem.Infrastracture.SQL
         WHERE LocationID = @LocationID";
 
         public static string GetAllLocations = @"
-        SELECT [LocationID],
-               ProductID,
-               Availability
+        SELECT 
+            [LocationID],
+            ProductID,
+            Availability,
+            CAST(Capacity AS VARCHAR(10)) + '/100' AS Capacity,
+            CASE 
+                --WHEN Capacity IS NULL THEN 'N/A'
+                WHEN (100 - Capacity) = 0 THEN ''
+                ELSE CAST((100 - Capacity) AS VARCHAR)
+            END AS AvailableCapacity
         FROM [WAREHOUSEISDB].[dbo].[Location]
         ORDER BY 
-            LEFT(LocationID, CHARINDEX('-', LocationID) - 1), -- first part: the letter (A, B, etc.)
-            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT), -- second part: the first number
-            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT) -- third part: the second number
+            LEFT(LocationID, CHARINDEX('-', LocationID) - 1),
+            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT),
+            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT)
         ";
 
         public static string InsertLocation = @"
@@ -50,6 +57,38 @@ namespace InventorySystem.Infrastracture.SQL
             CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
             CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT);
         ";
+        
+    public const string CheckIfProductExists = @"
+        SELECT COUNT(*) FROM Product WHERE ProductName = @ProductName";
+
+        public const string GetMaxProductNumber = @"
+        SELECT MAX(CAST(SUBSTRING(ProductID, 2, 4) AS INT))
+        FROM Product
+        WHERE ProductID LIKE @Prefix";
+
+        public const string InsertProduct = @"
+        INSERT INTO Product 
+        (ProductID, ProductName, Price, Quantity, ProductRecieved, ExpirationDate, CategoryID, BrandName, Supplier)
+        VALUES 
+        (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate, @CategoryID, @BrandName, @Supplier)";
+
+        public const string GetAvailableLocations = @"
+        SELECT LocationID 
+        FROM Location 
+        WHERE Availability = 'Available'
+        ORDER BY 
+            LEFT(LocationID, 1),
+            TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 3) AS INT),
+            TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 2) AS INT),
+            TRY_CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT)";
+
+        public const string UpdateLocation = @"
+        UPDATE Location
+        SET ProductID = @ProductID,
+            Availability = 'Occupied',
+            Capacity = @Capacity
+        WHERE LocationID = @LocationID";
+
 
     }
 

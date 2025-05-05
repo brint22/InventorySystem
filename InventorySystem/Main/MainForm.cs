@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using InventorySystem.Locations;
+using InventorySystem.Products.Stock;
 
 namespace InventorySystem.Views
 {
@@ -148,10 +149,49 @@ namespace InventorySystem.Views
 
         private void bbiViewProduct_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //Close the current Form when click another form
+            //Close the current Form when click 6another form
             CloseAllChildForms();
             // Create a new instance of Employee form
             new ViewProduct().Show();
+        }
+
+        private void viewAccount_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            ViewAccount account = new ViewAccount();
+            this.IsMdiContainer = true;
+            account.MdiParent = this;
+            // Show the Employee form
+
+            account.Show();
+        }
+
+        private void AddStock_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            AddStock stock = new AddStock();
+            this.IsMdiContainer = true;
+            stock.MdiParent = this;
+
+            // Show the Employee form
+            stock.Show();
+        }
+
+        private void ViewStock_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            ViewStock stock = new ViewStock();
+            this.IsMdiContainer = true;
+            stock.MdiParent = this;
+
+            // Show the Employee form
+            stock.Show();
         }
     }
 }

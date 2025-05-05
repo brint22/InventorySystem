@@ -73,7 +73,7 @@
             // 
             // gcCategory
             // 
-            this.gcCategory.Location = new System.Drawing.Point(36, 166);
+            this.gcCategory.Location = new System.Drawing.Point(36, 181);
             this.gcCategory.MainView = this.gvCategory;
             this.gcCategory.MenuManager = this.ribbon;
             this.gcCategory.Name = "gcCategory";
@@ -128,7 +128,7 @@
             this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdate.Appearance.Options.UseBackColor = true;
             this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(665, 92);
+            this.BtnUpdate.Location = new System.Drawing.Point(665, 111);
             this.BtnUpdate.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(180, 38);
@@ -140,7 +140,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(36, 62);
+            this.labelControl1.Location = new System.Drawing.Point(36, 77);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(138, 23);
             this.labelControl1.TabIndex = 74;
@@ -148,7 +148,7 @@
             // 
             // teCategoryName
             // 
-            this.teCategoryName.Location = new System.Drawing.Point(36, 93);
+            this.teCategoryName.Location = new System.Drawing.Point(36, 108);
             this.teCategoryName.Name = "teCategoryName";
             this.teCategoryName.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teCategoryName.Properties.Appearance.Options.UseFont = true;
@@ -162,7 +162,7 @@
             this.BtnDelete.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.Appearance.Options.UseBackColor = true;
             this.BtnDelete.Appearance.Options.UseFont = true;
-            this.BtnDelete.Location = new System.Drawing.Point(853, 92);
+            this.BtnDelete.Location = new System.Drawing.Point(853, 111);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(190, 38);
@@ -184,6 +184,7 @@
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ViewCategory.IconOptions.Image")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ViewCategory";
             this.Ribbon = this.ribbon;
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;

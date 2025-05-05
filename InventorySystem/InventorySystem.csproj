@@ -97,28 +97,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounts\CreateAccount.cs">
+    <Compile Include="Employees\Accounts\CreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Accounts\CreateAccount.Designer.cs">
+    <Compile Include="Employees\Accounts\CreateAccount.Designer.cs">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Accounts\ViewAccount.cs">
+    <Compile Include="Employees\Accounts\ViewAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Accounts\ViewAccount.Designer.cs">
+    <Compile Include="Employees\Accounts\ViewAccount.Designer.cs">
       <DependentUpon>ViewAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Categories\AddCategory.cs">
+    <Compile Include="Models\ProductStock.cs" />
+    <Compile Include="Products\Categories\AddCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Categories\AddCategory.Designer.cs">
+    <Compile Include="Products\Categories\AddCategory.Designer.cs">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Categories\ViewCategory.cs">
+    <Compile Include="Products\Categories\ViewCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Categories\ViewCategory.Designer.cs">
+    <Compile Include="Products\Categories\ViewCategory.Designer.cs">
       <DependentUpon>ViewCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Employees\AddEmployee.cs">
@@ -149,16 +150,16 @@
     <Compile Include="Infrastracture\Repositories\ProductRepository.cs" />
     <Compile Include="Infrastracture\SQL\EmployeeSQL.cs" />
     <Compile Include="Infrastracture\SQL\ProductSQL.cs" />
-    <Compile Include="Locations\AddLocation.cs">
+    <Compile Include="Products\Locations\AddLocation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Locations\AddLocation.Designer.cs">
+    <Compile Include="Products\Locations\AddLocation.Designer.cs">
       <DependentUpon>AddLocation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Locations\ViewLocation.cs">
+    <Compile Include="Products\Locations\ViewLocation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Locations\ViewLocation.Designer.cs">
+    <Compile Include="Products\Locations\ViewLocation.Designer.cs">
       <DependentUpon>ViewLocation.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\LoginForm.cs">
@@ -190,6 +191,18 @@
     <Compile Include="Products\AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Products\Stock\AddStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\Stock\AddStock.Designer.cs">
+      <DependentUpon>AddStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\Stock\ViewStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\Stock\ViewStock.Designer.cs">
+      <DependentUpon>ViewStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\EmployeesReport.cs">
@@ -204,16 +217,16 @@
     <Compile Include="Products\ViewProduct.Designer.cs">
       <DependentUpon>ViewProduct.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Accounts\CreateAccount.resx">
+    <EmbeddedResource Include="Employees\Accounts\CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Accounts\ViewAccount.resx">
+    <EmbeddedResource Include="Employees\Accounts\ViewAccount.resx">
       <DependentUpon>ViewAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Categories\AddCategory.resx">
+    <EmbeddedResource Include="Products\Categories\AddCategory.resx">
       <DependentUpon>AddCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Categories\ViewCategory.resx">
+    <EmbeddedResource Include="Products\Categories\ViewCategory.resx">
       <DependentUpon>ViewCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employees\AddEmployee.resx">
@@ -229,10 +242,10 @@
       <DependentUpon>ViewEmployee.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Locations\AddLocation.resx">
+    <EmbeddedResource Include="Products\Locations\AddLocation.resx">
       <DependentUpon>AddLocation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Locations\ViewLocation.resx">
+    <EmbeddedResource Include="Products\Locations\ViewLocation.resx">
       <DependentUpon>ViewLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
@@ -243,6 +256,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Products\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\Stock\AddStock.resx">
+      <DependentUpon>AddStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\Stock\ViewStock.resx">
+      <DependentUpon>ViewStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

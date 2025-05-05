@@ -23,7 +23,6 @@ namespace InventorySystem.Infrastracture.Repositories
         }
 
         // INSERT METHODS
-
         public void RegisterEmployee(Employee employees, byte[] imageBytes, Address address)
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
@@ -113,7 +112,6 @@ namespace InventorySystem.Infrastracture.Repositories
                 }
             }
         }
-
         // LOAD METHODS
 
         public DataTable GetEmployeeList(string roleFilter)
@@ -230,7 +228,6 @@ namespace InventorySystem.Infrastracture.Repositories
             dateHired.EditValue = null;
             role.EditValue = null;
         }
-
 
     }
 }
