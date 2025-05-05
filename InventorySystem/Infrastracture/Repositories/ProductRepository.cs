@@ -176,9 +176,9 @@ namespace InventorySystem.Infrastracture.Repositories
                         {
                             product.ProductID,
                             product.ProductName,
-                            product.ProductRecieved,
                             product.CategoryID,
-                            product.BrandName
+                            product.BrandName,
+                            product.Capacity
                         }, transaction);
 
                         if (rowsAffected == 0)

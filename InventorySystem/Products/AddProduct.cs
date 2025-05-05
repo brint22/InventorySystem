@@ -62,8 +62,8 @@ namespace InventorySystem.Products
                 CategoryID = GetCategoryID(), // ✅ Use the actual selected ProductID
                 ProductName = teProductName.Text.Trim(),
                 BrandName = teBrandName.Text.Trim(),
-                ProductRecieved = DateTime.Now
-            };
+               Capacity = int.Parse(teCapacity.Text)
+        };
 
             // ✅ Save to database
             ProductRepository repo = new ProductRepository(GlobalClass.connectionString);
@@ -98,7 +98,10 @@ namespace InventorySystem.Products
             return 0; // Or return -1 or throw an exception if 0 is a valid category ID
         }
 
-      
+        private void groupControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }

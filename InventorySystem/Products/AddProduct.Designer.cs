@@ -42,6 +42,8 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.numericChartRangeControlClient1 = new DevExpress.XtraEditors.NumericChartRangeControlClient();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.teCapacity = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProductName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCategory.Properties)).BeginInit();
@@ -49,6 +51,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericChartRangeControlClient1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCapacity.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -64,7 +67,7 @@
             this.ribbon.OptionsMenuMinWidth = 283;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(778, 49);
+            this.ribbon.Size = new System.Drawing.Size(718, 49);
             // 
             // ribbonPage1
             // 
@@ -118,7 +121,7 @@
             this.lueCategory.Properties.DisplayMember = "CategoryName";
             this.lueCategory.Properties.NullText = "";
             this.lueCategory.Properties.ValueMember = "CategoryID";
-            this.lueCategory.Size = new System.Drawing.Size(319, 28);
+            this.lueCategory.Size = new System.Drawing.Size(249, 28);
             this.lueCategory.TabIndex = 22;
             // 
             // labelControl1
@@ -138,7 +141,7 @@
             this.BtnCancel.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.Appearance.Options.UseBackColor = true;
             this.BtnCancel.Appearance.Options.UseFont = true;
-            this.BtnCancel.Location = new System.Drawing.Point(404, 398);
+            this.BtnCancel.Location = new System.Drawing.Point(364, 347);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(249, 31);
             this.BtnCancel.TabIndex = 67;
@@ -150,7 +153,7 @@
             this.BtnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSubmit.Appearance.Options.UseBackColor = true;
             this.BtnSubmit.Appearance.Options.UseFont = true;
-            this.BtnSubmit.Location = new System.Drawing.Point(134, 398);
+            this.BtnSubmit.Location = new System.Drawing.Point(94, 347);
             this.BtnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(250, 31);
@@ -185,6 +188,8 @@
             // 
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
+            this.groupControl1.Controls.Add(this.teCapacity);
+            this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.labelControl7);
             this.groupControl1.Controls.Add(this.teProductName);
             this.groupControl1.Controls.Add(this.labelControl2);
@@ -193,15 +198,39 @@
             this.groupControl1.Controls.Add(this.lueCategory);
             this.groupControl1.Location = new System.Drawing.Point(22, 67);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(733, 314);
+            this.groupControl1.Size = new System.Drawing.Size(662, 254);
             this.groupControl1.TabIndex = 74;
             this.groupControl1.Text = "Product Information";
+            this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(381, 123);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(48, 16);
+            this.labelControl3.TabIndex = 74;
+            this.labelControl3.Text = "Capacity";
+            // 
+            // teCapacity
+            // 
+            this.teCapacity.Location = new System.Drawing.Point(381, 143);
+            this.teCapacity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.teCapacity.MenuManager = this.ribbon;
+            this.teCapacity.Name = "teCapacity";
+            this.teCapacity.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.teCapacity.Properties.Appearance.Options.UseFont = true;
+            this.teCapacity.Properties.AutoHeight = false;
+            this.teCapacity.Size = new System.Drawing.Size(249, 28);
+            this.teCapacity.TabIndex = 75;
             // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 453);
+            this.ClientSize = new System.Drawing.Size(718, 453);
             this.ControlBox = false;
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnSubmit);
@@ -225,6 +254,7 @@
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericChartRangeControlClient1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teCapacity.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,5 +275,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.NumericChartRangeControlClient numericChartRangeControlClient1;
+        private DevExpress.XtraEditors.TextEdit teCapacity;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
     }
 }

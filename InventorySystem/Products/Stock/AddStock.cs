@@ -106,14 +106,6 @@ namespace InventorySystem.Products.Stock
             }
         }
 
-
-
-
-
-
-
-
-
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
            
