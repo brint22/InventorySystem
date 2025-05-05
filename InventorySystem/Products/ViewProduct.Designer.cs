@@ -40,6 +40,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnFilter = new DevExpress.XtraEditors.SimpleButton();
             this.cbFilter = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.Capacity = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcFacultyStaff)).BeginInit();
             this.gcFacultyStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcProductList)).BeginInit();
@@ -60,10 +61,10 @@
             this.gcFacultyStaff.Controls.Add(this.cbFilter);
             this.gcFacultyStaff.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcFacultyStaff.Location = new System.Drawing.Point(0, 0);
-            this.gcFacultyStaff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gcFacultyStaff.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.gcFacultyStaff.Name = "gcFacultyStaff";
-            this.gcFacultyStaff.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.gcFacultyStaff.Size = new System.Drawing.Size(922, 507);
+            this.gcFacultyStaff.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.gcFacultyStaff.Size = new System.Drawing.Size(1280, 624);
             this.gcFacultyStaff.TabIndex = 6;
             this.gcFacultyStaff.Text = "   Filter By :";
             // 
@@ -72,12 +73,12 @@
             this.gcProductList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcProductList.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gcProductList.Location = new System.Drawing.Point(2, 108);
+            this.gcProductList.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.gcProductList.Location = new System.Drawing.Point(2, 133);
             this.gcProductList.MainView = this.gvProductList;
-            this.gcProductList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gcProductList.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.gcProductList.Name = "gcProductList";
-            this.gcProductList.Size = new System.Drawing.Size(918, 394);
+            this.gcProductList.Size = new System.Drawing.Size(1275, 485);
             this.gcProductList.TabIndex = 7;
             this.gcProductList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvProductList});
@@ -88,28 +89,36 @@
             this.ProductID,
             this.ProductName,
             this.CategoryName,
-            this.BrandName});
+            this.BrandName,
+            this.Capacity});
+            this.gvProductList.DetailHeight = 431;
             this.gvProductList.FixedLineWidth = 1;
             this.gvProductList.GridControl = this.gcProductList;
             this.gvProductList.Name = "gvProductList";
+            this.gvProductList.OptionsEditForm.PopupEditFormWidth = 933;
             this.gvProductList.OptionsView.ShowGroupPanel = false;
             this.gvProductList.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never;
             // 
             // ProductID
             // 
-            this.ProductID.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
+            this.ProductID.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
+            this.ProductID.AppearanceCell.Options.UseFont = true;
+            this.ProductID.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProductID.AppearanceHeader.Options.UseFont = true;
             this.ProductID.Caption = "Product ID";
             this.ProductID.FieldName = "ProductID";
+            this.ProductID.MinWidth = 23;
             this.ProductID.Name = "ProductID";
             this.ProductID.OptionsColumn.AllowEdit = false;
             this.ProductID.Visible = true;
             this.ProductID.VisibleIndex = 0;
-            this.ProductID.Width = 50;
+            this.ProductID.Width = 58;
             // 
             // ProductName
             // 
-            this.ProductName.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
+            this.ProductName.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
+            this.ProductName.AppearanceCell.Options.UseFont = true;
+            this.ProductName.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProductName.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.ProductName.AppearanceHeader.Options.UseFont = true;
             this.ProductName.AppearanceHeader.Options.UseForeColor = true;
@@ -117,14 +126,17 @@
             this.ProductName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ProductName.Caption = "Product Name";
             this.ProductName.FieldName = "ProductName";
+            this.ProductName.MinWidth = 23;
             this.ProductName.Name = "ProductName";
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 1;
-            this.ProductName.Width = 74;
+            this.ProductName.Width = 86;
             // 
             // CategoryName
             // 
-            this.CategoryName.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
+            this.CategoryName.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
+            this.CategoryName.AppearanceCell.Options.UseFont = true;
+            this.CategoryName.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold);
             this.CategoryName.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.CategoryName.AppearanceHeader.Options.UseFont = true;
             this.CategoryName.AppearanceHeader.Options.UseForeColor = true;
@@ -132,15 +144,18 @@
             this.CategoryName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.CategoryName.Caption = "Category";
             this.CategoryName.FieldName = "CategoryName";
+            this.CategoryName.MinWidth = 23;
             this.CategoryName.Name = "CategoryName";
             this.CategoryName.OptionsColumn.AllowEdit = false;
             this.CategoryName.Visible = true;
             this.CategoryName.VisibleIndex = 2;
-            this.CategoryName.Width = 61;
+            this.CategoryName.Width = 71;
             // 
             // BrandName
             // 
-            this.BrandName.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
+            this.BrandName.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
+            this.BrandName.AppearanceCell.Options.UseFont = true;
+            this.BrandName.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold);
             this.BrandName.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.BrandName.AppearanceHeader.Options.UseFont = true;
             this.BrandName.AppearanceHeader.Options.UseForeColor = true;
@@ -148,20 +163,21 @@
             this.BrandName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.BrandName.Caption = "Brand";
             this.BrandName.FieldName = "BrandName";
+            this.BrandName.MinWidth = 23;
             this.BrandName.Name = "BrandName";
             this.BrandName.OptionsColumn.AllowEdit = false;
             this.BrandName.Visible = true;
             this.BrandName.VisibleIndex = 3;
-            this.BrandName.Width = 61;
+            this.BrandName.Width = 71;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(113, 64);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSearch.Location = new System.Drawing.Point(132, 79);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Properties.AutoHeight = false;
             this.txtSearch.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.txtSearch.Size = new System.Drawing.Size(483, 22);
+            this.txtSearch.Size = new System.Drawing.Size(564, 27);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.txtSearch_EditValueChanging);
             // 
@@ -169,10 +185,10 @@
             // 
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(26, 72);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl1.Location = new System.Drawing.Point(30, 89);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(85, 13);
+            this.labelControl1.Size = new System.Drawing.Size(102, 16);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "Search Keyword :";
             // 
@@ -182,17 +198,17 @@
             this.btnFilter.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnFilter.Appearance.Options.UseBackColor = true;
             this.btnFilter.Appearance.Options.UseForeColor = true;
-            this.btnFilter.Location = new System.Drawing.Point(281, 13);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFilter.Location = new System.Drawing.Point(328, 16);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(53, 21);
+            this.btnFilter.Size = new System.Drawing.Size(62, 26);
             this.btnFilter.TabIndex = 2;
             this.btnFilter.Text = "FILTER";
             // 
             // cbFilter
             // 
-            this.cbFilter.Location = new System.Drawing.Point(113, 13);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbFilter.Location = new System.Drawing.Point(132, 16);
+            this.cbFilter.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Properties.AutoHeight = false;
             this.cbFilter.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -201,17 +217,33 @@
             "All Records",
             "Faculty",
             "Staff"});
-            this.cbFilter.Size = new System.Drawing.Size(162, 21);
+            this.cbFilter.Size = new System.Drawing.Size(189, 26);
             this.cbFilter.TabIndex = 1;
+            // 
+            // Capacity
+            // 
+            this.Capacity.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
+            this.Capacity.AppearanceCell.Options.UseFont = true;
+            this.Capacity.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold);
+            this.Capacity.AppearanceHeader.Options.UseFont = true;
+            this.Capacity.AppearanceHeader.Options.UseTextOptions = true;
+            this.Capacity.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.Capacity.Caption = "Capacity";
+            this.Capacity.FieldName = "Capacity";
+            this.Capacity.MinWidth = 25;
+            this.Capacity.Name = "Capacity";
+            this.Capacity.Visible = true;
+            this.Capacity.VisibleIndex = 4;
+            this.Capacity.Width = 87;
             // 
             // ViewProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(922, 507);
+            this.ClientSize = new System.Drawing.Size(1280, 624);
             this.Controls.Add(this.gcFacultyStaff);
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ViewProduct.IconOptions.SvgImage")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "ViewProduct";
             this.Text = "Product List";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -240,5 +272,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn CategoryName;
         private DevExpress.XtraGrid.Columns.GridColumn BrandName;
         private DevExpress.XtraGrid.Columns.GridColumn ProductID;
+        private DevExpress.XtraGrid.Columns.GridColumn Capacity;
     }
 }

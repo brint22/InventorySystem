@@ -263,15 +263,15 @@ namespace InventorySystem.Infrastracture.Repositories
         public static void LoadLocation(LookUpEdit lookUpEdit, string locationPrefix)
         {
             string query = @"
-        SELECT [LocationID], 
-               CAST(ISNULL(Capacity, 0) AS VARCHAR(20)) + '/100' AS Capacity
-        FROM [Location]
-        WHERE ISNULL(Capacity, 0) < 100
-        AND LEFT(LocationID, CHARINDEX('-', LocationID) - 1) = @LocationPrefix
-        ORDER BY 
-            LEFT(LocationID, CHARINDEX('-', LocationID) - 1),
-            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT),
-            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT);";
+ SELECT [LocationID], 
+        CAST(ISNULL(Capacity, 0) AS VARCHAR(20)) + '/100' AS Capacity
+ FROM [Location]
+ WHERE ISNULL(Capacity, 0) < 100
+ AND LEFT(LocationID, CHARINDEX('-', LocationID) - 1) = @LocationPrefix
+ ORDER BY 
+     LEFT(LocationID, CHARINDEX('-', LocationID) - 1),
+     CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT),
+     CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT);";
 
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {

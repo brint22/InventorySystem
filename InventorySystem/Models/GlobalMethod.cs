@@ -140,9 +140,9 @@ namespace InventorySystem.Models
                     string query = @"SELECT
                          p.[ProductID]
                         ,p.[ProductName]               
-                        ,p.[ProductRecieved]
                         ,c.CategoryName
-                        ,p.[BrandName]                       
+                        ,p.[BrandName]    
+                        ,p.[Capacity]
                       
                   FROM [WAREHOUSEISDB].[dbo].[Product] p
                   LEFT JOIN Category c

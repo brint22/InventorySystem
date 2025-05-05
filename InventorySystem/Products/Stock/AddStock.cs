@@ -44,6 +44,22 @@ namespace InventorySystem.Products.Stock
                 {
                     try
                     {
+                        // Retrieve the product's capacity
+                        string getCapacitySql = @"
+                    SELECT Capacity 
+                    FROM Product 
+                    WHERE ProductID = @ProductID;";
+
+                        int productCapacity = connection.QuerySingleOrDefault<int>(getCapacitySql, new { ProductID = productStock.ProductID }, transaction);
+
+                        // Check if the quantity being added exceeds the product's capacity
+                        if (productStock.Quantity > productCapacity)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show($"Quantity cannot exceed the product's capacity of {productCapacity}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         // Insert into Stock table
                         string insertStockSql = @"
                     INSERT INTO Stock 
@@ -80,11 +96,11 @@ namespace InventorySystem.Products.Stock
 
                         // Update the location with the new quantity
                         string updateLocationSql = @"
-                                                    UPDATE Location
-                                                    SET ProductID = @ProductID,
-                                                        Capacity = COALESCE(Capacity, 0) + @NewQuantity,  -- Add the newly added stock quantity to Capacity
-                                                        Availability = 'Occupied'
-                                                    WHERE LocationID = @LocationID;";
+                                            UPDATE Location
+                                            SET ProductID = @ProductID,
+                                                Capacity = COALESCE(Capacity, 0) + @NewQuantity,  -- Add the newly added stock quantity to Capacity
+                                                Availability = 'Occupied'
+                                            WHERE LocationID = @LocationID;";
 
                         connection.Execute(updateLocationSql, new
                         {
@@ -92,8 +108,6 @@ namespace InventorySystem.Products.Stock
                             NewQuantity = newQuantity,           // Use the new quantity to add to the capacity
                             LocationID = selectedLocation       // The location ID to update
                         }, transaction);
-
-
                         transaction.Commit();
                         MessageBox.Show("Stock and location successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -200,7 +214,6 @@ namespace InventorySystem.Products.Stock
             {
                 departmentID = lueProductName.EditValue.ToString();
             }
-
             return departmentID;
         }
 
