@@ -80,11 +80,11 @@ namespace InventorySystem.Products.Stock
 
                         // Update the location with the new quantity
                         string updateLocationSql = @"
-UPDATE Location
-SET ProductID = @ProductID,
-    Capacity = COALESCE(Capacity, 0) + @NewQuantity,  -- Add the newly added stock quantity to Capacity
-    Availability = 'Occupied'
-WHERE LocationID = @LocationID;";
+                                                    UPDATE Location
+                                                    SET ProductID = @ProductID,
+                                                        Capacity = COALESCE(Capacity, 0) + @NewQuantity,  -- Add the newly added stock quantity to Capacity
+                                                        Availability = 'Occupied'
+                                                    WHERE LocationID = @LocationID;";
 
                         connection.Execute(updateLocationSql, new
                         {
@@ -136,6 +136,7 @@ WHERE LocationID = @LocationID;";
                 Quantity = quantity,
                 ExpirationDate = deExpirationDate.DateTime,
                 Supplier = teSupplier.Text
+
             };
             GetProductID();
 
