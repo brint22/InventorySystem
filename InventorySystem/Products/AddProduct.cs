@@ -32,33 +32,18 @@ namespace InventorySystem.Products
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
+            // ✅ Validate required fields
             if (string.IsNullOrWhiteSpace(teProductName.Text) ||
-       string.IsNullOrWhiteSpace(teBrandName.Text) ||
-
-       string.IsNullOrWhiteSpace(teSupplier.Text))
+                string.IsNullOrWhiteSpace(teBrandName.Text))
             {
-                MessageBox.Show("Please fill in all required fields (Product Name, Brand Name, and Supplier).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please fill in all required fields (Product Name and Brand Name).",
+                                "Validation Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!int.TryParse(tePrice.Text, out int price))
-            {
-                MessageBox.Show("Please enter a valid price.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!int.TryParse(teQuantity.Text, out int quantity))
-            {
-                MessageBox.Show("Please enter a valid quantity.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (deExpirationDate.DateTime <= DateTime.Now)
-            {
-                MessageBox.Show("Expiration date must be in the future.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
+            // ✅ Confirm submission
             DialogResult confirmResult = MessageBox.Show(
                 "Are you sure you want to add this product?",
                 "Confirm Product Registration",
@@ -71,45 +56,27 @@ namespace InventorySystem.Products
                 return;
             }
 
+            // ✅ Create product object
             Product product = new Product()
             {
+                CategoryID = GetCategoryID(), // ✅ Use the actual selected ProductID
                 ProductName = teProductName.Text.Trim(),
-                Price = price,
-                Quantity = quantity,
-                ProductRecieved = DateTime.Now,
-                ExpirationDate = deExpirationDate.DateTime,
                 BrandName = teBrandName.Text.Trim(),
-                Supplier = teSupplier.Text.Trim()
+                ProductRecieved = DateTime.Now
             };
 
-            string selectedLocation = cbLocation.SelectedItem?.ToString();
-            if (string.IsNullOrWhiteSpace(selectedLocation))
-            {
-                MessageBox.Show("Please select a location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // ✅ Call the method from the repository
+            // ✅ Save to database
             ProductRepository repo = new ProductRepository(GlobalClass.connectionString);
-            repo.RegisterProduct(product, selectedLocation);
-        }
+            repo.RegisterProduct(product);
 
-        private void tePrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Allow digits and control keys (like Backspace)
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            MessageBox.Show("Product registered successfully!",
+                            "Success",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
         }
+    
 
-        private void teQuantity_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true; // Block any non-digit characters
-            }
-        }
+      
 
         //private void cbLocationGroup_SelectedIndexChanged(object sender, EventArgs e)
         //{
@@ -120,6 +87,18 @@ namespace InventorySystem.Products
         //        ProductRepository.LoadLocation(cbLocation, selectedGroup);
         //    }
         //}
+
+        private int GetCategoryID()
+        {
+            if (lueCategory.EditValue != null && int.TryParse(lueCategory.EditValue.ToString(), out int categoryID))
+            {
+                return categoryID;
+            }
+
+            return 0; // Or return -1 or throw an exception if 0 is a valid category ID
+        }
+
+      
     }
 
 }

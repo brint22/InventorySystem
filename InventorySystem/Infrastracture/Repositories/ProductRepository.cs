@@ -138,8 +138,14 @@ namespace InventorySystem.Infrastracture.Repositories
         }
     }
 
-        public void RegisterProduct(Product product, string selectedLocation)
+        public void RegisterProduct(Product product)
         {
+            if (product == null || string.IsNullOrWhiteSpace(product.ProductName))
+            {
+                MessageBox.Show("Product details are incomplete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
                 connection.Open();
@@ -147,19 +153,16 @@ namespace InventorySystem.Infrastracture.Repositories
                 {
                     try
                     {
-                        if (product == null || string.IsNullOrWhiteSpace(product.ProductName))
-                        {
-                            MessageBox.Show("Product details are incomplete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
+                        // ✅ Check for duplicate product name
                         int count = connection.ExecuteScalar<int>(ProductSQL.CheckIfProductExists, new { product.ProductName }, transaction);
                         if (count > 0)
                         {
                             MessageBox.Show("A product with the same name already exists.", "Duplicate Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            transaction.Rollback();
                             return;
                         }
 
+                        // ✅ Generate ProductID (e.g., A0001 24)
                         char firstLetter = char.ToUpper(product.ProductName[0]);
                         string yearPart = DateTime.Now.Year.ToString().Substring(2);
                         string prefix = firstLetter.ToString() + "%" + yearPart;
@@ -168,17 +171,14 @@ namespace InventorySystem.Infrastracture.Repositories
                         string numberPart = (latestNumber + 1).ToString("D4");
                         product.ProductID = $"{firstLetter}{numberPart}{yearPart}";
 
+                        // ✅ Insert product
                         int rowsAffected = connection.Execute(ProductSQL.InsertProduct, new
                         {
                             product.ProductID,
                             product.ProductName,
-                            product.Price,
-                            product.Quantity,
                             product.ProductRecieved,
-                            product.ExpirationDate,
                             product.CategoryID,
-                            product.BrandName,
-                            product.Supplier
+                            product.BrandName
                         }, transaction);
 
                         if (rowsAffected == 0)
@@ -188,60 +188,8 @@ namespace InventorySystem.Infrastracture.Repositories
                             return;
                         }
 
-                        int maxCapacity = 100;
-                        int remainingQty = product.Quantity;
-
-                        if (string.IsNullOrWhiteSpace(selectedLocation))
-                        {
-                            MessageBox.Show("Please provide a valid location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        var allLocations = connection.Query<string>(ProductSQL.GetAvailableLocations, null, transaction).ToList();
-                        int startIndex = allLocations.IndexOf(selectedLocation);
-
-                        if (startIndex == -1)
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show("Selected location is not available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        bool started = false;
-                        foreach (var locId in allLocations)
-                        {
-                            if (!started)
-                            {
-                                if (locId == selectedLocation)
-                                    started = true;
-                                else
-                                    continue;
-                            }
-
-                            if (remainingQty <= 0)
-                                break;
-
-                            int assignQty = Math.Min(remainingQty, maxCapacity);
-
-                            connection.Execute(ProductSQL.UpdateLocation, new
-                            {
-                                ProductID = product.ProductID,
-                                Capacity = assignQty,
-                                LocationID = locId
-                            }, transaction);
-
-                            remainingQty -= assignQty;
-                        }
-
-                        if (remainingQty > 0)
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show("Not enough available locations to store the full quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-
+                        // ✅ Commit if all goes well
                         transaction.Commit();
-                        MessageBox.Show("Product registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {

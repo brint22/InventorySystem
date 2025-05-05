@@ -68,9 +68,9 @@ namespace InventorySystem.Infrastracture.SQL
 
         public const string InsertProduct = @"
         INSERT INTO Product 
-        (ProductID, ProductName, Price, Quantity, ProductRecieved, ExpirationDate, CategoryID, BrandName, Supplier)
+        (ProductID, ProductName, ProductRecieved, CategoryID, BrandName)
         VALUES 
-        (@ProductID, @ProductName, @Price, @Quantity, @ProductRecieved, @ExpirationDate, @CategoryID, @BrandName, @Supplier)";
+        (@ProductID, @ProductName, @ProductRecieved, @CategoryID, @BrandName)";
 
         public const string GetAvailableLocations = @"
         SELECT LocationID 

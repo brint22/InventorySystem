@@ -34,14 +34,8 @@
             this.gvProductList = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ProductID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ExpirationDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CategoryName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.LocationID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BrandName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Supplier = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Availability = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtSearch = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnFilter = new DevExpress.XtraEditors.SimpleButton();
@@ -93,14 +87,8 @@
             this.gvProductList.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.ProductID,
             this.ProductName,
-            this.Price,
-            this.Quantity,
-            this.ExpirationDate,
             this.CategoryName,
-            this.LocationID,
-            this.BrandName,
-            this.Supplier,
-            this.Availability});
+            this.BrandName});
             this.gvProductList.FixedLineWidth = 1;
             this.gvProductList.GridControl = this.gcProductList;
             this.gvProductList.Name = "gvProductList";
@@ -134,54 +122,6 @@
             this.ProductName.VisibleIndex = 1;
             this.ProductName.Width = 74;
             // 
-            // Price
-            // 
-            this.Price.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
-            this.Price.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.Price.AppearanceHeader.Options.UseFont = true;
-            this.Price.AppearanceHeader.Options.UseForeColor = true;
-            this.Price.AppearanceHeader.Options.UseTextOptions = true;
-            this.Price.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.Price.Caption = "Price";
-            this.Price.FieldName = "Price";
-            this.Price.Name = "Price";
-            this.Price.OptionsColumn.AllowEdit = false;
-            this.Price.Visible = true;
-            this.Price.VisibleIndex = 2;
-            this.Price.Width = 51;
-            // 
-            // Quantity
-            // 
-            this.Quantity.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
-            this.Quantity.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.Quantity.AppearanceHeader.Options.UseFont = true;
-            this.Quantity.AppearanceHeader.Options.UseForeColor = true;
-            this.Quantity.AppearanceHeader.Options.UseTextOptions = true;
-            this.Quantity.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.Quantity.Caption = "Quantity";
-            this.Quantity.FieldName = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.OptionsColumn.AllowEdit = false;
-            this.Quantity.Visible = true;
-            this.Quantity.VisibleIndex = 3;
-            this.Quantity.Width = 55;
-            // 
-            // ExpirationDate
-            // 
-            this.ExpirationDate.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
-            this.ExpirationDate.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.ExpirationDate.AppearanceHeader.Options.UseFont = true;
-            this.ExpirationDate.AppearanceHeader.Options.UseForeColor = true;
-            this.ExpirationDate.AppearanceHeader.Options.UseTextOptions = true;
-            this.ExpirationDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.ExpirationDate.Caption = "Expiration Date";
-            this.ExpirationDate.FieldName = "ExpirationDate";
-            this.ExpirationDate.Name = "ExpirationDate";
-            this.ExpirationDate.OptionsColumn.AllowEdit = false;
-            this.ExpirationDate.Visible = true;
-            this.ExpirationDate.VisibleIndex = 4;
-            this.ExpirationDate.Width = 76;
-            // 
             // CategoryName
             // 
             this.CategoryName.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
@@ -195,20 +135,8 @@
             this.CategoryName.Name = "CategoryName";
             this.CategoryName.OptionsColumn.AllowEdit = false;
             this.CategoryName.Visible = true;
-            this.CategoryName.VisibleIndex = 5;
+            this.CategoryName.VisibleIndex = 2;
             this.CategoryName.Width = 61;
-            // 
-            // LocationID
-            // 
-            this.LocationID.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
-            this.LocationID.AppearanceHeader.Options.UseFont = true;
-            this.LocationID.Caption = "Location";
-            this.LocationID.FieldName = "LocationID";
-            this.LocationID.Name = "LocationID";
-            this.LocationID.OptionsColumn.AllowEdit = false;
-            this.LocationID.Visible = true;
-            this.LocationID.VisibleIndex = 6;
-            this.LocationID.Width = 50;
             // 
             // BrandName
             // 
@@ -223,35 +151,8 @@
             this.BrandName.Name = "BrandName";
             this.BrandName.OptionsColumn.AllowEdit = false;
             this.BrandName.Visible = true;
-            this.BrandName.VisibleIndex = 7;
+            this.BrandName.VisibleIndex = 3;
             this.BrandName.Width = 61;
-            // 
-            // Supplier
-            // 
-            this.Supplier.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
-            this.Supplier.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.Supplier.AppearanceHeader.Options.UseFont = true;
-            this.Supplier.AppearanceHeader.Options.UseForeColor = true;
-            this.Supplier.AppearanceHeader.Options.UseTextOptions = true;
-            this.Supplier.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.Supplier.Caption = "Supplier";
-            this.Supplier.FieldName = "Supplier";
-            this.Supplier.Name = "Supplier";
-            this.Supplier.Visible = true;
-            this.Supplier.VisibleIndex = 8;
-            this.Supplier.Width = 64;
-            // 
-            // Availability
-            // 
-            this.Availability.AppearanceHeader.Font = new System.Drawing.Font("Sitka Text", 8.25F, System.Drawing.FontStyle.Bold);
-            this.Availability.AppearanceHeader.Options.UseFont = true;
-            this.Availability.Caption = "Availability";
-            this.Availability.FieldName = "Availability";
-            this.Availability.Name = "Availability";
-            this.Availability.OptionsColumn.AllowEdit = false;
-            this.Availability.Visible = true;
-            this.Availability.VisibleIndex = 9;
-            this.Availability.Width = 82;
             // 
             // txtSearch
             // 
@@ -336,14 +237,8 @@
         private DevExpress.XtraGrid.GridControl gcProductList;
         private DevExpress.XtraGrid.Views.Grid.GridView gvProductList;
         private DevExpress.XtraGrid.Columns.GridColumn ProductName;
-        private DevExpress.XtraGrid.Columns.GridColumn Price;
-        private DevExpress.XtraGrid.Columns.GridColumn Quantity;
-        private DevExpress.XtraGrid.Columns.GridColumn ExpirationDate;
         private DevExpress.XtraGrid.Columns.GridColumn CategoryName;
         private DevExpress.XtraGrid.Columns.GridColumn BrandName;
-        private DevExpress.XtraGrid.Columns.GridColumn Supplier;
-        private DevExpress.XtraGrid.Columns.GridColumn LocationID;
         private DevExpress.XtraGrid.Columns.GridColumn ProductID;
-        private DevExpress.XtraGrid.Columns.GridColumn Availability;
     }
 }

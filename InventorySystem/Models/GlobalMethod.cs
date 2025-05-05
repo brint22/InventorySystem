@@ -139,21 +139,14 @@ namespace InventorySystem.Models
 
                     string query = @"SELECT
                          p.[ProductID]
-                        ,p.[ProductName]
-                        ,p.[Price]
-                        ,p.[Quantity]
-                        ,p.[ExpirationDate]
+                        ,p.[ProductName]               
                         ,p.[ProductRecieved]
                         ,c.CategoryName
-                        ,p.[BrandName]
-                        ,p.[Supplier]
-                        ,l.LocationID	                    
-                        ,l.Availability 
+                        ,p.[BrandName]                       
+                      
                   FROM [WAREHOUSEISDB].[dbo].[Product] p
                   LEFT JOIN Category c
-                  ON c.CategoryID  = p.CategoryID
-                  LEFT JOIN Location l
-                  ON l.ProductID = p.ProductID";
+                  ON c.CategoryID  = p.CategoryID";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
