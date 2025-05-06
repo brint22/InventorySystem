@@ -44,52 +44,21 @@ namespace InventorySystem.Products.Stock
                 {
                     try
                     {
-                        // Retrieve the product's capacity
-                        string getCapacitySql = @"
-                    SELECT Capacity 
-                    FROM Product 
-                    WHERE ProductID = @ProductID;";
+                        // 1. Get product's max capacity
+                        string getCapacitySql = @"SELECT Capacity FROM Product WHERE ProductID = @ProductID;";
+                        int maxCapacity = connection.QuerySingleOrDefault<int>(getCapacitySql, new { productStock.ProductID }, transaction);
 
-                        int productCapacity = connection.QuerySingleOrDefault<int>(getCapacitySql, new { ProductID = productStock.ProductID }, transaction);
-
-                        // Check if the quantity being added exceeds the product's capacity
-                        if (productStock.Quantity > productCapacity)
+                        if (maxCapacity <= 0)
                         {
                             transaction.Rollback();
-                            MessageBox.Show($"Quantity cannot exceed the product's capacity of {productCapacity}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Invalid product capacity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
-                        // Validate selected location
-                        if (string.IsNullOrWhiteSpace(selectedLocation))
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show("Please provide a valid location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        // Step 1: Check if the selected location has "Available" status
-                        string checkLocationSql = @"
-                    SELECT LocationID, Availability
-                    FROM Location
-                    WHERE LocationID = @LocationID AND Availability = 'Available';";
-
-                        var locationResult = connection.QueryFirstOrDefault(checkLocationSql, new { LocationID = selectedLocation }, transaction);
-
-                        if (locationResult == null)
-                        {
-                            // If no available location is found, rollback and show error
-                            transaction.Rollback();
-                            MessageBox.Show("No available location found. Please choose a different location.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        // Insert into Stock table
+                        // 2. Insert into Stock table (record of the stock)
                         string insertStockSql = @"
-                    INSERT INTO Stock 
-                    (ProductID, Price, Quantity, ExpirationDate, Supplier)
-                    VALUES
-                    (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier);";
+                    INSERT INTO Stock (ProductID, Price, Quantity, ExpirationDate, Supplier)
+                    VALUES (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier);";
 
                         int rowsAffected = connection.Execute(insertStockSql, new
                         {
@@ -107,30 +76,69 @@ namespace InventorySystem.Products.Stock
                             return;
                         }
 
-                        // Step 2: Update the available location
-                        string updateLocationSql = @"
-                    UPDATE Location
-                    SET ProductID = @ProductID,
-                        Capacity = COALESCE(Capacity, 0) + @NewQuantity,  -- Add the newly added stock quantity to Capacity
-                        Availability = 'Occupied'
-                    WHERE LocationID = @LocationID;";
+                        // 3. Split quantity across locations
+                        int remainingQty = productStock.Quantity;
 
-                        int rowsUpdated = connection.Execute(updateLocationSql, new
+                        // List of candidate locations (start with selected one, then get others if needed)
+                        var locationIds = new List<string> { selectedLocation };
+
+                        // Add more available locations if quantity doesn't fit
+                        string availableLocationsSql = @"
+                    SELECT LocationID FROM Location
+                    WHERE (Availability = 'Available' OR ProductID = @ProductID)
+                      AND LocationID != @SelectedLocation
+                    ORDER BY LocationID;";
+
+                        var additionalLocations = connection.Query<string>(availableLocationsSql, new
                         {
                             ProductID = productStock.ProductID,
-                            NewQuantity = productStock.Quantity,
-                            LocationID = selectedLocation
+                            SelectedLocation = selectedLocation
                         }, transaction);
 
-                        if (rowsUpdated == 0)
+                        locationIds.AddRange(additionalLocations);
+
+                        foreach (var locId in locationIds)
+                        {
+                            if (remainingQty <= 0)
+                                break;
+
+                            // Get current capacity of this location
+                            string getLocCapacitySql = @"SELECT ISNULL(Capacity, 0) FROM Location WHERE LocationID = @LocationID";
+                            int currentLocQty = connection.QuerySingleOrDefault<int>(getLocCapacitySql, new { LocationID = locId }, transaction);
+
+                            int spaceLeft = maxCapacity - currentLocQty;
+                            if (spaceLeft <= 0)
+                                continue;
+
+                            int qtyToAdd = Math.Min(remainingQty, spaceLeft);
+
+                            // Update location
+                            string updateLocSql = @"
+                        UPDATE Location
+                        SET ProductID = @ProductID,
+                            Capacity = ISNULL(Capacity, 0) + @QtyToAdd,
+                            Availability = 'Occupied'
+                        WHERE LocationID = @LocationID";
+
+                            connection.Execute(updateLocSql, new
+                            {
+                                ProductID = productStock.ProductID,
+                                QtyToAdd = qtyToAdd,
+                                LocationID = locId
+                            }, transaction);
+
+                            remainingQty -= qtyToAdd;
+                        }
+
+                        if (remainingQty > 0)
                         {
                             transaction.Rollback();
-                            MessageBox.Show("Location update failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Not enough available locations to store the entire stock.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
 
                         transaction.Commit();
-                        MessageBox.Show("Stock and location successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Stock successfully added and allocated to location(s)!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
@@ -140,6 +148,8 @@ namespace InventorySystem.Products.Stock
                 }
             }
         }
+
+
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
