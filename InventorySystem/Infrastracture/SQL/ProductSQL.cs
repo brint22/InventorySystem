@@ -58,7 +58,7 @@ namespace InventorySystem.Infrastracture.SQL
             
         FROM Location l 
         LEFT JOIN Product p ON l.ProductID = p.ProductID
-        WHERE l.Availability = @Availability
+        WHERE l.Availability = @occupied
         ORDER BY 
             LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1),
             CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
