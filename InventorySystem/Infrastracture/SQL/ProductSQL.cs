@@ -17,13 +17,17 @@ namespace InventorySystem.Infrastracture.SQL
         WHERE LocationID = @LocationID";
 
         public static string GetAllLocations = @"
-         SELECT 
+       SELECT 
             l.[LocationID],
             l.ProductID,
             l.Availability,
-            CAST(ISNULL(l.Capacity, 0) AS VARCHAR(50)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(50)) AS Capacity,
             CASE 
-                WHEN ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0) = 0 THEN 'Full'
+                WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
+                ELSE CAST(ISNULL(l.Capacity, 0) AS VARCHAR(50)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(50))
+            END AS Capacity,
+            CASE 
+                WHEN ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0) = 0 AND ISNULL(l.Capacity, 0) <> 0 THEN 'Full'
+                WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
                 ELSE CAST((ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0)) AS VARCHAR)
             END AS AvailableCapacity
         FROM [WAREHOUSEISDB].[dbo].[Location] l
@@ -31,9 +35,7 @@ namespace InventorySystem.Infrastracture.SQL
         ORDER BY 
             LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1),
             CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
-            CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT);
-
-        ";
+            CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT); ";
 
         public static string InsertLocation = @"
         INSERT INTO Location (LocationID, ProductID, Availability) 
@@ -43,16 +45,42 @@ namespace InventorySystem.Infrastracture.SQL
         SELECT 
             l.LocationID, 
             l.ProductID, 
-            l.Availability
-        FROM Location l     
-        WHERE l.Availability = @Availability;";
+            l.Availability,
+            CASE 
+                WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
+                ELSE CAST(ISNULL(l.Capacity, 0) AS VARCHAR(50)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(50))
+            END AS Capacity,
+            CASE 
+                WHEN ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0) = 0 AND ISNULL(l.Capacity, 0) <> 0 THEN 'Full'
+                WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
+                ELSE CAST((ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0)) AS VARCHAR)
+            END AS AvailableCapacity
+            
+        FROM Location l 
+        LEFT JOIN Product p ON l.ProductID = p.ProductID
+        WHERE l.Availability = @Availability
+        ORDER BY 
+            LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1),
+            CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
+            CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT);";
 
         public const string GetLocationsByGroup = @"
         SELECT 
             l.LocationID, 
             l.ProductID, 
-            l.Availability
-        FROM Location l     
+            l.Availability,
+            CASE 
+                WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
+                ELSE CAST(ISNULL(l.Capacity, 0) AS VARCHAR(50)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(50))
+            END AS Capacity,
+            CASE 
+                WHEN ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0) = 0 AND ISNULL(l.Capacity, 0) <> 0 THEN 'Full'
+                WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
+                ELSE CAST((ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0)) AS VARCHAR)
+            END AS AvailableCapacity
+            
+        FROM Location l
+        LEFT JOIN Product p ON l.ProductID = p.ProductID
         WHERE LEFT(l.LocationID, 1) = @GroupLetter
         ORDER BY 
             CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
