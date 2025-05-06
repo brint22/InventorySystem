@@ -17,21 +17,22 @@ namespace InventorySystem.Infrastracture.SQL
         WHERE LocationID = @LocationID";
 
         public static string GetAllLocations = @"
-        SELECT 
-            [LocationID],
-            ProductID,
-            Availability,
-            CAST(Capacity AS VARCHAR(10)) + '/100' AS Capacity,
+         SELECT 
+            l.[LocationID],
+            l.ProductID,
+            l.Availability,
+            CAST(ISNULL(l.Capacity, 0) AS VARCHAR(50)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(50)) AS Capacity,
             CASE 
-                --WHEN Capacity IS NULL THEN 'N/A'
-                WHEN (100 - Capacity) = 0 THEN ''
-                ELSE CAST((100 - Capacity) AS VARCHAR)
+                WHEN ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0) = 0 THEN 'Full'
+                ELSE CAST((ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0)) AS VARCHAR)
             END AS AvailableCapacity
-        FROM [WAREHOUSEISDB].[dbo].[Location]
+        FROM [WAREHOUSEISDB].[dbo].[Location] l
+        LEFT JOIN Product p ON l.ProductID = p.ProductID
         ORDER BY 
-            LEFT(LocationID, CHARINDEX('-', LocationID) - 1),
-            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT),
-            CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT)
+            LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1),
+            CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
+            CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT);
+
         ";
 
         public static string InsertLocation = @"
