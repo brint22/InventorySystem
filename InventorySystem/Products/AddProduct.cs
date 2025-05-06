@@ -73,6 +73,8 @@ namespace InventorySystem.Products
                             "Success",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
+
+            ResetAllFields();
         }
     
 
@@ -98,9 +100,12 @@ namespace InventorySystem.Products
             return 0; // Or return -1 or throw an exception if 0 is a valid category ID
         }
 
-        private void groupControl1_Paint(object sender, PaintEventArgs e)
+       private void ResetAllFields()
         {
-
+            teProductName.Clear();
+            teBrandName.Clear();
+            lueCategory.Clear();
+            teCapacity.Clear();
         }
     }
 

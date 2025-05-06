@@ -10,9 +10,9 @@ namespace InventorySystem.Models
     {
 
         public static string connectionString =
-        @"Data Source=REDJYLL; 
-        Initial Catalog=WAREHOUSEISDB; 
-        Trusted_Connection=True;";
+        //@"Data Source=REDJYLL; 
+        //Initial Catalog=WAREHOUSEISDB; 
+        //Trusted_Connection=True;";
 
         //@"Data Source=NIEZEL\SQLEXPRESS; 
         //Initial Catalog=WAREHOUSEISDB; 
@@ -22,9 +22,9 @@ namespace InventorySystem.Models
         //Initial Catalog = WAREHOUSEISDB; 
         //User ID = sa; Password = 123456;";
 
-        //@"Data Source=LAB1-PC09; 
-        //Initial Catalog = WAREHOUSEISDB; 
-        //User ID = sa; Password = 123456;";
+        @"Data Source=LAB1-PC09; 
+        Initial Catalog = WAREHOUSEISDB; 
+        User ID = sa; Password = 123456;";
 
         //public static string connectionString =
         //    @"Data Source=LAB1-PC10; 
