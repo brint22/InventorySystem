@@ -192,6 +192,8 @@ namespace InventorySystem.Products.Stock
 
             // Call the method to add the customer transaction
             AddNewStock(productStock, selectedLocation, product, location);
+
+            ResetAllFields();
         }
 
         private void cbLocationGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -259,6 +261,18 @@ namespace InventorySystem.Products.Stock
 
             return departmentID;
         }
+
+        private void ResetAllFields()
+        {
+            lueProductName.Clear();
+            tePrice.Clear();
+            teQuantity.Clear();
+            deExpirationDate.Clear();
+            cbLocationGroup.Clear();
+            lueLocation.Clear();
+            teSupplier.Clear();
+        }
     }
 
+   
 }

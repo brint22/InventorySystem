@@ -263,15 +263,24 @@ namespace InventorySystem.Infrastracture.Repositories
         public static void LoadLocation(LookUpEdit lookUpEdit, string locationPrefix)
         {
             string query = @"
- SELECT [LocationID], 
-        CAST(ISNULL(Capacity, 0) AS VARCHAR(20)) + '/100' AS Capacity
- FROM [Location]
- WHERE ISNULL(Capacity, 0) < 100
- AND LEFT(LocationID, CHARINDEX('-', LocationID) - 1) = @LocationPrefix
- ORDER BY 
-     LEFT(LocationID, CHARINDEX('-', LocationID) - 1),
-     CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID) + 1, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) - CHARINDEX('-', LocationID) - 1) AS INT),
-     CAST(SUBSTRING(LocationID, CHARINDEX('-', LocationID, CHARINDEX('-', LocationID) + 1) + 1, LEN(LocationID)) AS INT);";
+ SELECT 
+    l.LocationID, 
+    CASE 
+        WHEN ISNULL(l.Capacity, 0) = 0 AND ISNULL(p.Capacity, 0) = 0 THEN ''
+        ELSE CAST(ISNULL(l.Capacity, 0) AS VARCHAR(20)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(20))
+    END AS Capacity
+FROM [Location] l
+LEFT JOIN Product p ON l.ProductID = p.ProductID
+WHERE 
+    LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1) = @LocationPrefix
+    AND (
+        ISNULL(p.Capacity, 0) = 0 -- include unassigned products
+        OR ISNULL(l.Capacity, 0) < ISNULL(p.Capacity, 0) -- not full yet
+    )
+ORDER BY 
+    LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1),
+    CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
+    CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT);";
 
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
