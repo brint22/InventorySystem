@@ -240,59 +240,38 @@ namespace InventorySystem.Infrastracture.Repositories
             }
         }
 
-        public static void LoadLocationGroup(ComboBoxEdit comboBoxEdit)
+        public static void LoadLocation(LookUpEdit lookUpEdit, string locationPrefix, string productId)
         {
             string query = @"
-        SELECT DISTINCT LEFT(LocationID, CHARINDEX('-', LocationID) - 1) AS LocationGroup
-        FROM [WAREHOUSEISDB].[dbo].[Location]
-        WHERE LocationID LIKE '[A-K]%'
-        ORDER BY LocationGroup";
+    SELECT 
+        l.LocationID, 
+        CASE 
+            WHEN l.Availability = 'Available' THEN 'Available'
+            ELSE CAST(ISNULL(l.Capacity, 0) AS VARCHAR(20)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(20))
+        END AS Capacity
+    FROM [Location] l
+    LEFT JOIN Product p ON l.ProductID = p.ProductID
+    WHERE 
+        LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1) = @LocationPrefix
+        AND (
+            l.Availability = 'Available'
+            OR (l.ProductID = @ProductID AND ISNULL(l.Capacity, 0) < ISNULL(p.Capacity, 0))
+        )
+    ORDER BY 
+        LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1),
+        CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
+        CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT);";
 
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
             {
-                var locationGroups = connection.Query<string>(query);
-
-                comboBoxEdit.Properties.Items.Clear();
-                foreach (var group in locationGroups)
-                {
-                    comboBoxEdit.Properties.Items.Add(group);
-                }
-            }
-        }
-
-        public static void LoadLocation(LookUpEdit lookUpEdit, string locationPrefix)
-        {
-            string query = @"
- SELECT 
-    l.LocationID, 
-    CASE 
-        WHEN ISNULL(l.Capacity, 0) = 0 AND ISNULL(p.Capacity, 0) = 0 THEN ''
-        ELSE CAST(ISNULL(l.Capacity, 0) AS VARCHAR(20)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(20))
-    END AS Capacity
-FROM [Location] l
-LEFT JOIN Product p ON l.ProductID = p.ProductID
-WHERE 
-    LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1) = @LocationPrefix
-    AND (
-        ISNULL(p.Capacity, 0) = 0 -- include unassigned products
-        OR ISNULL(l.Capacity, 0) < ISNULL(p.Capacity, 0) -- not full yet
-    )
-ORDER BY 
-    LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1),
-    CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
-    CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT);";
-
-            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
-            {
-                var locationList = connection.Query<Location>(query, new { LocationPrefix = locationPrefix }).ToList();
+                var locationList = connection.Query<Location>(query, new { LocationPrefix = locationPrefix, ProductID = productId }).ToList();
 
                 lookUpEdit.Properties.DataSource = locationList;
-                lookUpEdit.Properties.DisplayMember = "LocationID"; // shown in dropdown
-                lookUpEdit.Properties.ValueMember = "LocationID";   // selected value
+                lookUpEdit.Properties.DisplayMember = "LocationID";
+                lookUpEdit.Properties.ValueMember = "LocationID";
                 lookUpEdit.Properties.NullText = "Select Location";
                 lookUpEdit.EditValue = null;
 
-                // Optional: show Capacity in popup
                 lookUpEdit.Properties.Columns.Clear();
                 lookUpEdit.Properties.Columns.Add(new LookUpColumnInfo("LocationID", "Location"));
                 lookUpEdit.Properties.Columns.Add(new LookUpColumnInfo("Capacity", "Capacity"));

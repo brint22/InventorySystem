@@ -29,7 +29,7 @@ namespace InventorySystem.Products.Stock
 
         private void AddStock_Load(object sender, EventArgs e)
         {
-           
+
             LoadAllProducts();
 
 
@@ -153,7 +153,7 @@ namespace InventorySystem.Products.Stock
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-           
+
             if (!int.TryParse(tePrice.Text, out int price))
             {
                 MessageBox.Show("Please enter a valid price.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -199,10 +199,11 @@ namespace InventorySystem.Products.Stock
         private void cbLocationGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedGroup = cbLocationGroup.SelectedItem?.ToString();
-            if (!string.IsNullOrEmpty(selectedGroup))
+            string selectedProductId = lueProductName.EditValue?.ToString();
+
+            if (!string.IsNullOrEmpty(selectedGroup) && !string.IsNullOrEmpty(selectedProductId))
             {
-                // Now passing both the ComboBoxEdit control and the selectedGroup
-                ProductRepository.LoadLocation(lueLocation, selectedGroup);
+                ProductRepository.LoadLocation(lueLocation, selectedGroup, selectedProductId);
             }
         }
 
@@ -268,11 +269,44 @@ namespace InventorySystem.Products.Stock
             tePrice.Clear();
             teQuantity.Clear();
             deExpirationDate.Clear();
-            cbLocationGroup.Clear();
-            lueLocation.Clear();
+            cbLocationGroup.Properties.Items.Clear();
+            cbLocationGroup.EditValue = null;
+            lueLocation.Properties.DataSource = null;        
+            lueLocation.Properties.Columns.Clear();          
+            lueLocation.Properties.DisplayMember = string.Empty;
+            lueLocation.Properties.ValueMember = string.Empty;
+            lueLocation.EditValue = null;                    
+            lueLocation.Properties.NullText = "";            
+
             teSupplier.Clear();
         }
-    }
 
-   
+        private void lueProductName_EditValueChanged(object sender, EventArgs e)
+        {
+
+
+            if (lueProductName.EditValue == null)
+                return;
+
+            // Clear previous values
+            cbLocationGroup.Properties.Items.Clear();
+            cbLocationGroup.EditValue = null;
+            lueLocation.Properties.DataSource = null;
+            lueLocation.Properties.Columns.Clear();
+            lueLocation.Properties.DisplayMember = string.Empty;
+            lueLocation.Properties.ValueMember = string.Empty;
+            lueLocation.EditValue = null;
+
+            // Populate A–K
+            for (char c = 'A'; c <= 'K'; c++)
+            {
+                cbLocationGroup.Properties.Items.Add(c.ToString());
+            }
+
+            // Optionally select the first one by default
+            cbLocationGroup.SelectedIndex = 0;
+
+        }
+    }
 }
+    
