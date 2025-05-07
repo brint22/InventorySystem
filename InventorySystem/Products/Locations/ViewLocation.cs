@@ -124,18 +124,23 @@ namespace InventorySystem.Locations
                         return;
 
                     case "occupied":
-                    case "available":
-                        List<Location> locations = repo.GetLocationsByAvailability(
-                            filterText == "occupied" ? "Occupied" : "Available"
-                        );
-
-                        if (locations.Count == 0)
+                        List<Location> occupiedLocations = repo.GetLocationsByAvailability("Occupied");
+                        if (occupiedLocations.Count == 0)
                         {
                             MessageBox.Show("No records found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-
-                        gcLocation.DataSource = locations;
+                        gcLocation.DataSource = occupiedLocations;
                         break;
+
+                    case "available":
+                        List<Location> availableLocations = repo.GetLocationsByAvailability("Available");
+                        if (availableLocations.Count == 0)
+                        {
+                            MessageBox.Show("No records found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        gcLocation.DataSource = availableLocations;
+                        break;
+
 
                     default:
                         MessageBox.Show("Invalid filter selection.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);

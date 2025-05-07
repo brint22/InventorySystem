@@ -42,27 +42,27 @@ namespace InventorySystem.Infrastracture.SQL
         VALUES (@LocationID, '', 'Available')";
 
         public const string GetLocationsByAvailability = @"
-        SELECT 
-            l.LocationID, 
-            l.ProductID, 
-            l.Availability,
-            CASE 
-                WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
-                ELSE CAST(ISNULL(l.Capacity, 0) AS VARCHAR(50)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(50))
-            END AS Capacity,
-            CASE 
-                WHEN ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0) = 0 AND ISNULL(l.Capacity, 0) <> 0 THEN 'Full'
-                WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
-                ELSE CAST((ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0)) AS VARCHAR)
-            END AS AvailableCapacity
-            
-        FROM Location l 
-        LEFT JOIN Product p ON l.ProductID = p.ProductID
-        WHERE l.Availability = @occupied
-        ORDER BY 
-            LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1),
-            CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
-            CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT);";
+SELECT 
+    l.[LocationID],
+    l.ProductID,
+    l.Availability,
+    CASE 
+        WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
+        ELSE CAST(ISNULL(l.Capacity, 0) AS VARCHAR(50)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(50))
+    END AS Capacity,
+    CASE 
+        WHEN ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0) = 0 AND ISNULL(l.Capacity, 0) <> 0 THEN 'Full'
+        WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
+        ELSE CAST((ISNULL(p.Capacity, 0) - ISNULL(l.Capacity, 0)) AS VARCHAR)
+    END AS AvailableCapacity
+FROM [WAREHOUSEISDB].[dbo].[Location] l
+LEFT JOIN Product p ON l.ProductID = p.ProductID
+WHERE l.Availability = @Availability -- <======= THIS !!!
+ORDER BY 
+    LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1),
+    CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
+    CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT);";
+
 
         public const string GetLocationsByGroup = @"
         SELECT 

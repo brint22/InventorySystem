@@ -12,7 +12,7 @@ namespace InventorySystem.Models
         public string ProductID { get; set; }     
         public string Availability { get; set; }
         public string Capacity { get; set; }
-
+        public string AvailableCapacity { get; set; }
 
     }
 }
