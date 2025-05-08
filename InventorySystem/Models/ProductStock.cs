@@ -14,5 +14,6 @@ namespace InventorySystem.Models
         public int Quantity { get; set; }
         public DateTime ExpirationDate { get; set; }
         public string Supplier { get; set; }
+        public DateTime ProductRecieved { get; set; }
     }
 }

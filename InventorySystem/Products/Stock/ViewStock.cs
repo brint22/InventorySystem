@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using InventorySystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,11 @@ namespace InventorySystem.Products
         public ViewStock()
         {
             InitializeComponent();
+        }
+
+        private void ViewStock_Load(object sender, EventArgs e)
+        {
+            GlobalMethod.LoadStockList(gcStock);
         }
     }
 }

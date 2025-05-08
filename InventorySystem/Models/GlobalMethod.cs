@@ -197,5 +197,49 @@ namespace InventorySystem.Models
                 }
             }
         }
+
+        public static void LoadStockList(GridControl gcStock)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = @"SELECT 
+                                   s.StockID
+                                  ,s.ProductID
+	                              ,p.ProductName
+                                  ,s.Price
+                                  ,s.Quantity
+                                  ,s.ExpirationDate
+	                              ,l.Capacity
+	                              ,l.LocationID AS Location
+                                  ,s.Supplier
+                                  ,s.ProductRecieved
+                              FROM [WAREHOUSEISDB].[dbo].[Stock] s
+                              LEFT JOIN Location l
+                              ON l.ProductID = s.ProductID
+                              LEFT JOIN Product p
+                              ON p.ProductID = s.ProductID";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
+
+                    gcStock.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading product: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
