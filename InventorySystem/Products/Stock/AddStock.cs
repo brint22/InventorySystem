@@ -29,10 +29,7 @@ namespace InventorySystem.Products.Stock
 
         private void AddStock_Load(object sender, EventArgs e)
         {
-
             LoadAllProducts();
-
-
         }
 
         public void AddNewStock(ProductStock productStock, string selectedLocation, Product product, Location location)
