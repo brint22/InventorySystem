@@ -37,6 +37,7 @@ namespace InventorySystem.Products.Stock
 
         public void AddNewStock(ProductStock productStock, string selectedLocation, Product product, Location location)
         {
+
             using (var connection = new SqlConnection(GlobalClass.connectionString))
             {
                 connection.Open();

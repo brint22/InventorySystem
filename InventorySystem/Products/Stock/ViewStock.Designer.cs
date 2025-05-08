@@ -275,6 +275,8 @@
             // 
             // ProductID
             // 
+            this.ProductID.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.ProductID.AppearanceCell.Options.UseFont = true;
             this.ProductID.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
             this.ProductID.AppearanceHeader.Options.UseFont = true;
             this.ProductID.Caption = "Product ID";
@@ -288,6 +290,8 @@
             // 
             // ProductRecieved
             // 
+            this.ProductRecieved.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.ProductRecieved.AppearanceCell.Options.UseFont = true;
             this.ProductRecieved.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
             this.ProductRecieved.AppearanceHeader.Options.UseFont = true;
             this.ProductRecieved.Caption = "Product Recieved";
