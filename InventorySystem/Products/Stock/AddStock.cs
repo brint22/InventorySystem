@@ -34,6 +34,7 @@ namespace InventorySystem.Products.Stock
 
         public void AddNewStock(ProductStock productStock, string selectedLocation, Product product, Location location)
         {
+
             using (var connection = new SqlConnection(GlobalClass.connectionString))
             {
                 connection.Open();
@@ -52,8 +53,8 @@ namespace InventorySystem.Products.Stock
                         }
 
                         string insertStockSql = @"
-                    INSERT INTO Stock (ProductID, Price, Quantity, ExpirationDate, Supplier)
-                    VALUES (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier);";
+                    INSERT INTO Stock (ProductID, Price, Quantity, ExpirationDate, Supplier, ProductRecieved)
+                    VALUES (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier, @ProductRecieved);";
 
                         int rowsAffected = connection.Execute(insertStockSql, new
                         {
@@ -61,7 +62,8 @@ namespace InventorySystem.Products.Stock
                             productStock.Price,
                             productStock.Quantity,
                             productStock.ExpirationDate,
-                            productStock.Supplier
+                            productStock.Supplier,
+                            productStock.ProductRecieved,
                         }, transaction);
 
                         if (rowsAffected == 0)
@@ -169,7 +171,8 @@ namespace InventorySystem.Products.Stock
                 Price = price,
                 Quantity = quantity,
                 ExpirationDate = deExpirationDate.DateTime,
-                Supplier = teSupplier.Text
+                Supplier = teSupplier.Text,
+                ProductRecieved = DateTime.Now,
 
             };
             GetProductID();
