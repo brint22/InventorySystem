@@ -208,22 +208,20 @@ namespace InventorySystem.Models
                 {
                     connection.Open();
 
-                    string query = @"SELECT 
-                                   s.StockID
-                                  ,s.ProductID
-	                              ,p.ProductName
-                                  ,s.Price
-                                  ,s.Quantity
-                                  ,s.ExpirationDate
-	                              ,l.Capacity
-	                              ,l.LocationID AS Location
-                                  ,s.Supplier
-                                  ,s.ProductRecieved
-                              FROM [WAREHOUSEISDB].[dbo].[Stock] s
-                              LEFT JOIN Location l
-                              ON l.ProductID = s.ProductID
-                              LEFT JOIN Product p
-                              ON p.ProductID = s.ProductID";
+                    string query = @"SELECT s.[StockID]
+      ,s.[ProductID]
+	  ,p.[ProductName]
+      ,s.[Price]
+      ,s.[Quantity]
+	  ,l.[LocationID]
+      ,s.[Supplier]
+      ,s.[ExpirationDate]
+      ,s.[ProductRecieved]
+  FROM [WAREHOUSEISDB].[dbo].[Stock] s
+  LEFT JOIN Product p
+  ON p.ProductID = s.ProductID
+  LEFT JOIN Location l
+  ON l.ProductID = s.ProductID  ";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

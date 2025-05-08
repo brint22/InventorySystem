@@ -34,7 +34,6 @@ namespace InventorySystem.Products.Stock
 
         public void AddNewStock(ProductStock productStock, string selectedLocation, Product product, Location location)
         {
-
             using (var connection = new SqlConnection(GlobalClass.connectionString))
             {
                 connection.Open();
@@ -53,8 +52,8 @@ namespace InventorySystem.Products.Stock
                         }
 
                         string insertStockSql = @"
-                    INSERT INTO Stock (ProductID, Price, Quantity, ExpirationDate, Supplier, ProductRecieved)
-                    VALUES (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier, @ProductRecieved);";
+             INSERT INTO Stock (ProductID, Price, Quantity, ExpirationDate, Supplier, ProductRecieved)
+             VALUES (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier, @ProductRecieved);";
 
                         int rowsAffected = connection.Execute(insertStockSql, new
                         {
@@ -77,19 +76,19 @@ namespace InventorySystem.Products.Stock
 
                         // Get all locations sorted alphanumerically
                         string allLocationsSql = @"
-                    SELECT LocationID FROM Location
-                    WHERE (Availability = 'Available' OR ProductID = @ProductID)
-                    ORDER BY 
-                        SUBSTRING(LocationID, 1, 1),
-                        CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 2) AS INT),
-                        CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT);";
+             SELECT LocationID FROM Location
+             WHERE (Availability = 'Available' OR ProductID = @ProductID)
+             ORDER BY 
+                 SUBSTRING(LocationID, 1, 1),
+                 CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 2) AS INT),
+                 CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT);";
 
                         var allAvailableLocations = connection.Query<string>(allLocationsSql, new
                         {
                             ProductID = productStock.ProductID
                         }, transaction).ToList();
 
-                        // Start from selected location *and after*
+                        // Start from selected location and after
                         int selectedIndex = allAvailableLocations.IndexOf(selectedLocation);
                         if (selectedIndex == -1)
                         {
@@ -115,11 +114,11 @@ namespace InventorySystem.Products.Stock
                             int qtyToAdd = Math.Min(remainingQty, spaceLeft);
 
                             string updateLocSql = @"
-                        UPDATE Location
-                        SET ProductID = @ProductID,
-                            Capacity = ISNULL(Capacity, 0) + @QtyToAdd,
-                            Availability = 'Occupied'
-                        WHERE LocationID = @LocationID";
+                 UPDATE Location
+                 SET ProductID = @ProductID,
+                     Capacity = ISNULL(Capacity, 0) + @QtyToAdd,
+                     Availability = 'Occupied'
+                 WHERE LocationID = @LocationID";
 
                             connection.Execute(updateLocSql, new
                             {
@@ -303,7 +302,6 @@ namespace InventorySystem.Products.Stock
                 cbLocationGroup.Properties.Items.Add(c.ToString());
             }
 
-            // Optionally select the first one by default
             cbLocationGroup.SelectedIndex = 0;
 
         }

@@ -34,18 +34,18 @@
             this.gcStock = new DevExpress.XtraGrid.GridControl();
             this.gvCategory = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.StockID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ProductID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ExpirationDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Location = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Supplier = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ProductRecieved = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BtnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.BtnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.teCategoryName = new DevExpress.XtraEditors.TextEdit();
-            this.ProductID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ProductRecieved = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.LocationID = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCategory)).BeginInit();
@@ -54,18 +54,15 @@
             // 
             // ribbon
             // 
-            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(39, 36, 39, 36);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Margin = new System.Windows.Forms.Padding(4);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
-            this.ribbon.OptionsMenuMinWidth = 424;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1069, 73);
+            this.ribbon.Size = new System.Drawing.Size(831, 61);
             // 
             // ribbonPage1
             // 
@@ -84,11 +81,13 @@
             this.gcStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcStock.Location = new System.Drawing.Point(47, 220);
+            this.gcStock.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.gcStock.Location = new System.Drawing.Point(28, 152);
             this.gcStock.MainView = this.gvCategory;
+            this.gcStock.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.gcStock.MenuManager = this.ribbon;
             this.gcStock.Name = "gcStock";
-            this.gcStock.Size = new System.Drawing.Size(984, 288);
+            this.gcStock.Size = new System.Drawing.Size(765, 243);
             this.gcStock.TabIndex = 3;
             this.gcStock.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCategory});
@@ -102,11 +101,13 @@
             this.Price,
             this.ExpirationDate,
             this.Quantity,
-            this.Location,
             this.Supplier,
-            this.ProductRecieved});
+            this.ProductRecieved,
+            this.LocationID});
+            this.gvCategory.DetailHeight = 295;
             this.gvCategory.GridControl = this.gcStock;
             this.gvCategory.Name = "gvCategory";
+            this.gvCategory.OptionsEditForm.PopupEditFormWidth = 622;
             this.gvCategory.OptionsView.ShowGroupPanel = false;
             // 
             // StockID
@@ -121,12 +122,27 @@
             this.StockID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.StockID.Caption = "Stock ID";
             this.StockID.FieldName = "StockID";
-            this.StockID.MinWidth = 25;
+            this.StockID.MinWidth = 19;
             this.StockID.Name = "StockID";
             this.StockID.OptionsColumn.AllowEdit = false;
             this.StockID.Visible = true;
             this.StockID.VisibleIndex = 0;
-            this.StockID.Width = 82;
+            this.StockID.Width = 64;
+            // 
+            // ProductID
+            // 
+            this.ProductID.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.ProductID.AppearanceCell.Options.UseFont = true;
+            this.ProductID.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.ProductID.AppearanceHeader.Options.UseFont = true;
+            this.ProductID.Caption = "Product ID";
+            this.ProductID.FieldName = "ProductID";
+            this.ProductID.MinWidth = 23;
+            this.ProductID.Name = "ProductID";
+            this.ProductID.OptionsColumn.AllowEdit = false;
+            this.ProductID.Visible = true;
+            this.ProductID.VisibleIndex = 1;
+            this.ProductID.Width = 87;
             // 
             // ProductName
             // 
@@ -138,12 +154,12 @@
             this.ProductName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ProductName.Caption = "Product Name";
             this.ProductName.FieldName = "ProductName";
-            this.ProductName.MinWidth = 25;
+            this.ProductName.MinWidth = 19;
             this.ProductName.Name = "ProductName";
             this.ProductName.OptionsColumn.AllowEdit = false;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 2;
-            this.ProductName.Width = 145;
+            this.ProductName.Width = 113;
             // 
             // Price
             // 
@@ -155,11 +171,11 @@
             this.Price.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Price.Caption = "Price";
             this.Price.FieldName = "Price";
-            this.Price.MinWidth = 25;
+            this.Price.MinWidth = 19;
             this.Price.Name = "Price";
             this.Price.Visible = true;
             this.Price.VisibleIndex = 3;
-            this.Price.Width = 101;
+            this.Price.Width = 79;
             // 
             // ExpirationDate
             // 
@@ -171,11 +187,11 @@
             this.ExpirationDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ExpirationDate.Caption = "Expiration Date";
             this.ExpirationDate.FieldName = "ExpirationDate";
-            this.ExpirationDate.MinWidth = 25;
+            this.ExpirationDate.MinWidth = 19;
             this.ExpirationDate.Name = "ExpirationDate";
             this.ExpirationDate.Visible = true;
             this.ExpirationDate.VisibleIndex = 5;
-            this.ExpirationDate.Width = 161;
+            this.ExpirationDate.Width = 125;
             // 
             // Quantity
             // 
@@ -187,27 +203,11 @@
             this.Quantity.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Quantity.Caption = "Quantity";
             this.Quantity.FieldName = "Quantity";
-            this.Quantity.MinWidth = 25;
+            this.Quantity.MinWidth = 19;
             this.Quantity.Name = "Quantity";
             this.Quantity.Visible = true;
             this.Quantity.VisibleIndex = 4;
-            this.Quantity.Width = 118;
-            // 
-            // Location
-            // 
-            this.Location.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.Location.AppearanceCell.Options.UseFont = true;
-            this.Location.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.Location.AppearanceHeader.Options.UseFont = true;
-            this.Location.AppearanceHeader.Options.UseTextOptions = true;
-            this.Location.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.Location.Caption = "Location";
-            this.Location.FieldName = "Location";
-            this.Location.MinWidth = 25;
-            this.Location.Name = "Location";
-            this.Location.Visible = true;
-            this.Location.VisibleIndex = 6;
-            this.Location.Width = 152;
+            this.Quantity.Width = 92;
             // 
             // Supplier
             // 
@@ -219,11 +219,26 @@
             this.Supplier.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Supplier.Caption = "Supplier";
             this.Supplier.FieldName = "Supplier";
-            this.Supplier.MinWidth = 25;
+            this.Supplier.MinWidth = 19;
             this.Supplier.Name = "Supplier";
             this.Supplier.Visible = true;
-            this.Supplier.VisibleIndex = 7;
-            this.Supplier.Width = 203;
+            this.Supplier.VisibleIndex = 6;
+            this.Supplier.Width = 158;
+            // 
+            // ProductRecieved
+            // 
+            this.ProductRecieved.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.ProductRecieved.AppearanceCell.Options.UseFont = true;
+            this.ProductRecieved.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.ProductRecieved.AppearanceHeader.Options.UseFont = true;
+            this.ProductRecieved.Caption = "Product Recieved";
+            this.ProductRecieved.FieldName = "ProductRecieved";
+            this.ProductRecieved.MinWidth = 23;
+            this.ProductRecieved.Name = "ProductRecieved";
+            this.ProductRecieved.OptionsColumn.AllowEdit = false;
+            this.ProductRecieved.Visible = true;
+            this.ProductRecieved.VisibleIndex = 7;
+            this.ProductRecieved.Width = 87;
             // 
             // BtnDelete
             // 
@@ -232,10 +247,10 @@
             this.BtnDelete.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.Appearance.Options.UseBackColor = true;
             this.BtnDelete.Appearance.Options.UseFont = true;
-            this.BtnDelete.Location = new System.Drawing.Point(841, 155);
-            this.BtnDelete.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.BtnDelete.Location = new System.Drawing.Point(645, 98);
+            this.BtnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(190, 38);
+            this.BtnDelete.Size = new System.Drawing.Size(148, 32);
             this.BtnDelete.TabIndex = 79;
             this.BtnDelete.Text = "DELETE";
             // 
@@ -246,10 +261,10 @@
             this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdate.Appearance.Options.UseBackColor = true;
             this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(653, 155);
-            this.BtnUpdate.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.BtnUpdate.Location = new System.Drawing.Point(499, 98);
+            this.BtnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnUpdate.Name = "BtnUpdate";
-            this.BtnUpdate.Size = new System.Drawing.Size(180, 38);
+            this.BtnUpdate.Size = new System.Drawing.Size(140, 32);
             this.BtnUpdate.TabIndex = 78;
             this.BtnUpdate.Text = "UPDATE";
             // 
@@ -257,57 +272,39 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(47, 126);
+            this.labelControl1.Location = new System.Drawing.Point(28, 73);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(176, 27);
+            this.labelControl1.Size = new System.Drawing.Size(146, 23);
             this.labelControl1.TabIndex = 81;
             this.labelControl1.Text = "Search Keyword";
             // 
             // teCategoryName
             // 
-            this.teCategoryName.Location = new System.Drawing.Point(47, 156);
+            this.teCategoryName.Location = new System.Drawing.Point(28, 98);
+            this.teCategoryName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.teCategoryName.Name = "teCategoryName";
             this.teCategoryName.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teCategoryName.Properties.Appearance.Options.UseFont = true;
             this.teCategoryName.Properties.AutoHeight = false;
-            this.teCategoryName.Size = new System.Drawing.Size(394, 37);
+            this.teCategoryName.Size = new System.Drawing.Size(306, 31);
             this.teCategoryName.TabIndex = 80;
             // 
-            // ProductID
+            // LocationID
             // 
-            this.ProductID.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.ProductID.AppearanceCell.Options.UseFont = true;
-            this.ProductID.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.ProductID.AppearanceHeader.Options.UseFont = true;
-            this.ProductID.Caption = "Product ID";
-            this.ProductID.FieldName = "ProductID";
-            this.ProductID.MinWidth = 30;
-            this.ProductID.Name = "ProductID";
-            this.ProductID.OptionsColumn.AllowEdit = false;
-            this.ProductID.Visible = true;
-            this.ProductID.VisibleIndex = 1;
-            this.ProductID.Width = 112;
-            // 
-            // ProductRecieved
-            // 
-            this.ProductRecieved.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.ProductRecieved.AppearanceCell.Options.UseFont = true;
-            this.ProductRecieved.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.ProductRecieved.AppearanceHeader.Options.UseFont = true;
-            this.ProductRecieved.Caption = "Product Recieved";
-            this.ProductRecieved.FieldName = "ProductRecieved";
-            this.ProductRecieved.MinWidth = 30;
-            this.ProductRecieved.Name = "ProductRecieved";
-            this.ProductRecieved.OptionsColumn.AllowEdit = false;
-            this.ProductRecieved.Visible = true;
-            this.ProductRecieved.VisibleIndex = 8;
-            this.ProductRecieved.Width = 112;
+            this.LocationID.Caption = "Location";
+            this.LocationID.FieldName = "LocationID";
+            this.LocationID.MinWidth = 25;
+            this.LocationID.Name = "LocationID";
+            this.LocationID.Visible = true;
+            this.LocationID.VisibleIndex = 8;
+            this.LocationID.Width = 94;
             // 
             // ViewStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1069, 584);
+            this.ClientSize = new System.Drawing.Size(831, 492);
             this.ControlBox = false;
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.teCategoryName);
@@ -315,6 +312,7 @@
             this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.gcStock);
             this.Controls.Add(this.ribbon);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewStock";
@@ -345,7 +343,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Price;
         private DevExpress.XtraGrid.Columns.GridColumn ExpirationDate;
         private DevExpress.XtraGrid.Columns.GridColumn Quantity;
-        private DevExpress.XtraGrid.Columns.GridColumn Location;
         private DevExpress.XtraGrid.Columns.GridColumn Supplier;
         private DevExpress.XtraEditors.SimpleButton BtnDelete;
         private DevExpress.XtraEditors.SimpleButton BtnUpdate;
@@ -353,5 +350,6 @@
         private DevExpress.XtraEditors.TextEdit teCategoryName;
         private DevExpress.XtraGrid.Columns.GridColumn ProductID;
         private DevExpress.XtraGrid.Columns.GridColumn ProductRecieved;
+        private DevExpress.XtraGrid.Columns.GridColumn LocationID;
     }
 }
