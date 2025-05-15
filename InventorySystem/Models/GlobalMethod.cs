@@ -221,7 +221,12 @@ namespace InventorySystem.Models
   LEFT JOIN Product p
   ON p.ProductID = s.ProductID
   LEFT JOIN Location l
-  ON l.ProductID = s.ProductID  ";
+  ON l.ProductID = s.ProductID
+      ORDER BY 
+            LEFT(l.LocationID, CHARINDEX('-', l.LocationID) - 1),
+            CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID) + 1, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) - CHARINDEX('-', l.LocationID) - 1) AS INT),
+            CAST(SUBSTRING(l.LocationID, CHARINDEX('-', l.LocationID, CHARINDEX('-', l.LocationID) + 1) + 1, LEN(l.LocationID)) AS INT); 
+";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
