@@ -52,20 +52,21 @@ namespace InventorySystem.Products.Stock
                         }
 
                         string insertStockSql = @"
-             INSERT INTO Stock (ProductID, Price, Quantity, ExpirationDate, Supplier, ProductRecieved)
-             VALUES (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier, @ProductRecieved);";
+                    INSERT INTO Stock (ProductID, Price, Quantity, ExpirationDate, Supplier, ProductRecieved)
+                    OUTPUT INSERTED.StockID
+                    VALUES (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier, @ProductRecieved);";
 
-                        int rowsAffected = connection.Execute(insertStockSql, new
+                        string insertedStockID = connection.ExecuteScalar<string>(insertStockSql, new
                         {
                             productStock.ProductID,
                             productStock.Price,
                             productStock.Quantity,
                             productStock.ExpirationDate,
                             productStock.Supplier,
-                            productStock.ProductRecieved,
+                            productStock.ProductRecieved
                         }, transaction);
 
-                        if (rowsAffected == 0)
+                        if (string.IsNullOrEmpty(insertedStockID))
                         {
                             transaction.Rollback();
                             MessageBox.Show("Stock addition failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -74,21 +75,19 @@ namespace InventorySystem.Products.Stock
 
                         int remainingQty = productStock.Quantity;
 
-                        // Get all locations sorted alphanumerically
                         string allLocationsSql = @"
-             SELECT LocationID FROM Location
-             WHERE (Availability = 'Available' OR ProductID = @ProductID)
-             ORDER BY 
-                 SUBSTRING(LocationID, 1, 1),
-                 CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 2) AS INT),
-                 CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT);";
+                    SELECT LocationID FROM Location
+                    WHERE (Availability = 'Available' OR ProductID = @ProductID)
+                    ORDER BY 
+                        SUBSTRING(LocationID, 1, 1),
+                        CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 2) AS INT),
+                        CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT);";
 
                         var allAvailableLocations = connection.Query<string>(allLocationsSql, new
                         {
                             ProductID = productStock.ProductID
                         }, transaction).ToList();
 
-                        // Start from selected location and after
                         int selectedIndex = allAvailableLocations.IndexOf(selectedLocation);
                         if (selectedIndex == -1)
                         {
@@ -113,17 +112,26 @@ namespace InventorySystem.Products.Stock
 
                             int qtyToAdd = Math.Min(remainingQty, spaceLeft);
 
+                            string getCurrentStockIdSql = "SELECT StockID FROM Location WHERE LocationID = @LocationID";
+                            string existingStockID = connection.QuerySingleOrDefault<string>(getCurrentStockIdSql, new { LocationID = locId }, transaction);
+
+                            string mergedStockID = string.IsNullOrEmpty(existingStockID)
+                                ? insertedStockID
+                                : $"{existingStockID},{insertedStockID}";
+
                             string updateLocSql = @"
-                 UPDATE Location
-                 SET ProductID = @ProductID,
-                     Capacity = ISNULL(Capacity, 0) + @QtyToAdd,
-                     Availability = 'Occupied'
-                 WHERE LocationID = @LocationID";
+                        UPDATE Location
+                        SET ProductID = @ProductID,
+                            Capacity = ISNULL(Capacity, 0) + @QtyToAdd,
+                            Availability = 'Occupied',
+                            StockID = @StockID
+                        WHERE LocationID = @LocationID";
 
                             connection.Execute(updateLocSql, new
                             {
                                 ProductID = productStock.ProductID,
                                 QtyToAdd = qtyToAdd,
+                                StockID = mergedStockID,
                                 LocationID = locId
                             }, transaction);
 
@@ -148,6 +156,7 @@ namespace InventorySystem.Products.Stock
                 }
             }
         }
+
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
