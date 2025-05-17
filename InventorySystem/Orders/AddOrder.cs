@@ -30,18 +30,20 @@ namespace InventorySystem.Orders
                 connection.Open();
 
                 string query = @"SELECT 
-                                s.ProductID,
-                                s.Price,    
-                                p.ProductName,
-                                SUM(l.Capacity) AS AvailableStock
-                            FROM [WAREHOUSEISDB].[dbo].[Stock] s
-                            LEFT JOIN Location l ON l.ProductID = s.ProductID
-                            LEFT JOIN Product p ON p.ProductID = s.ProductID
-                            GROUP BY 
+                               s.ProductID
+                              ,s.Price                       
+	                          ,p.ProductName
+	                          ,SUM(l.Capacity) AS Capacity
+                          FROM [WAREHOUSEISDB].[dbo].[Stock] s
+                          LEFT JOIN Location l
+                          ON l.ProductID = s.ProductID
+                          LEFT JOIN Product p
+                          ON p.ProductID = s.ProductID
+                          GROUP BY 
                                 s.ProductID,
                                 s.Price,
-                                p.ProductName;
-                            ;";
+                                p.ProductName;";
+
 
                 stock = connection.Query<ProductStock>(query, commandType: CommandType.Text);
             }
