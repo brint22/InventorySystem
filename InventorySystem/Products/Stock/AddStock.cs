@@ -32,131 +32,6 @@ namespace InventorySystem.Products.Stock
             LoadAllProducts();
         }
 
-        //public void AddNewStock(ProductStock productStock, string selectedLocation, Product product, Location location)
-        //{
-        //    using (var connection = new SqlConnection(GlobalClass.connectionString))
-        //    {
-        //        connection.Open();
-        //        using (var transaction = connection.BeginTransaction())
-        //        {
-        //            try
-        //            {
-        //                string getCapacitySql = @"SELECT Capacity FROM Product WHERE ProductID = @ProductID;";
-        //                int maxCapacity = connection.QuerySingleOrDefault<int>(getCapacitySql, new { productStock.ProductID }, transaction);
-
-        //                if (maxCapacity <= 0)
-        //                {
-        //                    transaction.Rollback();
-        //                    MessageBox.Show("Invalid product capacity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                    return;
-        //                }
-
-        //                string insertStockSql = @"
-        //            INSERT INTO Stock (ProductID, Price, Quantity, ExpirationDate, Supplier, ProductRecieved)
-        //            OUTPUT INSERTED.StockID
-        //            VALUES (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier, @ProductRecieved);";
-
-        //                string insertedStockID = connection.ExecuteScalar<string>(insertStockSql, new
-        //                {
-        //                    productStock.ProductID,
-        //                    productStock.Price,
-        //                    productStock.Quantity,
-        //                    productStock.ExpirationDate,
-        //                    productStock.Supplier,
-        //                    productStock.ProductRecieved
-        //                }, transaction);
-
-        //                if (string.IsNullOrEmpty(insertedStockID))
-        //                {
-        //                    transaction.Rollback();
-        //                    MessageBox.Show("Stock addition failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                    return;
-        //                }
-
-        //                int remainingQty = productStock.Quantity;
-
-        //                string allLocationsSql = @"
-        //            SELECT LocationID FROM Location
-        //            WHERE (Availability = 'Available' OR ProductID = @ProductID)
-        //            ORDER BY 
-        //                SUBSTRING(LocationID, 1, 1),
-        //                CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 2) AS INT),
-        //                CAST(PARSENAME(REPLACE(LocationID, '-', '.'), 1) AS INT);";
-
-        //                var allAvailableLocations = connection.Query<string>(allLocationsSql, new
-        //                {
-        //                    ProductID = productStock.ProductID
-        //                }, transaction).ToList();
-
-        //                int selectedIndex = allAvailableLocations.IndexOf(selectedLocation);
-        //                if (selectedIndex == -1)
-        //                {
-        //                    transaction.Rollback();
-        //                    MessageBox.Show("Selected location not found or unavailable.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                    return;
-        //                }
-
-        //                var orderedLocations = allAvailableLocations.Skip(selectedIndex).ToList();
-
-        //                foreach (var locId in orderedLocations)
-        //                {
-        //                    if (remainingQty <= 0)
-        //                        break;
-
-        //                    string getLocCapacitySql = @"SELECT ISNULL(Capacity, 0) FROM Location WHERE LocationID = @LocationID";
-        //                    int currentLocQty = connection.QuerySingleOrDefault<int>(getLocCapacitySql, new { LocationID = locId }, transaction);
-
-        //                    int spaceLeft = maxCapacity - currentLocQty;
-        //                    if (spaceLeft <= 0)
-        //                        continue;
-
-        //                    int qtyToAdd = Math.Min(remainingQty, spaceLeft);
-
-        //                    string getCurrentStockIdSql = "SELECT StockID FROM Location WHERE LocationID = @LocationID";
-        //                    string existingStockID = connection.QuerySingleOrDefault<string>(getCurrentStockIdSql, new { LocationID = locId }, transaction);
-
-        //                    string mergedStockID = string.IsNullOrEmpty(existingStockID)
-        //                        ? insertedStockID
-        //                        : $"{existingStockID},{insertedStockID}";
-
-        //                    string updateLocSql = @"
-        //                UPDATE Location
-        //                SET ProductID = @ProductID,
-        //                    Capacity = ISNULL(Capacity, 0) + @QtyToAdd,
-        //                    Availability = 'Occupied',
-        //                    StockID = @StockID
-        //                WHERE LocationID = @LocationID";
-
-        //                    connection.Execute(updateLocSql, new
-        //                    {
-        //                        ProductID = productStock.ProductID,
-        //                        QtyToAdd = qtyToAdd,
-        //                        StockID = mergedStockID,
-        //                        LocationID = locId
-        //                    }, transaction);
-
-        //                    remainingQty -= qtyToAdd;
-        //                }
-
-        //                if (remainingQty > 0)
-        //                {
-        //                    transaction.Rollback();
-        //                    MessageBox.Show("Not enough space in locations after selected one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //                    return;
-        //                }
-
-        //                transaction.Commit();
-        //                MessageBox.Show("Stock successfully added and distributed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                transaction.Rollback();
-        //                MessageBox.Show($"Stock failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //        }
-        //    }
-        //}
-
         public void AddNewStock(ProductStock productStock, string selectedLocation, Product product, Location location, LocationStock locationStock)
         {
             using (var connection = new SqlConnection(GlobalClass.connectionString))
@@ -243,11 +118,11 @@ namespace InventorySystem.Products.Stock
 
                             // 4.1 Update Location table (no more StockID column)
                             string updateLocSql = @"
-                UPDATE Location
-                SET ProductID = @ProductID,
-                    Capacity = ISNULL(Capacity, 0) + @QtyToAdd,
-                    Availability = 'Occupied'
-                WHERE LocationID = @LocationID";
+                        UPDATE Location
+                        SET ProductID = @ProductID,
+                            Capacity = ISNULL(Capacity, 0) + @QtyToAdd,
+                            Availability = 'Occupied'
+                        WHERE LocationID = @LocationID";
 
                             connection.Execute(updateLocSql, new
                             {
@@ -258,8 +133,8 @@ namespace InventorySystem.Products.Stock
 
                             // 4.2 Insert into LocationStock table
                             string insertLocationStockSql = @"
-                INSERT INTO LocationStock (LocationID, StockID)
-                VALUES (@LocationID, @StockID);";
+                        INSERT INTO LocationStock (LocationID, StockID)
+                        VALUES (@LocationID, @StockID);";
 
                             connection.Execute(insertLocationStockSql, new
                             {
@@ -288,6 +163,10 @@ namespace InventorySystem.Products.Stock
                 }
             }
         }
+
+
+
+
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
@@ -331,7 +210,7 @@ namespace InventorySystem.Products.Stock
 
             LocationStock locationStock = new LocationStock()
             {
-
+                
             };
 
             // Call the method to add the customer transaction
