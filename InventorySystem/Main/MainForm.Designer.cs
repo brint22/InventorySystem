@@ -48,6 +48,8 @@
             this.bbiViewProduct = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAddEmployee = new DevExpress.XtraBars.BarButtonItem();
             this.AddStock = new DevExpress.XtraBars.BarButtonItem();
+            this.ViewStock = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAddOrder = new DevExpress.XtraBars.BarButtonItem();
             this.Main = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -57,11 +59,13 @@
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.Transaction = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.ViewStock = new DevExpress.XtraBars.BarButtonItem();
+            this.ViewOrder = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,16 +97,19 @@
             this.bbiViewProduct,
             this.bbiAddEmployee,
             this.AddStock,
-            this.ViewStock});
+            this.ViewStock,
+            this.bbiAddOrder,
+            this.ViewOrder});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 28;
+            this.ribbon.MaxItemId = 30;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonGroup = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonLayoutGroup = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.OptionsMenuMinWidth = 385;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.Main,
-            this.ribbonPage1});
+            this.ribbonPage1,
+            this.Transaction});
             this.ribbon.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
@@ -253,6 +260,19 @@
             this.AddStock.Name = "AddStock";
             this.AddStock.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddStock_ItemClick);
             // 
+            // ViewStock
+            // 
+            this.ViewStock.Caption = "View Stock";
+            this.ViewStock.Id = 27;
+            this.ViewStock.Name = "ViewStock";
+            this.ViewStock.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ViewStock_ItemClick);
+            // 
+            // bbiAddOrder
+            // 
+            this.bbiAddOrder.Caption = "Add Order";
+            this.bbiAddOrder.Id = 28;
+            this.bbiAddOrder.Name = "bbiAddOrder";
+            // 
             // Main
             // 
             this.Main.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -319,6 +339,20 @@
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             this.ribbonPageGroup8.Text = "ribbonPageGroup8";
             // 
+            // Transaction
+            // 
+            this.Transaction.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup9});
+            this.Transaction.Name = "Transaction";
+            this.Transaction.Text = "Transaction";
+            // 
+            // ribbonPageGroup9
+            // 
+            this.ribbonPageGroup9.ItemLinks.Add(this.bbiAddOrder);
+            this.ribbonPageGroup9.ItemLinks.Add(this.ViewOrder);
+            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
+            this.ribbonPageGroup9.Text = "ribbonPageGroup9";
+            // 
             // ribbonPageGroup5
             // 
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
@@ -346,12 +380,11 @@
             this.barButtonItem8.Name = "barButtonItem8";
             this.barButtonItem8.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // ViewStock
+            // ViewOrder
             // 
-            this.ViewStock.Caption = "View Stock";
-            this.ViewStock.Id = 27;
-            this.ViewStock.Name = "ViewStock";
-            this.ViewStock.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ViewStock_ItemClick);
+            this.ViewOrder.Caption = "View Order";
+            this.ViewOrder.Id = 29;
+            this.ViewOrder.Name = "ViewOrder";
             // 
             // bbi
             // 
@@ -409,5 +442,9 @@
         private DevExpress.XtraBars.BarButtonItem AddStock;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem ViewStock;
+        private DevExpress.XtraBars.Ribbon.RibbonPage Transaction;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
+        private DevExpress.XtraBars.BarButtonItem bbiAddOrder;
+        private DevExpress.XtraBars.BarButtonItem ViewOrder;
     }
 }

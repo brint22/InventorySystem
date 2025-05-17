@@ -40,12 +40,13 @@
             this.ExpirationDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Supplier = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ProductRecieved = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ProductReceived = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.LocationID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.LocationCapacity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BtnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.BtnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.teCategoryName = new DevExpress.XtraEditors.TextEdit();
-            this.LocationID = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCategory)).BeginInit();
@@ -62,14 +63,13 @@
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(831, 61);
+            this.ribbon.Size = new System.Drawing.Size(1390, 61);
             // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1});
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "ribbonPage1";
             // 
             // ribbonPageGroup1
             // 
@@ -87,7 +87,7 @@
             this.gcStock.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.gcStock.MenuManager = this.ribbon;
             this.gcStock.Name = "gcStock";
-            this.gcStock.Size = new System.Drawing.Size(765, 243);
+            this.gcStock.Size = new System.Drawing.Size(1324, 515);
             this.gcStock.TabIndex = 3;
             this.gcStock.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCategory});
@@ -102,8 +102,9 @@
             this.ExpirationDate,
             this.Quantity,
             this.Supplier,
-            this.ProductRecieved,
-            this.LocationID});
+            this.ProductReceived,
+            this.LocationID,
+            this.LocationCapacity});
             this.gvCategory.DetailHeight = 295;
             this.gvCategory.GridControl = this.gcStock;
             this.gvCategory.Name = "gvCategory";
@@ -127,7 +128,7 @@
             this.StockID.OptionsColumn.AllowEdit = false;
             this.StockID.Visible = true;
             this.StockID.VisibleIndex = 0;
-            this.StockID.Width = 64;
+            this.StockID.Width = 97;
             // 
             // ProductID
             // 
@@ -142,7 +143,7 @@
             this.ProductID.OptionsColumn.AllowEdit = false;
             this.ProductID.Visible = true;
             this.ProductID.VisibleIndex = 1;
-            this.ProductID.Width = 87;
+            this.ProductID.Width = 132;
             // 
             // ProductName
             // 
@@ -159,7 +160,7 @@
             this.ProductName.OptionsColumn.AllowEdit = false;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 2;
-            this.ProductName.Width = 113;
+            this.ProductName.Width = 172;
             // 
             // Price
             // 
@@ -175,7 +176,7 @@
             this.Price.Name = "Price";
             this.Price.Visible = true;
             this.Price.VisibleIndex = 3;
-            this.Price.Width = 79;
+            this.Price.Width = 120;
             // 
             // ExpirationDate
             // 
@@ -191,7 +192,7 @@
             this.ExpirationDate.Name = "ExpirationDate";
             this.ExpirationDate.Visible = true;
             this.ExpirationDate.VisibleIndex = 5;
-            this.ExpirationDate.Width = 125;
+            this.ExpirationDate.Width = 190;
             // 
             // Quantity
             // 
@@ -207,7 +208,7 @@
             this.Quantity.Name = "Quantity";
             this.Quantity.Visible = true;
             this.Quantity.VisibleIndex = 4;
-            this.Quantity.Width = 92;
+            this.Quantity.Width = 140;
             // 
             // Supplier
             // 
@@ -223,22 +224,46 @@
             this.Supplier.Name = "Supplier";
             this.Supplier.Visible = true;
             this.Supplier.VisibleIndex = 6;
-            this.Supplier.Width = 158;
+            this.Supplier.Width = 169;
             // 
-            // ProductRecieved
+            // ProductReceived
             // 
-            this.ProductRecieved.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.ProductRecieved.AppearanceCell.Options.UseFont = true;
-            this.ProductRecieved.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.ProductRecieved.AppearanceHeader.Options.UseFont = true;
-            this.ProductRecieved.Caption = "Product Recieved";
-            this.ProductRecieved.FieldName = "ProductRecieved";
-            this.ProductRecieved.MinWidth = 23;
-            this.ProductRecieved.Name = "ProductRecieved";
-            this.ProductRecieved.OptionsColumn.AllowEdit = false;
-            this.ProductRecieved.Visible = true;
-            this.ProductRecieved.VisibleIndex = 7;
-            this.ProductRecieved.Width = 87;
+            this.ProductReceived.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.ProductReceived.AppearanceCell.Options.UseFont = true;
+            this.ProductReceived.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.ProductReceived.AppearanceHeader.Options.UseFont = true;
+            this.ProductReceived.Caption = "Product Received";
+            this.ProductReceived.FieldName = "ProductReceived";
+            this.ProductReceived.MinWidth = 23;
+            this.ProductReceived.Name = "ProductReceived";
+            this.ProductReceived.OptionsColumn.AllowEdit = false;
+            this.ProductReceived.Visible = true;
+            this.ProductReceived.VisibleIndex = 7;
+            this.ProductReceived.Width = 228;
+            // 
+            // LocationID
+            // 
+            this.LocationID.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.LocationID.AppearanceHeader.Options.UseFont = true;
+            this.LocationID.Caption = "Location";
+            this.LocationID.FieldName = "LocationID";
+            this.LocationID.MinWidth = 25;
+            this.LocationID.Name = "LocationID";
+            this.LocationID.Visible = true;
+            this.LocationID.VisibleIndex = 8;
+            this.LocationID.Width = 132;
+            // 
+            // LocationCapacity
+            // 
+            this.LocationCapacity.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.LocationCapacity.AppearanceHeader.Options.UseFont = true;
+            this.LocationCapacity.Caption = "Location Capacity";
+            this.LocationCapacity.FieldName = "LocationCapacity";
+            this.LocationCapacity.MinWidth = 25;
+            this.LocationCapacity.Name = "LocationCapacity";
+            this.LocationCapacity.Visible = true;
+            this.LocationCapacity.VisibleIndex = 9;
+            this.LocationCapacity.Width = 178;
             // 
             // BtnDelete
             // 
@@ -247,7 +272,7 @@
             this.BtnDelete.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.Appearance.Options.UseBackColor = true;
             this.BtnDelete.Appearance.Options.UseFont = true;
-            this.BtnDelete.Location = new System.Drawing.Point(645, 98);
+            this.BtnDelete.Location = new System.Drawing.Point(1204, 98);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(148, 32);
@@ -261,7 +286,7 @@
             this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdate.Appearance.Options.UseBackColor = true;
             this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(499, 98);
+            this.BtnUpdate.Location = new System.Drawing.Point(1058, 98);
             this.BtnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(140, 32);
@@ -290,21 +315,11 @@
             this.teCategoryName.Size = new System.Drawing.Size(306, 31);
             this.teCategoryName.TabIndex = 80;
             // 
-            // LocationID
-            // 
-            this.LocationID.Caption = "Location";
-            this.LocationID.FieldName = "LocationID";
-            this.LocationID.MinWidth = 25;
-            this.LocationID.Name = "LocationID";
-            this.LocationID.Visible = true;
-            this.LocationID.VisibleIndex = 8;
-            this.LocationID.Width = 94;
-            // 
             // ViewStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 492);
+            this.ClientSize = new System.Drawing.Size(1390, 764);
             this.ControlBox = false;
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.teCategoryName);
@@ -349,7 +364,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit teCategoryName;
         private DevExpress.XtraGrid.Columns.GridColumn ProductID;
-        private DevExpress.XtraGrid.Columns.GridColumn ProductRecieved;
+        private DevExpress.XtraGrid.Columns.GridColumn ProductReceived;
         private DevExpress.XtraGrid.Columns.GridColumn LocationID;
+        private DevExpress.XtraGrid.Columns.GridColumn LocationCapacity;
     }
 }
