@@ -50,6 +50,7 @@
             this.AddStock = new DevExpress.XtraBars.BarButtonItem();
             this.ViewStock = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAddOrder = new DevExpress.XtraBars.BarButtonItem();
+            this.ViewOrder = new DevExpress.XtraBars.BarButtonItem();
             this.Main = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -65,7 +66,6 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.ViewOrder = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +75,7 @@
             this.ribbon.AutoUpdateMergedRibbons = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.DrawGroupsBorderMode = DevExpress.Utils.DefaultBoolean.True;
-            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(45, 44, 45, 44);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
@@ -101,11 +101,12 @@
             this.bbiAddOrder,
             this.ViewOrder});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ribbon.MaxItemId = 30;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonGroup = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonLayoutGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbon.OptionsMenuMinWidth = 385;
+            this.ribbon.OptionsMenuMinWidth = 495;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.Main,
             this.ribbonPage1,
@@ -115,7 +116,7 @@
             this.ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.ShowPageHeadersInFormCaption = DevExpress.Utils.DefaultBoolean.True;
             this.ribbon.ShowToolbarCustomizeItem = false;
-            this.ribbon.Size = new System.Drawing.Size(1076, 217);
+            this.ribbon.Size = new System.Drawing.Size(1383, 262);
             this.ribbon.Toolbar.ShowCustomizeItem = false;
             // 
             // addAccount
@@ -272,6 +273,13 @@
             this.bbiAddOrder.Caption = "Add Order";
             this.bbiAddOrder.Id = 28;
             this.bbiAddOrder.Name = "bbiAddOrder";
+            this.bbiAddOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddOrder_ItemClick);
+            // 
+            // ViewOrder
+            // 
+            this.ViewOrder.Caption = "View Order";
+            this.ViewOrder.Id = 29;
+            this.ViewOrder.Name = "ViewOrder";
             // 
             // Main
             // 
@@ -380,19 +388,14 @@
             this.barButtonItem8.Name = "barButtonItem8";
             this.barButtonItem8.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // ViewOrder
-            // 
-            this.ViewOrder.Caption = "View Order";
-            this.ViewOrder.Id = 29;
-            this.ViewOrder.Name = "ViewOrder";
-            // 
             // bbi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1076, 662);
+            this.ClientSize = new System.Drawing.Size(1383, 786);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbi.IconOptions.Image")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "bbi";
             this.Ribbon = this.ribbon;

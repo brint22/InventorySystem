@@ -3,6 +3,8 @@ using DevExpress.Skins;
 using DevExpress.UserSkins;
 using InventorySystem.Account;
 using InventorySystem.Employees;
+using InventorySystem.Orders;
+using InventorySystem.Products;
 using InventorySystem.Views;
 using System;
 using System.Collections.Generic;

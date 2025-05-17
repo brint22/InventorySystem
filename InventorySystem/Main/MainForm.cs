@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InventorySystem.Locations;
 using InventorySystem.Products.Stock;
+using InventorySystem.Orders;
 
 namespace InventorySystem.Views
 {
@@ -192,6 +193,14 @@ namespace InventorySystem.Views
 
             // Show the Employee form
             stock.Show();
+        }
+
+        private void bbiAddOrder_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click 6another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            new AddOrder().Show();
         }
     }
 }
