@@ -109,6 +109,7 @@
     <Compile Include="Employees\Accounts\ViewAccount.Designer.cs">
       <DependentUpon>ViewAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\LocationStock.cs" />
     <Compile Include="Models\ProductStock.cs" />
     <Compile Include="Products\Categories\AddCategory.cs">
       <SubType>Form</SubType>
