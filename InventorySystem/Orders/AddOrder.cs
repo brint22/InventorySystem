@@ -68,7 +68,8 @@ namespace InventorySystem.Orders
                 {
                     var productstock = gvProducts.GetRowCellValue(gvProducts.FocusedRowHandle, "ProductName")?.ToString();
                     teProductName.Text = productstock;
-                    
+                    var price = gvProducts.GetRowCellValue(gvProducts.FocusedRowHandle, "Price")?.ToString();
+                    tePrice.Text = price;
                 }
             };
 
@@ -87,18 +88,20 @@ namespace InventorySystem.Orders
         {
             dtProduct.Columns.Add("ProductName", typeof(string));
             dtProduct.Columns.Add("Quantity", typeof(int));
+            dtProduct.Columns.Add("Price", typeof(decimal));
             return dtProduct;
         }
 
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             string productName = teProductName.Text.Trim();
-            string quantity = seQuantity.Text.Trim();          
+            string quantity = seQuantity.Text.Trim();
+            string price = tePrice.Text.Trim();          
 
             // Validation to check if any field is empty
             if (string.IsNullOrEmpty(productName) ||
-                string.IsNullOrEmpty(quantity)) 
-               
+                string.IsNullOrEmpty(quantity) ||
+                string.IsNullOrEmpty(price)) 
             {
                 MessageBox.Show("Please fill out all fields before adding.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -107,6 +110,7 @@ namespace InventorySystem.Orders
             DataRow newRow = dtProduct.NewRow();
             newRow["ProductName"] = productName;
             newRow["Quantity"] = quantity;
+            newRow["Price"] = price;
             dtProduct.Rows.Add(newRow);
 
             gcOrder.DataSource = dtProduct;

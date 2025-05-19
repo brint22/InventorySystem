@@ -52,8 +52,11 @@
             this.RowCount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.OrderedProduct = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TotalPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcOrder = new DevExpress.XtraGrid.GridControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.tePrice = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seQuantity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProductName.Properties)).BeginInit();
@@ -62,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePrice.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -111,7 +115,7 @@
             this.SubmitBtn.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitBtn.Appearance.Options.UseBackColor = true;
             this.SubmitBtn.Appearance.Options.UseFont = true;
-            this.SubmitBtn.Location = new System.Drawing.Point(58, 574);
+            this.SubmitBtn.Location = new System.Drawing.Point(58, 582);
             this.SubmitBtn.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.Size = new System.Drawing.Size(210, 31);
@@ -124,7 +128,7 @@
             this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 11.25F);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(58, 506);
+            this.labelControl1.Location = new System.Drawing.Point(58, 508);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(54, 17);
@@ -139,7 +143,7 @@
             0,
             0,
             0});
-            this.seQuantity.Location = new System.Drawing.Point(58, 527);
+            this.seQuantity.Location = new System.Drawing.Point(58, 529);
             this.seQuantity.MenuManager = this.ribbon;
             this.seQuantity.Name = "seQuantity";
             this.seQuantity.Properties.Appearance.Font = new System.Drawing.Font("Arial", 11.25F);
@@ -156,9 +160,9 @@
             this.BtnCancel.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.Appearance.Options.UseBackColor = true;
             this.BtnCancel.Appearance.Options.UseFont = true;
-            this.BtnCancel.Location = new System.Drawing.Point(283, 574);
+            this.BtnCancel.Location = new System.Drawing.Point(275, 582);
             this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(193, 31);
+            this.BtnCancel.Size = new System.Drawing.Size(201, 31);
             this.BtnCancel.TabIndex = 80;
             this.BtnCancel.Text = "CANCEL";
             // 
@@ -168,8 +172,10 @@
             this.teProductName.Location = new System.Drawing.Point(58, 461);
             this.teProductName.MenuManager = this.ribbon;
             this.teProductName.Name = "teProductName";
+            this.teProductName.Properties.AllowFocused = false;
             this.teProductName.Properties.Appearance.Font = new System.Drawing.Font("Arial", 11.25F);
             this.teProductName.Properties.Appearance.Options.UseFont = true;
+            this.teProductName.Properties.ReadOnly = true;
             this.teProductName.Size = new System.Drawing.Size(419, 32);
             this.teProductName.TabIndex = 82;
             // 
@@ -299,7 +305,8 @@
             this.gvOrder.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.RowCount,
             this.OrderedProduct,
-            this.Quantity});
+            this.Quantity,
+            this.TotalPrice});
             this.gvOrder.DetailHeight = 285;
             this.gvOrder.FixedLineWidth = 3;
             this.gvOrder.GridControl = this.gcOrder;
@@ -319,7 +326,7 @@
             this.RowCount.OptionsColumn.AllowEdit = false;
             this.RowCount.Visible = true;
             this.RowCount.VisibleIndex = 0;
-            this.RowCount.Width = 100;
+            this.RowCount.Width = 102;
             // 
             // OrderedProduct
             // 
@@ -333,7 +340,7 @@
             this.OrderedProduct.Name = "OrderedProduct";
             this.OrderedProduct.Visible = true;
             this.OrderedProduct.VisibleIndex = 1;
-            this.OrderedProduct.Width = 311;
+            this.OrderedProduct.Width = 249;
             // 
             // Quantity
             // 
@@ -347,7 +354,20 @@
             this.Quantity.Name = "Quantity";
             this.Quantity.Visible = true;
             this.Quantity.VisibleIndex = 2;
-            this.Quantity.Width = 177;
+            this.Quantity.Width = 160;
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.TotalPrice.AppearanceCell.Options.UseFont = true;
+            this.TotalPrice.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.TotalPrice.AppearanceHeader.Options.UseFont = true;
+            this.TotalPrice.Caption = "Total Price";
+            this.TotalPrice.FieldName = "Price";
+            this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.Visible = true;
+            this.TotalPrice.VisibleIndex = 3;
+            this.TotalPrice.Width = 167;
             // 
             // gcOrder
             // 
@@ -375,11 +395,38 @@
             this.labelControl2.TabIndex = 83;
             this.labelControl2.Text = "Product Name";
             // 
+            // labelControl4
+            // 
+            this.labelControl4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Location = new System.Drawing.Point(275, 508);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(34, 17);
+            this.labelControl4.TabIndex = 86;
+            this.labelControl4.Text = "Price";
+            // 
+            // tePrice
+            // 
+            this.tePrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tePrice.Location = new System.Drawing.Point(275, 529);
+            this.tePrice.MenuManager = this.ribbon;
+            this.tePrice.Name = "tePrice";
+            this.tePrice.Properties.AllowFocused = false;
+            this.tePrice.Properties.Appearance.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.tePrice.Properties.Appearance.Options.UseFont = true;
+            this.tePrice.Properties.ReadOnly = true;
+            this.tePrice.Size = new System.Drawing.Size(201, 32);
+            this.tePrice.TabIndex = 85;
+            // 
             // AddOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1384, 721);
+            this.Controls.Add(this.labelControl4);
+            this.Controls.Add(this.tePrice);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.teProductName);
             this.Controls.Add(this.BtnCancel);
@@ -409,6 +456,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePrice.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,5 +488,8 @@
         private DevExpress.XtraGrid.GridControl gcOrder;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraGrid.Columns.GridColumn Count;
+        private DevExpress.XtraGrid.Columns.GridColumn TotalPrice;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.TextEdit tePrice;
     }
 }
