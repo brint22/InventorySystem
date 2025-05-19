@@ -97,9 +97,9 @@ ORDER BY
 
         public const string InsertProduct = @"
         INSERT INTO Product 
-        (ProductID, ProductName, CategoryID, BrandName, Capacity)
+        (ProductID, ProductName, CategoryID, Price, Capacity)
         VALUES 
-        (@ProductID, @ProductName,  @CategoryID, @BrandName, @Capacity)";
+        (@ProductID, @ProductName,  @CategoryID, @Price, @Capacity)";
 
         public const string GetAvailableLocations = @"
         SELECT LocationID 

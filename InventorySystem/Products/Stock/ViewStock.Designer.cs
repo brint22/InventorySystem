@@ -36,7 +36,6 @@
             this.StockID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ProductID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ExpirationDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Supplier = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,15 +54,18 @@
             // 
             // ribbon
             // 
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(26, 24, 26, 24);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
+            this.ribbon.OptionsMenuMinWidth = 283;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1390, 61);
+            this.ribbon.Size = new System.Drawing.Size(1186, 49);
             // 
             // ribbonPage1
             // 
@@ -81,13 +83,13 @@
             this.gcStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcStock.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.gcStock.Location = new System.Drawing.Point(28, 152);
+            this.gcStock.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gcStock.Location = new System.Drawing.Point(24, 124);
             this.gcStock.MainView = this.gvCategory;
-            this.gcStock.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.gcStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gcStock.MenuManager = this.ribbon;
             this.gcStock.Name = "gcStock";
-            this.gcStock.Size = new System.Drawing.Size(1324, 515);
+            this.gcStock.Size = new System.Drawing.Size(1135, 418);
             this.gcStock.TabIndex = 3;
             this.gcStock.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCategory});
@@ -98,17 +100,16 @@
             this.StockID,
             this.ProductID,
             this.ProductName,
-            this.Price,
             this.ExpirationDate,
             this.Quantity,
             this.Supplier,
             this.ProductReceived,
             this.LocationID,
             this.LocationCapacity});
-            this.gvCategory.DetailHeight = 295;
+            this.gvCategory.DetailHeight = 240;
             this.gvCategory.GridControl = this.gcStock;
             this.gvCategory.Name = "gvCategory";
-            this.gvCategory.OptionsEditForm.PopupEditFormWidth = 622;
+            this.gvCategory.OptionsEditForm.PopupEditFormWidth = 533;
             this.gvCategory.OptionsView.ShowGroupPanel = false;
             // 
             // StockID
@@ -123,12 +124,12 @@
             this.StockID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.StockID.Caption = "Stock ID";
             this.StockID.FieldName = "StockID";
-            this.StockID.MinWidth = 19;
+            this.StockID.MinWidth = 16;
             this.StockID.Name = "StockID";
             this.StockID.OptionsColumn.AllowEdit = false;
             this.StockID.Visible = true;
             this.StockID.VisibleIndex = 0;
-            this.StockID.Width = 97;
+            this.StockID.Width = 83;
             // 
             // ProductID
             // 
@@ -138,12 +139,11 @@
             this.ProductID.AppearanceHeader.Options.UseFont = true;
             this.ProductID.Caption = "Product ID";
             this.ProductID.FieldName = "ProductID";
-            this.ProductID.MinWidth = 23;
             this.ProductID.Name = "ProductID";
             this.ProductID.OptionsColumn.AllowEdit = false;
             this.ProductID.Visible = true;
             this.ProductID.VisibleIndex = 1;
-            this.ProductID.Width = 132;
+            this.ProductID.Width = 113;
             // 
             // ProductName
             // 
@@ -155,28 +155,12 @@
             this.ProductName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ProductName.Caption = "Product Name";
             this.ProductName.FieldName = "ProductName";
-            this.ProductName.MinWidth = 19;
+            this.ProductName.MinWidth = 16;
             this.ProductName.Name = "ProductName";
             this.ProductName.OptionsColumn.AllowEdit = false;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 2;
-            this.ProductName.Width = 172;
-            // 
-            // Price
-            // 
-            this.Price.AppearanceCell.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.Price.AppearanceCell.Options.UseFont = true;
-            this.Price.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.Price.AppearanceHeader.Options.UseFont = true;
-            this.Price.AppearanceHeader.Options.UseTextOptions = true;
-            this.Price.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.Price.Caption = "Price";
-            this.Price.FieldName = "Price";
-            this.Price.MinWidth = 19;
-            this.Price.Name = "Price";
-            this.Price.Visible = true;
-            this.Price.VisibleIndex = 3;
-            this.Price.Width = 120;
+            this.ProductName.Width = 147;
             // 
             // ExpirationDate
             // 
@@ -188,11 +172,11 @@
             this.ExpirationDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ExpirationDate.Caption = "Expiration Date";
             this.ExpirationDate.FieldName = "ExpirationDate";
-            this.ExpirationDate.MinWidth = 19;
+            this.ExpirationDate.MinWidth = 16;
             this.ExpirationDate.Name = "ExpirationDate";
             this.ExpirationDate.Visible = true;
-            this.ExpirationDate.VisibleIndex = 5;
-            this.ExpirationDate.Width = 190;
+            this.ExpirationDate.VisibleIndex = 4;
+            this.ExpirationDate.Width = 163;
             // 
             // Quantity
             // 
@@ -204,11 +188,11 @@
             this.Quantity.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Quantity.Caption = "Quantity";
             this.Quantity.FieldName = "Quantity";
-            this.Quantity.MinWidth = 19;
+            this.Quantity.MinWidth = 16;
             this.Quantity.Name = "Quantity";
             this.Quantity.Visible = true;
-            this.Quantity.VisibleIndex = 4;
-            this.Quantity.Width = 140;
+            this.Quantity.VisibleIndex = 3;
+            this.Quantity.Width = 120;
             // 
             // Supplier
             // 
@@ -220,11 +204,11 @@
             this.Supplier.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.Supplier.Caption = "Supplier";
             this.Supplier.FieldName = "Supplier";
-            this.Supplier.MinWidth = 19;
+            this.Supplier.MinWidth = 16;
             this.Supplier.Name = "Supplier";
             this.Supplier.Visible = true;
-            this.Supplier.VisibleIndex = 6;
-            this.Supplier.Width = 169;
+            this.Supplier.VisibleIndex = 5;
+            this.Supplier.Width = 145;
             // 
             // ProductReceived
             // 
@@ -234,12 +218,11 @@
             this.ProductReceived.AppearanceHeader.Options.UseFont = true;
             this.ProductReceived.Caption = "Product Received";
             this.ProductReceived.FieldName = "ProductReceived";
-            this.ProductReceived.MinWidth = 23;
             this.ProductReceived.Name = "ProductReceived";
             this.ProductReceived.OptionsColumn.AllowEdit = false;
             this.ProductReceived.Visible = true;
-            this.ProductReceived.VisibleIndex = 7;
-            this.ProductReceived.Width = 228;
+            this.ProductReceived.VisibleIndex = 6;
+            this.ProductReceived.Width = 195;
             // 
             // LocationID
             // 
@@ -247,11 +230,11 @@
             this.LocationID.AppearanceHeader.Options.UseFont = true;
             this.LocationID.Caption = "Location";
             this.LocationID.FieldName = "LocationID";
-            this.LocationID.MinWidth = 25;
+            this.LocationID.MinWidth = 21;
             this.LocationID.Name = "LocationID";
             this.LocationID.Visible = true;
-            this.LocationID.VisibleIndex = 8;
-            this.LocationID.Width = 132;
+            this.LocationID.VisibleIndex = 7;
+            this.LocationID.Width = 113;
             // 
             // LocationCapacity
             // 
@@ -259,11 +242,11 @@
             this.LocationCapacity.AppearanceHeader.Options.UseFont = true;
             this.LocationCapacity.Caption = "Location Capacity";
             this.LocationCapacity.FieldName = "LocationCapacity";
-            this.LocationCapacity.MinWidth = 25;
+            this.LocationCapacity.MinWidth = 21;
             this.LocationCapacity.Name = "LocationCapacity";
             this.LocationCapacity.Visible = true;
-            this.LocationCapacity.VisibleIndex = 9;
-            this.LocationCapacity.Width = 178;
+            this.LocationCapacity.VisibleIndex = 8;
+            this.LocationCapacity.Width = 153;
             // 
             // BtnDelete
             // 
@@ -272,10 +255,10 @@
             this.BtnDelete.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.Appearance.Options.UseBackColor = true;
             this.BtnDelete.Appearance.Options.UseFont = true;
-            this.BtnDelete.Location = new System.Drawing.Point(1204, 98);
+            this.BtnDelete.Location = new System.Drawing.Point(1032, 80);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(148, 32);
+            this.BtnDelete.Size = new System.Drawing.Size(127, 26);
             this.BtnDelete.TabIndex = 79;
             this.BtnDelete.Text = "DELETE";
             // 
@@ -286,10 +269,10 @@
             this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdate.Appearance.Options.UseBackColor = true;
             this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(1058, 98);
+            this.BtnUpdate.Location = new System.Drawing.Point(907, 80);
             this.BtnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnUpdate.Name = "BtnUpdate";
-            this.BtnUpdate.Size = new System.Drawing.Size(140, 32);
+            this.BtnUpdate.Size = new System.Drawing.Size(120, 26);
             this.BtnUpdate.TabIndex = 78;
             this.BtnUpdate.Text = "UPDATE";
             // 
@@ -297,29 +280,29 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(28, 73);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.labelControl1.Location = new System.Drawing.Point(24, 59);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(146, 23);
+            this.labelControl1.Size = new System.Drawing.Size(115, 18);
             this.labelControl1.TabIndex = 81;
             this.labelControl1.Text = "Search Keyword";
             // 
             // teCategoryName
             // 
-            this.teCategoryName.Location = new System.Drawing.Point(28, 98);
-            this.teCategoryName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.teCategoryName.Location = new System.Drawing.Point(24, 80);
+            this.teCategoryName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.teCategoryName.Name = "teCategoryName";
             this.teCategoryName.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teCategoryName.Properties.Appearance.Options.UseFont = true;
             this.teCategoryName.Properties.AutoHeight = false;
-            this.teCategoryName.Size = new System.Drawing.Size(306, 31);
+            this.teCategoryName.Size = new System.Drawing.Size(262, 25);
             this.teCategoryName.TabIndex = 80;
             // 
             // ViewStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1390, 764);
+            this.ClientSize = new System.Drawing.Size(1186, 621);
             this.ControlBox = false;
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.teCategoryName);
@@ -327,7 +310,7 @@
             this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.gcStock);
             this.Controls.Add(this.ribbon);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewStock";
@@ -355,7 +338,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gvCategory;
         private DevExpress.XtraGrid.Columns.GridColumn StockID;
         private DevExpress.XtraGrid.Columns.GridColumn ProductName;
-        private DevExpress.XtraGrid.Columns.GridColumn Price;
         private DevExpress.XtraGrid.Columns.GridColumn ExpirationDate;
         private DevExpress.XtraGrid.Columns.GridColumn Quantity;
         private DevExpress.XtraGrid.Columns.GridColumn Supplier;

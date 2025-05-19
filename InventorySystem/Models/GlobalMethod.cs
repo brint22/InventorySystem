@@ -141,7 +141,7 @@ namespace InventorySystem.Models
                          p.[ProductID]
                         ,p.[ProductName]               
                         ,c.CategoryName
-                        ,p.[BrandName]    
+                        ,p.[Price]    
                         ,p.[Capacity]
                       
                   FROM [WAREHOUSEISDB].[dbo].[Product] p

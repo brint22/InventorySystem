@@ -170,13 +170,6 @@ namespace InventorySystem.Products.Stock
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-
-            if (!int.TryParse(tePrice.Text, out int price))
-            {
-                MessageBox.Show("Please enter a valid price.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             if (!int.TryParse(teQuantity.Text, out int quantity))
             {
                 MessageBox.Show("Please enter a valid quantity.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -186,7 +179,6 @@ namespace InventorySystem.Products.Stock
             ProductStock productStock = new ProductStock()
             {
                 ProductID = GetProductID(), // ✅ Use the actual selected ProductID
-                Price = price,
                 Quantity = quantity,
                 ExpirationDate = deExpirationDate.DateTime,
                 Supplier = teSupplier.Text,
@@ -289,7 +281,6 @@ namespace InventorySystem.Products.Stock
         private void ResetAllFields()
         {
             lueProductName.Clear();
-            tePrice.Clear();
             teQuantity.Clear();
             deExpirationDate.Clear();
             cbLocationGroup.Properties.Items.Clear();

@@ -34,7 +34,7 @@ namespace InventorySystem.Products
         {
             // ✅ Validate required fields
             if (string.IsNullOrWhiteSpace(teProductName.Text) ||
-                string.IsNullOrWhiteSpace(teBrandName.Text))
+                string.IsNullOrWhiteSpace(sePrice.Text))
             {
                 MessageBox.Show("Please fill in all required fields (Product Name and Brand Name).",
                                 "Validation Error",
@@ -61,7 +61,7 @@ namespace InventorySystem.Products
             {
                 CategoryID = GetCategoryID(), // ✅ Use the actual selected ProductID
                 ProductName = teProductName.Text.Trim(),
-                BrandName = teBrandName.Text.Trim(),
+                Price = sePrice.Text.Trim(),
                Capacity = int.Parse(teCapacity.Text)
         };
 
@@ -103,7 +103,7 @@ namespace InventorySystem.Products
        private void ResetAllFields()
         {
             teProductName.Clear();
-            teBrandName.Clear();
+            sePrice.Clear();
             lueCategory.Clear();
             teCapacity.Clear();
         }

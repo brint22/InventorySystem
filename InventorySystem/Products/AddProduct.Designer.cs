@@ -38,20 +38,20 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.BtnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.BtnSubmit = new DevExpress.XtraEditors.SimpleButton();
-            this.teBrandName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.teCapacity = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.numericChartRangeControlClient1 = new DevExpress.XtraEditors.NumericChartRangeControlClient();
+            this.sePrice = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProductName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCategory.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teBrandName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teCapacity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericChartRangeControlClient1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sePrice.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -141,7 +141,7 @@
             this.BtnCancel.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.Appearance.Options.UseBackColor = true;
             this.BtnCancel.Appearance.Options.UseFont = true;
-            this.BtnCancel.Location = new System.Drawing.Point(364, 347);
+            this.BtnCancel.Location = new System.Drawing.Point(369, 337);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(249, 31);
             this.BtnCancel.TabIndex = 67;
@@ -153,25 +153,13 @@
             this.BtnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSubmit.Appearance.Options.UseBackColor = true;
             this.BtnSubmit.Appearance.Options.UseFont = true;
-            this.BtnSubmit.Location = new System.Drawing.Point(94, 347);
+            this.BtnSubmit.Location = new System.Drawing.Point(99, 337);
             this.BtnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(250, 31);
             this.BtnSubmit.TabIndex = 66;
             this.BtnSubmit.Text = "SUBMIT";
             this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
-            // 
-            // teBrandName
-            // 
-            this.teBrandName.Location = new System.Drawing.Point(29, 142);
-            this.teBrandName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.teBrandName.MenuManager = this.ribbon;
-            this.teBrandName.Name = "teBrandName";
-            this.teBrandName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.teBrandName.Properties.Appearance.Options.UseFont = true;
-            this.teBrandName.Properties.AutoHeight = false;
-            this.teBrandName.Size = new System.Drawing.Size(280, 28);
-            this.teBrandName.TabIndex = 69;
             // 
             // labelControl7
             // 
@@ -180,31 +168,31 @@
             this.labelControl7.Location = new System.Drawing.Point(29, 122);
             this.labelControl7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(33, 16);
+            this.labelControl7.Size = new System.Drawing.Size(28, 16);
             this.labelControl7.TabIndex = 72;
-            this.labelControl7.Text = "Brand";
+            this.labelControl7.Text = "Price";
             // 
             // groupControl1
             // 
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
+            this.groupControl1.Controls.Add(this.sePrice);
             this.groupControl1.Controls.Add(this.teCapacity);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.labelControl7);
             this.groupControl1.Controls.Add(this.teProductName);
             this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Controls.Add(this.teBrandName);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.lueCategory);
-            this.groupControl1.Location = new System.Drawing.Point(22, 67);
+            this.groupControl1.Location = new System.Drawing.Point(27, 86);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(662, 254);
+            this.groupControl1.Size = new System.Drawing.Size(662, 219);
             this.groupControl1.TabIndex = 74;
             this.groupControl1.Text = "Product Information";
             // 
             // teCapacity
             // 
-            this.teCapacity.Location = new System.Drawing.Point(381, 143);
+            this.teCapacity.Location = new System.Drawing.Point(381, 145);
             this.teCapacity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.teCapacity.MenuManager = this.ribbon;
             this.teCapacity.Name = "teCapacity";
@@ -225,11 +213,26 @@
             this.labelControl3.TabIndex = 74;
             this.labelControl3.Text = "Capacity";
             // 
+            // sePrice
+            // 
+            this.sePrice.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.sePrice.Location = new System.Drawing.Point(29, 145);
+            this.sePrice.MenuManager = this.ribbon;
+            this.sePrice.Name = "sePrice";
+            this.sePrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.sePrice.Size = new System.Drawing.Size(280, 28);
+            this.sePrice.TabIndex = 76;
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 453);
+            this.ClientSize = new System.Drawing.Size(718, 413);
             this.ControlBox = false;
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnSubmit);
@@ -248,12 +251,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProductName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCategory.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teBrandName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teCapacity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericChartRangeControlClient1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sePrice.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,11 +273,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton BtnCancel;
         private DevExpress.XtraEditors.SimpleButton BtnSubmit;
-        private DevExpress.XtraEditors.TextEdit teBrandName;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.NumericChartRangeControlClient numericChartRangeControlClient1;
         private DevExpress.XtraEditors.TextEdit teCapacity;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.SpinEdit sePrice;
     }
 }

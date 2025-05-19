@@ -177,7 +177,7 @@ namespace InventorySystem.Infrastracture.Repositories
                             product.ProductID,
                             product.ProductName,
                             product.CategoryID,
-                            product.BrandName,
+                            product.Price,
                             product.Capacity
                         }, transaction);
 
