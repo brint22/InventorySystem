@@ -580,6 +580,7 @@
             this.seChange.Properties.ReadOnly = true;
             this.seChange.Size = new System.Drawing.Size(290, 46);
             this.seChange.TabIndex = 100;
+            this.seChange.EditValueChanged += new System.EventHandler(this.seChange_EditValueChanged);
             // 
             // AddOrder
             // 

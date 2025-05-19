@@ -23,6 +23,10 @@ namespace InventorySystem.Orders
             InitializeComponent();
         }
 
+        private void InsertToOrderSales()
+        {
+
+        }
         public List<ProductStock> GetStock()
         {
             IEnumerable<ProductStock> stock;
@@ -139,16 +143,37 @@ namespace InventorySystem.Orders
 
             decimal totalPrice = quantity * unitPrice;
 
-            DataRow newRow = dtProduct.NewRow();
-            newRow["ProductName"] = productName;
-            newRow["Quantity"] = quantity;
-            newRow["Price"] = totalPrice; 
+            // Check if product already exists in the DataTable
+            bool productExists = false;
+            foreach (DataRow row in dtProduct.Rows)
+            {
+                if (row["ProductName"].ToString() == productName)
+                {
+                    // Product exists, update quantity and price
+                    int existingQuantity = Convert.ToInt32(row["Quantity"]);
+                    int newQuantity = existingQuantity + quantity;
+                    row["Quantity"] = newQuantity;
+                    row["Price"] = newQuantity * unitPrice; // Recalculate total price
 
-            dtProduct.Rows.Add(newRow);
+                    productExists = true;
+                    break;
+                }
+            }
+
+            if (!productExists)
+            {
+                // Product doesn't exist, add new row
+                DataRow newRow = dtProduct.NewRow();
+                newRow["ProductName"] = productName;
+                newRow["Quantity"] = quantity;
+                newRow["Price"] = totalPrice;
+
+                dtProduct.Rows.Add(newRow);
+            }
+
+            // Update grid and totals
             UpdateTotalValue();
-
             gcOrder.DataSource = dtProduct;
-            gvOrder.RefreshData();
             gvOrder.RefreshData();
         }
 
@@ -175,34 +200,42 @@ namespace InventorySystem.Orders
 
         private void btnConfirmPayment_Click(object sender, EventArgs e)
         {
-            decimal totalPrice = seTotalPrice.Value;
-            decimal addAmount = seAddAmount.Value;
-            decimal change = addAmount - totalPrice;
-
-            // Optional: ensure change isn't negative
-            if (change < 0)
-            {
-                MessageBox.Show("Insufficient payment amount.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                seChange.Value = 0;
-            }
-            else
-            {
-                seChange.Value = change;
-            }
+          
         }
 
         private void seAddAmount_EditValueChanged(object sender, EventArgs e)
         {
             decimal totalPrice = seTotalPrice.Value;
             decimal addAmount = seAddAmount.Value;
+            decimal change = addAmount - totalPrice;
 
             if (addAmount < totalPrice)
             {
                 seAddAmount.ForeColor = Color.Red;
+                seChange.Value = 0;
             }
             else
             {
                 seAddAmount.ForeColor = Color.Black;
+                seChange.Value = change;
+            }
+        }
+
+        private void seChange_EditValueChanged(object sender, EventArgs e)
+        {
+            decimal totalPrice = seTotalPrice.Value;
+            decimal addAmount = seAddAmount.Value;
+            decimal change = addAmount - totalPrice;
+
+            if (addAmount < totalPrice)
+            {
+                seAddAmount.ForeColor = Color.Red;
+                seChange.Value = 0;
+            }
+            else
+            {
+                seAddAmount.ForeColor = Color.Black;
+                seChange.Value = change;
             }
         }
     }
