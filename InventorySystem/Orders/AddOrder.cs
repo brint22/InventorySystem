@@ -63,5 +63,6 @@ namespace InventorySystem.Orders
         {
             gvProducts.ApplyFindFilter(e.NewValue as string);
         }
+
     }
 }

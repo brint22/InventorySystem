@@ -244,7 +244,7 @@ namespace InventorySystem.Products.Stock
                     else
                     {
                         lueProductName.Properties.DataSource = null;
-                        XtraMessageBox.Show("No departments found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        XtraMessageBox.Show("No products found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)
