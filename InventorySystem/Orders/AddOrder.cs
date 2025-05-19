@@ -74,13 +74,29 @@ namespace InventorySystem.Orders
             };
 
             gcOrder.DataSource = AddOrderTable();
-
         }
 
         private void txtSearch_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
             gvProducts.ApplyFindFilter(e.NewValue as string);
         }
+
+        private void UpdateTotalValue()
+        {
+            decimal total = 0;
+
+            foreach (DataRow row in dtProduct.Rows)
+            {
+                if (row["Price"] != DBNull.Value)
+                {
+                    total += Convert.ToDecimal(row["Price"]);
+                }
+            }
+
+            // Assuming seTotalValue is a numeric control like SpinEdit or similar
+            seTotalPrice.Value = total;
+        }
+
 
         //Data table of Order Product
         DataTable dtProduct = new DataTable();
@@ -129,6 +145,7 @@ namespace InventorySystem.Orders
             newRow["Price"] = totalPrice; 
 
             dtProduct.Rows.Add(newRow);
+            UpdateTotalValue();
 
             gcOrder.DataSource = dtProduct;
             gvOrder.RefreshData();
@@ -153,6 +170,39 @@ namespace InventorySystem.Orders
             else
             {
                 MessageBox.Show("Please select a row to remove.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnConfirmPayment_Click(object sender, EventArgs e)
+        {
+            decimal totalPrice = seTotalPrice.Value;
+            decimal addAmount = seAddAmount.Value;
+            decimal change = addAmount - totalPrice;
+
+            // Optional: ensure change isn't negative
+            if (change < 0)
+            {
+                MessageBox.Show("Insufficient payment amount.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                seChange.Value = 0;
+            }
+            else
+            {
+                seChange.Value = change;
+            }
+        }
+
+        private void seAddAmount_EditValueChanged(object sender, EventArgs e)
+        {
+            decimal totalPrice = seTotalPrice.Value;
+            decimal addAmount = seAddAmount.Value;
+
+            if (addAmount < totalPrice)
+            {
+                seAddAmount.ForeColor = Color.Red;
+            }
+            else
+            {
+                seAddAmount.ForeColor = Color.Black;
             }
         }
     }
