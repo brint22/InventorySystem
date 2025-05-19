@@ -83,10 +83,10 @@
             this.gcStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcStock.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gcStock.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
             this.gcStock.Location = new System.Drawing.Point(24, 124);
             this.gcStock.MainView = this.gvCategory;
-            this.gcStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gcStock.Margin = new System.Windows.Forms.Padding(2);
             this.gcStock.MenuManager = this.ribbon;
             this.gcStock.Name = "gcStock";
             this.gcStock.Size = new System.Drawing.Size(1135, 418);
@@ -255,6 +255,7 @@
             this.BtnDelete.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.Appearance.Options.UseBackColor = true;
             this.BtnDelete.Appearance.Options.UseFont = true;
+            this.BtnDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnDelete.Location = new System.Drawing.Point(1032, 80);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnDelete.Name = "BtnDelete";
@@ -281,7 +282,7 @@
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(24, 59);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(2);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(115, 18);
             this.labelControl1.TabIndex = 81;
@@ -290,7 +291,7 @@
             // teCategoryName
             // 
             this.teCategoryName.Location = new System.Drawing.Point(24, 80);
-            this.teCategoryName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.teCategoryName.Margin = new System.Windows.Forms.Padding(2);
             this.teCategoryName.Name = "teCategoryName";
             this.teCategoryName.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teCategoryName.Properties.Appearance.Options.UseFont = true;
@@ -303,14 +304,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1186, 621);
-            this.ControlBox = false;
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.teCategoryName);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.gcStock);
             this.Controls.Add(this.ribbon);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewStock";

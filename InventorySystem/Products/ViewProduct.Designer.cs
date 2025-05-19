@@ -200,6 +200,7 @@
             this.labelControl1.Size = new System.Drawing.Size(85, 13);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "Search Keyword :";
+            this.labelControl1.Click += new System.EventHandler(this.labelControl1_Click);
             // 
             // btnFilter
             // 

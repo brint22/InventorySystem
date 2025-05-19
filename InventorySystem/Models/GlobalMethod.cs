@@ -212,8 +212,7 @@ namespace InventorySystem.Models
             SELECT 
                 s.[StockID],
                 s.[ProductID],
-                p.[ProductName],
-                s.[Price],
+                p.[ProductName],               
                 s.Quantity,
                 ls.[LocationID],
                 s.[Supplier],

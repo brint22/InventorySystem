@@ -30,19 +30,22 @@ namespace InventorySystem.Orders
                 connection.Open();
 
                 string query = @"SELECT 
-                               s.ProductID
-                              ,s.Price                       
-	                          ,p.ProductName
-	                          ,SUM(l.Capacity) AS Capacity
-                          FROM [WAREHOUSEISDB].[dbo].[Stock] s
-                          LEFT JOIN Location l
-                          ON l.ProductID = s.ProductID
-                          LEFT JOIN Product p
-                          ON p.ProductID = s.ProductID
-                          GROUP BY 
                                 s.ProductID,
-                                s.Price,
-                                p.ProductName;";
+                                p.Price,                       
+                                p.ProductName,
+                                ISNULL(loc.TotalCapacity, 0) AS Capacity
+                            FROM [WAREHOUSEISDB].[dbo].[Stock] s
+                            LEFT JOIN (
+                                SELECT ProductID, SUM(Capacity) AS TotalCapacity
+                                FROM Location
+                                GROUP BY ProductID
+                            ) loc ON loc.ProductID = s.ProductID
+                            LEFT JOIN Product p ON p.ProductID = s.ProductID
+                            GROUP BY 
+                                s.ProductID,
+                                p.Price,
+                                p.ProductName,
+                                loc.TotalCapacity;";
 
 
                 stock = connection.Query<ProductStock>(query, commandType: CommandType.Text);
@@ -54,6 +57,11 @@ namespace InventorySystem.Orders
         private void AddOrder_Load(object sender, EventArgs e)
         {
             gcProducts.DataSource = GetStock();
+        }
+
+        private void txtSearch_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            gvProducts.ApplyFindFilter(e.NewValue as string);
         }
     }
 }

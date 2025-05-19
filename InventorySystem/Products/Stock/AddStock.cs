@@ -54,14 +54,13 @@ namespace InventorySystem.Products.Stock
 
                         // 2. Insert stock
                         string insertStockSql = @"
-            INSERT INTO Stock (ProductID, Price, Quantity, ExpirationDate, Supplier, ProductRecieved)
+            INSERT INTO Stock (ProductID, Quantity, ExpirationDate, Supplier, ProductRecieved)
             OUTPUT INSERTED.StockID
-            VALUES (@ProductID, @Price, @Quantity, @ExpirationDate, @Supplier, @ProductRecieved);";
+            VALUES (@ProductID, @Quantity, @ExpirationDate, @Supplier, @ProductRecieved);";
 
                         int insertedStockID = connection.ExecuteScalar<int>(insertStockSql, new
                         {
-                            productStock.ProductID,
-                            productStock.Price,
+                            productStock.ProductID,                          
                             productStock.Quantity,
                             productStock.ExpirationDate,
                             productStock.Supplier,

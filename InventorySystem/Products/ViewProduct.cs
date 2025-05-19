@@ -31,5 +31,11 @@ namespace InventorySystem.views
         {
             gvProductList.ApplyFindFilter(e.NewValue as string);
         }
+
+
+        private void labelControl1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

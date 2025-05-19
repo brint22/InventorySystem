@@ -184,15 +184,10 @@ namespace InventorySystem.Views
 
         private void ViewStock_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //Close the current Form when click another form
+            //Close the current Form when click 6another form
             CloseAllChildForms();
-            // Create a new instance of Employee form
-            ViewStock stock = new ViewStock();
-            this.IsMdiContainer = true;
-            stock.MdiParent = this;
-
-            // Show the Employee form
-            stock.Show();
+            // Create a new instance of Stock form
+            new ViewStock().Show();
         }
 
         private void bbiAddOrder_ItemClick(object sender, ItemClickEventArgs e)
