@@ -110,7 +110,9 @@
       <DependentUpon>ViewAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\LocationStock.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\ProductStock.cs" />
+    <Compile Include="Models\Sale.cs" />
     <Compile Include="Orders\AddOrder.cs">
       <SubType>Form</SubType>
     </Compile>
