@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using Dapper;
 using InventorySystem.Models;
 using System.Data.SqlClient;
+using InventorySystem.Infrastracture.Repositories;
+using DevExpress.XtraRichEdit.Accessibility;
 
 namespace InventorySystem.Orders
 {
@@ -57,6 +59,21 @@ namespace InventorySystem.Orders
         private void AddOrder_Load(object sender, EventArgs e)
         {
             gcProducts.DataSource = GetStock();
+            var products = GetStock();
+            gcProducts.DataSource = products;
+
+            gvProducts.RowClick += (s, ev) =>
+            {
+                if (gvProducts.FocusedRowHandle >= 0)
+                {
+                    var productstock = gvProducts.GetRowCellValue(gvProducts.FocusedRowHandle, "ProductName")?.ToString();
+                    teProductName.Text = productstock;
+                    
+                }
+            };
+
+            gcOrder.DataSource = AddOrderTable();
+
         }
 
         private void txtSearch_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
@@ -64,5 +81,40 @@ namespace InventorySystem.Orders
             gvProducts.ApplyFindFilter(e.NewValue as string);
         }
 
+        //Data table of Order Product
+        DataTable dtProduct = new DataTable();
+        private DataTable AddOrderTable()
+        {
+            dtProduct.Columns.Add("ProductName", typeof(string));
+            dtProduct.Columns.Add("Quantity", typeof(int));
+            return dtProduct;
+        }
+
+        private void SubmitBtn_Click(object sender, EventArgs e)
+        {
+            string productName = teProductName.Text.Trim();
+            string quantity = seQuantity.Text.Trim();          
+
+            // Validation to check if any field is empty
+            if (string.IsNullOrEmpty(productName) ||
+                string.IsNullOrEmpty(quantity)) 
+               
+            {
+                MessageBox.Show("Please fill out all fields before adding.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DataRow newRow = dtProduct.NewRow();
+            newRow["ProductName"] = productName;
+            newRow["Quantity"] = quantity;
+            dtProduct.Rows.Add(newRow);
+
+            gcOrder.DataSource = dtProduct;
+            gvOrder.RefreshData();
+        }
     }
 }
+
+
+
+
