@@ -182,9 +182,9 @@
             this.labelControl3.Location = new System.Drawing.Point(58, 68);
             this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(116, 17);
+            this.labelControl3.Size = new System.Drawing.Size(112, 17);
             this.labelControl3.TabIndex = 36;
-            this.labelControl3.Text = "Search Keyword :";
+            this.labelControl3.Text = "Search Keyword:";
             // 
             // txtSearch
             // 
