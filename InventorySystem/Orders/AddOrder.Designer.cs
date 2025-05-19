@@ -34,7 +34,7 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.BtnSubmit = new DevExpress.XtraEditors.SimpleButton();
-            this.SubmitBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.seQuantity = new DevExpress.XtraEditors.SpinEdit();
             this.BtnCancel = new DevExpress.XtraEditors.SimpleButton();
@@ -57,6 +57,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.tePrice = new DevExpress.XtraEditors.TextEdit();
+            this.btnRemove = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seQuantity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teProductName.Properties)).BeginInit();
@@ -108,27 +109,27 @@
             this.BtnSubmit.TabIndex = 33;
             this.BtnSubmit.Text = "SUBMIT";
             // 
-            // SubmitBtn
+            // btnAdd
             // 
-            this.SubmitBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SubmitBtn.Appearance.BackColor = System.Drawing.Color.LightSlateGray;
-            this.SubmitBtn.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SubmitBtn.Appearance.Options.UseBackColor = true;
-            this.SubmitBtn.Appearance.Options.UseFont = true;
-            this.SubmitBtn.Location = new System.Drawing.Point(58, 582);
-            this.SubmitBtn.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.SubmitBtn.Name = "SubmitBtn";
-            this.SubmitBtn.Size = new System.Drawing.Size(210, 31);
-            this.SubmitBtn.TabIndex = 79;
-            this.SubmitBtn.Text = "SUBMIT";
-            this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnAdd.Appearance.BackColor = System.Drawing.Color.LightSlateGray;
+            this.btnAdd.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Appearance.Options.UseBackColor = true;
+            this.btnAdd.Appearance.Options.UseFont = true;
+            this.btnAdd.Location = new System.Drawing.Point(58, 585);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(210, 31);
+            this.btnAdd.TabIndex = 79;
+            this.btnAdd.Text = "ADD";
+            this.btnAdd.Click += new System.EventHandler(this.SubmitBtn_Click);
             // 
             // labelControl1
             // 
             this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 11.25F);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(58, 508);
+            this.labelControl1.Location = new System.Drawing.Point(58, 511);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(54, 17);
@@ -143,7 +144,7 @@
             0,
             0,
             0});
-            this.seQuantity.Location = new System.Drawing.Point(58, 529);
+            this.seQuantity.Location = new System.Drawing.Point(58, 532);
             this.seQuantity.MenuManager = this.ribbon;
             this.seQuantity.Name = "seQuantity";
             this.seQuantity.Properties.Appearance.Font = new System.Drawing.Font("Arial", 11.25F);
@@ -160,7 +161,7 @@
             this.BtnCancel.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.Appearance.Options.UseBackColor = true;
             this.BtnCancel.Appearance.Options.UseFont = true;
-            this.BtnCancel.Location = new System.Drawing.Point(275, 582);
+            this.BtnCancel.Location = new System.Drawing.Point(275, 585);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(201, 31);
             this.BtnCancel.TabIndex = 80;
@@ -169,7 +170,7 @@
             // teProductName
             // 
             this.teProductName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.teProductName.Location = new System.Drawing.Point(58, 461);
+            this.teProductName.Location = new System.Drawing.Point(58, 464);
             this.teProductName.MenuManager = this.ribbon;
             this.teProductName.Name = "teProductName";
             this.teProductName.Properties.AllowFocused = false;
@@ -188,17 +189,20 @@
             this.labelControl3.Location = new System.Drawing.Point(58, 68);
             this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(112, 17);
+            this.labelControl3.Size = new System.Drawing.Size(106, 17);
             this.labelControl3.TabIndex = 36;
-            this.labelControl3.Text = "Search Keyword:";
+            this.labelControl3.Text = "Search Product:";
             // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(58, 89);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Properties.Appearance.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Properties.Appearance.Options.UseFont = true;
+            this.txtSearch.Properties.AutoHeight = false;
             this.txtSearch.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.txtSearch.Size = new System.Drawing.Size(418, 28);
+            this.txtSearch.Size = new System.Drawing.Size(418, 31);
             this.txtSearch.TabIndex = 37;
             this.txtSearch.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.txtSearch_EditValueChanging);
             // 
@@ -235,14 +239,14 @@
             this.ProductID.AppearanceCell.Options.UseFont = true;
             this.ProductID.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
             this.ProductID.AppearanceHeader.Options.UseFont = true;
-            this.ProductID.Caption = "ProductID";
+            this.ProductID.Caption = "Product ID";
             this.ProductID.FieldName = "ProductID";
             this.ProductID.MinWidth = 21;
             this.ProductID.Name = "ProductID";
             this.ProductID.OptionsColumn.AllowEdit = false;
             this.ProductID.Visible = true;
             this.ProductID.VisibleIndex = 1;
-            this.ProductID.Width = 111;
+            this.ProductID.Width = 130;
             // 
             // ProductName
             // 
@@ -257,7 +261,7 @@
             this.ProductName.OptionsColumn.AllowEdit = false;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 2;
-            this.ProductName.Width = 194;
+            this.ProductName.Width = 215;
             // 
             // Capacity
             // 
@@ -265,14 +269,14 @@
             this.Capacity.AppearanceCell.Options.UseFont = true;
             this.Capacity.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
             this.Capacity.AppearanceHeader.Options.UseFont = true;
-            this.Capacity.Caption = "Available Stocks";
+            this.Capacity.Caption = "Stock";
             this.Capacity.FieldName = "Capacity";
             this.Capacity.MinWidth = 21;
             this.Capacity.Name = "Capacity";
             this.Capacity.OptionsColumn.AllowEdit = false;
             this.Capacity.Visible = true;
             this.Capacity.VisibleIndex = 3;
-            this.Capacity.Width = 173;
+            this.Capacity.Width = 128;
             // 
             // Price
             // 
@@ -287,11 +291,11 @@
             this.Price.OptionsColumn.AllowEdit = false;
             this.Price.Visible = true;
             this.Price.VisibleIndex = 4;
-            this.Price.Width = 125;
+            this.Price.Width = 130;
             // 
             // gcProducts
             // 
-            this.gcProducts.Location = new System.Drawing.Point(58, 130);
+            this.gcProducts.Location = new System.Drawing.Point(58, 138);
             this.gcProducts.MainView = this.gvProducts;
             this.gcProducts.MenuManager = this.ribbon;
             this.gcProducts.Name = "gcProducts";
@@ -321,7 +325,7 @@
             this.RowCount.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
             this.RowCount.AppearanceHeader.Options.UseFont = true;
             this.RowCount.Caption = "#";
-            this.RowCount.FieldName = "RowCount";
+            this.RowCount.FieldName = "Count";
             this.RowCount.Name = "RowCount";
             this.RowCount.OptionsColumn.AllowEdit = false;
             this.RowCount.Visible = true;
@@ -374,7 +378,7 @@
             gridLevelNode1.RelationName = "Level1";
             this.gcOrder.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gcOrder.Location = new System.Drawing.Point(664, 130);
+            this.gcOrder.Location = new System.Drawing.Point(664, 138);
             this.gcOrder.MainView = this.gvOrder;
             this.gcOrder.MenuManager = this.ribbon;
             this.gcOrder.Name = "gcOrder";
@@ -388,7 +392,7 @@
             this.labelControl2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Arial", 11.25F);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(58, 437);
+            this.labelControl2.Location = new System.Drawing.Point(58, 440);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(94, 17);
@@ -400,7 +404,7 @@
             this.labelControl4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Arial", 11.25F);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(275, 508);
+            this.labelControl4.Location = new System.Drawing.Point(275, 511);
             this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(34, 17);
@@ -410,7 +414,7 @@
             // tePrice
             // 
             this.tePrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tePrice.Location = new System.Drawing.Point(275, 529);
+            this.tePrice.Location = new System.Drawing.Point(275, 532);
             this.tePrice.MenuManager = this.ribbon;
             this.tePrice.Name = "tePrice";
             this.tePrice.Properties.AllowFocused = false;
@@ -420,17 +424,32 @@
             this.tePrice.Size = new System.Drawing.Size(201, 32);
             this.tePrice.TabIndex = 85;
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnRemove.Appearance.BackColor = System.Drawing.Color.DimGray;
+            this.btnRemove.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.Appearance.Options.UseBackColor = true;
+            this.btnRemove.Appearance.Options.UseFont = true;
+            this.btnRemove.Location = new System.Drawing.Point(1180, 449);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(150, 31);
+            this.btnRemove.TabIndex = 88;
+            this.btnRemove.Text = "REMOVE";
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // AddOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1384, 721);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.tePrice);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.teProductName);
             this.Controls.Add(this.BtnCancel);
-            this.Controls.Add(this.SubmitBtn);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.gcOrder);
@@ -468,7 +487,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraEditors.SimpleButton BtnSubmit;
-        private DevExpress.XtraEditors.SimpleButton SubmitBtn;
+        private DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SpinEdit seQuantity;
         private DevExpress.XtraEditors.SimpleButton BtnCancel;
@@ -491,5 +510,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn TotalPrice;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit tePrice;
+        private DevExpress.XtraEditors.SimpleButton btnRemove;
     }
 }

@@ -17,5 +17,6 @@ namespace InventorySystem.Models
         public DateTime ProductRecieved { get; set; }
         public string Capacity { get; set; }
         public string ProductName { get; set; }
+        public int Count { get; set; }
     }
 }
