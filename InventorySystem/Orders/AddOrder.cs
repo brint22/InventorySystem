@@ -70,6 +70,8 @@ namespace InventorySystem.Orders
             {
                 if (gvProducts.FocusedRowHandle >= 0)
                 {
+                    var productID =  gvProducts.GetRowCellValue(gvProducts.FocusedRowHandle, "ProductID")?.ToString();
+                    teProductID.Text = productID;
                     var productstock = gvProducts.GetRowCellValue(gvProducts.FocusedRowHandle, "ProductName")?.ToString();
                     teProductName.Text = productstock;
                     var price = gvProducts.GetRowCellValue(gvProducts.FocusedRowHandle, "Price")?.ToString();
@@ -111,6 +113,7 @@ namespace InventorySystem.Orders
             dtProduct.Columns["Count"].AutoIncrementSeed = 1;
             dtProduct.Columns["Count"].AutoIncrementStep = 1;
 
+            dtProduct.Columns.Add("ProductID", typeof(string));
             dtProduct.Columns.Add("ProductName", typeof(string));
             dtProduct.Columns.Add("Quantity", typeof(int));
             dtProduct.Columns.Add("Price", typeof(decimal));
@@ -120,12 +123,14 @@ namespace InventorySystem.Orders
 
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
+            string productID = teProductID.Text.Trim();
             string productName = teProductName.Text.Trim();
             string quantityText = seQuantity.Text.Trim();
             string priceText = tePrice.Text.Trim();
 
             // Validation to check if any field is empty
-            if (string.IsNullOrEmpty(productName) ||
+            if (string.IsNullOrEmpty(productID) || 
+                string.IsNullOrEmpty(productName) ||
                 string.IsNullOrEmpty(quantityText) ||
                 string.IsNullOrEmpty(priceText))
             {
@@ -164,6 +169,7 @@ namespace InventorySystem.Orders
             {
                 // Product doesn't exist, add new row
                 DataRow newRow = dtProduct.NewRow();
+                newRow["ProductID"] = productID;
                 newRow["ProductName"] = productName;
                 newRow["Quantity"] = quantity;
                 newRow["Price"] = totalPrice;
@@ -200,8 +206,71 @@ namespace InventorySystem.Orders
 
         private void btnConfirmPayment_Click(object sender, EventArgs e)
         {
-          
+            // Step 1: Insert into Orders table to get the OrderID
+            int orderID = InsertOrder();  // This method will return the generated OrderID
+
+            // Step 2: Insert into Sales table for each product in the order
+            foreach (DataRow row in dtProduct.Rows)
+            {
+                // Get the ProductID as string (from DataTable)
+                string productID = row["ProductID"].ToString();  // Assuming "ProductID" is a column in dtProduct
+
+                // Get the Quantity directly from the DataTable
+                int quantitySold = Convert.ToInt32(row["Quantity"]);  // Assuming "Quantity" is a column in dtProduct
+
+                // Insert each sale record into the Sales table
+                InsertSale(orderID, productID, quantitySold);
+            }
+
+            MessageBox.Show("Payment confirmed, and sales recorded.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        // Method to insert into the Sales table
+        private void InsertSale(int orderID, string productID, int quantitySold)
+        {
+            // Using the GlobalClass.connectionString for the connection
+            using (SqlConnection conn = new SqlConnection(GlobalClass.connectionString))
+            {
+                string query = "INSERT INTO Sales (OrderID, ProductID, QuantitySold) VALUES (@OrderID, @ProductID, @QuantitySold)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    // Add parameters to prevent SQL injection
+                    cmd.Parameters.AddWithValue("@OrderID", orderID);  // Use the OrderID obtained from InsertOrder
+                    cmd.Parameters.AddWithValue("@ProductID", productID);  // ProductID comes from dtProduct DataTable (as string)
+                    cmd.Parameters.AddWithValue("@QuantitySold", quantitySold);  // Quantity comes from dtProduct DataTable
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();  // Insert the sale record
+                    conn.Close();
+                }
+            }
+        }
+
+        // Method to insert into the Orders table and return the generated OrderID
+        private int InsertOrder()
+        {
+            int orderID = 0;
+
+            // Using the GlobalClass.connectionString for the connection
+            using (SqlConnection conn = new SqlConnection(GlobalClass.connectionString))
+            {
+                // Since OrderID is an auto-increment column, we don't need to insert any value.
+                // This query only triggers the creation of a new OrderID.
+                string query = "INSERT INTO Orders DEFAULT VALUES; " +
+                               "SELECT SCOPE_IDENTITY();";  // Retrieve the generated OrderID
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    orderID = Convert.ToInt32(cmd.ExecuteScalar());  // Get the generated OrderID
+                    conn.Close();
+                }
+            }
+
+            return orderID;
+        }
+
 
         private void seAddAmount_EditValueChanged(object sender, EventArgs e)
         {
@@ -237,6 +306,11 @@ namespace InventorySystem.Orders
                 seAddAmount.ForeColor = Color.Black;
                 seChange.Value = change;
             }
+        }
+
+        private void gcOrder_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -8,9 +8,9 @@ namespace InventorySystem.Models
 {
     public class Sale
     {
-        public int SalesID { get; set; }
+        public int SaleID { get; set; }
         public decimal QuantitySold { get; set; }
-        public int ProductID { get; set; }
+        public string ProductID { get; set; }
         public int OrderID { get; set; }
 
 
