@@ -207,26 +207,29 @@ namespace InventorySystem.Orders
 
         private void btnConfirmPayment_Click(object sender, EventArgs e)
         {
-            // ✅ Step 1: Create the Order object
+            // Step 1: Create the Order object
             Order order = new Order()
             {
                 TotalPrice = seTotalPrice.Text.Trim(),
-                PaymentAmount =seAddAmount.Text.Trim(),
+                PaymentAmount = seAddAmount.Text.Trim(),
             };
 
-            // ✅ Step 2: Insert Order and get the generated OrderID
+            // Step 2: Insert Order and get the generated OrderID
             int orderID = InsertOrder(order);
 
-            // ✅ Step 3: Insert into Sales table for each product in the order
+            // Step 3: Insert Sales and Deduct Stock
             foreach (DataRow row in dtProduct.Rows)
             {
                 string productID = row["ProductID"].ToString();
                 int quantitySold = Convert.ToInt32(row["Quantity"]);
 
                 InsertSale(orderID, productID, quantitySold);
+
+                // ✅ Deduct stock using Dapper
+                DeductStockQuantity(productID, quantitySold);
             }
 
-            MessageBox.Show("Payment confirmed, and sales recorded.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Payment confirmed, sales recorded, and stock updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -320,6 +323,29 @@ namespace InventorySystem.Orders
         private void gcOrder_Click(object sender, EventArgs e)
         {
 
+        }
+
+        //Method to deduct the stock quantity
+        private void DeductStockQuantity(string productID, int quantitySold)
+        {
+            using (var conn = new SqlConnection(GlobalClass.connectionString))
+            {
+                string query = @"
+            UPDATE Stock
+            SET Quantity = Quantity - @QuantitySold
+            WHERE ProductID = @ProductID AND Quantity >= @QuantitySold";
+
+                int rowsAffected = conn.Execute(query, new
+                {
+                    ProductID = productID,
+                    QuantitySold = quantitySold
+                });
+
+                if (rowsAffected == 0)
+                {
+                    MessageBox.Show($"Not enough stock for Product ID: {productID}", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
     }
 }
