@@ -297,7 +297,7 @@ namespace InventorySystem.Orders
             }
             else
             {
-                seAddAmount.ForeColor = Color.Black;
+                seAddAmount.ForeColor = Color.Green;
                 seChange.Value = change;
             }
         }
@@ -325,28 +325,85 @@ namespace InventorySystem.Orders
 
         }
 
-        //Method to deduct the stock quantity
         private void DeductStockQuantity(string productID, int quantitySold)
         {
             using (var conn = new SqlConnection(GlobalClass.connectionString))
             {
-                string query = @"
-            UPDATE Stock
-            SET Quantity = Quantity - @QuantitySold
-            WHERE ProductID = @ProductID AND Quantity >= @QuantitySold";
-
-                int rowsAffected = conn.Execute(query, new
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
                 {
-                    ProductID = productID,
-                    QuantitySold = quantitySold
-                });
+                    try
+                    {
+                        // Deduct from Stock table first
+                        string updateStock = @"
+                UPDATE Stock
+                SET Quantity = Quantity - @QuantitySold
+                WHERE ProductID = @ProductID AND Quantity >= @QuantitySold";
 
-                if (rowsAffected == 0)
-                {
-                    MessageBox.Show($"Not enough stock for Product ID: {productID}", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        int rowsAffected = conn.Execute(updateStock, new
+                        {
+                            ProductID = productID,
+                            QuantitySold = quantitySold
+                        }, transaction);
+
+                        if (rowsAffected == 0)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show($"Not enough stock for Product ID: {productID}", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        // Deduct from Location.Capacity for this product
+                        string selectLocations = @"
+                SELECT LocationID, Capacity
+                FROM Location
+                WHERE ProductID = @ProductID AND Capacity > 0
+                ORDER BY Capacity DESC";
+
+                        var locations = conn.Query(selectLocations, new { ProductID = productID }, transaction).ToList();
+
+                        int remainingToDeduct = quantitySold;
+
+                        foreach (var loc in locations)
+                        {
+                            if (remainingToDeduct <= 0)
+                                break;
+
+                            int deduct = Math.Min(loc.Capacity, remainingToDeduct);
+
+                            string updateLocation = @"
+                    UPDATE Location
+                    SET Capacity = Capacity - @Deduct
+                    WHERE LocationID = @LocationID";
+
+                            conn.Execute(updateLocation, new
+                            {
+                                Deduct = deduct,
+                                LocationID = loc.LocationID
+                            }, transaction);
+
+                            remainingToDeduct -= deduct;
+                        }
+
+                        if (remainingToDeduct > 0)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show($"Not enough location capacity for Product ID: {productID}", "Location Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Error during deduction: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
+
+
     }
 }
 
