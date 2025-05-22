@@ -229,6 +229,9 @@ namespace InventorySystem.Orders
                 DeductStockQuantity(productID, quantitySold);
             }
 
+            // Step 4: Refresh the data source
+            gcProducts.DataSource = GetStock();
+            gcProducts.RefreshDataSource();
             MessageBox.Show("Payment confirmed, sales recorded, and stock updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
