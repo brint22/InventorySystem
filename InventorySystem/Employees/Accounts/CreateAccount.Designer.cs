@@ -44,12 +44,19 @@
             this.teUserName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.EmployeeID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.EmployeeName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.RoleName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage2
@@ -102,7 +109,7 @@
             this.tePassword.MenuManager = this.ribbon;
             this.tePassword.Name = "tePassword";
             this.tePassword.Properties.AutoHeight = false;
-            this.tePassword.Size = new System.Drawing.Size(320, 23);
+            this.tePassword.Size = new System.Drawing.Size(131, 23);
             this.tePassword.TabIndex = 4;
             // 
             // labelControl2
@@ -134,6 +141,7 @@
             // 
             this.groupControl1.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl1.Appearance.Options.UseBackColor = true;
+            this.groupControl1.Controls.Add(this.gridControl1);
             this.groupControl1.Controls.Add(this.lueRole);
             this.groupControl1.Controls.Add(this.teUserName);
             this.groupControl1.Controls.Add(this.labelControl1);
@@ -160,7 +168,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "Name9")});
             this.lueRole.Properties.DisplayMember = "RoleName";
             this.lueRole.Properties.NullText = "";
-            this.lueRole.Size = new System.Drawing.Size(207, 23);
+            this.lueRole.Size = new System.Drawing.Size(131, 23);
             this.lueRole.TabIndex = 15;
             // 
             // teUserName
@@ -169,7 +177,7 @@
             this.teUserName.MenuManager = this.ribbon;
             this.teUserName.Name = "teUserName";
             this.teUserName.Properties.AutoHeight = false;
-            this.teUserName.Size = new System.Drawing.Size(320, 23);
+            this.teUserName.Size = new System.Drawing.Size(131, 23);
             this.teUserName.TabIndex = 1;
             // 
             // labelControl1
@@ -191,6 +199,56 @@
             this.labelControl3.Size = new System.Drawing.Size(25, 16);
             this.labelControl3.TabIndex = 14;
             this.labelControl3.Text = "Role";
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Location = new System.Drawing.Point(179, 26);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.ribbon;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(387, 239);
+            this.gridControl1.TabIndex = 16;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.EmployeeID,
+            this.EmployeeName,
+            this.RoleName});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            // 
+            // EmployeeID
+            // 
+            this.EmployeeID.Caption = "EmployeeID";
+            this.EmployeeID.FieldName = "EmployeeID";
+            this.EmployeeID.Name = "EmployeeID";
+            this.EmployeeID.OptionsColumn.AllowEdit = false;
+            this.EmployeeID.OptionsColumn.AllowFocus = false;
+            this.EmployeeID.Visible = true;
+            this.EmployeeID.VisibleIndex = 0;
+            // 
+            // EmployeeName
+            // 
+            this.EmployeeName.Caption = "Employee Name";
+            this.EmployeeName.FieldName = "EmployeeName";
+            this.EmployeeName.Name = "EmployeeName";
+            this.EmployeeName.OptionsColumn.AllowEdit = false;
+            this.EmployeeName.OptionsColumn.AllowFocus = false;
+            this.EmployeeName.Visible = true;
+            this.EmployeeName.VisibleIndex = 1;
+            // 
+            // RoleName
+            // 
+            this.RoleName.Caption = "Role Name";
+            this.RoleName.FieldName = "RoleName";
+            this.RoleName.Name = "RoleName";
+            this.RoleName.OptionsColumn.AllowEdit = false;
+            this.RoleName.OptionsColumn.AllowFocus = false;
+            this.RoleName.Visible = true;
+            this.RoleName.VisibleIndex = 2;
             // 
             // CreateAccount
             // 
@@ -217,6 +275,8 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +297,10 @@
         private DevExpress.XtraEditors.TextEdit teUserName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn EmployeeID;
+        private DevExpress.XtraGrid.Columns.GridColumn EmployeeName;
+        private DevExpress.XtraGrid.Columns.GridColumn RoleName;
     }
 }
