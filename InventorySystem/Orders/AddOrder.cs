@@ -339,9 +339,9 @@ namespace InventorySystem.Orders
                     {
                         // Deduct from Stock table first
                         string updateStock = @"
-                UPDATE Stock
-                SET Quantity = Quantity - @QuantitySold
-                WHERE ProductID = @ProductID AND Quantity >= @QuantitySold";
+                    UPDATE Stock
+                    SET Quantity = Quantity - @QuantitySold
+                    WHERE ProductID = @ProductID AND Quantity >= @QuantitySold";
 
                         int rowsAffected = conn.Execute(updateStock, new
                         {
@@ -356,12 +356,12 @@ namespace InventorySystem.Orders
                             return;
                         }
 
-                        // Deduct from Location.Capacity for this product
+                        // FIFO deduction from Location based on LocationID ascending
                         string selectLocations = @"
-                SELECT LocationID, Capacity
-                FROM Location
-                WHERE ProductID = @ProductID AND Capacity > 0
-                ORDER BY Capacity DESC";
+                    SELECT LocationID, Capacity
+                    FROM Location
+                    WHERE ProductID = @ProductID AND Capacity > 0
+                    ORDER BY LocationID ASC";
 
                         var locations = conn.Query(selectLocations, new { ProductID = productID }, transaction).ToList();
 
@@ -374,16 +374,40 @@ namespace InventorySystem.Orders
 
                             int deduct = Math.Min(loc.Capacity, remainingToDeduct);
 
+                            // Deduct capacity from this location
                             string updateLocation = @"
-                    UPDATE Location
-                    SET Capacity = Capacity - @Deduct
-                    WHERE LocationID = @LocationID";
+                        UPDATE Location
+                        SET Capacity = Capacity - @Deduct
+                        WHERE LocationID = @LocationID";
 
                             conn.Execute(updateLocation, new
                             {
                                 Deduct = deduct,
                                 LocationID = loc.LocationID
                             }, transaction);
+
+                            // Re-check capacity AFTER deduction
+                            string getUpdatedCapacity = @"
+                        SELECT Capacity FROM Location WHERE LocationID = @LocationID";
+
+                            int updatedCapacity = conn.ExecuteScalar<int>(getUpdatedCapacity, new
+                            {
+                                LocationID = loc.LocationID
+                            }, transaction);
+
+                            // If capacity is now 0, mark as 'Available'
+                            if (updatedCapacity == 0)
+                            {
+                                string updateAvailability = @"
+                            UPDATE Location
+                            SET Availability = 'Available'
+                            WHERE LocationID = @LocationID";
+
+                                conn.Execute(updateAvailability, new
+                                {
+                                    LocationID = loc.LocationID
+                                }, transaction);
+                            }
 
                             remainingToDeduct -= deduct;
                         }
@@ -405,6 +429,9 @@ namespace InventorySystem.Orders
                 }
             }
         }
+
+
+
 
 
     }
