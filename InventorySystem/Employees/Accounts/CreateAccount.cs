@@ -20,8 +20,38 @@ namespace InventorySystem.Account
         public CreateAccount()
         {
             InitializeComponent();
+            LoadEmployeeData();
         }
 
+        private void LoadEmployeeData()
+        {
+            string query = @"
+                SELECT 
+                    e.EmployeeID,
+                    e.FirstName + ' ' + e.MiddleName + ' ' + e.LastName + ' ' + e.NameExtension AS EmployeeName,
+                    r.RoleName
+                FROM [WAREHOUSEISDB].[dbo].[Employee] e
+                LEFT JOIN [dbo].[Role] r ON r.RoleID = e.RoleID;";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(GlobalClass.connectionString))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                    {
+                        DataTable dt = new DataTable();
+                        conn.Open();
+                        adapter.Fill(dt);
+                        gridControl1.DataSource = dt;
+                        gridControl1.RefreshDataSource();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load employee data:\n" + ex.Message);
+            }
+        }
         private void windowsUIBtnSave_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
         {
             string connStr = GlobalClass.connectionString;
