@@ -14,9 +14,9 @@ namespace InventorySystem.Models
         //Initial Catalog=WAREHOUSEISDB; 
         //Trusted_Connection=True;";
 
-        //@"Data Source=NIEZEL\SQLEXPRESS; 
-        //Initial Catalog=WAREHOUSEISDB; 
-        //Trusted_Connection=True;";
+        @"Data Source=NIEZEL\SQLEXPRESS; 
+        Initial Catalog=WAREHOUSEISDB; 
+        Trusted_Connection=True;";
 
         //@"Data Source=LAB1-PC08; 
         //Initial Catalog = WAREHOUSEISDB; 
@@ -27,9 +27,9 @@ namespace InventorySystem.Models
         //User ID = sa; Password = 123456;";
 
         //public static string connectionString =
-            @"Data Source=LAB1-PC10; 
-            Initial Catalog=WAREHOUSEISDB; 
-            User ID = sa; Password = 123456;";
+        //@"Data Source=LAB1-PC10; 
+        //Initial Catalog=WAREHOUSEISDB; 
+        //User ID = sa; Password = 123456;";
     }
 }
 

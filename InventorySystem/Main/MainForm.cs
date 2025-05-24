@@ -197,5 +197,13 @@ namespace InventorySystem.Views
             // Create a new instance of Employee form
             new AddOrder().Show();
         }
+
+        private void ViewOrder_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //Close the current Form when click 6another form
+            CloseAllChildForms();
+            // Create a new instance of Employee form
+            new ViewOrderSale().Show();
+        }
     }
 }

@@ -101,7 +101,7 @@
             this.bbiAddOrder,
             this.ViewOrder});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(4);
             this.ribbon.MaxItemId = 30;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -280,6 +280,7 @@
             this.ViewOrder.Caption = "View Order";
             this.ViewOrder.Id = 29;
             this.ViewOrder.Name = "ViewOrder";
+            this.ViewOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ViewOrder_ItemClick);
             // 
             // Main
             // 
@@ -395,7 +396,7 @@
             this.ClientSize = new System.Drawing.Size(1383, 786);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbi.IconOptions.Image")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "bbi";
             this.Ribbon = this.ribbon;

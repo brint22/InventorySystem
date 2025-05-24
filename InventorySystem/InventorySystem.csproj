@@ -119,6 +119,12 @@
     <Compile Include="Orders\AddOrder.Designer.cs">
       <DependentUpon>AddOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Orders\ViewOrderSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\ViewOrderSale.Designer.cs">
+      <DependentUpon>ViewOrderSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Products\Categories\AddCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Orders\AddOrder.resx">
       <DependentUpon>AddOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\ViewOrderSale.resx">
+      <DependentUpon>ViewOrderSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\Categories\AddCategory.resx">
       <DependentUpon>AddCategory.cs</DependentUpon>

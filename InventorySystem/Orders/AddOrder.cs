@@ -222,8 +222,9 @@ namespace InventorySystem.Orders
             {
                 string productID = row["ProductID"].ToString();
                 int quantitySold = Convert.ToInt32(row["Quantity"]);
+                decimal totalPrice = Convert.ToDecimal(row["Price"]);
 
-                InsertSale(orderID, productID, quantitySold);
+                InsertSale(orderID, productID, quantitySold, totalPrice);
 
                 // ✅ Deduct stock using Dapper
                 DeductStockQuantity(productID, quantitySold);
@@ -237,12 +238,12 @@ namespace InventorySystem.Orders
 
 
         // Method to insert into the Sales table
-        private void InsertSale(int orderID, string productID, int quantitySold)
+        private void InsertSale(int orderID, string productID, int quantitySold, decimal totalPrice)
         {
             // Using the GlobalClass.connectionString for the connection
             using (SqlConnection conn = new SqlConnection(GlobalClass.connectionString))
             {
-                string query = "INSERT INTO Sales (OrderID, ProductID, QuantitySold) VALUES (@OrderID, @ProductID, @QuantitySold)";
+                string query = "INSERT INTO Sales (OrderID, ProductID, QuantitySold, Price) VALUES (@OrderID, @ProductID, @QuantitySold, @Price)";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -250,6 +251,7 @@ namespace InventorySystem.Orders
                     cmd.Parameters.AddWithValue("@OrderID", orderID);  // Use the OrderID obtained from InsertOrder
                     cmd.Parameters.AddWithValue("@ProductID", productID);  // ProductID comes from dtProduct DataTable (as string)
                     cmd.Parameters.AddWithValue("@QuantitySold", quantitySold);  // Quantity comes from dtProduct DataTable
+                    cmd.Parameters.AddWithValue("@Price", totalPrice);  // totalPrice comes from dtProduct DataTable
 
                     conn.Open();
                     cmd.ExecuteNonQuery();  // Insert the sale record
