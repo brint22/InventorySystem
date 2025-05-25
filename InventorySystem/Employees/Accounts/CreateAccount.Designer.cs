@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateAccount));
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -38,25 +36,23 @@
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.tePassword = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.windowsUIBtnSave = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.lueRole = new DevExpress.XtraEditors.LookUpEdit();
-            this.teUserName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcAccounts = new DevExpress.XtraGrid.GridControl();
+            this.gvAccounts = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.EmployeeID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.EmployeeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.RoleName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.teUserName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSubmit = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcAccounts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAccounts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage2
@@ -85,12 +81,15 @@
             // 
             // ribbon
             // 
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(4);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
+            this.ribbon.OptionsMenuMinWidth = 385;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
@@ -100,167 +99,169 @@
             this.ribbon.ShowPageHeadersInFormCaption = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbon.ShowQatLocationSelector = false;
-            this.ribbon.Size = new System.Drawing.Size(604, 49);
+            this.ribbon.Size = new System.Drawing.Size(705, 61);
             this.ribbon.Click += new System.EventHandler(this.ribbon_Click);
             // 
             // tePassword
             // 
-            this.tePassword.Location = new System.Drawing.Point(23, 152);
+            this.tePassword.Location = new System.Drawing.Point(320, 259);
+            this.tePassword.Margin = new System.Windows.Forms.Padding(4);
             this.tePassword.MenuManager = this.ribbon;
             this.tePassword.Name = "tePassword";
             this.tePassword.Properties.AutoHeight = false;
-            this.tePassword.Size = new System.Drawing.Size(131, 23);
+            this.tePassword.Size = new System.Drawing.Size(326, 39);
             this.tePassword.TabIndex = 4;
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(26, 133);
+            this.labelControl2.Location = new System.Drawing.Point(320, 232);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(55, 16);
+            this.labelControl2.Size = new System.Drawing.Size(67, 19);
             this.labelControl2.TabIndex = 13;
             this.labelControl2.Text = "Password";
-            // 
-            // windowsUIBtnSave
-            // 
-            windowsUIButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions1.SvgImage")));
-            windowsUIButtonImageOptions2.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions2.SvgImage")));
-            this.windowsUIBtnSave.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("SAVE", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("CANCEL", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
-            this.windowsUIBtnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.windowsUIBtnSave.Location = new System.Drawing.Point(0, 356);
-            this.windowsUIBtnSave.Name = "windowsUIBtnSave";
-            this.windowsUIBtnSave.Size = new System.Drawing.Size(604, 114);
-            this.windowsUIBtnSave.TabIndex = 15;
-            this.windowsUIBtnSave.Text = "windowsUIButtonPanel1";
-            this.windowsUIBtnSave.ButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.windowsUIBtnSave_ButtonClick);
             // 
             // groupControl1
             // 
             this.groupControl1.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl1.Appearance.Options.UseBackColor = true;
-            this.groupControl1.Controls.Add(this.gridControl1);
-            this.groupControl1.Controls.Add(this.lueRole);
+            this.groupControl1.Controls.Add(this.gcAccounts);
             this.groupControl1.Controls.Add(this.teUserName);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.tePassword);
-            this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Location = new System.Drawing.Point(12, 63);
+            this.groupControl1.Location = new System.Drawing.Point(14, 78);
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(4);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(580, 287);
+            this.groupControl1.Size = new System.Drawing.Size(677, 323);
             this.groupControl1.TabIndex = 16;
             this.groupControl1.Text = "groupControl1";
             // 
-            // lueRole
+            // gcAccounts
             // 
-            this.lueRole.Location = new System.Drawing.Point(23, 229);
-            this.lueRole.MenuManager = this.ribbon;
-            this.lueRole.Name = "lueRole";
-            this.lueRole.Properties.AutoHeight = false;
-            this.lueRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueRole.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleID", "Name8", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RoleName", "Name9")});
-            this.lueRole.Properties.DisplayMember = "RoleName";
-            this.lueRole.Properties.NullText = "";
-            this.lueRole.Size = new System.Drawing.Size(131, 23);
-            this.lueRole.TabIndex = 15;
+            this.gcAccounts.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
+            this.gcAccounts.Location = new System.Drawing.Point(28, 32);
+            this.gcAccounts.MainView = this.gvAccounts;
+            this.gcAccounts.Margin = new System.Windows.Forms.Padding(4);
+            this.gcAccounts.MenuManager = this.ribbon;
+            this.gcAccounts.Name = "gcAccounts";
+            this.gcAccounts.Size = new System.Drawing.Size(618, 172);
+            this.gcAccounts.TabIndex = 16;
+            this.gcAccounts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvAccounts});
+            // 
+            // gvAccounts
+            // 
+            this.gvAccounts.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.EmployeeID,
+            this.EmployeeName,
+            this.RoleName});
+            this.gvAccounts.DetailHeight = 431;
+            this.gvAccounts.GridControl = this.gcAccounts;
+            this.gvAccounts.Name = "gvAccounts";
+            this.gvAccounts.OptionsEditForm.PopupEditFormWidth = 933;
+            // 
+            // EmployeeID
+            // 
+            this.EmployeeID.Caption = "EmployeeID";
+            this.EmployeeID.FieldName = "EmployeeID";
+            this.EmployeeID.MinWidth = 23;
+            this.EmployeeID.Name = "EmployeeID";
+            this.EmployeeID.OptionsColumn.AllowEdit = false;
+            this.EmployeeID.OptionsColumn.AllowFocus = false;
+            this.EmployeeID.Visible = true;
+            this.EmployeeID.VisibleIndex = 0;
+            this.EmployeeID.Width = 87;
+            // 
+            // EmployeeName
+            // 
+            this.EmployeeName.Caption = "Employee Name";
+            this.EmployeeName.FieldName = "EmployeeName";
+            this.EmployeeName.MinWidth = 23;
+            this.EmployeeName.Name = "EmployeeName";
+            this.EmployeeName.OptionsColumn.AllowEdit = false;
+            this.EmployeeName.OptionsColumn.AllowFocus = false;
+            this.EmployeeName.Visible = true;
+            this.EmployeeName.VisibleIndex = 1;
+            this.EmployeeName.Width = 87;
+            // 
+            // RoleName
+            // 
+            this.RoleName.Caption = "Role Name";
+            this.RoleName.FieldName = "RoleName";
+            this.RoleName.MinWidth = 23;
+            this.RoleName.Name = "RoleName";
+            this.RoleName.OptionsColumn.AllowEdit = false;
+            this.RoleName.OptionsColumn.AllowFocus = false;
+            this.RoleName.Visible = true;
+            this.RoleName.VisibleIndex = 2;
+            this.RoleName.Width = 87;
             // 
             // teUserName
             // 
-            this.teUserName.Location = new System.Drawing.Point(23, 80);
+            this.teUserName.Location = new System.Drawing.Point(28, 256);
+            this.teUserName.Margin = new System.Windows.Forms.Padding(4);
             this.teUserName.MenuManager = this.ribbon;
             this.teUserName.Name = "teUserName";
             this.teUserName.Properties.AutoHeight = false;
-            this.teUserName.Size = new System.Drawing.Size(131, 23);
+            this.teUserName.Properties.ReadOnly = true;
+            this.teUserName.Size = new System.Drawing.Size(261, 42);
             this.teUserName.TabIndex = 1;
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(25, 63);
+            this.labelControl1.Location = new System.Drawing.Point(28, 229);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(92, 16);
+            this.labelControl1.Size = new System.Drawing.Size(71, 19);
             this.labelControl1.TabIndex = 12;
-            this.labelControl1.Text = "Employee Name";
+            this.labelControl1.Text = "Username";
             // 
-            // labelControl3
+            // btnCancel
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(25, 207);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(25, 16);
-            this.labelControl3.TabIndex = 14;
-            this.labelControl3.Text = "Role";
+            this.btnCancel.Appearance.BackColor = System.Drawing.Color.DarkGray;
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Appearance.Options.UseBackColor = true;
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Location = new System.Drawing.Point(348, 450);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(239, 38);
+            this.btnCancel.TabIndex = 67;
+            this.btnCancel.Text = "CANCEL";
             // 
-            // gridControl1
+            // btnSubmit
             // 
-            this.gridControl1.Location = new System.Drawing.Point(179, 26);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.ribbon;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(387, 239);
-            this.gridControl1.TabIndex = 16;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.EmployeeID,
-            this.EmployeeName,
-            this.RoleName});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            // 
-            // EmployeeID
-            // 
-            this.EmployeeID.Caption = "EmployeeID";
-            this.EmployeeID.FieldName = "EmployeeID";
-            this.EmployeeID.Name = "EmployeeID";
-            this.EmployeeID.OptionsColumn.AllowEdit = false;
-            this.EmployeeID.OptionsColumn.AllowFocus = false;
-            this.EmployeeID.Visible = true;
-            this.EmployeeID.VisibleIndex = 0;
-            // 
-            // EmployeeName
-            // 
-            this.EmployeeName.Caption = "Employee Name";
-            this.EmployeeName.FieldName = "EmployeeName";
-            this.EmployeeName.Name = "EmployeeName";
-            this.EmployeeName.OptionsColumn.AllowEdit = false;
-            this.EmployeeName.OptionsColumn.AllowFocus = false;
-            this.EmployeeName.Visible = true;
-            this.EmployeeName.VisibleIndex = 1;
-            // 
-            // RoleName
-            // 
-            this.RoleName.Caption = "Role Name";
-            this.RoleName.FieldName = "RoleName";
-            this.RoleName.Name = "RoleName";
-            this.RoleName.OptionsColumn.AllowEdit = false;
-            this.RoleName.OptionsColumn.AllowFocus = false;
-            this.RoleName.Visible = true;
-            this.RoleName.VisibleIndex = 2;
+            this.btnSubmit.Appearance.BackColor = System.Drawing.Color.LightSlateGray;
+            this.btnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Appearance.Options.UseBackColor = true;
+            this.btnSubmit.Appearance.Options.UseFont = true;
+            this.btnSubmit.Location = new System.Drawing.Point(91, 450);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(240, 38);
+            this.btnSubmit.TabIndex = 66;
+            this.btnSubmit.Text = "SUBMIT";
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // CreateAccount
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 470);
+            this.ClientSize = new System.Drawing.Size(705, 578);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.windowsUIBtnSave);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("CreateAccount.IconOptions.Image")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "CreateAccount";
             this.Ribbon = this.ribbon;
@@ -273,10 +274,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lueRole.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcAccounts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAccounts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,16 +291,15 @@
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraEditors.TextEdit tePassword;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIBtnSave;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.LookUpEdit lueRole;
         private DevExpress.XtraEditors.TextEdit teUserName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gcAccounts;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvAccounts;
         private DevExpress.XtraGrid.Columns.GridColumn EmployeeID;
         private DevExpress.XtraGrid.Columns.GridColumn EmployeeName;
         private DevExpress.XtraGrid.Columns.GridColumn RoleName;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraEditors.SimpleButton btnSubmit;
     }
 }

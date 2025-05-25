@@ -42,8 +42,8 @@ namespace InventorySystem.Account
                         DataTable dt = new DataTable();
                         conn.Open();
                         adapter.Fill(dt);
-                        gridControl1.DataSource = dt;
-                        gridControl1.RefreshDataSource();
+                        gcAccounts.DataSource = dt;
+                        gcAccounts.RefreshDataSource();
                     }
                 }
             }
@@ -56,11 +56,10 @@ namespace InventorySystem.Account
         {
             string connStr = GlobalClass.connectionString;
 
-           
+
             string username = teUserName.Text.Trim();
             string password = tePassword.Text.Trim();
-            string role = lueRole.Text.Trim();
-            
+
             // No password hashing
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
@@ -82,19 +81,9 @@ namespace InventorySystem.Account
                         return;
                     }
 
-                    // Retrieve the RoleId from the Role table
-                    string roleSql = "SELECT RoleId FROM Role WHERE RoleName = @RoleName";
-                    var roleId = connection.QueryFirstOrDefault<int?>(roleSql, new { RoleName = role });
-
-                    if (!roleId.HasValue)
-                    {
-                        MessageBox.Show("Invalid Role Selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
                     // Insert new account with RoleId
                     string registerSql = "INSERT INTO Account (UserName, Password, RoleId) VALUES (@UserName, @Password, @RoleId)";
-                    connection.Execute(registerSql, new { UserName = username, Password = password, RoleId = roleId.Value });
+                    connection.Execute(registerSql, new { UserName = username, Password = password });
 
                     MessageBox.Show("Account Created Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
@@ -110,7 +99,7 @@ namespace InventorySystem.Account
         {
             string connStr = GlobalClass.connectionString;
 
-            
+
             string query = @"
                     SELECT [RoleID], [RoleName] 
                     FROM [Role];";
@@ -121,18 +110,6 @@ namespace InventorySystem.Account
                 {
                     connection.Open();
                     var role = connection.Query<Role>(query).ToList();
-
-                    if (role.Any())
-                    {
-                        lueRole.Properties.DataSource = role;
-                        lueRole.Properties.DisplayMember = "RoleName";
-                        lueRole.Properties.ValueMember = "RoleID";
-                    }
-                    else
-                    {
-                        lueRole.Properties.DataSource = null;
-                        XtraMessageBox.Show("No departments found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -149,8 +126,59 @@ namespace InventorySystem.Account
         private void CreateAccount_Load(object sender, EventArgs e)
         {
             LoadRole();
+
+            // Show first row's EmployeeID on load
+            int rowHandle = gvAccounts.FocusedRowHandle;
+            if (rowHandle >= 0)
+            {
+                string employeeId = gvAccounts.GetRowCellValue(rowHandle, "EmployeeID")?.ToString();
+                teUserName.Text = employeeId;
+            }
+
+            // Hook event to update when selection changes
+            gvAccounts.FocusedRowChanged += gvAccounts_FocusedRowChanged;
         }
 
-     
+        private void gvAccounts_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (e.FocusedRowHandle >= 0)
+            {
+                string employeeId = gvAccounts.GetRowCellValue(e.FocusedRowHandle, "EmployeeID")?.ToString();
+                teUserName.Text = employeeId;
+            }
+        }
+
+
+        private void windowsUIBtnSave_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string query = "INSERT INTO Account (UserName, Password) VALUES (@UserName, @Password)";
+
+            using (SqlConnection con = new SqlConnection(GlobalClass.connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@UserName", teUserName.Text);
+                    cmd.Parameters.AddWithValue("@Password", tePassword.Text); 
+
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Account successfully added!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
     }
-}
+
+
+    }
+
