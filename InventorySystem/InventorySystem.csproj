@@ -218,6 +218,12 @@
     <Compile Include="Products\Stock\ViewStock.Designer.cs">
       <DependentUpon>ViewStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Products\UpdateProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\UpdateProduct.Designer.cs">
+      <DependentUpon>UpdateProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\EmployeesReport.cs">
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Products\Stock\ViewStock.resx">
       <DependentUpon>ViewStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\UpdateProduct.resx">
+      <DependentUpon>UpdateProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

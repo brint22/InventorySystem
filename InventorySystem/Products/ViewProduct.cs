@@ -11,14 +11,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
+using InventorySystem.Employees;
+using System.IO;
+using InventorySystem.Products;
 
 namespace InventorySystem.views
 {
     public partial class ViewProduct : DevExpress.XtraEditors.XtraForm
     {
+  
         public ViewProduct()
         {
             InitializeComponent();
+           
         }
 
         private void ViewProduct_Load(object sender, EventArgs e)
@@ -33,9 +38,117 @@ namespace InventorySystem.views
         }
 
 
-        private void labelControl1_Click(object sender, EventArgs e)
+       
+       
+        private void BtnUpdate_Click(object sender, EventArgs e)
         {
+            // Ensure a row is selected
+            if (gvProductList.FocusedRowHandle < 0)
+            {
+                MessageBox.Show("Please select a product to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Get selected ProductID
+            string productID = Convert.ToString(gvProductList.GetFocusedRowCellValue("ProductID"));
+            string productName = Convert.ToString(gvProductList.GetFocusedRowCellValue("ProductName"));
+            decimal price = Convert.ToDecimal(gvProductList.GetFocusedRowCellValue("Price"));
+            int capacity = Convert.ToInt32(gvProductList.GetFocusedRowCellValue("Capacity"));
+
+            // Instantiate the update form
+            var updateForm = new UpdateProduct(productID, this);
+
+            // Populate form fields
+            updateForm.teProductID.Text = productID;
+            updateForm.teProductName.Text = productName;
+            updateForm.lueCategory.EditValue = gvProductList.GetFocusedRowCellValue("CategoryID");
+            updateForm.tePrice.Text = price.ToString();
+            updateForm.teCapacity.Text = capacity.ToString();
+
+            // Show the form
+            DialogResult result = updateForm.ShowDialog();
+
+            // Optionally refresh data after successful update
+            if (result == DialogResult.OK)
+            {
+                GlobalMethod.LoadProductList(gcProductList); // Replace with your actual method to reload products
+            }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            int focusedRowHandle = gvProductList.FocusedRowHandle;
+
+            if (focusedRowHandle >= 0)
+            {
+                // Get the EmployeeID of the selected row
+                string productID = Convert.ToString(gvProductList.GetFocusedRowCellValue("ProductID"));
+
+                // Confirm deletion
+                DialogResult confirmDelete = MessageBox.Show(
+                    "Are you sure you want to delete this product record?",
+                    "Confirm Deletion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (confirmDelete == DialogResult.Yes)
+                {
+                    // Call delete function
+                    DeleteProducte(productID);
+
+                    // Refresh data after deletion
+                    GlobalMethod.LoadProductList(gcProductList);
+
+                    // Adjust focus after deletion
+                    int newFocusedRowHandle = (focusedRowHandle >= gvProductList.DataRowCount) ?
+                                              gvProductList.DataRowCount - 1 :
+                                              focusedRowHandle;
+
+                    if (newFocusedRowHandle >= 0)
+                    {
+                        gvProductList.FocusedRowHandle = newFocusedRowHandle;
+                    }
+
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee to delete.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DeleteProducte(string productID)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+                {
+                    string query = "DELETE FROM Product WHERE ProductID = @ProductID";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ProductID", productID);
+
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Product record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No matching employee found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
+    
 }

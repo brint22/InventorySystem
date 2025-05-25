@@ -358,12 +358,12 @@ namespace InventorySystem.Orders
                             return;
                         }
 
-                        // FIFO deduction from Location based on LocationID ascending
+                        // LIFO deduction from Location based on LocationID descending
                         string selectLocations = @"
-                    SELECT LocationID, Capacity
-                    FROM Location
-                    WHERE ProductID = @ProductID AND Capacity > 0
-                    ORDER BY LocationID ASC";
+                        SELECT LocationID, Capacity
+                        FROM Location
+                        WHERE ProductID = @ProductID AND Capacity > 0
+                        ORDER BY LocationID DESC";
 
                         var locations = conn.Query(selectLocations, new { ProductID = productID }, transaction).ToList();
 

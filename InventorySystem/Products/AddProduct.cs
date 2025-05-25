@@ -61,8 +61,8 @@ namespace InventorySystem.Products
             {
                 CategoryID = GetCategoryID(), // ✅ Use the actual selected ProductID
                 ProductName = teProductName.Text.Trim(),
-                Price = sePrice.Text.Trim(),
-               Capacity = int.Parse(teCapacity.Text)
+                Price = sePrice.Value,
+                Capacity = int.Parse(teCapacity.Text)
         };
 
             // ✅ Save to database

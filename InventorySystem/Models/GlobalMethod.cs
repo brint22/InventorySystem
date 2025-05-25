@@ -141,6 +141,7 @@ namespace InventorySystem.Models
                          p.[ProductID]
                         ,p.[ProductName]               
                         ,c.CategoryName
+                        ,c.CategoryID
                         ,p.[Price]    
                         ,p.[Capacity]
                       

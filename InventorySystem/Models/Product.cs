@@ -10,7 +10,7 @@ namespace InventorySystem.Models
     {
         public string ProductID { get; set; }
         public string ProductName { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
         public int Capacity { get; set; }

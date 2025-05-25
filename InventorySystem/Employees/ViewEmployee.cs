@@ -126,10 +126,10 @@ namespace InventorySystem.Employees
                 {
                     connection.Open();
                     string query = @"
-    SELECT e.FirstName, e.MiddleName, e.LastName, e.NameExtension, ei.ImageData
-    FROM Employee e
-    LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID
-    WHERE e.EmployeeID = @EmployeeID";
+                    SELECT e.FirstName, e.MiddleName, e.LastName, e.NameExtension, ei.ImageData
+                    FROM Employee e
+                    LEFT JOIN EmployeeImage ei ON e.ImageID = ei.ImageID
+                    WHERE e.EmployeeID = @EmployeeID";
 
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
@@ -212,48 +212,7 @@ namespace InventorySystem.Employees
                    : string.Empty;
         }
 
-        private void BtnDelete_Click(object sender, EventArgs e)
-        {
-            int focusedRowHandle = tvEmployee.FocusedRowHandle;
-
-            if (focusedRowHandle >= 0)
-            {
-                // Get the EmployeeID of the selected row
-                string employeeID = Convert.ToString(tvEmployee.GetFocusedRowCellValue("EmployeeID"));
-
-                // Confirm deletion
-                DialogResult confirmDelete = MessageBox.Show(
-                    "Are you sure you want to delete this employee record?",
-                    "Confirm Deletion",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-
-                if (confirmDelete == DialogResult.Yes)
-                {
-                    // Call delete function
-                    DeleteEmployee(employeeID);
-
-                    // Refresh data after deletion
-                    GlobalMethod.LoadEmployeeData("All", gcEmployee);
-
-                    // Adjust focus after deletion
-                    int newFocusedRowHandle = (focusedRowHandle >= tvEmployee.DataRowCount) ?
-                                              tvEmployee.DataRowCount - 1 :
-                                              focusedRowHandle;
-
-                    if (newFocusedRowHandle >= 0)
-                    {
-                        tvEmployee.FocusedRowHandle = newFocusedRowHandle;
-                    }
-
-                  
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select an employee to delete.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+      
 
         private void DeleteEmployee(string employeeID)
         {
@@ -290,6 +249,50 @@ namespace InventorySystem.Employees
         private void teSearch_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
             tvEmployee.ApplyFindFilter(e.NewValue as string);
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+
+            int focusedRowHandle = tvEmployee.FocusedRowHandle;
+
+            if (focusedRowHandle >= 0)
+            {
+                // Get the EmployeeID of the selected row
+                string employeeID = Convert.ToString(tvEmployee.GetFocusedRowCellValue("EmployeeID"));
+
+                // Confirm deletion
+                DialogResult confirmDelete = MessageBox.Show(
+                    "Are you sure you want to delete this employee record?",
+                    "Confirm Deletion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (confirmDelete == DialogResult.Yes)
+                {
+                    // Call delete function
+                    DeleteEmployee(employeeID);
+
+                    // Refresh data after deletion
+                    GlobalMethod.LoadEmployeeData("All", gcEmployee);
+
+                    // Adjust focus after deletion
+                    int newFocusedRowHandle = (focusedRowHandle >= tvEmployee.DataRowCount) ?
+                                              tvEmployee.DataRowCount - 1 :
+                                              focusedRowHandle;
+
+                    if (newFocusedRowHandle >= 0)
+                    {
+                        tvEmployee.FocusedRowHandle = newFocusedRowHandle;
+                    }
+
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee to delete.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
     
