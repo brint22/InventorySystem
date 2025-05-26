@@ -12,6 +12,9 @@ using Dapper;
 using InventorySystem.Models;
 using System.Data.SqlClient;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraEditors;
+using InventorySystem.Reports;
+using DevExpress.XtraReports.UI;
 
 namespace InventorySystem.Orders
 {
@@ -52,6 +55,7 @@ namespace InventorySystem.Orders
 
                 string query = @"SELECT 
                             ROW_NUMBER() OVER (ORDER BY SaleID) AS Count,
+                            s.OrderID,
                             s.SaleID,
                             p.ProductName,
                             s.QuantitySold,
@@ -81,6 +85,47 @@ namespace InventorySystem.Orders
             if (selectedOrder == null) return;
 
             int orderId = selectedOrder.OrderID;
+
+            // Load sales for the selected order
+            gcSales.DataSource = LoadSalesByOrderId(orderId);
+            gcSales.RefreshDataSource();
+        }
+
+        private void ViewEmployeeDetails_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            object orderIdObj = gvOrderList.GetFocusedRowCellValue("OrderID");
+
+            if (orderIdObj == null)
+            {
+                XtraMessageBox.Show("Please select a valid Order ID.");
+                return;
+            }
+
+            int selectedOrderId = Convert.ToInt32(orderIdObj);
+            List<Sale> salesData = LoadSalesByOrderId(selectedOrderId);
+
+            if (salesData.Any())
+            {
+                OrderReport report = new OrderReport();
+                report.DataSource = salesData;
+
+                report.ShowPreview();
+            }
+            else
+            {
+                XtraMessageBox.Show("No sales data found for the selected order.");
+            }
+        }
+
+        private void gvOrderList_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            var view = sender as GridView;
+            if (view == null) return;
+
+            var selectedOrder = view.GetRow(e.FocusedRowHandle) as Order;
+            if (selectedOrder == null) return;
+
+            var orderId = selectedOrder.OrderID;
 
             // Load sales for the selected order
             gcSales.DataSource = LoadSalesByOrderId(orderId);

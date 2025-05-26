@@ -244,6 +244,12 @@
     <Compile Include="Products\ViewProduct.Designer.cs">
       <DependentUpon>ViewProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\OrderReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\OrderReport.Designer.cs">
+      <DependentUpon>OrderReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\SalesReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -323,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Products\ViewProduct.resx">
       <DependentUpon>ViewProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\OrderReport.resx">
+      <DependentUpon>OrderReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>

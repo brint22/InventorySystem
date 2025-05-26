@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewOrderSale));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -41,29 +47,35 @@
             this.QuantitySold = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcOrders = new DevExpress.XtraGrid.GridControl();
-            this.gvOrders = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Count = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gvOrderList = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.OrderCount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.OrderID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TotalPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.PaymentAmount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TotalAmount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.PaidAmount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ViewEmployeeDetail = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ViewEmployeeDetails = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOrderList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ViewEmployeeDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
             // 
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(23, 25, 23, 25);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
+            this.ribbon.OptionsMenuMinWidth = 257;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1940, 73);
+            this.ribbon.Size = new System.Drawing.Size(1509, 61);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // ribbonPage1
@@ -80,26 +92,25 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 999);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 843);
+            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1940, 55);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1509, 45);
             // 
             // gcSales
             // 
             this.gcSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcSales.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             gridLevelNode1.RelationName = "Level1";
             this.gcSales.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gcSales.Location = new System.Drawing.Point(729, 130);
+            this.gcSales.Location = new System.Drawing.Point(1062, 109);
             this.gcSales.MainView = this.gvSales;
-            this.gcSales.Margin = new System.Windows.Forms.Padding(4);
             this.gcSales.MenuManager = this.ribbon;
             this.gcSales.Name = "gcSales";
-            this.gcSales.Size = new System.Drawing.Size(1161, 776);
+            this.gcSales.Size = new System.Drawing.Size(408, 653);
             this.gcSales.TabIndex = 36;
             this.gcSales.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvSales});
@@ -112,11 +123,10 @@
             this.ProductName,
             this.QuantitySold,
             this.Price});
-            this.gvSales.DetailHeight = 417;
+            this.gvSales.DetailHeight = 351;
             this.gvSales.FixedLineWidth = 3;
             this.gvSales.GridControl = this.gcSales;
             this.gvSales.Name = "gvSales";
-            this.gvSales.OptionsEditForm.PopupEditFormWidth = 1029;
             this.gvSales.OptionsView.ShowGroupPanel = false;
             // 
             // RowCount
@@ -127,12 +137,12 @@
             this.RowCount.AppearanceHeader.Options.UseFont = true;
             this.RowCount.Caption = "#";
             this.RowCount.FieldName = "Count";
-            this.RowCount.MinWidth = 30;
+            this.RowCount.MinWidth = 23;
             this.RowCount.Name = "RowCount";
             this.RowCount.OptionsColumn.AllowEdit = false;
             this.RowCount.Visible = true;
             this.RowCount.VisibleIndex = 0;
-            this.RowCount.Width = 326;
+            this.RowCount.Width = 254;
             // 
             // SaleID
             // 
@@ -142,12 +152,12 @@
             this.SaleID.AppearanceHeader.Options.UseFont = true;
             this.SaleID.Caption = "Sale ID";
             this.SaleID.FieldName = "SaleID";
-            this.SaleID.MinWidth = 30;
+            this.SaleID.MinWidth = 23;
             this.SaleID.Name = "SaleID";
             this.SaleID.OptionsColumn.AllowEdit = false;
             this.SaleID.Visible = true;
             this.SaleID.VisibleIndex = 1;
-            this.SaleID.Width = 238;
+            this.SaleID.Width = 185;
             // 
             // ProductName
             // 
@@ -157,11 +167,11 @@
             this.ProductName.AppearanceHeader.Options.UseFont = true;
             this.ProductName.Caption = "Ordered Products";
             this.ProductName.FieldName = "ProductName";
-            this.ProductName.MinWidth = 31;
+            this.ProductName.MinWidth = 24;
             this.ProductName.Name = "ProductName";
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 2;
-            this.ProductName.Width = 654;
+            this.ProductName.Width = 509;
             // 
             // QuantitySold
             // 
@@ -171,11 +181,11 @@
             this.QuantitySold.AppearanceHeader.Options.UseFont = true;
             this.QuantitySold.Caption = "Quantity";
             this.QuantitySold.FieldName = "QuantitySold";
-            this.QuantitySold.MinWidth = 31;
+            this.QuantitySold.MinWidth = 24;
             this.QuantitySold.Name = "QuantitySold";
             this.QuantitySold.Visible = true;
             this.QuantitySold.VisibleIndex = 3;
-            this.QuantitySold.Width = 528;
+            this.QuantitySold.Width = 411;
             // 
             // Price
             // 
@@ -185,111 +195,145 @@
             this.Price.AppearanceHeader.Options.UseFont = true;
             this.Price.Caption = "Price";
             this.Price.FieldName = "Price";
-            this.Price.MinWidth = 30;
+            this.Price.MinWidth = 23;
             this.Price.Name = "Price";
             this.Price.OptionsColumn.AllowEdit = false;
             this.Price.Visible = true;
             this.Price.VisibleIndex = 4;
-            this.Price.Width = 364;
+            this.Price.Width = 283;
             // 
             // gcOrders
             // 
             this.gcOrders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.gcOrders.EmbeddedNavigator.Buttons.Append.Visible = false;
             this.gcOrders.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gcOrders.Location = new System.Drawing.Point(46, 130);
-            this.gcOrders.MainView = this.gvOrders;
+            this.gcOrders.Location = new System.Drawing.Point(42, 109);
+            this.gcOrders.MainView = this.gvOrderList;
             this.gcOrders.Margin = new System.Windows.Forms.Padding(4);
-            this.gcOrders.MenuManager = this.ribbon;
             this.gcOrders.Name = "gcOrders";
-            this.gcOrders.Size = new System.Drawing.Size(629, 776);
-            this.gcOrders.TabIndex = 35;
+            this.gcOrders.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.ViewEmployeeDetails});
+            this.gcOrders.Size = new System.Drawing.Size(993, 653);
+            this.gcOrders.TabIndex = 39;
+            this.gcOrders.UseEmbeddedNavigator = true;
             this.gcOrders.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvOrders});
+            this.gvOrderList});
             // 
-            // gvOrders
+            // gvOrderList
             // 
-            this.gvOrders.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Count,
+            this.gvOrderList.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.OrderCount,
             this.OrderID,
-            this.TotalPrice,
-            this.PaymentAmount});
-            this.gvOrders.DetailHeight = 417;
-            this.gvOrders.GridControl = this.gcOrders;
-            this.gvOrders.Name = "gvOrders";
-            this.gvOrders.OptionsEditForm.PopupEditFormWidth = 1029;
-            this.gvOrders.OptionsView.ShowGroupPanel = false;
-            this.gvOrders.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvOrders_FocusedRowChanged);
+            this.TotalAmount,
+            this.PaidAmount,
+            this.ViewEmployeeDetail});
+            this.gvOrderList.DetailHeight = 431;
+            this.gvOrderList.GridControl = this.gcOrders;
+            this.gvOrderList.Name = "gvOrderList";
+            this.gvOrderList.OptionsEditForm.PopupEditFormWidth = 933;
+            this.gvOrderList.OptionsView.ShowGroupPanel = false;
+            this.gvOrderList.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvOrderList_FocusedRowChanged);
             // 
-            // Count
+            // OrderCount
             // 
-            this.Count.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.Count.AppearanceCell.Options.UseFont = true;
-            this.Count.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
-            this.Count.AppearanceHeader.Options.UseFont = true;
-            this.Count.Caption = "#";
-            this.Count.FieldName = "Count";
-            this.Count.MinWidth = 30;
-            this.Count.Name = "Count";
-            this.Count.OptionsColumn.AllowEdit = false;
-            this.Count.Visible = true;
-            this.Count.VisibleIndex = 0;
-            this.Count.Width = 112;
+            this.OrderCount.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.OrderCount.AppearanceCell.Options.UseFont = true;
+            this.OrderCount.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.OrderCount.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.OrderCount.AppearanceHeader.Options.UseFont = true;
+            this.OrderCount.AppearanceHeader.Options.UseForeColor = true;
+            this.OrderCount.AppearanceHeader.Options.UseTextOptions = true;
+            this.OrderCount.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.OrderCount.Caption = "#";
+            this.OrderCount.FieldName = "Count";
+            this.OrderCount.MinWidth = 23;
+            this.OrderCount.Name = "OrderCount";
+            this.OrderCount.Visible = true;
+            this.OrderCount.VisibleIndex = 0;
+            this.OrderCount.Width = 323;
             // 
             // OrderID
             // 
             this.OrderID.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
             this.OrderID.AppearanceCell.Options.UseFont = true;
             this.OrderID.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.OrderID.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.OrderID.AppearanceHeader.Options.UseFont = true;
+            this.OrderID.AppearanceHeader.Options.UseForeColor = true;
+            this.OrderID.AppearanceHeader.Options.UseTextOptions = true;
+            this.OrderID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.OrderID.Caption = "Order ID";
             this.OrderID.FieldName = "OrderID";
-            this.OrderID.MinWidth = 31;
+            this.OrderID.MinWidth = 23;
             this.OrderID.Name = "OrderID";
-            this.OrderID.OptionsColumn.AllowEdit = false;
             this.OrderID.Visible = true;
             this.OrderID.VisibleIndex = 1;
-            this.OrderID.Width = 195;
+            this.OrderID.Width = 347;
             // 
-            // TotalPrice
+            // TotalAmount
             // 
-            this.TotalPrice.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.TotalPrice.AppearanceCell.Options.UseFont = true;
-            this.TotalPrice.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
-            this.TotalPrice.AppearanceHeader.Options.UseFont = true;
-            this.TotalPrice.Caption = "Total Price";
-            this.TotalPrice.FieldName = "TotalPrice";
-            this.TotalPrice.MinWidth = 31;
-            this.TotalPrice.Name = "TotalPrice";
-            this.TotalPrice.OptionsColumn.AllowEdit = false;
-            this.TotalPrice.Visible = true;
-            this.TotalPrice.VisibleIndex = 2;
-            this.TotalPrice.Width = 321;
+            this.TotalAmount.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.TotalAmount.AppearanceCell.Options.UseFont = true;
+            this.TotalAmount.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.TotalAmount.AppearanceHeader.Options.UseFont = true;
+            this.TotalAmount.Caption = "Total Amount";
+            this.TotalAmount.FieldName = "TotalPrice";
+            this.TotalAmount.MinWidth = 25;
+            this.TotalAmount.Name = "TotalAmount";
+            this.TotalAmount.Visible = true;
+            this.TotalAmount.VisibleIndex = 2;
+            this.TotalAmount.Width = 302;
             // 
-            // PaymentAmount
+            // PaidAmount
             // 
-            this.PaymentAmount.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.PaymentAmount.AppearanceCell.Options.UseFont = true;
-            this.PaymentAmount.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
-            this.PaymentAmount.AppearanceHeader.Options.UseFont = true;
-            this.PaymentAmount.Caption = "Payment Amount";
-            this.PaymentAmount.FieldName = "PaymentAmount";
-            this.PaymentAmount.MinWidth = 31;
-            this.PaymentAmount.Name = "PaymentAmount";
-            this.PaymentAmount.OptionsColumn.AllowEdit = false;
-            this.PaymentAmount.Visible = true;
-            this.PaymentAmount.VisibleIndex = 3;
-            this.PaymentAmount.Width = 192;
+            this.PaidAmount.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.PaidAmount.AppearanceCell.Options.UseFont = true;
+            this.PaidAmount.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.PaidAmount.AppearanceHeader.Options.UseFont = true;
+            this.PaidAmount.Caption = "Payment Amount";
+            this.PaidAmount.FieldName = "PaymentAmount";
+            this.PaidAmount.MinWidth = 25;
+            this.PaidAmount.Name = "PaidAmount";
+            this.PaidAmount.Visible = true;
+            this.PaidAmount.VisibleIndex = 3;
+            this.PaidAmount.Width = 294;
+            // 
+            // ViewEmployeeDetail
+            // 
+            this.ViewEmployeeDetail.AccessibleDescription = "bu";
+            this.ViewEmployeeDetail.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.ViewEmployeeDetail.AppearanceCell.Options.UseFont = true;
+            this.ViewEmployeeDetail.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.ViewEmployeeDetail.AppearanceHeader.Options.UseFont = true;
+            this.ViewEmployeeDetail.Caption = "Export";
+            this.ViewEmployeeDetail.ColumnEdit = this.ViewEmployeeDetails;
+            this.ViewEmployeeDetail.MinWidth = 25;
+            this.ViewEmployeeDetail.Name = "ViewEmployeeDetail";
+            this.ViewEmployeeDetail.Visible = true;
+            this.ViewEmployeeDetail.VisibleIndex = 4;
+            this.ViewEmployeeDetail.Width = 286;
+            // 
+            // ViewEmployeeDetails
+            // 
+            this.ViewEmployeeDetails.AutoHeight = false;
+            editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
+            this.ViewEmployeeDetails.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.ViewEmployeeDetails.Name = "ViewEmployeeDetails";
+            this.ViewEmployeeDetails.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.ViewEmployeeDetails.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ViewEmployeeDetails_ButtonClick);
             // 
             // ViewOrderSale
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1940, 1054);
-            this.Controls.Add(this.gcSales);
+            this.ClientSize = new System.Drawing.Size(1509, 888);
             this.Controls.Add(this.gcOrders);
+            this.Controls.Add(this.gcSales);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "ViewOrderSale";
             this.Ribbon = this.ribbon;
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;
@@ -301,7 +345,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvOrderList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ViewEmployeeDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,13 +363,15 @@
         private DevExpress.XtraGrid.Columns.GridColumn RowCount;
         private DevExpress.XtraGrid.Columns.GridColumn ProductName;
         private DevExpress.XtraGrid.Columns.GridColumn QuantitySold;
-        private DevExpress.XtraGrid.GridControl gcOrders;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvOrders;
-        private DevExpress.XtraGrid.Columns.GridColumn Count;
-        private DevExpress.XtraGrid.Columns.GridColumn OrderID;
-        private DevExpress.XtraGrid.Columns.GridColumn TotalPrice;
-        private DevExpress.XtraGrid.Columns.GridColumn PaymentAmount;
         private DevExpress.XtraGrid.Columns.GridColumn SaleID;
         private DevExpress.XtraGrid.Columns.GridColumn Price;
+        private DevExpress.XtraGrid.GridControl gcOrders;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvOrderList;
+        private DevExpress.XtraGrid.Columns.GridColumn OrderCount;
+        private DevExpress.XtraGrid.Columns.GridColumn OrderID;
+        private DevExpress.XtraGrid.Columns.GridColumn ViewEmployeeDetail;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit ViewEmployeeDetails;
+        private DevExpress.XtraGrid.Columns.GridColumn TotalAmount;
+        private DevExpress.XtraGrid.Columns.GridColumn PaidAmount;
     }
 }
