@@ -214,7 +214,7 @@ namespace InventorySystem.Models
                 s.[StockID],
                 s.[ProductID],
                 p.[ProductName],               
-                s.Quantity,
+                l.[Capacity] AS Quantity,
                 ls.[LocationID],
                 s.[Supplier],
                 FORMAT(s.[ExpirationDate], 'MMMM dd, yyyy') AS [ExpirationDate],

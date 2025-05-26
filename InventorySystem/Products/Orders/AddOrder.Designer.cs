@@ -94,7 +94,7 @@
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1509, 61);
+            this.ribbon.Size = new System.Drawing.Size(1624, 61);
             // 
             // ribbonPage1
             // 
@@ -339,13 +339,17 @@
             // 
             // OrderProductID
             // 
+            this.OrderProductID.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.OrderProductID.AppearanceCell.Options.UseFont = true;
+            this.OrderProductID.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.OrderProductID.AppearanceHeader.Options.UseFont = true;
             this.OrderProductID.Caption = "Product ID";
             this.OrderProductID.FieldName = "ProductID";
             this.OrderProductID.MinWidth = 25;
             this.OrderProductID.Name = "OrderProductID";
             this.OrderProductID.Visible = true;
-            this.OrderProductID.VisibleIndex = 4;
-            this.OrderProductID.Width = 58;
+            this.OrderProductID.VisibleIndex = 1;
+            this.OrderProductID.Width = 254;
             // 
             // RowCount
             // 
@@ -360,7 +364,7 @@
             this.RowCount.OptionsColumn.AllowEdit = false;
             this.RowCount.Visible = true;
             this.RowCount.VisibleIndex = 0;
-            this.RowCount.Width = 119;
+            this.RowCount.Width = 217;
             // 
             // OrderedProduct
             // 
@@ -373,8 +377,8 @@
             this.OrderedProduct.MinWidth = 24;
             this.OrderedProduct.Name = "OrderedProduct";
             this.OrderedProduct.Visible = true;
-            this.OrderedProduct.VisibleIndex = 1;
-            this.OrderedProduct.Width = 290;
+            this.OrderedProduct.VisibleIndex = 2;
+            this.OrderedProduct.Width = 442;
             // 
             // Quantity
             // 
@@ -387,8 +391,8 @@
             this.Quantity.MinWidth = 24;
             this.Quantity.Name = "Quantity";
             this.Quantity.Visible = true;
-            this.Quantity.VisibleIndex = 2;
-            this.Quantity.Width = 187;
+            this.Quantity.VisibleIndex = 3;
+            this.Quantity.Width = 346;
             // 
             // TotalPrice
             // 
@@ -401,8 +405,8 @@
             this.TotalPrice.MinWidth = 23;
             this.TotalPrice.Name = "TotalPrice";
             this.TotalPrice.Visible = true;
-            this.TotalPrice.VisibleIndex = 3;
-            this.TotalPrice.Width = 194;
+            this.TotalPrice.VisibleIndex = 4;
+            this.TotalPrice.Width = 293;
             // 
             // gcOrder
             // 
@@ -609,7 +613,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1509, 888);
+            this.ClientSize = new System.Drawing.Size(1624, 888);
             this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.teProductID);
             this.Controls.Add(this.seChange);

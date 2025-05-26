@@ -318,7 +318,7 @@ namespace InventorySystem.Orders
                 seAddAmount.ForeColor = Color.Red;
                 seChange.Value = 0;
             }
-            else
+            else if ((addAmount > totalPrice))
             {
                 seAddAmount.ForeColor = Color.Green;
                 seChange.Value = change;
@@ -378,10 +378,10 @@ namespace InventorySystem.Orders
 
                         // LIFO deduction from Location based on LocationID descending
                         string selectLocations = @"
-                        SELECT LocationID, Capacity
-                        FROM Location
-                        WHERE ProductID = @ProductID AND Capacity > 0
-                        ORDER BY LocationID DESC";
+                    SELECT LocationID, Capacity
+                    FROM Location
+                    WHERE ProductID = @ProductID AND Capacity > 0
+                    ORDER BY LocationID DESC";
 
                         var locations = conn.Query(selectLocations, new { ProductID = productID }, transaction).ToList();
 
@@ -415,12 +415,13 @@ namespace InventorySystem.Orders
                                 LocationID = loc.LocationID
                             }, transaction);
 
-                            // If capacity is now 0, mark as 'Available'
+                            // If capacity is now 0, mark as 'Available' and remove ProductID
                             if (updatedCapacity == 0)
                             {
                                 string updateAvailability = @"
                             UPDATE Location
-                            SET Availability = 'Available'
+                            SET Availability = 'Available',
+                                ProductID = NULL
                             WHERE LocationID = @LocationID";
 
                                 conn.Execute(updateAvailability, new
@@ -449,6 +450,7 @@ namespace InventorySystem.Orders
                 }
             }
         }
+
 
 
         private static string GenerateOrderID()
