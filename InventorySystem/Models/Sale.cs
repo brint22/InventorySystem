@@ -14,7 +14,7 @@ namespace InventorySystem.Models
         public string ProductName { get; set; }
         public int OrderID { get; set; }
         public decimal Price { get; set; }
-
+        public int Count { get; set; }
 
     }
 }

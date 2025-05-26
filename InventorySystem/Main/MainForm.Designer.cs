@@ -66,6 +66,8 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiViewSales = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +77,6 @@
             this.ribbon.AutoUpdateMergedRibbons = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.DrawGroupsBorderMode = DevExpress.Utils.DefaultBoolean.True;
-            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(45, 44, 45, 44);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
@@ -99,14 +100,13 @@
             this.AddStock,
             this.ViewStock,
             this.bbiAddOrder,
-            this.ViewOrder});
+            this.ViewOrder,
+            this.bbiViewSales});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbon.MaxItemId = 30;
+            this.ribbon.MaxItemId = 31;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonGroup = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.OptionsExpandCollapseMenu.ShowRibbonLayoutGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbon.OptionsMenuMinWidth = 495;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.Main,
             this.ribbonPage1,
@@ -116,7 +116,7 @@
             this.ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.ShowPageHeadersInFormCaption = DevExpress.Utils.DefaultBoolean.True;
             this.ribbon.ShowToolbarCustomizeItem = false;
-            this.ribbon.Size = new System.Drawing.Size(1383, 262);
+            this.ribbon.Size = new System.Drawing.Size(922, 181);
             this.ribbon.Toolbar.ShowCustomizeItem = false;
             // 
             // addAccount
@@ -351,7 +351,8 @@
             // Transaction
             // 
             this.Transaction.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup9});
+            this.ribbonPageGroup9,
+            this.ribbonPageGroup10});
             this.Transaction.Name = "Transaction";
             this.Transaction.Text = "Transaction";
             // 
@@ -389,14 +390,26 @@
             this.barButtonItem8.Name = "barButtonItem8";
             this.barButtonItem8.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.bbiViewSales);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            this.ribbonPageGroup10.Text = "ribbonPageGroup10";
+            // 
+            // bbiViewSales
+            // 
+            this.bbiViewSales.Caption = "View Sales";
+            this.bbiViewSales.Id = 30;
+            this.bbiViewSales.Name = "bbiViewSales";
+            this.bbiViewSales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewSales_ItemClick);
+            // 
             // bbi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1383, 786);
+            this.ClientSize = new System.Drawing.Size(922, 538);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbi.IconOptions.Image")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "bbi";
             this.Ribbon = this.ribbon;
@@ -450,5 +463,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.BarButtonItem bbiAddOrder;
         private DevExpress.XtraBars.BarButtonItem ViewOrder;
+        private DevExpress.XtraBars.BarButtonItem bbiViewSales;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
     }
 }

@@ -113,16 +113,16 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\ProductStock.cs" />
     <Compile Include="Models\Sale.cs" />
-    <Compile Include="Orders\AddOrder.cs">
+    <Compile Include="Products\Orders\AddOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Orders\AddOrder.Designer.cs">
+    <Compile Include="Products\Orders\AddOrder.Designer.cs">
       <DependentUpon>AddOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Orders\ViewOrderSale.cs">
+    <Compile Include="Products\Orders\ViewOrderSale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Orders\ViewOrderSale.Designer.cs">
+    <Compile Include="Products\Orders\ViewOrderSale.Designer.cs">
       <DependentUpon>ViewOrderSale.cs</DependentUpon>
     </Compile>
     <Compile Include="Products\Categories\AddCategory.cs">
@@ -206,6 +206,12 @@
     <Compile Include="Products\AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Products\Sales\ViewSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\Sales\ViewSales.Designer.cs">
+      <DependentUpon>ViewSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Products\Stock\AddStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,16 +244,22 @@
     <Compile Include="Products\ViewProduct.Designer.cs">
       <DependentUpon>ViewProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\SalesReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SalesReport.Designer.cs">
+      <DependentUpon>SalesReport.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Employees\Accounts\CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employees\Accounts\ViewAccount.resx">
       <DependentUpon>ViewAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Orders\AddOrder.resx">
+    <EmbeddedResource Include="Products\Orders\AddOrder.resx">
       <DependentUpon>AddOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Orders\ViewOrderSale.resx">
+    <EmbeddedResource Include="Products\Orders\ViewOrderSale.resx">
       <DependentUpon>ViewOrderSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Products\Categories\AddCategory.resx">
@@ -284,6 +296,9 @@
     <EmbeddedResource Include="Products\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Products\Sales\ViewSales.resx">
+      <DependentUpon>ViewSales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Products\Stock\AddStock.resx">
       <DependentUpon>AddStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -308,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Products\ViewProduct.resx">
       <DependentUpon>ViewProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalesReport.resx">
+      <DependentUpon>SalesReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Files\WAREHOUSEISDB.Bak" />
