@@ -45,7 +45,7 @@ namespace InventorySystem.Orders
             return order.ToList();
         }
 
-        public List<Sale> LoadSalesByOrderId(int orderId)
+        public List<Sale> LoadSalesByOrderId(string orderId)
         {
             IEnumerable<Sale> sales;
 
@@ -84,7 +84,7 @@ namespace InventorySystem.Orders
             var selectedOrder = view.GetRow(e.FocusedRowHandle) as Order;
             if (selectedOrder == null) return;
 
-            int orderId = selectedOrder.OrderID;
+            var orderId = selectedOrder.OrderID;
 
             // Load sales for the selected order
             gcSales.DataSource = LoadSalesByOrderId(orderId);
@@ -101,7 +101,7 @@ namespace InventorySystem.Orders
                 return;
             }
 
-            int selectedOrderId = Convert.ToInt32(orderIdObj);
+            var selectedOrderId = Convert.ToString(orderIdObj);
             List<Sale> salesData = LoadSalesByOrderId(selectedOrderId);
 
             if (salesData.Any())

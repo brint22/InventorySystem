@@ -12,7 +12,7 @@ namespace InventorySystem.Models
         public decimal QuantitySold { get; set; }
         public string ProductID { get; set; }
         public string ProductName { get; set; }
-        public int OrderID { get; set; }
+        public string OrderID { get; set; }
         public decimal Price { get; set; }
         public int Count { get; set; }
 

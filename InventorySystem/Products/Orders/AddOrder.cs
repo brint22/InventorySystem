@@ -39,9 +39,12 @@ namespace InventorySystem.Orders
                 string query = @"SELECT 
                                 ROW_NUMBER() OVER (ORDER BY p.ProductName) AS Count,
                                 s.ProductID,
-                                p.Price,                       
+                                p.Price,
                                 p.ProductName,
-                                ISNULL(loc.TotalCapacity, 0) AS Capacity
+                                CASE 
+                                    WHEN ISNULL(loc.TotalCapacity, 0) = 0 THEN 'No Stock'
+                                    ELSE CAST(loc.TotalCapacity AS VARCHAR)
+                                END AS Capacity
                             FROM [WAREHOUSEISDB].[dbo].[Stock] s
                             LEFT JOIN (
                                 SELECT ProductID, SUM(Capacity) AS TotalCapacity
@@ -53,8 +56,7 @@ namespace InventorySystem.Orders
                                 s.ProductID,
                                 p.Price,
                                 p.ProductName,
-                                loc.TotalCapacity;
-                            ";
+                                loc.TotalCapacity;";
                 stock = connection.Query<ProductStock>(query, commandType: CommandType.Text);
             }
 
@@ -207,84 +209,100 @@ namespace InventorySystem.Orders
 
         private void btnConfirmPayment_Click(object sender, EventArgs e)
         {
-            // Step 1: Create the Order object
+            // Step 1: Show confirmation message box
+            var confirmResult = MessageBox.Show(
+                "Are you sure you want to confirm this order?",
+                "Confirm Order",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            // If the user clicks "No", exit the method
+            if (confirmResult == DialogResult.No)
+            {
+                return;
+            }
+
+            // Step 2: Create the Order object
             Order order = new Order()
             {
                 TotalPrice = seTotalPrice.Text.Trim(),
                 PaymentAmount = seAddAmount.Text.Trim(),
+                OrderID = GenerateOrderID(),
+                OrderDate = DateTime.Now
             };
 
-            // Step 2: Insert Order and get the generated OrderID
-            int orderID = InsertOrder(order);
+            // Step 3: Insert Order using Dapper
+            using (var connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                connection.Open();
 
-            // Step 3: Insert Sales and Deduct Stock
+                string insertOrderQuery = @"
+            INSERT INTO Orders (OrderID, TotalPrice, PaymentAmount, OrderDate)
+            VALUES (@OrderID, @TotalPrice, @PaymentAmount, @OrderDate)";
+
+                connection.Execute(insertOrderQuery, order);
+            }
+
+            // Step 4: Insert Sales and Deduct Stock
             foreach (DataRow row in dtProduct.Rows)
             {
                 string productID = row["ProductID"].ToString();
                 int quantitySold = Convert.ToInt32(row["Quantity"]);
                 decimal totalPrice = Convert.ToDecimal(row["Price"]);
 
-                InsertSale(orderID, productID, quantitySold, totalPrice);
-
-                // ✅ Deduct stock using Dapper
+                InsertSale(order.OrderID, productID, quantitySold, totalPrice);
                 DeductStockQuantity(productID, quantitySold);
             }
 
-            // Step 4: Refresh the data source
+            // Step 5: Refresh the data source
             gcProducts.DataSource = GetStock();
             gcProducts.RefreshDataSource();
+
             MessageBox.Show("Payment confirmed, sales recorded, and stock updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
-        // Method to insert into the Sales table
-        private void InsertSale(int orderID, string productID, int quantitySold, decimal totalPrice)
+
+        private void InsertSale(string orderID, string productID, int quantitySold, decimal totalPrice)
         {
-            // Using the GlobalClass.connectionString for the connection
-            using (SqlConnection conn = new SqlConnection(GlobalClass.connectionString))
+            using (var conn = new SqlConnection(GlobalClass.connectionString))
             {
-                string query = "INSERT INTO Sales (OrderID, ProductID, QuantitySold, Price) VALUES (@OrderID, @ProductID, @QuantitySold, @Price)";
+                string query = @"
+            INSERT INTO Sales (OrderID, ProductID, QuantitySold, Price)
+            VALUES (@OrderID, @ProductID, @QuantitySold, @Price);";
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                conn.Execute(query, new
                 {
-                    // Add parameters to prevent SQL injection
-                    cmd.Parameters.AddWithValue("@OrderID", orderID);  // Use the OrderID obtained from InsertOrder
-                    cmd.Parameters.AddWithValue("@ProductID", productID);  // ProductID comes from dtProduct DataTable (as string)
-                    cmd.Parameters.AddWithValue("@QuantitySold", quantitySold);  // Quantity comes from dtProduct DataTable
-                    cmd.Parameters.AddWithValue("@Price", totalPrice);  // totalPrice comes from dtProduct DataTable
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();  // Insert the sale record
-                    conn.Close();
-                }
+                    OrderID = orderID,           // This should match the OrderID from InsertOrder
+                    ProductID = productID,
+                    QuantitySold = quantitySold,
+                    Price = totalPrice
+                });
             }
         }
 
         // Method to insert into the Orders table and return the generated OrderID
         private int InsertOrder(Order order)
         {
-            int orderID = 0;
+            string generatedID = GenerateOrderID(); // e.g., "0525-0001"
+            order.OrderID = generatedID;
 
-            using (SqlConnection conn = new SqlConnection(GlobalClass.connectionString))
+            using (var conn = new SqlConnection(GlobalClass.connectionString))
             {
                 string query = @"
-            INSERT INTO Orders (TotalPrice, PaymentAmount) 
-            VALUES (@TotalPrice, @PaymentAmount);
-            SELECT SCOPE_IDENTITY();";
+        INSERT INTO Orders (OrderID, TotalPrice, PaymentAmount)
+        VALUES (@OrderID, @TotalPrice, @PaymentAmount);";
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                conn.Execute(query, new
                 {
-                    // Use the properties of the Order object
-                    cmd.Parameters.AddWithValue("@TotalPrice", order.TotalPrice);
-                    cmd.Parameters.AddWithValue("@PaymentAmount", order.PaymentAmount);
+                    OrderID = order.OrderID,
+                    TotalPrice = order.TotalPrice,
+                    PaymentAmount = order.PaymentAmount
+                });
 
-                    conn.Open();
-                    orderID = Convert.ToInt32(cmd.ExecuteScalar());
-                    conn.Close();
-                }
+                // Optionally return something; for now, return 1 to indicate success
+                return 1;
             }
-
-            return orderID;
         }
 
 
@@ -433,6 +451,31 @@ namespace InventorySystem.Orders
         }
 
 
+        private static string GenerateOrderID()
+        {
+            string datePart = DateTime.Now.ToString("MMyy"); // e.g., "0525" for May 25th
+
+            using (var connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                connection.Open();
+
+                // Count how many orders already exist for today
+                string sql = @"
+        SELECT COUNT(*) 
+        FROM Orders 
+        WHERE CAST(OrderDate AS DATE) = CAST(GETDATE() AS DATE)";
+
+                int countToday = connection.ExecuteScalar<int>(sql);
+
+                // Increment for the next ID
+                int nextNumber = countToday + 1;
+
+                // Format to 4-digit padded number, e.g., 0001
+                string numberPart = nextNumber.ToString("D4");
+
+                return $"{datePart}-{numberPart}"; // Final format e.g., "0525-0001"
+            }
+        }
 
 
 

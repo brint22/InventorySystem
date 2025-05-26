@@ -8,8 +8,9 @@ namespace InventorySystem.Models
 {
     public class Order
     {
-        public int OrderID { get; set; }
+        public string OrderID { get; set; }
         public string TotalPrice { get; set; }
         public string PaymentAmount { get; set; }
+        public DateTime OrderDate { get; set; }
     }
 }
