@@ -85,9 +85,12 @@ namespace InventorySystem.Infrastracture.SQL
         WHERE l.Availability = @Availability;";
 
         public static string GetListOfAccounts = @"
-        SELECT AcountID, 
-               UserName,
-               Password
-        FROM Account;";
+        SELECT e.EmployeeID,
+               a.AccountID, 
+               a.UserName,
+               a.Password
+        FROM Account a
+        LEFT JOIN Employee e
+        ON e.AccountID = a.AccountID;";
     }
 }

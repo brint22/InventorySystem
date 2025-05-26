@@ -118,11 +118,7 @@ namespace InventorySystem.Account
             }
         }
 
-        private void ribbon_Click(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void CreateAccount_Load(object sender, EventArgs e)
         {
             LoadRole();
@@ -148,37 +144,56 @@ namespace InventorySystem.Account
             }
         }
 
-
-        private void windowsUIBtnSave_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string query = "INSERT INTO Account (UserName, Password) VALUES (@UserName, @Password)";
+            string insertAccountQuery = @"
+        INSERT INTO Account (UserName, Password) 
+        OUTPUT INSERTED.AccountID 
+        VALUES (@UserName, @Password)";
+
+            string updateEmployeeQuery = @"
+        UPDATE Employee 
+        SET AccountID = @AccountID 
+        WHERE EmployeeID = @EmployeeID"; // Assuming you want to update an existing employee
 
             using (SqlConnection con = new SqlConnection(GlobalClass.connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand(query, con))
+                con.Open();
+                using (var transaction = con.BeginTransaction())
                 {
-                    cmd.Parameters.AddWithValue("@UserName", teUserName.Text);
-                    cmd.Parameters.AddWithValue("@Password", tePassword.Text); 
-
                     try
                     {
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Account successfully added!");
+                        // Step 1: Insert into Account and get the AccountID
+                        int accountId = con.ExecuteScalar<int>(insertAccountQuery, new
+                        {
+                            UserName = teUserName.Text,
+                            Password = tePassword.Text // Reminder: use hashing in real apps
+                        }, transaction: transaction);
+
+                        // Step 2: Update the Employee record with the new AccountID
+                        con.Execute(updateEmployeeQuery, new
+                        {
+                            AccountID = accountId,
+                            EmployeeID = teUserName.Text // This needs to be provided (e.g., from UI or selection)
+                        }, transaction: transaction);
+
+                        // Commit transaction if everything is successful
+                        transaction.Commit();
+                        MessageBox.Show("Account and Employee successfully updated!");
                     }
                     catch (Exception ex)
                     {
+                        // Rollback transaction in case of an error
+                        transaction.Rollback();
                         MessageBox.Show("Error: " + ex.Message);
                     }
                 }
             }
         }
-    }
-
 
     }
+}
+
+
+    
 

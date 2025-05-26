@@ -52,5 +52,19 @@ namespace InventorySystem.Account
                 }
             }
         }
+
+        private void ViewAccount_Load(object sender, EventArgs e)
+        {
+            gvEmployeeAccount.RowClick += (s, ev) =>
+            {
+                if (gvEmployeeAccount.FocusedRowHandle >= 0)
+                {
+                    var employeeID = gvEmployeeAccount.GetRowCellValue(gvEmployeeAccount.FocusedRowHandle, "EmployeeID")?.ToString();
+                    teEmployeeID.Text = employeeID;
+                    var employeePassword = gvEmployeeAccount.GetRowCellValue(gvEmployeeAccount.FocusedRowHandle, "Password")?.ToString();
+                    tePassword.Text = employeePassword;
+                }
+            };
+        }
     }
 }

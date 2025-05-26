@@ -100,8 +100,7 @@
             this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbon.ShowQatLocationSelector = false;
             this.ribbon.Size = new System.Drawing.Size(705, 61);
-            this.ribbon.Click += new System.EventHandler(this.ribbon_Click);
-            // 
+           // 
             // tePassword
             // 
             this.tePassword.Location = new System.Drawing.Point(320, 259);
