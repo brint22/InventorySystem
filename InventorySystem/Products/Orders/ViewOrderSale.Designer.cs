@@ -54,6 +54,7 @@
             this.PaidAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ViewEmployeeDetail = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ViewEmployeeDetails = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.OrderDate = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSales)).BeginInit();
@@ -227,7 +228,8 @@
             this.OrderID,
             this.TotalAmount,
             this.PaidAmount,
-            this.ViewEmployeeDetail});
+            this.ViewEmployeeDetail,
+            this.OrderDate});
             this.gvOrderList.DetailHeight = 431;
             this.gvOrderList.GridControl = this.gcOrders;
             this.gvOrderList.Name = "gvOrderList";
@@ -251,7 +253,7 @@
             this.OrderCount.Name = "OrderCount";
             this.OrderCount.Visible = true;
             this.OrderCount.VisibleIndex = 0;
-            this.OrderCount.Width = 323;
+            this.OrderCount.Width = 304;
             // 
             // OrderID
             // 
@@ -269,7 +271,7 @@
             this.OrderID.Name = "OrderID";
             this.OrderID.Visible = true;
             this.OrderID.VisibleIndex = 1;
-            this.OrderID.Width = 347;
+            this.OrderID.Width = 327;
             // 
             // TotalAmount
             // 
@@ -282,8 +284,8 @@
             this.TotalAmount.MinWidth = 25;
             this.TotalAmount.Name = "TotalAmount";
             this.TotalAmount.Visible = true;
-            this.TotalAmount.VisibleIndex = 2;
-            this.TotalAmount.Width = 302;
+            this.TotalAmount.VisibleIndex = 3;
+            this.TotalAmount.Width = 245;
             // 
             // PaidAmount
             // 
@@ -296,8 +298,8 @@
             this.PaidAmount.MinWidth = 25;
             this.PaidAmount.Name = "PaidAmount";
             this.PaidAmount.Visible = true;
-            this.PaidAmount.VisibleIndex = 3;
-            this.PaidAmount.Width = 294;
+            this.PaidAmount.VisibleIndex = 4;
+            this.PaidAmount.Width = 239;
             // 
             // ViewEmployeeDetail
             // 
@@ -311,8 +313,8 @@
             this.ViewEmployeeDetail.MinWidth = 25;
             this.ViewEmployeeDetail.Name = "ViewEmployeeDetail";
             this.ViewEmployeeDetail.Visible = true;
-            this.ViewEmployeeDetail.VisibleIndex = 4;
-            this.ViewEmployeeDetail.Width = 286;
+            this.ViewEmployeeDetail.VisibleIndex = 5;
+            this.ViewEmployeeDetail.Width = 236;
             // 
             // ViewEmployeeDetails
             // 
@@ -323,6 +325,20 @@
             this.ViewEmployeeDetails.Name = "ViewEmployeeDetails";
             this.ViewEmployeeDetails.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.ViewEmployeeDetails.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ViewEmployeeDetails_ButtonClick);
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.OrderDate.AppearanceCell.Options.UseFont = true;
+            this.OrderDate.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.OrderDate.AppearanceHeader.Options.UseFont = true;
+            this.OrderDate.Caption = "Order Date";
+            this.OrderDate.FieldName = "OrderDate";
+            this.OrderDate.MinWidth = 25;
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.Visible = true;
+            this.OrderDate.VisibleIndex = 2;
+            this.OrderDate.Width = 201;
             // 
             // ViewOrderSale
             // 
@@ -373,5 +389,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit ViewEmployeeDetails;
         private DevExpress.XtraGrid.Columns.GridColumn TotalAmount;
         private DevExpress.XtraGrid.Columns.GridColumn PaidAmount;
+        private DevExpress.XtraGrid.Columns.GridColumn OrderDate;
     }
 }

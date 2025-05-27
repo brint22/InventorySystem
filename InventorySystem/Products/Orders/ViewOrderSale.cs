@@ -36,6 +36,7 @@ namespace InventorySystem.Orders
                 string query = @"SELECT  
                                        ROW_NUMBER() OVER (ORDER BY OrderID) AS Count
                                       ,[OrderID]
+                                      ,[OrderDate]
                                       ,[TotalPrice]
                                       ,[PaymentAmount]
                                FROM [WAREHOUSEISDB].[dbo].[Orders];";
@@ -59,9 +60,11 @@ namespace InventorySystem.Orders
                             s.SaleID,
                             p.ProductName,
                             s.QuantitySold,
-                            s.Price
+                            s.Price,
+                            o.OrderDate
                          FROM [WAREHOUSEISDB].[dbo].[Sales] s
                          LEFT JOIN Product p ON s.ProductID = p.ProductID
+                         LEFT JOIN Orders o ON s.OrderID = o.OrderID
                          WHERE s.OrderID = @OrderID;";
 
                 sales = connection.Query<Sale>(query, new { OrderID = orderId }, commandType: CommandType.Text);
