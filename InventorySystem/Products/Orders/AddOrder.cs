@@ -415,20 +415,29 @@ namespace InventorySystem.Orders
                                 LocationID = loc.LocationID
                             }, transaction);
 
-                            // If capacity is now 0, mark as 'Available' and remove ProductID
+                            // If capacity is now 0, mark location available and remove ProductID
                             if (updatedCapacity == 0)
                             {
                                 string updateAvailability = @"
-                            UPDATE Location
-                            SET Availability = 'Available',
-                                ProductID = NULL
-                            WHERE LocationID = @LocationID";
+                                            UPDATE Location
+                                            SET Availability = 'Available',
+                                                ProductID = NULL
+                                            WHERE LocationID = @LocationID";
+                                conn.Execute(updateAvailability, new { LocationID = loc.LocationID }, transaction);
 
-                                conn.Execute(updateAvailability, new
+                                // 🔁 Optionally delete LocationStock record
+                                string deleteLocationStock = @"
+                                            DELETE FROM LocationStock
+                                            WHERE LocationID = @LocationID AND StockID IN (
+                                                SELECT StockID FROM Stock WHERE ProductID = @ProductID
+                                            )";
+                                conn.Execute(deleteLocationStock, new
                                 {
-                                    LocationID = loc.LocationID
+                                    LocationID = loc.LocationID,
+                                    ProductID = productID
                                 }, transaction);
                             }
+
 
                             remainingToDeduct -= deduct;
                         }
@@ -453,32 +462,41 @@ namespace InventorySystem.Orders
 
 
 
+
         private static string GenerateOrderID()
         {
-            string datePart = DateTime.Now.ToString("MMyy"); // e.g., "0525" for May 25th
+            string datePart = DateTime.Now.ToString("MMyy"); // e.g., "0525" for May 2025
 
             using (var connection = new SqlConnection(GlobalClass.connectionString))
             {
                 connection.Open();
 
-                // Count how many orders already exist for today
+                // Get the highest OrderID starting with current datePasrt
                 string sql = @"
-        SELECT COUNT(*) 
-        FROM Orders 
-        WHERE CAST(OrderDate AS DATE) = CAST(GETDATE() AS DATE)";
+                            SELECT MAX(OrderID) 
+                            FROM Orders 
+                            WHERE LEFT(OrderID, 4) = @DatePart";
 
-                int countToday = connection.ExecuteScalar<int>(sql);
+                string lastOrderId = connection.ExecuteScalar<string>(sql, new { DatePart = datePart });
 
-                // Increment for the next ID
-                int nextNumber = countToday + 1;
+                int nextNumber = 1; // Default for first order
+
+                if (!string.IsNullOrEmpty(lastOrderId))
+                {
+                    // Extract the numeric part and increment
+                    string[] parts = lastOrderId.Split('-');
+                    if (parts.Length == 2 && int.TryParse(parts[1], out int lastNumber))
+                    {
+                        nextNumber = lastNumber + 1;
+                    }
+                }
 
                 // Format to 4-digit padded number, e.g., 0001
                 string numberPart = nextNumber.ToString("D4");
 
-                return $"{datePart}-{numberPart}"; // Final format e.g., "0525-0001"
+                return $"{datePart}-{numberPart}";
             }
         }
-
 
 
     }

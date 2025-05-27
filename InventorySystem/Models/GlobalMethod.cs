@@ -210,32 +210,33 @@ namespace InventorySystem.Models
                     connection.Open();
 
                     string query = @"
-            SELECT 
-                s.[StockID],
-                s.[ProductID],
-                p.[ProductName],               
-                l.[Capacity] AS Quantity,
-                ls.[LocationID],
-                s.[Supplier],
-                FORMAT(s.[ExpirationDate], 'MMMM dd, yyyy') AS [ExpirationDate],
-                FORMAT(s.[ProductRecieved], 'MMMM dd, yyyy hh:mm tt') AS [ProductReceived],
-                CASE 
-                    WHEN ISNULL(l.Capacity, 0) = 0 THEN ''
-                    ELSE CAST(ISNULL(l.Capacity, 0) AS VARCHAR(50)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(50))
-                END AS 'LocationCapacity'
-            FROM 
-                [WAREHOUSEISDB].[dbo].[Stock] s
-            LEFT JOIN 
-                Product p ON p.ProductID = s.ProductID
-            LEFT JOIN 
-                LocationStock ls ON ls.StockID = s.StockID
-            LEFT JOIN
-                Location l ON l.LocationID = ls.LocationID
-            ORDER BY 
-                LEFT(ls.LocationID, CHARINDEX('-', ls.LocationID) - 1),
-                CAST(SUBSTRING(ls.LocationID, CHARINDEX('-', ls.LocationID) + 1, CHARINDEX('-', ls.LocationID, CHARINDEX('-', ls.LocationID) + 1) - CHARINDEX('-', ls.LocationID) - 1) AS INT),
-                CAST(SUBSTRING(ls.LocationID, CHARINDEX('-', ls.LocationID, CHARINDEX('-', ls.LocationID) + 1) + 1, LEN(ls.LocationID)) AS INT);
-                ";
+                                 SELECT 
+                                s.[StockID],
+                                s.[ProductID],
+                                p.[ProductName],               
+                                s.Quantity,
+                                ls.[LocationID],
+                                s.[Supplier],
+                                FORMAT(s.[ExpirationDate], 'MMMM dd, yyyy') AS [ExpirationDate],
+                                FORMAT(s.[ProductRecieved], 'MMMM dd, yyyy hh:mm tt') AS [ProductReceived],
+                                CASE 
+                                    WHEN ISNULL(l.Capacity, 0) = 0 THEN 'No Stock'
+                                    ELSE CAST(ISNULL(l.Capacity, 0) AS VARCHAR(50)) + '/' + CAST(ISNULL(p.Capacity, 0) AS VARCHAR(50))
+                                END AS 'LocationCapacity'
+                            FROM 
+                                [WAREHOUSEISDB].[dbo].[Stock] s
+                            LEFT JOIN 
+                                Product p ON p.ProductID = s.ProductID
+                            LEFT JOIN 
+                                LocationStock ls ON ls.StockID = s.StockID
+                            LEFT JOIN
+                                Location l ON l.LocationID = ls.LocationID
+                            WHERE 
+                                s.Quantity > 0
+                            ORDER BY 
+                                LEFT(ls.LocationID, CHARINDEX('-', ls.LocationID) - 1),
+                                CAST(SUBSTRING(ls.LocationID, CHARINDEX('-', ls.LocationID) + 1, CHARINDEX('-', ls.LocationID, CHARINDEX('-', ls.LocationID) + 1) - CHARINDEX('-', ls.LocationID) - 1) AS INT),
+                                CAST(SUBSTRING(ls.LocationID, CHARINDEX('-', ls.LocationID, CHARINDEX('-', ls.LocationID) + 1) + 1, LEN(ls.LocationID)) AS INT); ";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
