@@ -58,17 +58,18 @@
             // 
             // ribbon
             // 
-            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(45, 44, 45, 44);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
-            this.ribbon.OptionsMenuMinWidth = 385;
+            this.ribbon.OptionsMenuMinWidth = 495;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(880, 61);
+            this.ribbon.Size = new System.Drawing.Size(1131, 73);
             this.ribbon.Visible = false;
             // 
             // ribbonPage1
@@ -96,51 +97,54 @@
             this.groupControl2.Controls.Add(this.labelControl2);
             this.groupControl2.Controls.Add(this.gcEmployeeAccount);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(0, 61);
+            this.groupControl2.Location = new System.Drawing.Point(0, 73);
+            this.groupControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Padding = new System.Windows.Forms.Padding(16, 17, 16, 17);
-            this.groupControl2.Size = new System.Drawing.Size(880, 491);
+            this.groupControl2.Padding = new System.Windows.Forms.Padding(21, 20, 21, 20);
+            this.groupControl2.Size = new System.Drawing.Size(1131, 583);
             this.groupControl2.TabIndex = 18;
             this.groupControl2.Text = "Employee\'s Accounts";
             // 
             // labelControl3
             // 
             this.labelControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl3.Location = new System.Drawing.Point(541, 213);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.labelControl3.Location = new System.Drawing.Point(696, 253);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(55, 16);
+            this.labelControl3.Size = new System.Drawing.Size(67, 19);
             this.labelControl3.TabIndex = 87;
             this.labelControl3.Text = "Password";
             // 
             // labelControl1
             // 
             this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl1.Location = new System.Drawing.Point(541, 149);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.labelControl1.Location = new System.Drawing.Point(696, 177);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(71, 16);
+            this.labelControl1.Size = new System.Drawing.Size(91, 19);
             this.labelControl1.TabIndex = 86;
             this.labelControl1.Text = "Employee ID";
             // 
             // tePassword
             // 
             this.tePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tePassword.Location = new System.Drawing.Point(541, 235);
+            this.tePassword.Location = new System.Drawing.Point(696, 279);
+            this.tePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tePassword.Name = "tePassword";
             this.tePassword.Properties.AutoHeight = false;
             this.tePassword.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.tePassword.Size = new System.Drawing.Size(306, 26);
+            this.tePassword.Size = new System.Drawing.Size(393, 31);
             this.tePassword.TabIndex = 85;
             // 
             // teEmployeeID
             // 
             this.teEmployeeID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.teEmployeeID.Location = new System.Drawing.Point(541, 168);
+            this.teEmployeeID.Location = new System.Drawing.Point(696, 200);
+            this.teEmployeeID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.teEmployeeID.Name = "teEmployeeID";
             this.teEmployeeID.Properties.AutoHeight = false;
             this.teEmployeeID.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.teEmployeeID.Size = new System.Drawing.Size(306, 26);
+            this.teEmployeeID.Size = new System.Drawing.Size(393, 31);
             this.teEmployeeID.TabIndex = 84;
             // 
             // BtnDelete
@@ -151,9 +155,10 @@
             this.BtnDelete.Appearance.Options.UseBackColor = true;
             this.BtnDelete.Appearance.Options.UseFont = true;
             this.BtnDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnDelete.Location = new System.Drawing.Point(707, 284);
+            this.BtnDelete.Location = new System.Drawing.Point(909, 337);
+            this.BtnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(140, 32);
+            this.BtnDelete.Size = new System.Drawing.Size(180, 38);
             this.BtnDelete.TabIndex = 83;
             this.BtnDelete.Text = "DELETE";
             // 
@@ -164,28 +169,32 @@
             this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdate.Appearance.Options.UseBackColor = true;
             this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(541, 284);
+            this.BtnUpdate.Location = new System.Drawing.Point(696, 337);
+            this.BtnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnUpdate.Name = "BtnUpdate";
-            this.BtnUpdate.Size = new System.Drawing.Size(140, 32);
+            this.BtnUpdate.Size = new System.Drawing.Size(180, 38);
             this.BtnUpdate.TabIndex = 82;
             this.BtnUpdate.Text = "UPDATE";
+            this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // teSearch
             // 
-            this.teSearch.Location = new System.Drawing.Point(131, 81);
+            this.teSearch.Location = new System.Drawing.Point(168, 96);
+            this.teSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.teSearch.Name = "teSearch";
             this.teSearch.Properties.AutoHeight = false;
             this.teSearch.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.teSearch.Size = new System.Drawing.Size(186, 26);
+            this.teSearch.Size = new System.Drawing.Size(239, 31);
             this.teSearch.TabIndex = 18;
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Gray;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(28, 89);
+            this.labelControl2.Location = new System.Drawing.Point(36, 106);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(102, 16);
+            this.labelControl2.Size = new System.Drawing.Size(124, 19);
             this.labelControl2.TabIndex = 17;
             this.labelControl2.Text = "Search Keyword :";
             // 
@@ -194,11 +203,13 @@
             this.gcEmployeeAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcEmployeeAccount.Location = new System.Drawing.Point(23, 125);
+            this.gcEmployeeAccount.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcEmployeeAccount.Location = new System.Drawing.Point(30, 148);
             this.gcEmployeeAccount.MainView = this.gvEmployeeAccount;
+            this.gcEmployeeAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gcEmployeeAccount.MenuManager = this.ribbon;
             this.gcEmployeeAccount.Name = "gcEmployeeAccount";
-            this.gcEmployeeAccount.Size = new System.Drawing.Size(485, 344);
+            this.gcEmployeeAccount.Size = new System.Drawing.Size(624, 408);
             this.gcEmployeeAccount.TabIndex = 16;
             this.gcEmployeeAccount.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvEmployeeAccount});
@@ -211,54 +222,55 @@
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3});
-            this.gvEmployeeAccount.DetailHeight = 431;
+            this.gvEmployeeAccount.DetailHeight = 512;
             this.gvEmployeeAccount.GridControl = this.gcEmployeeAccount;
             this.gvEmployeeAccount.Name = "gvEmployeeAccount";
-            this.gvEmployeeAccount.OptionsEditForm.PopupEditFormWidth = 933;
+            this.gvEmployeeAccount.OptionsEditForm.PopupEditFormWidth = 1200;
             this.gvEmployeeAccount.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Account ID";
             this.gridColumn1.FieldName = "AccountID";
-            this.gridColumn1.MinWidth = 23;
+            this.gridColumn1.MinWidth = 30;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 87;
+            this.gridColumn1.Width = 112;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Username";
             this.gridColumn2.FieldName = "UserName";
-            this.gridColumn2.MinWidth = 23;
+            this.gridColumn2.MinWidth = 30;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 87;
+            this.gridColumn2.Width = 112;
             // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Password";
             this.gridColumn3.FieldName = "Password";
-            this.gridColumn3.MinWidth = 23;
+            this.gridColumn3.MinWidth = 30;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 87;
+            this.gridColumn3.Width = 112;
             // 
             // ViewAccount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 552);
+            this.ClientSize = new System.Drawing.Size(1131, 656);
             this.ControlBox = false;
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ViewAccount.IconOptions.Image")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewAccount";

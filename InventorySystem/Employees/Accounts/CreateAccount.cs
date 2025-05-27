@@ -57,7 +57,7 @@ namespace InventorySystem.Account
             string connStr = GlobalClass.connectionString;
 
 
-            string username = teUserName.Text.Trim();
+            string username = teEmployeeID.Text.Trim();
             string password = tePassword.Text.Trim();
 
             // No password hashing
@@ -128,7 +128,7 @@ namespace InventorySystem.Account
             if (rowHandle >= 0)
             {
                 string employeeId = gvAccounts.GetRowCellValue(rowHandle, "EmployeeID")?.ToString();
-                teUserName.Text = employeeId;
+                teEmployeeID.Text = employeeId;
             }
 
             // Hook event to update when selection changes
@@ -140,25 +140,43 @@ namespace InventorySystem.Account
             if (e.FocusedRowHandle >= 0)
             {
                 string employeeId = gvAccounts.GetRowCellValue(e.FocusedRowHandle, "EmployeeID")?.ToString();
-                teUserName.Text = employeeId;
+                teEmployeeID.Text = employeeId;
             }
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            string checkEmployeeQuery = @"
+    SELECT AccountID 
+    FROM Employee 
+    WHERE EmployeeID = @EmployeeID";
+
             string insertAccountQuery = @"
-        INSERT INTO Account (UserName, Password) 
-        OUTPUT INSERTED.AccountID 
-        VALUES (@UserName, @Password)";
+    INSERT INTO Account (UserName, Password) 
+    OUTPUT INSERTED.AccountID 
+    VALUES (@UserName, @Password)";
 
             string updateEmployeeQuery = @"
-        UPDATE Employee 
-        SET AccountID = @AccountID 
-        WHERE EmployeeID = @EmployeeID"; // Assuming you want to update an existing employee
+    UPDATE Employee 
+    SET AccountID = @AccountID 
+    WHERE EmployeeID = @EmployeeID";
 
             using (SqlConnection con = new SqlConnection(GlobalClass.connectionString))
             {
                 con.Open();
+
+                // Step 0: Check if employee already has an account
+                var existingAccountId = con.ExecuteScalar<int?>(checkEmployeeQuery, new
+                {
+                    EmployeeID = teEmployeeID.Text
+                });
+
+                if (existingAccountId.HasValue)
+                {
+                    MessageBox.Show("This employee already has an account assigned.");
+                    return;
+                }
+
                 using (var transaction = con.BeginTransaction())
                 {
                     try
@@ -166,30 +184,29 @@ namespace InventorySystem.Account
                         // Step 1: Insert into Account and get the AccountID
                         int accountId = con.ExecuteScalar<int>(insertAccountQuery, new
                         {
-                            UserName = teUserName.Text,
-                            Password = tePassword.Text // Reminder: use hashing in real apps
+                            UserName = teEmployeeID.Text,
+                            Password = tePassword.Text
                         }, transaction: transaction);
 
                         // Step 2: Update the Employee record with the new AccountID
                         con.Execute(updateEmployeeQuery, new
                         {
                             AccountID = accountId,
-                            EmployeeID = teUserName.Text // This needs to be provided (e.g., from UI or selection)
+                            EmployeeID = teEmployeeID.Text
                         }, transaction: transaction);
 
-                        // Commit transaction if everything is successful
                         transaction.Commit();
                         MessageBox.Show("Account and Employee successfully updated!");
                     }
                     catch (Exception ex)
                     {
-                        // Rollback transaction in case of an error
                         transaction.Rollback();
                         MessageBox.Show("Error: " + ex.Message);
                     }
                 }
             }
         }
+
 
     }
 }

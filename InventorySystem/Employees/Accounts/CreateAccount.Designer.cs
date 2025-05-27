@@ -42,7 +42,7 @@
             this.EmployeeID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.EmployeeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.RoleName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.teUserName = new DevExpress.XtraEditors.TextEdit();
+            this.teEmployeeID = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSubmit = new DevExpress.XtraEditors.SimpleButton();
@@ -52,7 +52,7 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcAccounts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAccounts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teEmployeeID.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage2
@@ -81,15 +81,15 @@
             // 
             // ribbon
             // 
-            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(45, 44, 45, 44);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Margin = new System.Windows.Forms.Padding(4);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
-            this.ribbon.OptionsMenuMinWidth = 385;
+            this.ribbon.OptionsMenuMinWidth = 495;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
@@ -99,26 +99,26 @@
             this.ribbon.ShowPageHeadersInFormCaption = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbon.ShowQatLocationSelector = false;
-            this.ribbon.Size = new System.Drawing.Size(705, 61);
-           // 
+            this.ribbon.Size = new System.Drawing.Size(906, 73);
+            // 
             // tePassword
             // 
-            this.tePassword.Location = new System.Drawing.Point(320, 259);
-            this.tePassword.Margin = new System.Windows.Forms.Padding(4);
+            this.tePassword.Location = new System.Drawing.Point(411, 306);
+            this.tePassword.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tePassword.MenuManager = this.ribbon;
             this.tePassword.Name = "tePassword";
             this.tePassword.Properties.AutoHeight = false;
-            this.tePassword.Size = new System.Drawing.Size(326, 39);
+            this.tePassword.Size = new System.Drawing.Size(419, 46);
             this.tePassword.TabIndex = 4;
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(320, 232);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
+            this.labelControl2.Location = new System.Drawing.Point(411, 276);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(67, 19);
+            this.labelControl2.Size = new System.Drawing.Size(84, 24);
             this.labelControl2.TabIndex = 13;
             this.labelControl2.Text = "Password";
             // 
@@ -127,27 +127,27 @@
             this.groupControl1.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.Controls.Add(this.gcAccounts);
-            this.groupControl1.Controls.Add(this.teUserName);
+            this.groupControl1.Controls.Add(this.teEmployeeID);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.tePassword);
             this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Location = new System.Drawing.Point(14, 78);
-            this.groupControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupControl1.Location = new System.Drawing.Point(18, 93);
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(677, 323);
+            this.groupControl1.Size = new System.Drawing.Size(870, 384);
             this.groupControl1.TabIndex = 16;
             this.groupControl1.Text = "groupControl1";
             // 
             // gcAccounts
             // 
-            this.gcAccounts.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gcAccounts.Location = new System.Drawing.Point(28, 32);
+            this.gcAccounts.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gcAccounts.Location = new System.Drawing.Point(36, 38);
             this.gcAccounts.MainView = this.gvAccounts;
-            this.gcAccounts.Margin = new System.Windows.Forms.Padding(4);
+            this.gcAccounts.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.gcAccounts.MenuManager = this.ribbon;
             this.gcAccounts.Name = "gcAccounts";
-            this.gcAccounts.Size = new System.Drawing.Size(618, 172);
+            this.gcAccounts.Size = new System.Drawing.Size(795, 204);
             this.gcAccounts.TabIndex = 16;
             this.gcAccounts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAccounts});
@@ -158,68 +158,68 @@
             this.EmployeeID,
             this.EmployeeName,
             this.RoleName});
-            this.gvAccounts.DetailHeight = 431;
+            this.gvAccounts.DetailHeight = 512;
             this.gvAccounts.GridControl = this.gcAccounts;
             this.gvAccounts.Name = "gvAccounts";
-            this.gvAccounts.OptionsEditForm.PopupEditFormWidth = 933;
+            this.gvAccounts.OptionsEditForm.PopupEditFormWidth = 1200;
             // 
             // EmployeeID
             // 
             this.EmployeeID.Caption = "EmployeeID";
             this.EmployeeID.FieldName = "EmployeeID";
-            this.EmployeeID.MinWidth = 23;
+            this.EmployeeID.MinWidth = 30;
             this.EmployeeID.Name = "EmployeeID";
             this.EmployeeID.OptionsColumn.AllowEdit = false;
             this.EmployeeID.OptionsColumn.AllowFocus = false;
             this.EmployeeID.Visible = true;
             this.EmployeeID.VisibleIndex = 0;
-            this.EmployeeID.Width = 87;
+            this.EmployeeID.Width = 112;
             // 
             // EmployeeName
             // 
             this.EmployeeName.Caption = "Employee Name";
             this.EmployeeName.FieldName = "EmployeeName";
-            this.EmployeeName.MinWidth = 23;
+            this.EmployeeName.MinWidth = 30;
             this.EmployeeName.Name = "EmployeeName";
             this.EmployeeName.OptionsColumn.AllowEdit = false;
             this.EmployeeName.OptionsColumn.AllowFocus = false;
             this.EmployeeName.Visible = true;
             this.EmployeeName.VisibleIndex = 1;
-            this.EmployeeName.Width = 87;
+            this.EmployeeName.Width = 112;
             // 
             // RoleName
             // 
             this.RoleName.Caption = "Role Name";
             this.RoleName.FieldName = "RoleName";
-            this.RoleName.MinWidth = 23;
+            this.RoleName.MinWidth = 30;
             this.RoleName.Name = "RoleName";
             this.RoleName.OptionsColumn.AllowEdit = false;
             this.RoleName.OptionsColumn.AllowFocus = false;
             this.RoleName.Visible = true;
             this.RoleName.VisibleIndex = 2;
-            this.RoleName.Width = 87;
+            this.RoleName.Width = 112;
             // 
-            // teUserName
+            // teEmployeeID
             // 
-            this.teUserName.Location = new System.Drawing.Point(28, 256);
-            this.teUserName.Margin = new System.Windows.Forms.Padding(4);
-            this.teUserName.MenuManager = this.ribbon;
-            this.teUserName.Name = "teUserName";
-            this.teUserName.Properties.AutoHeight = false;
-            this.teUserName.Properties.ReadOnly = true;
-            this.teUserName.Size = new System.Drawing.Size(261, 42);
-            this.teUserName.TabIndex = 1;
+            this.teEmployeeID.Location = new System.Drawing.Point(36, 304);
+            this.teEmployeeID.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.teEmployeeID.MenuManager = this.ribbon;
+            this.teEmployeeID.Name = "teEmployeeID";
+            this.teEmployeeID.Properties.AutoHeight = false;
+            this.teEmployeeID.Properties.ReadOnly = true;
+            this.teEmployeeID.Size = new System.Drawing.Size(336, 50);
+            this.teEmployeeID.TabIndex = 1;
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(28, 229);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.labelControl1.Location = new System.Drawing.Point(36, 272);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(71, 19);
+            this.labelControl1.Size = new System.Drawing.Size(114, 24);
             this.labelControl1.TabIndex = 12;
-            this.labelControl1.Text = "Username";
+            this.labelControl1.Text = "Employee ID";
             // 
             // btnCancel
             // 
@@ -227,10 +227,10 @@
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Location = new System.Drawing.Point(348, 450);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Location = new System.Drawing.Point(447, 534);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(239, 38);
+            this.btnCancel.Size = new System.Drawing.Size(307, 45);
             this.btnCancel.TabIndex = 67;
             this.btnCancel.Text = "CANCEL";
             // 
@@ -240,10 +240,10 @@
             this.btnSubmit.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.Appearance.Options.UseBackColor = true;
             this.btnSubmit.Appearance.Options.UseFont = true;
-            this.btnSubmit.Location = new System.Drawing.Point(91, 450);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnSubmit.Location = new System.Drawing.Point(117, 534);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(240, 38);
+            this.btnSubmit.Size = new System.Drawing.Size(309, 45);
             this.btnSubmit.TabIndex = 66;
             this.btnSubmit.Text = "SUBMIT";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -252,15 +252,15 @@
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 578);
+            this.ClientSize = new System.Drawing.Size(906, 686);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("CreateAccount.IconOptions.Image")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.MaximizeBox = false;
             this.Name = "CreateAccount";
             this.Ribbon = this.ribbon;
@@ -275,7 +275,7 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcAccounts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAccounts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teEmployeeID.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,7 +291,7 @@
         private DevExpress.XtraEditors.TextEdit tePassword;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.TextEdit teUserName;
+        private DevExpress.XtraEditors.TextEdit teEmployeeID;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gcAccounts;
         private DevExpress.XtraGrid.Views.Grid.GridView gvAccounts;
