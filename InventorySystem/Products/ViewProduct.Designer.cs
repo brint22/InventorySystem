@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewProduct));
             this.gcFacultyStaff = new DevExpress.XtraEditors.GroupControl();
-            this.BtnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.gcProductList = new DevExpress.XtraGrid.GridControl();
             this.gvProductList = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ProductID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,7 +55,6 @@
             this.gcFacultyStaff.CaptionImageOptions.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.gcFacultyStaff.CaptionImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("gcFacultyStaff.CaptionImageOptions.SvgImage")));
             this.gcFacultyStaff.CaptionImageOptions.SvgImageSize = new System.Drawing.Size(26, 26);
-            this.gcFacultyStaff.Controls.Add(this.BtnDelete);
             this.gcFacultyStaff.Controls.Add(this.gcProductList);
             this.gcFacultyStaff.Controls.Add(this.BtnUpdate);
             this.gcFacultyStaff.Controls.Add(this.txtSearch);
@@ -71,22 +69,6 @@
             this.gcFacultyStaff.Size = new System.Drawing.Size(1646, 741);
             this.gcFacultyStaff.TabIndex = 6;
             this.gcFacultyStaff.Text = "   Filter By :";
-            // 
-            // BtnDelete
-            // 
-            this.BtnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnDelete.Appearance.BackColor = System.Drawing.Color.DimGray;
-            this.BtnDelete.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.Appearance.Options.UseBackColor = true;
-            this.BtnDelete.Appearance.Options.UseFont = true;
-            this.BtnDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnDelete.Location = new System.Drawing.Point(1423, 93);
-            this.BtnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(190, 38);
-            this.BtnDelete.TabIndex = 81;
-            this.BtnDelete.Text = "DELETE";
-            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // gcProductList
             // 
@@ -212,7 +194,7 @@
             this.BtnUpdate.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUpdate.Appearance.Options.UseBackColor = true;
             this.BtnUpdate.Appearance.Options.UseFont = true;
-            this.BtnUpdate.Location = new System.Drawing.Point(1235, 93);
+            this.BtnUpdate.Location = new System.Drawing.Point(1442, 93);
             this.BtnUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(180, 38);
@@ -307,7 +289,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Price;
         private DevExpress.XtraGrid.Columns.GridColumn ProductID;
         private DevExpress.XtraGrid.Columns.GridColumn Capacity;
-        private DevExpress.XtraEditors.SimpleButton BtnDelete;
         private DevExpress.XtraEditors.SimpleButton BtnUpdate;
     }
 }

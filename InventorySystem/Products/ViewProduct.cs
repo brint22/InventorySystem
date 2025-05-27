@@ -75,48 +75,7 @@ namespace InventorySystem.views
             }
         }
 
-        private void BtnDelete_Click(object sender, EventArgs e)
-        {
-            int focusedRowHandle = gvProductList.FocusedRowHandle;
 
-            if (focusedRowHandle >= 0)
-            {
-                // Get the EmployeeID of the selected row
-                string productID = Convert.ToString(gvProductList.GetFocusedRowCellValue("ProductID"));
-
-                // Confirm deletion
-                DialogResult confirmDelete = MessageBox.Show(
-                    "Are you sure you want to delete this product record?",
-                    "Confirm Deletion",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-
-                if (confirmDelete == DialogResult.Yes)
-                {
-                    // Call delete function
-                    DeleteProducte(productID);
-
-                    // Refresh data after deletion
-                    GlobalMethod.LoadProductList(gcProductList);
-
-                    // Adjust focus after deletion
-                    int newFocusedRowHandle = (focusedRowHandle >= gvProductList.DataRowCount) ?
-                                              gvProductList.DataRowCount - 1 :
-                                              focusedRowHandle;
-
-                    if (newFocusedRowHandle >= 0)
-                    {
-                        gvProductList.FocusedRowHandle = newFocusedRowHandle;
-                    }
-
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select an employee to delete.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
 
         private void DeleteProducte(string productID)
         {

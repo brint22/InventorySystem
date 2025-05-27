@@ -132,7 +132,7 @@ namespace InventorySystem.Orders
             string priceText = tePrice.Text.Trim();
 
             // Validation to check if any field is empty
-            if (string.IsNullOrEmpty(productID) || 
+            if (string.IsNullOrEmpty(productID) ||
                 string.IsNullOrEmpty(productName) ||
                 string.IsNullOrEmpty(quantityText) ||
                 string.IsNullOrEmpty(priceText))
@@ -150,6 +150,19 @@ namespace InventorySystem.Orders
             }
 
             decimal totalPrice = quantity * unitPrice;
+
+            // Validate if there is enough stock
+            int availableStock = GetAvailableStock(productID); // Get the available stock for the product
+            if (quantity > availableStock)
+            {
+                MessageBox.Show(
+                    $"Not enough stock for Product ID: {productID}.\n" +
+                    $"Requested: {quantity}, Available: {availableStock}",
+                    "Insufficient Stock",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return; // Stop the process if stock is insufficient
+            }
 
             // Check if product already exists in the DataTable
             bool productExists = false;
@@ -216,13 +229,30 @@ namespace InventorySystem.Orders
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
 
-            // If the user clicks "No", exit the method
             if (confirmResult == DialogResult.No)
-            {
                 return;
+
+            // Step 2: Validate stock for each product
+            foreach (DataRow row in dtProduct.Rows)
+            {
+                string productID = row["ProductID"].ToString();
+                int quantityRequested = Convert.ToInt32(row["Quantity"]);
+
+                int availableStock = GetAvailableStock(productID); // Add this method below
+
+                if (quantityRequested > availableStock)
+                {
+                    MessageBox.Show(
+                        $"Not enough stock for Product ID: {productID}.\n" +
+                        $"Requested: {quantityRequested}, Available: {availableStock}",
+                        "Insufficient Stock",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
             }
 
-            // Step 2: Create the Order object
+            // Step 3: Create the Order object
             Order order = new Order()
             {
                 TotalPrice = seTotalPrice.Text.Trim(),
@@ -231,7 +261,7 @@ namespace InventorySystem.Orders
                 OrderDate = DateTime.Now
             };
 
-            // Step 3: Insert Order using Dapper
+            // Step 4: Insert Order using Dapper
             using (var connection = new SqlConnection(GlobalClass.connectionString))
             {
                 connection.Open();
@@ -243,7 +273,7 @@ namespace InventorySystem.Orders
                 connection.Execute(insertOrderQuery, order);
             }
 
-            // Step 4: Insert Sales and Deduct Stock
+            // Step 5: Insert Sales and Deduct Stock
             foreach (DataRow row in dtProduct.Rows)
             {
                 string productID = row["ProductID"].ToString();
@@ -254,13 +284,24 @@ namespace InventorySystem.Orders
                 DeductStockQuantity(productID, quantitySold);
             }
 
-            // Step 5: Refresh the data source
+            // Step 6: Refresh the data source
             gcProducts.DataSource = GetStock();
             gcProducts.RefreshDataSource();
 
             MessageBox.Show("Payment confirmed, sales recorded, and stock updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Helper method to get available stock for a product
+        private int GetAvailableStock(string productID)
+        {
+            using (var connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT ISNULL(SUM(Quantity), 0) FROM Stock WHERE ProductID = @ProductID";
+                return connection.ExecuteScalar<int>(query, new { ProductID = productID });
+            }
+        }
 
 
         private void InsertSale(string orderID, string productID, int quantitySold, decimal totalPrice)
