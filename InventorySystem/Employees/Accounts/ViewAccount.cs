@@ -133,5 +133,74 @@ namespace InventorySystem.Account
             }
         }
 
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            // Check if a row is selected in the GridView
+            if (gvEmployeeAccount.FocusedRowHandle < 0)
+            {
+                MessageBox.Show("Please select an employee to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Get the selected EmployeeID from the GridView
+            string employeeID = gvEmployeeAccount.GetRowCellValue(gvEmployeeAccount.FocusedRowHandle, "EmployeeID").ToString();
+
+            if (string.IsNullOrEmpty(employeeID))
+            {
+                MessageBox.Show("No valid employee ID found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Step 1: Show confirmation dialog
+            DialogResult dialogResult = MessageBox.Show(
+                "Are you sure you want to delete this employee's account?",
+                "Confirm Deletion",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            // If the user clicks "No", exit the method
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            // Proceed with deletion if "Yes" is clicked
+            using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Step 2: Get the AccountID linked to the employee
+                    string getAccountQuery = "SELECT AccountID FROM Employee WHERE EmployeeID = @EmployeeID";
+                    int? accountID = connection.ExecuteScalar<int?>(getAccountQuery, new { EmployeeID = employeeID });
+
+                    if (accountID == null)
+                    {
+                        MessageBox.Show("This employee does not have an account assigned.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Step 3: Delete the Account row from the Account table
+                    string deleteAccountQuery = "DELETE FROM Account WHERE AccountID = @AccountID";
+                    connection.Execute(deleteAccountQuery, new { AccountID = accountID });
+
+                    // Step 4: Set AccountID in Employee table to NULL
+                    string updateEmployeeQuery = "UPDATE Employee SET AccountID = NULL WHERE EmployeeID = @EmployeeID";
+                    connection.Execute(updateEmployeeQuery, new { EmployeeID = employeeID });
+
+                    MessageBox.Show("Employee's account deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // ✅ Refresh the employee list or perform any other UI update if needed
+                    LoadAccountList(gcEmployeeAccount); // This is just an example, replace it with your actual method to reload employee data
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting account: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
+    
 }
