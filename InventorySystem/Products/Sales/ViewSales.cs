@@ -33,12 +33,16 @@ namespace InventorySystem.Products.Sales
                 connection.Open();
 
                 string query = @"SELECT 
-                            p.ProductName,
-                            SUM(s.QuantitySold) AS QuantitySold,
-                            SUM(s.QuantitySold * s.Price) AS Price
-                         FROM [WAREHOUSEISDB].[dbo].[Sales] s
-                         LEFT JOIN Product p ON s.ProductID = p.ProductID
-                         GROUP BY p.ProductName";
+                                p.ProductName,
+                                SUM(s.QuantitySold) AS QuantitySold,
+                                SUM(s.QuantitySold * s.Price) AS Price,
+                                FORMAT(o.OrderDate, 'MMMM dd, yyyy') AS OrderDate
+                            FROM [WAREHOUSEISDB].[dbo].[Sales] s
+                            LEFT JOIN Product p ON s.ProductID = p.ProductID
+                            LEFT JOIN Orders o ON o.OrderID = s.OrderID
+                            GROUP BY 
+                                p.ProductName, 
+                                FORMAT(o.OrderDate, 'MMMM dd, yyyy');";
 
                 sales = connection.Query<Sale>(query, commandType: CommandType.Text).ToList();
             }

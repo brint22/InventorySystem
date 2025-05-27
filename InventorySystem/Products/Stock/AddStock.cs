@@ -169,46 +169,61 @@ namespace InventorySystem.Products.Stock
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(teQuantity.Text, out int quantity))
+            // ✅ Simplified field validation
+            if (string.IsNullOrWhiteSpace(teQuantity.Text) ||
+                string.IsNullOrWhiteSpace(teSupplier.Text) ||
+                string.IsNullOrWhiteSpace(lueLocation.EditValue?.ToString()) ||
+                deExpirationDate.EditValue == null || deExpirationDate.DateTime == DateTime.MinValue)
             {
-                MessageBox.Show("Please enter a valid quantity.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please input all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            if (!int.TryParse(teQuantity.Text.Trim(), out int quantity) || quantity <= 0)
+            {
+                MessageBox.Show("Please enter a valid quantity greater than zero.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // ✅ Confirmation prompt
+            DialogResult confirmResult = MessageBox.Show(
+                "Are you sure you want to add this stock?",
+                "Confirm Add Stock",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmResult != DialogResult.Yes)
+            {
+                return; // Exit if user cancels
+            }
+
+            // ✅ Create objects after validations and confirmation
             ProductStock productStock = new ProductStock()
             {
-                ProductID = GetProductID(), // ✅ Use the actual selected ProductID
+                ProductID = GetProductID(),
                 Quantity = quantity,
                 ExpirationDate = deExpirationDate.DateTime,
-                Supplier = teSupplier.Text,
-                ProductRecieved = DateTime.Now,
-
+                Supplier = teSupplier.Text.Trim(),
+                ProductRecieved = DateTime.Now
             };
-            GetProductID();
 
-            string selectedLocation = lueLocation.EditValue?.ToString();
-            if (string.IsNullOrWhiteSpace(selectedLocation))
-            {
-                MessageBox.Show("Please select a location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
             Location location = new Location()
             {
                 ProductID = GetLocationProductID()
             };
 
             Product product = new Product();
+            LocationStock locationStock = new LocationStock();
 
-            LocationStock locationStock = new LocationStock()
-            {
-                
-            };
+            // ✅ Add the new stock entry
+            AddNewStock(productStock, lueLocation.EditValue.ToString(), product, location, locationStock);
 
-            // Call the method to add the customer transaction
-            AddNewStock(productStock, selectedLocation, product, location, locationStock);
-
+            // ✅ Reset UI fields after successful add
             ResetAllFields();
         }
+
+
+
 
         private void cbLocationGroup_SelectedIndexChanged(object sender, EventArgs e)
         {

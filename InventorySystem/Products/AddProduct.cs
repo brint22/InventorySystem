@@ -34,9 +34,20 @@ namespace InventorySystem.Products
         {
             // ✅ Validate required fields
             if (string.IsNullOrWhiteSpace(teProductName.Text) ||
-                string.IsNullOrWhiteSpace(sePrice.Text))
+                string.IsNullOrWhiteSpace(sePrice.Text) ||
+                string.IsNullOrWhiteSpace(teCapacity.Text))
             {
-                MessageBox.Show("Please fill in all required fields (Product Name and Brand Name).",
+                MessageBox.Show("Please fill in all required fields (Product Name, Brand Name, and Capacity).",
+                                "Validation Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            // ✅ Validate that Capacity is a valid integer
+            if (!int.TryParse(teCapacity.Text, out int capacity))
+            {
+                MessageBox.Show("Please enter a valid number value for Capacity.",
                                 "Validation Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
@@ -62,8 +73,8 @@ namespace InventorySystem.Products
                 CategoryID = GetCategoryID(), // ✅ Use the actual selected ProductID
                 ProductName = teProductName.Text.Trim(),
                 Price = sePrice.Value,
-                Capacity = int.Parse(teCapacity.Text)
-        };
+                Capacity = capacity
+            };
 
             // ✅ Save to database
             ProductRepository repo = new ProductRepository(GlobalClass.connectionString);
@@ -76,9 +87,9 @@ namespace InventorySystem.Products
 
             ResetAllFields();
         }
-    
 
-      
+
+
 
         //private void cbLocationGroup_SelectedIndexChanged(object sender, EventArgs e)
         //{

@@ -40,9 +40,9 @@
             this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.QuantitySold = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.OrderDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BtnGenerateReport = new DevExpress.XtraEditors.SimpleButton();
             this.cbSelectTimeReport = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.OrderDate = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSales)).BeginInit();
@@ -51,18 +51,18 @@
             // 
             // ribbon
             // 
-            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
+            this.ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(45, 44, 45, 44);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Margin = new System.Windows.Forms.Padding(4);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
-            this.ribbon.OptionsMenuMinWidth = 385;
+            this.ribbon.OptionsMenuMinWidth = 495;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(886, 61);
+            this.ribbon.Size = new System.Drawing.Size(1139, 73);
             // 
             // ribbonPage1
             // 
@@ -81,16 +81,16 @@
             this.gcSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcSales.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.gcSales.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             gridLevelNode1.RelationName = "Level1";
             this.gcSales.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gcSales.Location = new System.Drawing.Point(112, 197);
+            this.gcSales.Location = new System.Drawing.Point(144, 234);
             this.gcSales.MainView = this.gvSales;
-            this.gcSales.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.gcSales.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.gcSales.MenuManager = this.ribbon;
             this.gcSales.Name = "gcSales";
-            this.gcSales.Size = new System.Drawing.Size(703, 317);
+            this.gcSales.Size = new System.Drawing.Size(904, 376);
             this.gcSales.TabIndex = 38;
             this.gcSales.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvSales});
@@ -104,10 +104,11 @@
             this.QuantitySold,
             this.Price,
             this.OrderDate});
-            this.gvSales.DetailHeight = 351;
+            this.gvSales.DetailHeight = 417;
             this.gvSales.FixedLineWidth = 3;
             this.gvSales.GridControl = this.gcSales;
             this.gvSales.Name = "gvSales";
+            this.gvSales.OptionsEditForm.PopupEditFormWidth = 1029;
             this.gvSales.OptionsView.ShowGroupPanel = false;
             // 
             // RowCount
@@ -118,12 +119,12 @@
             this.RowCount.AppearanceHeader.Options.UseFont = true;
             this.RowCount.Caption = "#";
             this.RowCount.FieldName = "Count";
-            this.RowCount.MinWidth = 23;
+            this.RowCount.MinWidth = 30;
             this.RowCount.Name = "RowCount";
             this.RowCount.OptionsColumn.AllowEdit = false;
             this.RowCount.Visible = true;
             this.RowCount.VisibleIndex = 0;
-            this.RowCount.Width = 254;
+            this.RowCount.Width = 444;
             // 
             // SaleID
             // 
@@ -133,10 +134,10 @@
             this.SaleID.AppearanceHeader.Options.UseFont = true;
             this.SaleID.Caption = "Sale ID";
             this.SaleID.FieldName = "SaleID";
-            this.SaleID.MinWidth = 23;
+            this.SaleID.MinWidth = 30;
             this.SaleID.Name = "SaleID";
             this.SaleID.OptionsColumn.AllowEdit = false;
-            this.SaleID.Width = 185;
+            this.SaleID.Width = 238;
             // 
             // ProductName
             // 
@@ -146,11 +147,11 @@
             this.ProductName.AppearanceHeader.Options.UseFont = true;
             this.ProductName.Caption = "Sold Products";
             this.ProductName.FieldName = "ProductName";
-            this.ProductName.MinWidth = 24;
+            this.ProductName.MinWidth = 31;
             this.ProductName.Name = "ProductName";
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 1;
-            this.ProductName.Width = 509;
+            this.ProductName.Width = 890;
             // 
             // QuantitySold
             // 
@@ -160,11 +161,11 @@
             this.QuantitySold.AppearanceHeader.Options.UseFont = true;
             this.QuantitySold.Caption = "Total Quantity Sold";
             this.QuantitySold.FieldName = "QuantitySold";
-            this.QuantitySold.MinWidth = 24;
+            this.QuantitySold.MinWidth = 31;
             this.QuantitySold.Name = "QuantitySold";
             this.QuantitySold.Visible = true;
             this.QuantitySold.VisibleIndex = 2;
-            this.QuantitySold.Width = 411;
+            this.QuantitySold.Width = 719;
             // 
             // Price
             // 
@@ -174,12 +175,26 @@
             this.Price.AppearanceHeader.Options.UseFont = true;
             this.Price.Caption = "Total Revenue";
             this.Price.FieldName = "Price";
-            this.Price.MinWidth = 23;
+            this.Price.MinWidth = 30;
             this.Price.Name = "Price";
             this.Price.OptionsColumn.AllowEdit = false;
             this.Price.Visible = true;
             this.Price.VisibleIndex = 3;
-            this.Price.Width = 283;
+            this.Price.Width = 386;
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.AppearanceCell.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.OrderDate.AppearanceCell.Options.UseFont = true;
+            this.OrderDate.AppearanceHeader.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.OrderDate.AppearanceHeader.Options.UseFont = true;
+            this.OrderDate.Caption = "Order Date";
+            this.OrderDate.FieldName = "OrderDate";
+            this.OrderDate.MinWidth = 32;
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.Visible = true;
+            this.OrderDate.VisibleIndex = 4;
+            this.OrderDate.Width = 275;
             // 
             // BtnGenerateReport
             // 
@@ -188,10 +203,10 @@
             this.BtnGenerateReport.Appearance.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGenerateReport.Appearance.Options.UseBackColor = true;
             this.BtnGenerateReport.Appearance.Options.UseFont = true;
-            this.BtnGenerateReport.Location = new System.Drawing.Point(526, 89);
-            this.BtnGenerateReport.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnGenerateReport.Location = new System.Drawing.Point(676, 106);
+            this.BtnGenerateReport.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.BtnGenerateReport.Name = "BtnGenerateReport";
-            this.BtnGenerateReport.Size = new System.Drawing.Size(239, 38);
+            this.BtnGenerateReport.Size = new System.Drawing.Size(307, 45);
             this.BtnGenerateReport.TabIndex = 66;
             this.BtnGenerateReport.Text = "GENERATE REPORT";
             this.BtnGenerateReport.Click += new System.EventHandler(this.BtnGenerateReport_Click);
@@ -199,7 +214,8 @@
             // cbSelectTimeReport
             // 
             this.cbSelectTimeReport.EditValue = "Select Time Report";
-            this.cbSelectTimeReport.Location = new System.Drawing.Point(112, 143);
+            this.cbSelectTimeReport.Location = new System.Drawing.Point(144, 170);
+            this.cbSelectTimeReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbSelectTimeReport.MenuManager = this.ribbon;
             this.cbSelectTimeReport.Name = "cbSelectTimeReport";
             this.cbSelectTimeReport.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
@@ -212,30 +228,20 @@
             "Monthly",
             "Yearly",
             "All"});
-            this.cbSelectTimeReport.Size = new System.Drawing.Size(362, 40);
+            this.cbSelectTimeReport.Size = new System.Drawing.Size(465, 48);
             this.cbSelectTimeReport.TabIndex = 68;
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.Caption = "gridColumn1";
-            this.OrderDate.FieldName = "OrderDate";
-            this.OrderDate.MinWidth = 25;
-            this.OrderDate.Name = "OrderDate";
-            this.OrderDate.Visible = true;
-            this.OrderDate.VisibleIndex = 4;
-            this.OrderDate.Width = 94;
             // 
             // ViewSales
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 553);
+            this.ClientSize = new System.Drawing.Size(1139, 657);
             this.Controls.Add(this.cbSelectTimeReport);
             this.Controls.Add(this.BtnGenerateReport);
             this.Controls.Add(this.gcSales);
             this.Controls.Add(this.ribbon);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ViewSales.IconOptions.Image")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "ViewSales";
             this.Ribbon = this.ribbon;
             this.RibbonVisibility = DevExpress.XtraBars.Ribbon.RibbonVisibility.Hidden;

@@ -222,6 +222,26 @@ namespace InventorySystem.Orders
 
         private void btnConfirmPayment_Click(object sender, EventArgs e)
         {
+            // Step 0: Validate payment fields
+            if (string.IsNullOrWhiteSpace(seTotalPrice.Text) || string.IsNullOrWhiteSpace(seAddAmount.Text))
+            {
+                MessageBox.Show("Please ensure Total Price and Payment Amount are entered.",
+                                "Validation Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!decimal.TryParse(seTotalPrice.Text, out decimal totalPriceValue) ||
+                !decimal.TryParse(seAddAmount.Text, out decimal paymentAmountValue))
+            {
+                MessageBox.Show("Please enter valid numeric values for Total Price and Payment Amount.",
+                                "Validation Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
             // Step 1: Show confirmation message box
             var confirmResult = MessageBox.Show(
                 "Are you sure you want to confirm this order?",
@@ -267,8 +287,8 @@ namespace InventorySystem.Orders
                 connection.Open();
 
                 string insertOrderQuery = @"
-            INSERT INTO Orders (OrderID, TotalPrice, PaymentAmount, OrderDate)
-            VALUES (@OrderID, @TotalPrice, @PaymentAmount, @OrderDate)";
+        INSERT INTO Orders (OrderID, TotalPrice, PaymentAmount, OrderDate)
+        VALUES (@OrderID, @TotalPrice, @PaymentAmount, @OrderDate)";
 
                 connection.Execute(insertOrderQuery, order);
             }
@@ -278,9 +298,9 @@ namespace InventorySystem.Orders
             {
                 string productID = row["ProductID"].ToString();
                 int quantitySold = Convert.ToInt32(row["Quantity"]);
-                decimal totalPrice = Convert.ToDecimal(row["Price"]);
+                decimal totalItemPrice = Convert.ToDecimal(row["Price"]);
 
-                InsertSale(order.OrderID, productID, quantitySold, totalPrice);
+                InsertSale(order.OrderID, productID, quantitySold, totalItemPrice);
                 DeductStockQuantity(productID, quantitySold);
             }
 
@@ -290,6 +310,7 @@ namespace InventorySystem.Orders
 
             MessageBox.Show("Payment confirmed, sales recorded, and stock updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
         // Helper method to get available stock for a product
         private int GetAvailableStock(string productID)

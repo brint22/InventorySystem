@@ -12,5 +12,6 @@ namespace InventorySystem.Models
         public string TotalPrice { get; set; }
         public string PaymentAmount { get; set; }
         public DateTime OrderDate { get; set; }
+        public int Count { get; set; }
     }
 }
