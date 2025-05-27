@@ -74,26 +74,7 @@ namespace InventorySystem
         }
 
         // Sample1
-     
-        private void teUserName_Enter(object sender, EventArgs e)
-        {
-            // If the TextBox contains the placeholder text, clear it when the user clicks into it
-            if (teUserName.Text == "Username")
-            {
-                teUserName.Text = "";
-                teUserName.ForeColor = Color.Black; // Change text color to black
-            }
-        }
-
-        private void tePassword_Enter(object sender, EventArgs e)
-        {
-            // If the TextBox contains the placeholder text, clear it when the user clicks into it
-            if (tePassword.Text == "Password")
-            {
-                tePassword.Text = "";
-                tePassword.ForeColor = Color.Black; // Change text color to black
-            }
-        }
+    
 
         private void teUserName_Leave(object sender, EventArgs e)
         {

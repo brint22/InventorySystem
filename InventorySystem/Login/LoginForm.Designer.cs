@@ -51,7 +51,6 @@
             this.teUserName.Properties.AutoHeight = false;
             this.teUserName.Size = new System.Drawing.Size(349, 39);
             this.teUserName.TabIndex = 0;
-            this.teUserName.Enter += new System.EventHandler(this.teUserName_Enter);
             this.teUserName.Leave += new System.EventHandler(this.teUserName_Leave);
             // 
             // tePassword
@@ -66,7 +65,6 @@
             this.tePassword.Properties.PasswordChar = '*';
             this.tePassword.Size = new System.Drawing.Size(349, 39);
             this.tePassword.TabIndex = 1;
-            this.tePassword.Enter += new System.EventHandler(this.tePassword_Enter);
             this.tePassword.Leave += new System.EventHandler(this.tePassword_Leave);
             // 
             // btnLogin
