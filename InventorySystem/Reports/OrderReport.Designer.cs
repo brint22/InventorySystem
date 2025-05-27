@@ -347,7 +347,7 @@
             this.xrTableCell14.StylePriority.UseTextAlignment = false;
             this.xrTableCell14.Text = "Total Amount:";
             this.xrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell14.Weight = 0.756044205630748D;
+            this.xrTableCell14.Weight = 0.55159114060910364D;
             // 
             // xrTableCell15
             // 
@@ -369,7 +369,7 @@
             this.xrTableCell15.Text = "Salary";
             this.xrTableCell15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.xrTableCell15.TextFormatString = "{0:N2}";
-            this.xrTableCell15.Weight = 0.59571732673540256D;
+            this.xrTableCell15.Weight = 0.800170391757047D;
             // 
             // xrTable2
             // 
@@ -429,6 +429,7 @@
             this.xrTableCell10.StylePriority.UseForeColor = false;
             this.xrTableCell10.StylePriority.UseTextAlignment = false;
             this.xrTableCell10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrTableCell10.TextFormatString = "{0:d MMMM yyyy h:mm:ss tt}";
             this.xrTableCell10.Weight = 1.1359258794714078D;
             // 
             // xrTable4
@@ -465,7 +466,7 @@
             this.xrTableCell11.StylePriority.UseTextAlignment = false;
             this.xrTableCell11.Text = "Total Quantity:";
             this.xrTableCell11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell11.Weight = 0.756044205630748D;
+            this.xrTableCell11.Weight = 0.55159114060910375D;
             // 
             // xrTableCell12
             // 
@@ -486,7 +487,7 @@
             this.xrTableCell12.Summary = xrSummary1;
             this.xrTableCell12.Text = "Salary";
             this.xrTableCell12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell12.Weight = 0.59571732673540256D;
+            this.xrTableCell12.Weight = 0.800170391757047D;
             // 
             // OrderReport
             // 

@@ -107,11 +107,11 @@
             gridLevelNode1.RelationName = "Level1";
             this.gcSales.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gcSales.Location = new System.Drawing.Point(1066, 109);
+            this.gcSales.Location = new System.Drawing.Point(1066, 151);
             this.gcSales.MainView = this.gvSales;
             this.gcSales.MenuManager = this.ribbon;
             this.gcSales.Name = "gcSales";
-            this.gcSales.Size = new System.Drawing.Size(404, 653);
+            this.gcSales.Size = new System.Drawing.Size(404, 611);
             this.gcSales.TabIndex = 36;
             this.gcSales.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvSales});
@@ -209,13 +209,13 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.gcOrders.EmbeddedNavigator.Buttons.Append.Visible = false;
             this.gcOrders.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gcOrders.Location = new System.Drawing.Point(42, 109);
+            this.gcOrders.Location = new System.Drawing.Point(42, 151);
             this.gcOrders.MainView = this.gvOrderList;
             this.gcOrders.Margin = new System.Windows.Forms.Padding(4);
             this.gcOrders.Name = "gcOrders";
             this.gcOrders.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.ViewEmployeeDetails});
-            this.gcOrders.Size = new System.Drawing.Size(993, 653);
+            this.gcOrders.Size = new System.Drawing.Size(993, 663);
             this.gcOrders.TabIndex = 39;
             this.gcOrders.UseEmbeddedNavigator = true;
             this.gcOrders.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {

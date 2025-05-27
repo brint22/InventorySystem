@@ -94,4 +94,4 @@ namespace InventorySystem.Products.Sales
             }
         }
     }
-    }
+}
