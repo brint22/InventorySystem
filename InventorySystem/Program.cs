@@ -23,7 +23,7 @@ namespace InventorySystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new bbi());
+            Application.Run(new LoginForm());
         }
     }
 }

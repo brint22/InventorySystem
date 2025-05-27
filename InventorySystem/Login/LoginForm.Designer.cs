@@ -32,34 +32,39 @@
             this.teUserName = new DevExpress.XtraEditors.TextEdit();
             this.tePassword = new DevExpress.XtraEditors.TextEdit();
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // teUserName
             // 
-            this.teUserName.EditValue = "Username";
-            this.teUserName.Location = new System.Drawing.Point(34, 84);
-            this.teUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.teUserName.EditValue = "";
+            this.teUserName.Location = new System.Drawing.Point(71, 237);
+            this.teUserName.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.teUserName.Name = "teUserName";
-            this.teUserName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teUserName.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F);
             this.teUserName.Properties.Appearance.Options.UseFont = true;
             this.teUserName.Properties.AutoHeight = false;
-            this.teUserName.Size = new System.Drawing.Size(299, 32);
+            this.teUserName.Size = new System.Drawing.Size(349, 39);
             this.teUserName.TabIndex = 0;
             this.teUserName.Enter += new System.EventHandler(this.teUserName_Enter);
             this.teUserName.Leave += new System.EventHandler(this.teUserName_Leave);
             // 
             // tePassword
             // 
-            this.tePassword.EditValue = "Password";
-            this.tePassword.Location = new System.Drawing.Point(34, 162);
-            this.tePassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tePassword.EditValue = "";
+            this.tePassword.Location = new System.Drawing.Point(71, 323);
+            this.tePassword.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.tePassword.Name = "tePassword";
-            this.tePassword.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tePassword.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F);
             this.tePassword.Properties.Appearance.Options.UseFont = true;
             this.tePassword.Properties.AutoHeight = false;
-            this.tePassword.Size = new System.Drawing.Size(299, 32);
+            this.tePassword.Properties.PasswordChar = '*';
+            this.tePassword.Size = new System.Drawing.Size(349, 39);
             this.tePassword.TabIndex = 1;
             this.tePassword.Enter += new System.EventHandler(this.tePassword_Enter);
             this.tePassword.Leave += new System.EventHandler(this.tePassword_Leave);
@@ -70,25 +75,60 @@
             this.btnLogin.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.Appearance.Options.UseBackColor = true;
             this.btnLogin.Appearance.Options.UseFont = true;
-            this.btnLogin.Location = new System.Drawing.Point(34, 238);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogin.Location = new System.Drawing.Point(71, 398);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(299, 35);
+            this.btnLogin.Size = new System.Drawing.Size(349, 43);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
+            this.pictureEdit1.Location = new System.Drawing.Point(162, 31);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pictureEdit1.Size = new System.Drawing.Size(185, 139);
+            this.pictureEdit1.TabIndex = 3;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(71, 200);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(117, 24);
+            this.labelControl1.TabIndex = 4;
+            this.labelControl1.Text = "Employee ID";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(71, 295);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(93, 24);
+            this.labelControl2.TabIndex = 5;
+            this.labelControl2.Text = "Password";
             // 
             // LoginForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 365);
+            this.ClientSize = new System.Drawing.Size(485, 505);
+            this.Controls.Add(this.labelControl2);
+            this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.pictureEdit1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tePassword);
             this.Controls.Add(this.teUserName);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("LoginForm.IconOptions.Image")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";
@@ -96,7 +136,9 @@
             this.Text = "Inventory System | Login Form";
             ((System.ComponentModel.ISupportInitialize)(this.teUserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -105,6 +147,9 @@
         private DevExpress.XtraEditors.TextEdit teUserName;
         private DevExpress.XtraEditors.TextEdit tePassword;
         private DevExpress.XtraEditors.SimpleButton btnLogin;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
     }
 }
 
