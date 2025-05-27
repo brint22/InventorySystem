@@ -106,11 +106,11 @@
             gridLevelNode1.RelationName = "Level1";
             this.gcSales.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gcSales.Location = new System.Drawing.Point(1062, 109);
+            this.gcSales.Location = new System.Drawing.Point(1066, 109);
             this.gcSales.MainView = this.gvSales;
             this.gcSales.MenuManager = this.ribbon;
             this.gcSales.Name = "gcSales";
-            this.gcSales.Size = new System.Drawing.Size(408, 653);
+            this.gcSales.Size = new System.Drawing.Size(404, 653);
             this.gcSales.TabIndex = 36;
             this.gcSales.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvSales});
