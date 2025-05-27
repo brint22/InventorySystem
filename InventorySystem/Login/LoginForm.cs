@@ -21,7 +21,7 @@ namespace InventorySystem
         {
             InitializeComponent();
         }
-
+        //
         private bool LoginMethod(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(GlobalClass.connectionString))
